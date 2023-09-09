@@ -1,4 +1,4 @@
-package com.github.dakusui.thincrest.utils.metatest;
+package com.github.dakusui.valid8j.utils.metatest;
 
 import org.junit.runner.Result;
 

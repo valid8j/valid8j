@@ -1,4 +1,4 @@
-package com.github.dakusui.thincrest.utils.metatest;
+package com.github.dakusui.valid8j.utils.metatest;
 
 import org.junit.runner.Description;
 
@@ -6,7 +6,7 @@ import java.lang.annotation.Retention;
 import java.util.List;
 import java.util.Optional;
 
-import static com.github.dakusui.thincrest.utils.metatest.TestMethodExpectation.Result.*;
+import static com.github.dakusui.valid8j.utils.metatest.TestMethodExpectation.Result.*;
 import static java.lang.String.format;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import static java.util.Arrays.asList;

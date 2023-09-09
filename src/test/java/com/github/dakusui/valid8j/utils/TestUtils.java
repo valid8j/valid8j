@@ -1,4 +1,4 @@
-package com.github.dakusui.thincrest.utils;
+package com.github.dakusui.valid8j.utils;
 
 import java.io.OutputStream;
 import java.io.PrintStream;

@@ -1,0 +1,12 @@
+This package collects entry point classes of the `valid8j` library.
+Do `static import` for a class that you want to use.
+
+For assertions:: If you just want to do a Design by Contract programming in a style of Google Guava or Apache Commons but in a better way, please take this approach.
+The classes to `static import` are `Requires` and `Ensures`.
+An entry-point class for invariant conditions is not provided as of now since they are not providing it, and you can create your own `Invariants` class.
+In case you want it in a practical use case, please request the author with your actual use case.
+For overhead-free assertions:: This is a style, where you use the Java's `assert` statement for checking pre-, invariant, and post-conditions.
+The class to do `static import` is `Assertions`.
+For input validations:: For detecting a recoverable violation of a condition (i.e., checking a human user's input, file content check, etc.), a class to do `static import` is `Validation`.
+
+For all of these, you want to do also `static import` classes under `forms` package, such as `Functions` and `Predicates`.

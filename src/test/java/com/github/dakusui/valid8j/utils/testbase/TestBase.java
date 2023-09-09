@@ -1,6 +1,6 @@
-package com.github.dakusui.thincrest.utils.testbase;
+package com.github.dakusui.valid8j.utils.testbase;
 
-import com.github.dakusui.thincrest.utils.TestUtils;
+import com.github.dakusui.valid8j.utils.TestUtils;
 import org.junit.After;
 import org.junit.Before;
 
