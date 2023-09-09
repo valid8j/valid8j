@@ -8,6 +8,13 @@ import java.util.function.Predicate;
 
 import static java.util.stream.Collectors.toList;
 
+/**
+ * A class to provide fluent versions of `valid8j` entry points.
+ * You can pass `Statement` objects created by static methods in `Statement` interface such as
+ * `objectValue`, `stringValue`, `intValue`, etc.
+ *
+ * @see Statement
+ */
 public enum ValidationFluents {
   ;
 

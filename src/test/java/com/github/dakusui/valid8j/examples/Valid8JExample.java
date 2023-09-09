@@ -62,10 +62,18 @@ public class Valid8JExample {
   }
 
   static class Salute {
+    /*
+     * This method is invoked reflectively.
+     */
+    @SuppressWarnings("unused")
     public String inJapanese() {
       return "こんにちは";
     }
 
+    /*
+     * This method is invoked reflectively.
+     */
+    @SuppressWarnings("unused")
     public String inEnglish() {
       return "";
     }

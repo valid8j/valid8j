@@ -13,16 +13,16 @@ Have a following maven dependency in your `pom.xml`.
 ----
 <dependency>
   <groupId>com.github.dakusui</groupId>
-  <artifactId>thincrest-pcond</artifactId>
-  <version>{thincrest-pcond-version}</version>
+  <artifactId>valid8j-pcond</artifactId>
+  <version>{valid8j-pcond-version}</version>
 </dependency>
 ----
 
 == Getting started
 
-Following is the first example of the `thincrest-pcond` library.
+Following is the first example of the `valid8j-pcond` library.
 
-[source,java]
+[%nowrap,java]
 .Example.java
 ----
 package com.github.dakusui.pcond.examples;
@@ -78,7 +78,7 @@ You can see the violated condition and how it is violated in the stacktrace.
 
 === Writing the code
 
-To verify a value with `pcond`, you can call an entry point method of `pcond` with your value and a predicate to be checked.
+To verify a value with `valid8j`, you can call an entry point method of `valid8j` with your value and a predicate to be checked.
 
 [source]
 ----
@@ -96,11 +96,11 @@ Exception in thread "main" java.lang.IllegalArgumentException: value:"JohnDoe" v
 ----
 
 This is still better than nothing, however, probably it will be much better if you can see what a condition the value "JohnDoe" violated and how it did without visiting the source code.
-In order to make `pcond` print such a message on a failure, you need to give a "printable" predicate, which we will be describing here.
+In order to make `valid8j` print such a message on a failure, you need to give a "printable" predicate, which we will be describing here.
 
 ==== Building a "Printable" Predicate
 
-`pcond` offers a set of method to create a printable predicate in `Predicates` class.
+`pcond`, which powers `valid8j`, offers a set of method to create a printable predicate in `Predicates` class.
 It also offers a way to construct a conjuntion, disjunction, and negation of given printable predicates.
 
 Following is an example.
@@ -123,7 +123,7 @@ transform(length()).check(gt(0))
 
 This line constructs a printable predicate which returns true if a length of a given string is greater than (`gt`) 0.
 
-NOTE: This is a bit artificial example to illustrate the usage of the `transform` and `check` structure.
+NOTE: This is a little artificial example to illustrate the usage of the `transform` and `check` structure.
 You can achieve the same thing with `Predicates.isEmptyString()` and it will be simpler and faster.
 
 First the method `transfom` accepts, preferably a printable, function.
@@ -194,7 +194,7 @@ So the last line in the message always shows the direct reason why the check fai
 Thus, you can read the output above as "The check failed because the value `\"JohnDoe\"` `containsString[" "]` was `false`.
 "
 
-== Building the `pcond` Library
+== Building the `valid8j` Library
 
 === Building the docs
 
@@ -202,6 +202,7 @@ Thus, you can read the output above as "The check failed because the value `\"Jo
 
 === Build dependencies
 
+- `mvn` and Java SDK 8.
 - `gem` needs to be installed in advance.
 
 == References

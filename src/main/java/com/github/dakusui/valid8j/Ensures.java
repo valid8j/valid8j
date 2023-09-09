@@ -25,14 +25,40 @@ import java.util.function.Predicate;
 public enum Ensures {
   ;
 
+  /**
+   * Checks if a given value is not `null`.
+   * If not an exception will be thrown.
+   *
+   * @param value A value to be checked.
+   * @return The value itself.
+   * @param <T> The type of the `value`.
+   */
   public static <T> T ensureNonNull(T value) {
     return Validator.instance().ensureNonNull(value);
   }
 
+  /**
+   * Checks if a given state `value`satisfies a postcondition `cond`.
+   * If not an exception will be thrown.
+   *
+   * @param value A value to be checked.
+   * @param cond A condition that checks `value`.
+   * @return The `value` itself
+   * @param <T> The type of the `value`.
+   */
   public static <T> T ensureState(T value, Predicate<? super T> cond) {
     return Validator.instance().ensureState(value, cond);
   }
 
+  /**
+   * Checks if a given `value` satisfies a postcondition `cond`.
+   * If not an exception will be thrown.
+   *
+   * @param value A value to be checked.
+   * @param cond A condition that checks `value`.
+   * @return The `value` itself.
+   * @param <T> The type of the `value`.
+   */
   public static <T> T ensure(T value, Predicate<? super T> cond) {
     return Validator.instance().ensure(value, cond);
   }
