@@ -1,0 +1,3 @@
+= `valid8j`: Overhead-less DbC library
+
+Enjoy.

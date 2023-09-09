@@ -1,0 +1,265 @@
+A package that holds classes for "Metamorphic Testing".
+
+Metamorphic testing is a technique to alleviate "oracle problem" by verifying known relationship among IOs of multiple executions of a target function under test.
+
+For instance, let's look at a situation, where you are testing an implementation of a mathematical function `sin(double x)`.
+If you are going to check the function if the function gives a value equal to a value you calculated without using the function under test itself, you will need to calculate it by hand, which is error prone and very expensive.
+
+However, we know some characteristics, which a `sin(x)` function must satisfy if it is properly implemented.
+For instance, this equation holds for any real `x`.
+
+----
+sin(x) = sin(Math.PI - x)
+----
+
+Also, we can think of following:
+
+----
+ (sin(x))^2 + (cos(x))^2 = 1
+≡(sin(x))^2 + (sin(Math.PI/2 - x))^2 = 1
+----
+
+With these knowledge, we can verify the correctness of the implementation of a sine function.
+
+== Design
+
+.Metamorphic Testing Support Package's Pipeline Design
+[ditaa]
+----
+                    +------------+
+                    |SOURCE VALUE|
+                    +------------+
+                          ^
+                          |
+                          |
+/-------------------------+--------------------------\
+| /--------------\ /--------------\ /--------------\ |
+| |input resolver| |input resolver| |input resolver+---------------------------+
+| \--------------/ \--------------/ \--------------/ |                         |
+\-------------------------+--------------------------/                         |
+                          :                                                    |
+                          |                                                    |
+                          V                                                    |
+    +---------------------+---------------------+                              |
+    |Dataset                                    |                              |
+    | +-----------+ +-----------+ +-----------+ |                              |
+    | |input value| |input value| |input value|<--------------------------+    |
+    | +-----------+ +-----------+ +-----------+ |                         |    |
+    +---------------------^---------------------+                         |    |
+                          |               ^                               |    |
+                          |               |                               |    |
+                          |               |                               |    V
+              /-----------+---------------+-----------\     +-------------|------------------------+
+              | /---------+---------\                 |     |        +----*--+ +-------+ +-------+ |
+              | |function under test|   FUT controller|     |Dataset |IO pair| |IO pair| |IO pair| |
+              | \---------+---------/                 |     |        +----*--+ +-------+ +-------+ |
+              \-----------|---------------------------/     +-------------|------------------------+
+                          :               :                      ^        |      ^
+                          |               |                      |        |      |
+                          |               +----------------------+        |      |
+   +----------------------|-----------------------+                       |      |
+   |Dataset               V                       |                       |      |
+   | +------------+ +------------+ +------------+ |                       |      |
+   | |output value| |output value| |output value|<------------------------+      |
+   | +------------+ +------------+ +------------+ |                              |
+   +----------------------------------------------+                              |
+                                                                                 |
+                                                                                 |
+                                                                                 |
+                                                            /-----------+--------+-+----+-----------\
+                                                            | /---------\                           |
+                                                            | |preformer| preformer controller      |
+                                                            | \----+----/                           |
+                                                            \------|--------------------------------/
+                                                                   :               :
+                                                                   |               |
+                                                                   |               V
+                                             +---------------------|---------------------------------+
+                                             |Dataset              V                                 |
+                                             | +---------------+ +---------------+ +---------------+ |
+                                             | |preformed value| |preformed value| |preformed value| |
+                                             | +---------------+ +---------------+ +---------------+ |
+                                             +-------------------------------------------------------+
+                                                                    ^
+                                                                    |
+                                                             /------+------\
+                                                             |   reducer   |
+                                                             \------+------/
+                                                                    :
+                                                                    |
+                                                                    V
+                                                             +------+------+
+                                                             |reduced value|
+                                                             +------+------+
+                                                                    ^
+                                                                    |
+                                                             /------+------\
+                                                             |   checker   |
+                                                             \------+------/
+                                                                    :
+                                                                    |
+                                                                    V
+                                                             +------+------+
+                                                             | TEST RESULT |
+                                                             +------+------+
+----
+
+== Example
+
+The entry-point of the metamorphic testing functionality of `pcond` is `MetamorphicTestCaseFactory` class.
+It has several static method which return an instance of `MetamorphicTestCaseFactory.Builder` class.
+
+Following is an example that illustrates the usage through `thincrest` library.
+
+[%nowrap, java]
+----
+public class MetamorphicExample {
+  {@code @}BeforeClass
+  public static void beforeAll() {
+    Validator.reconfigure(Validator.Configuration.Builder::enableMetamorphicTesting);
+  }
+
+  {@code @}Test
+  public void testMetamorphicTest2a() {
+    TestAssertions.assertThat(
+        1.23,
+        // Intentionally add 0.0001 to make the implementation incomplete and make the test fail.
+        MetamorphicTestCaseFactory.forFunctionUnderTest("Math::sin", (Double x) -> Math.sin(x + 0.0001))
+            .makeInputResolversEndomorphic()
+            .addInputResolver((x) -> String.format("πー%s", x), x -> Math.PI - x)
+            .outputOnly()
+            .proposition("{0}={1}", (Dataset<Double> ds) -> Objects.equals(ds.get(0), ds.get(1)))
+            .toMetamorphicTestPredicate());
+  }
+}
+----
+
+
+.Test Failure Report
+[cols=">1,<20,<20"]
+|===
+|Line|Expected|Actual
+
+a|
+[%nowrap]
+----
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+----
+
+a|
+[%nowrap]
+----
+    1.23                              ->transform                    ->io:[[1.23]=>[0.94252222...245537]]
+                                      ->  [x,πーx]                    ->input:[1.23, πー1.23]
+    input:[1.23, πー1.23]             ->  open:fut                   ->(context:fut:input=>io)
+[0] 1.23                              ->  fut:Math::sin(input[0])    ->[1.23]=>[0.94252222]
+[1] πー1.23                           ->  fut:Math::sin(input[1])    ->[1.911592653589]=>[0.942455373446]
+                                      ->  close:fut                  ->(context:fut:input=>io)
+    (context:fut:input=>io)           ->  output(fut)                ->io:[[1.23]=>[0.942522...24553734]]
+    io:[[1.23]=>[0.942522...24553734]]->check:transform              ->true
+                                      ->    open:preform             ->(context:preform:io=>io)
+[2] [1.23]=>[0.942522220991]          ->    preform:outputOnly(io[0])->0.942522220991
+[3] [1.911592653589]=>[0.942455373446]->    preform:outputOnly(io[1])->0.942455373446
+                                      ->    close:preform            ->(context:preform:io=>io)
+    (context:preform:io=>io)          ->    output(preform)          ->io:[0.942522220991,...42455373446]
+    io:[0.9425222209919102,...4465968]->    reduce:out[0]=out[1]     ->0.943=0.942
+[4] 0.943=0.942                       ->  check:evaluate             ->true
+----
+a|
+[%nowrap]
+----
+    1.23                              ->transform                    ->io:[[1.23]=>[0.9425...245537]]
+                                      ->  [x,πーx]                    ->input:[1.23, πー1.23]
+    input:[1.23, πー1.23]              ->  open:fut                   ->(context:fut:input=>io)
+[0] 1.23                              ->  fut:Math::sin(input[0])    ->[1.23]=>[0.9425222209919102]
+[1] πー1.23                           ->  fut:Math::sin(input[1])    ->[1.9115926535897931]=>[0.942455373446]
+                                      ->  close:fut                  ->(context:fut:input=>io)
+    (context:fut:input=>io)           ->  output(fut)                ->io:[[1.23]=>[0.94252222...2455373446]]
+    io:[[1.23]=>[0.9425...2455373446]]->check:transform              ->false
+                                      ->    open:preform             ->(context:preform:io=>io)
+[2] [1.23]=>[0.94252222]              ->    preform:outputOnly(io[0])->0.942522220991
+[3] [1.911592653589]=>[0.942455373446]->    preform:outputOnly(io[1])->0.942455373446
+                                      ->    close:preform            ->(context:preform:io=>io)
+    (context:preform:io=>io)          ->    output(preform)          ->io:[0.942522220991,...42455373446]
+    io:[0.942522220991,...42455373446]->    reduce:out[0]=out[1]     ->0.943=0.942
+[4] 0.943=0.942                       ->  check:evaluate             ->false
+----
+
+|
+a|
+.Detail of failure [0]
+----
+fut:Math::sin(input[0])
+----
+a|
+.Detail of failure [0]
+----
+in: <1.23>
+out:<[1.23]=>[0.9425222209919102]>
+----
+
+|
+a|
+.Detail of failure [1]
+----
+fut:Math::sin(input[1])
+----
+a|
+.Detail of failure [1]
+----
+in: <πー1.23>
+out:<[1.9115926535897931]=>[0.9424553734465968]>
+----
+
+|
+a|
+.Detail of failure [2]
+----
+preform:outputOnly(io[0])
+----
+a|
+.Detail of failure [2]
+----
+in: <[1.23]=>[0.9425222209919102]>
+out:<0.9425222209919102>
+----
+
+|
+a|
+.Detail of failure [3]
+----
+preform:outputOnly(io[1])
+----
+a|
+.Detail of failure [3]
+----
+in: <[1.9115926535897931]=>[0.9424553734465968]>
+out:<0.9424553734465968>
+----
+
+|
+a|
+.Detail of failure [4]
+----
+evaluate
+----
+a|
+.Detail of failure [4]
+----
+0.943=0.942
+----
+|===

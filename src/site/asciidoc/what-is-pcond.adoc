@@ -1,0 +1,79 @@
+
+== The `pcond` library
+
+`pcond` is a simple assertion and validation library, but not in the sense assert4j, hamcrest, or thincrest are.
+It is a focusing on product side's code than on unit test codes and it is more like guava's `Preconditions` class, but it is equipped with more features and designed based on the ideas of "Design by Contract."
+
+=== Usage
+First, let's import statically entry points of the library in your code.
+
+[source,java]
+----
+
+
+----
+
+Of course, you can rely on your IDE for it, though.
+
+
+=== `assert var != null` vs `Objects.requireNonNull(var)`
+
+What are the differences between them?
+For what a situation do you use `assert` or `requireNonNull`?
+
+`assert` throws `java.lang.AssertionError` and for `requireNonNull`, `java.lang.NullPointerException` is thrown, when the `var` is `null`.
+And, in both cases, we consider that a bug is detected and the exception should not be caught.
+
+Then which should be used when?
+
+[ditaa]
+----
++------+    +-----------------------+
+|Client|    |Your Library           |
+|      |    |    +----------------+ |
+|      +--->|    |Internal Classes| |
+|      |    |    +----------------+ |
++------+    +-----------------------+
+----
+
+The policy `pcond` takes is as simple as follows,
+
+- When you are detecting a bug of your own library, use `assert var != null`.
+- When you are detecting a bug of your client's, use `requireNonNull(var)`
+
+The former should be used in `private` or package-private methods in general, and the other, in `public` methods.
+
+[source,java]
+----
+public class Example {
+  public void publicMethod(String message) {
+    requireNonNull(message);
+    privateMethod(message);
+  }
+
+  private void privateMethod(String message) {
+    assert precondition(message, isNotNull());
+    System.out.println(mesage);
+  }
+}
+----
+
+=== Descriptiveness on failure.
+
+(t.b.d.)
+
+=== Performance
+
+The `precondition` method is defined to return a `boolean` value.
+
+[source,java]
+----
+public class Example {
+  private void privateMethod(String message) {
+    assert precondition(message, isNotNull()); //<1>
+    System.out.println(mesage);
+  }
+}
+----
+<1> This line is not executed at all if you give `-da` option to your JVM.
+
