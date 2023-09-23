@@ -5,10 +5,6 @@ shopt -s inherit_errexit
 # shellcheck disable=SC1090
 source "$(dirname "${0}")/lib/mvn-utils.rc"
 
-function project_name() {
-  echo "valid8j"
-}
-
 function mangle_package() {
   local _basedir="${1}"
   mv "${_basedir}/com/github/dakusui/pcond" "${_basedir}/com/github/dakusui/$(project_name)_pcond"

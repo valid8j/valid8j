@@ -204,6 +204,7 @@ Thus, you can read the output above as "The check failed because the value `\"Jo
 
 - `mvn` and Java SDK 8.
 - `gem` needs to be installed in advance.
+- `xmllint` needs to be installed in advance.
 
 == References
 

@@ -8,6 +8,10 @@ function mvn_init() {
   fi
 }
 
+function project_name() {
+  xmllint --xpath '/project/name/text()' <(sed -E 's/xmlns=[^\s]+//g' pom.xml)
+}
+
 function _compose_mvn_command_line() {
   local _artifact="${1}" _basedir="${2}"
   echo mvn -B -Dstyle.color=never dependency:unpack -Dartifact="${_artifact}" \

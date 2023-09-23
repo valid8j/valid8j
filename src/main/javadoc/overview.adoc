@@ -1,7 +1,7 @@
-= `pcond`: The Printable {pre,post}-conditions
+= `valid8j`: A modern DbC library for Java.
 
-The `pcond` is a multi-purposes predicate library for "Design by Contract" style programming and test assertions.
-You can replace Guava's `Preconditions` class, Apache Common's `Validate` class, and test assertion libraries with this.
+The `valid8j` is a DbC (design by contract) programming supporting library for Java intended to be a successor of `valid4j`.
+You can also replace Guava's `Preconditions` class, Apache Common's `Validate` class, and test assertion libraries with this.
 
 == Design Goals
 
