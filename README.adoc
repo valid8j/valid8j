@@ -1,3 +1,105 @@
 = `valid8j`: Overhead-less DbC library
 
+== Introduction
+
+We programmers are always checking values every day.
+To write a test, to check a value passed from a calling function, to check a value a human user gives to your function, etc., etc.
+
+Once such a check fails, we want a descriptive message.
+One way to achieve that is to define a hand-crafted message.
+
+[source, java]
+.Example
+----
+class Example {
+  void example(int age) {
+    assert 15 < age && age <= 60 : "age must be greater than 15 and less than or equal to 60, but it was " + age;
+    System.out.println("Age: " + age);
+  }
+}
+----
+
+This is cumbersome, error-prone, redundant, and not maintainable.
+If Java can print a lambda in a human-readable form, we don't need to worry about this at all.
+
+We will be able to print the definition of lambda as a text and a value passed to it.
+
+In other languages which support introspection of lambdas, this can be mitigated by making the condition a lambda and print it on a failure.
+One example is "power-assert" in JavaScript.
+It gives a message like following on a failure.
+
+.power-assert's output
+----
+ 1) Array #indexOf() should return index when the value is present:
+     AssertionError: # path/to/test/mocha_node.js:10
+
+  assert(ary.indexOf(zero) === two)
+         |   |       |     |   |
+         |   |       |     |   2
+         |   -1      0     false
+         [1,2,3]
+
+  [number] two
+  => 2
+  [number] ary.indexOf(zero)
+  => -1
+----
+
+However, in Java's reality, there is not a reliable way to do this as of today.
+footnote:[There is a library called "java-power-assert", which is not actively developed, anymore. Author was not able to use it due to build-time problem.]
+
+[source, java]
+----
+class Example {
+  void example() {
+    System.out.println((IntPredicate)(int x) -> 15 < x && x < 60);
+  }
+}
+----
+
+The example above will print kind of "mysterious" string, instead of the definition of the lambda `(int x) -> 15 < x && x < 60`.
+
+----
+com.github.dakusui.valid8j.examples.Example$$Lambda$1/1023892928@7cca494b
+----
+
+Existing assertion libraries such as Hamcrest, AssertJ, or Google Truth can be considered attempts to address this problem by providing a set of conditions which can print themselves in a human-readable format.
+
+== Background and Related Works
+
+(t.b.d.)
+
+=== Hamcrest
+
+(t.b.d.)
+
+=== Valid4J
+
+(t.b.d.)
+
+=== AssertJ and Google Truth
+
+
+The approach `pcond` consists of the following thoughts.
+
+1. Provide a limited set of predicates and functions that can print themselves in a human-readable way.
+2. Provide a way to compose printable predicates from them.
+
+
+
+== What is `pcond`
+
+
+
+== What is `valid8j`
+
+(t.b.d.)
 Enjoy.
+
+
+== What is `thincrest`
+
+
+== References
+
+- [[PowerAssert]] GitHub - power-assert-js/README.md , https://github.com/power-assert-js/power-assert

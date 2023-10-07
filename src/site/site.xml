@@ -2,6 +2,7 @@
     <body>
         <menu name="Documents">
             <item href="quickstart.html" name="Quick Start"/>
+            <item href="what-is-valid8j.html" name="What is valid8j"/>
         </menu>
         <menu ref="reports" inherit="top"/>
         <menu ref="modules"/>
