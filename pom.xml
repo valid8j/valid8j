@@ -116,12 +116,42 @@
                     <version>${maven-resources-plugin.version}</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${maven-compiler-plugin.source}</source>
+                        <target>${maven-compiler-plugin.target}</target>
+                        <compilerArgs>
+                            <!--
+                            <arg>-Xlint:all,-options,-path</arg>
+                            -->
+                        </compilerArgs>
+                    </configuration>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
+                    <!-- configuration>
+                        <argLine>-ea</argLine>
+                    </configuration -->
+                    <executions>
+                        <execution>
+                            <phase>integration-test</phase>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                            <configuration>
+                                <excludes>
+                                    <exclude>none</exclude>
+                                </excludes>
+                                <includes>
+                                    <include>**/*IT</include>
+                                </includes>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
@@ -204,6 +234,11 @@
                     <artifactId>cobertura-maven-plugin</artifactId>
                     <version>${cobertura-maven-plugin.version}</version>
                     <configuration>
+                        <instrumentation>
+                            <ignores>
+                                <ignore>com.github.dakusui.valid8j_pcond.*</ignore>
+                            </ignores>
+                        </instrumentation>
                         <formats>
                             <format>html</format>
                             <format>xml</format>
@@ -215,6 +250,11 @@
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>${jacoco-maven-plugin.version}</version>
+                    <configuration>
+                        <includes>
+                            <include>com.github.dakusui.valid8j</include>
+                        </includes>
+                    </configuration>
                     <executions>
                         <execution>
                             <goals>
@@ -235,6 +275,38 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>${maven-site-plugin.version}</version>
+                    <dependencies>
+                        <!-- Comment this section to use the default jruby artifact provided by the plugin -->
+                        <dependency>
+                            <groupId>org.jruby</groupId>
+                            <artifactId>jruby-complete</artifactId>
+                            <version>${jruby.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.asciidoctor</groupId>
+                            <artifactId>asciidoctor-maven-plugin</artifactId>
+                            <version>${asciidoctor.maven.plugin.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <!-- disable generateReports if you don't want to include the built-in reports -->
+                        <generateReports>true</generateReports>
+                        <generateSitemap>true</generateSitemap>
+                        <relativizeDecorationLinks>false</relativizeDecorationLinks>
+                        <locales>en</locales>
+                        <inputEncoding>UTF-8</inputEncoding>
+                        <outputEncoding>UTF-8</outputEncoding>
+                        <skipDeploy>false</skipDeploy>
+                        <!-- asciidoc -->
+                        <!-- optional site-wide AsciiDoc attributes -->
+                        <!-- attributes>
+                            <icons>font</icons>
+                            <source-highlighter>coderay</source-highlighter>
+                            <coderay-css>style</coderay-css>
+                            <toclevels>2</toclevels>
+                        </attributes>
+                    </asciidoc -->
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -245,16 +317,101 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>${maven-javadoc-plugin.version}</version>
+                    <configuration>
+                        <doclet>org.asciidoctor.Asciidoclet</doclet>
+                        <docletArtifact>
+                            <groupId>org.asciidoctor</groupId>
+                            <artifactId>asciidoclet</artifactId>
+                            <version>${asciidoclet.version}</version>
+                        </docletArtifact>
+                        <overview>src/main/javadoc/overview.adoc</overview>
+                        <additionalparam>
+                            --base-dir ${project.basedir}
+                            --attribute "name=${project.name}"
+                            --attribute "version=${project.version}"
+                            --attribute "imagesoutdir=.asciidoctor/diagram"
+                            --require asciidoctor-diagram
+                            --gem-path ${env.GEM_PATH}
+                            --attribute data-uri
+                        </additionalparam>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.asciidoctor</groupId>
+                    <artifactId>asciidoctor-maven-plugin</artifactId>
+                    <version>${asciidoctor.maven.plugin.version}</version>
+                    <dependencies>
+                        <!-- Comment this section to use the default jruby artifact provided by the plugin -->
+                        <dependency>
+                            <groupId>org.jruby</groupId>
+                            <artifactId>jruby-complete</artifactId>
+                            <version>${jruby.version}</version>
+                        </dependency>
+                        <!-- Comment this section to use the default AsciidoctorJ artifact provided by the plugin -->
+                        <dependency>
+                            <groupId>org.asciidoctor</groupId>
+                            <artifactId>asciidoctorj</artifactId>
+                            <version>${asciidoctorj.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.asciidoctor</groupId>
+                            <artifactId>asciidoctorj-diagram</artifactId>
+                            <version>${asciidoctorj.diagram.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <sourceDirectory>src/site/asciidoc</sourceDirectory>
+                        <requires>
+                            <require>asciidoctor-diagram</require>
+                        </requires>
+                        <attributes>
+                            <!-- Example below shows how to specify in this pom instead of System's PATH, the location of dot command of Graphviz, required by PlantUML libraries -->
+                            <!-- Windows:
+                                <graphvizdot>C:\Program Files (x86)\Graphviz2.38\bin\dot.exe</graphvizdot>
+                            -->
+                            <!-- *nix :
+                                <graphvizdot>/usr/local/bin/dot</graphvizdot>
+                            -->
+                        </attributes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>generate-html-doc</id>
+                            <phase>site</phase>
+                            <goals>
+                                <goal>process-asciidoc</goal>
+                            </goals>
+                            <configuration>
+                                <backend>html5</backend>
+                                <outputDirectory>target/site</outputDirectory>
+                                <attributes>
+                                    <imagesdir>.</imagesdir>
+                                    <toc>left</toc>
+                                    <icons>font</icons>
+                                    <sectanchors>true</sectanchors>
+                                    <idprefix/>
+                                    <idseparator>-</idseparator>
+                                </attributes>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
                     <version>${maven-release-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.pitest</groupId>
-                    <artifactId>pitest-maven</artifactId>
-                    <version>${pitest-maven.version}</version>
+                    <configuration>
+                        <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -266,51 +423,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>${maven-compiler-plugin.source}</source>
-                    <target>${maven-compiler-plugin.target}</target>
-                    <compilerArgs>
-                        <!--
-                        <arg>-Xlint:all,-options,-path</arg>
-                        -->
-                    </compilerArgs>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <!-- configuration>
-                    <argLine>-ea</argLine>
-                </configuration -->
-                <executions>
-                    <execution>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                        <configuration>
-                            <excludes>
-                                <exclude>none</exclude>
-                            </excludes>
-                            <includes>
-                                <include>**/*IT</include>
-                            </includes>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <!-- Run with mvn org.pitest:pitest-maven:mutationCoverage -->
@@ -406,139 +526,68 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                    <doclet>org.asciidoctor.Asciidoclet</doclet>
-                    <docletArtifact>
-                        <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoclet</artifactId>
-                        <version>${asciidoclet.version}</version>
-                    </docletArtifact>
-                    <overview>src/main/javadoc/overview.adoc</overview>
-                    <additionalparam>
-                        --base-dir ${project.basedir}
-                        --attribute "name=${project.name}"
-                        --attribute "version=${project.version}"
-                        --attribute "imagesoutdir=.asciidoctor/diagram"
-                        --require asciidoctor-diagram
-                        --gem-path ${env.GEM_PATH}
-                        --attribute data-uri
-                    </additionalparam>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>${asciidoctor.maven.plugin.version}</version>
-                <dependencies>
-                    <!-- Comment this section to use the default jruby artifact provided by the plugin -->
-                    <dependency>
-                        <groupId>org.jruby</groupId>
-                        <artifactId>jruby-complete</artifactId>
-                        <version>${jruby.version}</version>
-                    </dependency>
-                    <!-- Comment this section to use the default AsciidoctorJ artifact provided by the plugin -->
-                    <dependency>
-                        <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoctorj</artifactId>
-                        <version>${asciidoctorj.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoctorj-diagram</artifactId>
-                        <version>${asciidoctorj.diagram.version}</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <sourceDirectory>src/site/asciidoc</sourceDirectory>
-                    <requires>
-                        <require>asciidoctor-diagram</require>
-                    </requires>
-                    <attributes>
-                        <!-- Example below shows how to specify in this pom instead of System's PATH, the location of dot command of Graphviz, required by PlantUML libraries -->
-                        <!-- Windows:
-                            <graphvizdot>C:\Program Files (x86)\Graphviz2.38\bin\dot.exe</graphvizdot>
-                        -->
-                        <!-- *nix :
-                            <graphvizdot>/usr/local/bin/dot</graphvizdot>
-                        -->
-                    </attributes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>generate-html-doc</id>
-                        <phase>site</phase>
-                        <goals>
-                            <goal>process-asciidoc</goal>
-                        </goals>
-                        <configuration>
-                            <backend>html5</backend>
-                            <outputDirectory>target/site</outputDirectory>
-                            <attributes>
-                                <imagesdir>.</imagesdir>
-                                <toc>left</toc>
-                                <icons>font</icons>
-                                <sectanchors>true</sectanchors>
-                                <idprefix/>
-                                <idseparator>-</idseparator>
-                            </attributes>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <dependencies>
-                    <!-- Comment this section to use the default jruby artifact provided by the plugin -->
-                    <dependency>
-                        <groupId>org.jruby</groupId>
-                        <artifactId>jruby-complete</artifactId>
-                        <version>${jruby.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoctor-maven-plugin</artifactId>
-                        <version>${asciidoctor.maven.plugin.version}</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <!-- disable generateReports if you don't want to include the built-in reports -->
-                    <generateReports>true</generateReports>
-                    <generateSitemap>true</generateSitemap>
-                    <relativizeDecorationLinks>false</relativizeDecorationLinks>
-                    <locales>en</locales>
-                    <inputEncoding>UTF-8</inputEncoding>
-                    <outputEncoding>UTF-8</outputEncoding>
-                    <skipDeploy>false</skipDeploy>
-                    <!-- asciidoc -->
-                    <!-- optional site-wide AsciiDoc attributes -->
-                    <!-- attributes>
-                        <icons>font</icons>
-                        <source-highlighter>coderay</source-highlighter>
-                        <coderay-css>style</coderay-css>
-                        <toclevels>2</toclevels>
-                    </attributes>
-                </asciidoc -->
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <configuration>
-                    <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
-                </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>${cobertura-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>javadoc</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <distributionManagement>
         <snapshotRepository>
