@@ -1,5 +1,6 @@
 package com.github.dakusui.valid8j;
 
+import com.github.dakusui.valid8j_pcond.core.fluent.builtins.ObjectTransformer;
 import com.github.dakusui.valid8j_pcond.fluent.Statement;
 
 import java.util.Arrays;
@@ -170,5 +171,9 @@ public enum ValidationFluents {
   public static <T> boolean postconditions(Statement<T>... statements) {
     List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
     return Assertions.postcondition(values, Statement.createPredicateForAllOf(statements));
+  }
+
+  public static <E> ObjectTransformer<E, E> value(E object) {
+    return Statement.objectValue(object);
   }
 }
