@@ -1,10 +1,10 @@
-== The `valid8j` library powered by `pcond`
+= The `valid8j` library powered by `pcond`
 
-`valid8j` is a DbC (design by contract) library designed to be a successor of `valid4j`.
-It uses `pcond`, which provides you with predicates that can print descriptive message on a failure, instead of `hamcrest` used by `valid4j`.
+`valid8j` (pronounced validate-j) is a DbC (design by contract<<DbC>>) library named after `valid4j`<<valid4j>>.
+It uses `pcond`<<pcond>>, which provides you with predicates that can print descriptive message on a failure, instead of `hamcrest` used by `valid4j`.
 The benefit of `pcond` over `hamcrest` is its compatibility and extensibility.
-Instead of "matchers" that `hamcrest` uses to verify values, `pcond` uses Java's plain `Predicate` and provide a set of useful predicates from which you can build predicates for complex types.
-So, you can reuse the predicates you created for assertions for other purposes.
+Instead of "matchers" that `hamcrest` uses to verify values, `pcond` uses Java's plain `Predicate` and provide useful preset predicates from which you can build your own predicates for complex types.
+So, you can reuse the predicates you created for assertions for other purposes, such as value checking and testing.
 
 A design idea behind `pcond` is following:
 When a human checks test results, he/she wants to "see" the values on a display screen as texts.
@@ -19,13 +19,13 @@ This allows you to use the library for your custom class very easily.
 
 Not only that, it allows "no-overhead" execution of assertions, which gives no performance penalty at production code, yet keeping its descriptiveness on failures.
 
-=== Before Using: `assert var != null` vs `Objects.requireNonNull(var)`
+== Before Using: `assert var != null` vs `Objects.requireNonNull(var)`
 
 What are the differences between them?
 For what a situation do you use `assert` or `requireNonNull`?
 
 `assert` throws `java.lang.AssertionError` and for `requireNonNull`, `java.lang.NullPointerException` is thrown, when the `var` is `null`.
-And, in both cases, we consider that a bug is detected and the exception should not be caught.
+And, in both cases, we consider that a bug is detected and therefore, the exception should not be caught.
 
 Then which should be used when?
 
@@ -44,9 +44,9 @@ The author of `valid8j` thinks as follows:
 - When you are detecting a bug of your client's, use `requireNonNull(var)`: Because you want to enforce a certain constraint on the values your user client gives to your product.
 - When you are detecting a bug of your own library, use `assert var != null`: Because you want to allow your users to disable the checks to provide the best performance of your product.
 
-If so, the former should be used in `public`  in general, and the other, in `private` or package-private methods.
+If so, as a rule of thumb, the former should be used in `public`  in general, and the other, in `private` or package-private methods.
 
-==== One More Consideration
+=== One More Consideration
 
 In public methods, we throw `NullPointerException` and `IllegalArgumentException` if a given argument doesn't satisfy a constraint a method has.
 This is widely accepted convention, but does it hold anytime?
@@ -55,7 +55,7 @@ Perhaps, your product may have a policy about exceptions to be thrown, where cus
 You can tweak exceptions to be thrown by "reconfigure" a `Validator` instance used in your current thread.
 Check `Validator.reconfigure` and `Validator.Configuration.Builder.exceptionComposerForRequire` to configure the exceptions to be thrown when a requirement for your method is broken.
 
-=== Usage
+== Usage
 First, let's import statically entry points of the library in your code.
 
 [source,java]
@@ -107,7 +107,7 @@ null
 
 Note that the `that` method throws an exception rather than returning `false` when the given predicate results in `false` and therefore it can compose the descriptive exception message.
 
-=== Performance
+== Performance
 
 The `precondition` method is defined to return a `boolean` value.
 
@@ -122,3 +122,23 @@ public class Example {
 ----
 <1> This line is not executed at all if you give `-da` option to your JVM.
 
+But it will never return `false`.
+If the method finds the predicate results in `false`, it will throw an exception, instead of returning `false`.
+In the exception, an informative message will be embedded.
+
+From the performance perspective, the `precondition` method is relatively time-consuming because it traverses the predicate tree to compose a message.
+However, here's one thing, it's an expression passed to `assert` statement.
+If you disable assertion (`-da`), which is the practice you always exercise in the production code, the statement will not be executed at all.
+So, there will be no performance overhead in production.
+Also, note that you can even control the assertion behavior per-package basis<<assertions>>.
+This is why you should prefer `valid8j` over existing value checking libraries such as `Preconditions`<<Preconditions-guava>> or `Validates`<<Validates-apache-commons>>.
+
+[bibliography]
+== References
+
+- [[[DbC, 1]]] Wikipedia article on Design by Contract, https://en.wikipedia.org/wiki/Design_by_contract
+- [[[valid4j, 2]]] valid4j https://www.valid4j.org/[valid4j.org
+- [[[pcond, 3]]] pcond https://dakusui.github.io/pcond/[github.com/pcond]
+- [[[assertions, 4]]] Programming With Assertions https://docs.oracle.com/javase/8/docs/technotes/guides/language/assert.html
+- [[[Preconditions-guava, 5]]] Preconditions, Google Guava https://guava.dev/releases/19.0/api/docs/com/google/common/base/Preconditions.html[Preconditions class]
+- [[[Validates-apache-commons, 6]]] Validates, Apache Commons https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/Validate.html[Validate class]

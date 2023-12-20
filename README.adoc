@@ -1,105 +1,225 @@
-= `valid8j`: Overhead-less DbC library
+:toc:
 
-== Introduction
+= `valid8j-pcond`: DbC and Value Checking Library
 
-We programmers are always checking values every day.
-To write a test, to check a value passed from a calling function, to check a value a human user gives to your function, etc., etc.
+`valid8j` (pronounced validate-j) is a DbC (design by contract) library named after `valid4j`.
+It uses `pcond`, which provides you with predicates that can print descriptive message on a failure, instead of `hamcrest` used by `valid4j`.
+The benefit of `pcond` over `hamcrest` is its compatibility and extensibility.
+Instead of "matchers" that `hamcrest` uses to verify values, `pcond` uses Java's plain `Predicate` and provide useful preset predicates from which you can build your own predicates for complex types.
+So, you can reuse the predicates you created for assertions for other purposes, such as value checking and testing.
 
-Once such a check fails, we want a descriptive message.
-One way to achieve that is to define a hand-crafted message.
+For full documentation, visit https://dakusui.github.io/valid8j/[here].
 
-[source, java]
-.Example
+== Installation
+
+Have a following maven dependency in your `pom.xml`.
+
+[source,xml]
+[subs="verbatim,attributes"]
 ----
-class Example {
-  void example(int age) {
-    assert 15 < age && age <= 60 : "age must be greater than 15 and less than or equal to 60, but it was " + age;
-    System.out.println("Age: " + age);
+<dependency>
+  <groupId>com.github.dakusui</groupId>
+  <artifactId>valid8j-pcond</artifactId>
+  <version>{valid8j-pcond-version}</version>
+</dependency>
+----
+
+Visit https://oss.sonatype.org/[oss.sonatype.org] to figure out the most recent version of `valid8j-pcond`.
+
+== Getting started
+
+Following is the first example of the `valid8j-pcond` library.
+
+[%nowrap,java]
+.Example.java
+----
+package com.github.dakusui.pcond.examples;
+
+// <1>
+import static com.github.dakusui.valid8j.Assertions.precondition;
+import static com.github.dakusui.valid8j.Ensures.ensureNonNull;
+import static com.github.dakusui.valid8j.Requires.requireArgument;
+import static com.github.dakusui.pcond.forms.Functions.*;
+import static com.github.dakusui.pcond.forms.Predicates.*;
+
+public class ExampleDbC {
+  public static String hello(String yourName) {
+    // <2>
+    requireArgument(yourName, and(isNotNull(), transform(length()).check(gt(0)), containsString(" ")));
+    String ret = String.format("Hello, %s", firstNameOf(yourName));
+    // <3>
+    return ensureNonNull(ret);
+  }
+
+  private static String firstNameOf(String yourName) {
+    // <4>
+    assert precondition(yourName, containsString(" "));
+    return yourName.substring(0, yourName.indexOf(' '));
+  }
+
+  public static void main(String[] args) {
+    System.out.println(hello("JohnDoe"));
   }
 }
 ----
+<1> Import entry points statically.
+<2> In order to require *your user* satisfy a certain condition on an input, use `requireXyz` methods in `Preconditions` class.
+<3> In order to ensure *your library* satisfies a certain condition on an output, use `ensureXyz` methods in `Postconditions` class.
+<4> If a certain value does not satisfy a certain condition, and it will be your own bug, (neither your user's nor a third party library,) use `assert` with a predicate built with methods in `Predicates` and `Functions`.
 
-This is cumbersome, error-prone, redundant, and not maintainable.
-If Java can print a lambda in a human-readable form, we don't need to worry about this at all.
+This results in a following output.
 
-We will be able to print the definition of lambda as a text and a value passed to it.
-
-In other languages which support introspection of lambdas, this can be mitigated by making the condition a lambda and print it on a failure.
-One example is "power-assert" in JavaScript.
-It gives a message like following on a failure.
-
-.power-assert's output
+[source]
+.Output of Example.java
 ----
- 1) Array #indexOf() should return index when the value is present:
-     AssertionError: # path/to/test/mocha_node.js:10
-
-  assert(ary.indexOf(zero) === two)
-         |   |       |     |   |
-         |   |       |     |   2
-         |   -1      0     false
-         [1,2,3]
-
-  [number] two
-  => 2
-  [number] ary.indexOf(zero)
-  => -1
+Exception in thread "main" java.lang.IllegalArgumentException: value:"JohnDoe" violated precondition:value (isNotNull&&length >[0]&&containsString[" "])
+Mismatch:"JohnDoe"->and                  ->false
+                      isNotNull          ->true
+                      transform:length   ->7
+         7        ->  check:>[0]         ->true
+Mismatch:"JohnDoe"->  containsString[" "]->false
+	at com.github.dakusui.pcond.validator.ExceptionComposer$ForRequire$Default...
+	at ...
 ----
 
-However, in Java's reality, there is not a reliable way to do this as of today.
-footnote:[There is a library called "java-power-assert", which is not actively developed, anymore. Author was not able to use it due to build-time problem.]
+You can see the violated condition and how it is violated in the stacktrace.
 
-[source, java]
-----
-class Example {
-  void example() {
-    System.out.println((IntPredicate)(int x) -> 15 < x && x < 60);
-  }
-}
-----
+=== Writing your Code
 
-The example above will print kind of "mysterious" string, instead of the definition of the lambda `(int x) -> 15 < x && x < 60`.
+To verify a value with `valid8j`, you can call an entry point method of `valid8j` with your value and a predicate to be checked.
 
+[source]
 ----
-com.github.dakusui.valid8j.examples.Example$$Lambda$1/1023892928@7cca494b
+entryPointMethod(aValue, predicate);
 ----
 
-Existing assertion libraries such as Hamcrest, AssertJ, or Google Truth can be considered attempts to address this problem by providing a set of conditions which can print themselves in a human-readable format.
+Checking methods are defined in the entry point classes, which are `Assertions`, `Postconditions`, and `Preconditions`.
+It is recommended to import them statically at the beginning of your class.
 
-== Background and Related Works
+You can give your own lambda as a predicate to the method, however it will result in non-user friendly string such as following.
 
-(t.b.d.)
+[source]
+----
+Exception in thread "main" java.lang.IllegalArgumentException: value:"JohnDoe" violated precondition:value java.util.function.Predicate$$Lambda$78/2047329716@46f7f36a
+----
 
-=== Hamcrest
+This is still better than nothing, however, probably it will be much better if you can see what a condition the value "JohnDoe" violated and how it did without visiting the source code.
+In order to make `valid8j` print such a message on a failure, you need to give a "printable" predicate, which we will be describing here.
 
-(t.b.d.)
+==== Building a "Printable" Predicate
 
-=== Valid4J
+`pcond`, which powers `valid8j`, offers a set of method to create a printable predicate in `Predicates` class.
+It also offers a way to construct a conjuntion, disjunction, and negation of given printable predicates.
 
-(t.b.d.)
+Following is an example.
 
-=== AssertJ and Google Truth
+----
+and(isNotNull(), transform(length()).check(gt(0)), containsString(" "))
+----
 
+`isNotNull` is a method that returns a predicate which returns `true` if a value given to `test` method is not `null`.
+And its `toString` method is overridden so that it returns a string `isNotNull`.
 
-The approach `pcond` consists of the following thoughts.
+`and` is another method that returns a printable predicate.
+The method accepts predicates and constructs a new printable predicate that is a conjunction of them.
 
-1. Provide a limited set of predicates and functions that can print themselves in a human-readable way.
-2. Provide a way to compose printable predicates from them.
+`transform` and `check` structure needs a bit more explanation than others.
 
+----
+transform(length()).check(gt(0))
+----
 
+This line constructs a printable predicate which returns `true` if a length of a given string is greater than (`gt`) 0.
 
-== What is `pcond`
+NOTE: This is a little artificial example to illustrate the usage of the `transform` and `check` structure.
+You can achieve the same thing with `Predicates.isEmptyString()` and it will be simpler and faster.
 
+First the method `transfom` accepts, preferably a printable, function.
+In this case a function returned by `length` method, which is defined in `Functions` class, is passed to the method.
+Now it returns a factory for a printable predicate.
+The `check` method of the factory returns a new predicate that checks a transformed value by the first function.
+With this `transform` and `check` approach, you can build various printable predicates from preset ones.
 
+==== Examining a Value
 
-== What is `valid8j`
+Depending on the context, where you are going to examine a given value, an appropriate message and exception to be thrown on a failure can be different.
+`pcond` provides methods that offer such messages and exceptions.
+You can simply call methods with the value and the condition you are going to examine.
+Followings are methods for it and classes in which they are defined.
 
-(t.b.d.)
-Enjoy.
+`requireXyz` (`Preconditions`):: Methods for checking "preconditions", which a user of your product needs to satisfy.
+On a failure, a `RuntimeException` such as `NullPointerException` etc. will be thrown depending on the actual method.
+`Xyz` can be `NonNull`, `Argument`, or `State`.
+`ensureXyz` (`Postconditions`):: Methods for checking "postconditions" , which your product needs to satisfy for its user.
+These methods also throw `RuntimeException` s depending on a actual prefix `Xyz` .
+`Xyz` can be `NonNull` or `State`.
+`validate` (`Validations`):: This is also used for checking "preconditions".
+However, unlike `requireXyz` methods, it throws an `ApplicationException`, which is a checked exception (not a `RuntimeException`).
+This method should be used in a situation where a "recoverable" failure happens.
+`assert xyz` (`Assertions`):: This should be used for checking "internal" error, where you want to disable the check in production code.
+`xyz` can be `precondition`, `postcondition`, `invariant` and `that`.
+The usege of the first three is self-explanatory.
+`that` is used for the other purposes.
+In case you want to use `assert` for any other purposes than them, use `that`.
 
+To check your user's fault, use `requireXyz` or `validate`.
+When there is a simple and easy way to check the condition, use `requireXyz`.
+Otherwise, use `validate` to allow your user to handle the error.
+To check your own fault, use `ensureXyz` or `assert xyz`.
+If the check should be done even in the production, i.e. it can be broken by your user, use `ensureXyz`.
+Otherwise, use `assert xyz`.
+Because the check can only be broken by your own fault (bug), which should not exist in your production code.
 
-== What is `thincrest`
+Among all of those, `assert xyz` has a quite outstanding characteristic, where it can be completely disabled by `-da` option to your JVM and does not have any performance overhead at all if it is disabled.
 
+=== Reading the Output
 
+Look at the first line.
+There's a message:
+
+----
+value:"JohnDoe" violated precondition:value ((isNotNull&&!isEmpty)&&containsString[" "])
+----
+
+This is describing the value that was examined and the condition violated by it.
+
+The next several lines explain how a given value violated a condition to be satisfied.
+
+----
+&&                               -> false
+  isNotNull("JohnDoe")           -> true
+  transformAndCheck              -> true
+    length("JohnDoe")            -> 7
+    >[0](7)                      -> true
+  containsString[" "]("JohnDoe") -> false
+----
+
+See the last line, this means the given string `JohnDoe` made a condition `containsString[" "]` `false`, and it made the entire check fail.
+`pcond` is designed to shortcut an evaluation as soon as a value of a disjunctive or conjunctive predicate becomes fixed.
+That is, if you have an `or` condition, and the first predicate under it becomes `true`, the rest will not be evaluated at all.
+So the last line in the message always shows the direct reason why the check failed.
+
+Thus, you can read the output above as "The check failed because the value `\"JohnDoe\"` `containsString[" "]` was `false`.
+"
+
+== Building the `valid8j-pcond` Library
+
+=== How to Build the Project
+
+Compile and Test:: `mvn clean compile test`
+Docs:: `mvn clean compile test site`, you will see generated docs under `target/site` directory.
+
+=== Build dependencies
+
+- Java SDK8
+- `mvn`
+- `gem`
+- `xmllint`
+- `git`
+
+[bibliography]
 == References
 
-- [[PowerAssert]] GitHub - power-assert-js/README.md , https://github.com/power-assert-js/power-assert
+- [[[DbC, 1]]] Wikipedia article on Design by Contract, https://en.wikipedia.org/wiki/Design_by_contract
+- [[[v4j, 2]]] Valid4j, http://www.valid4j.org
+- [[[GuavaPreconditions, 3]]] PreconditionsExplained, https://github.com/google/guava/wiki/PreconditionsExplained

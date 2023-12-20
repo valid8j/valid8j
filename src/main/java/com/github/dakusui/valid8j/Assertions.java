@@ -1,9 +1,6 @@
 package com.github.dakusui.valid8j;
 
-//import com.github.dakusui.pcond.core.fluent.builtins.ObjectTransformer;
-//import com.github.dakusui.pcond.fluent.Statement;
-//import com.github.dakusui.pcond.validator.Validator;
-
+import com.github.dakusui.valid8j_pcond.core.fluent.builtins.ObjectTransformer;
 import com.github.dakusui.valid8j_pcond.fluent.Statement;
 import com.github.dakusui.valid8j_pcond.validator.Validator;
 
@@ -49,6 +46,10 @@ import java.util.function.Predicate;
  */
 public enum Assertions {
   ;
+
+  public static <E> ObjectTransformer<E, E> value(E object) {
+    return Statement.objectValue(object);
+  }
 
   /**
    * A method to be used for checking a value satisfies a given invariant condition.
