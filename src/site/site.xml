@@ -1,7 +1,7 @@
 <project>
     <body>
         <menu name="Documents">
-            <item href="what-is-valid8j.html" name="What is valid8j"/>
+            <item href="valid8j-pcond.html" name="About valid8j-pcond"/>
         </menu>
         <menu ref="reports" inherit="top"/>
         <menu ref="modules"/>
