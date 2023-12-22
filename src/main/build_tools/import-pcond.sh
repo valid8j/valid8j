@@ -12,11 +12,17 @@ function mangle_package() {
     -exec sed -i 's/com\.github\.dakusui\.pcond/com.github.dakusui.'"$(project_name)"'_pcond/g' {} \;
 }
 
+function pcond_version() {
+  echo "4.0.0-beta-11"
+}
+
 function main() {
   local _out=./target/generated-sources/local
+  local _pcond_version
+  _pcond_version="$(pcond_version)"
   if [[ ! -e "${_out}/.done" ]]; then
     mkdir -p "${_out}"
-    mvn-unpack com.github.dakusui:pcond:4.0.0-beta-6-SNAPSHOT:jar:sources "${_out}"
+    mvn-unpack "com.github.dakusui:pcond:${_pcond_version}:jar:sources" "${_out}"
     mangle_package "${_out}"
     touch "${_out}/.done"
   fi
