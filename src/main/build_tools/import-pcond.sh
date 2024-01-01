@@ -13,7 +13,7 @@ function mangle_package() {
 }
 
 function pcond_version() {
-  echo "4.0.0-beta-11"
+  echo "4.0.0-beta-13"
 }
 
 function main() {
