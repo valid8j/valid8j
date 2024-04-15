@@ -1,0 +1,86 @@
+BEGIN: func:streamOf->toVariableBundleStream(state:VALUE_RETURNED, value:hello)
+    BEGIN: head:streamOf->toVariableBundleStream(state:VALUE_RETURNED, value:hello)
+    END:   head:streamOf->toVariableBundleStream(state:VALUE_RETURNED, value:java.util.stream.ReferencePipeline$Head@63d4e2ba)
+    BEGIN: tail:toVariableBundleStream(state:VALUE_RETURNED, value:java.util.stream.ReferencePipeline$Head@63d4e2ba)
+        BEGIN: func:toVariableBundleStream(state:VALUE_RETURNED, value:java.util.stream.ReferencePipeline$Head@63d4e2ba)
+            BEGIN: head:toVariableBundleStream(state:VALUE_RETURNED, value:java.util.stream.ReferencePipeline$Head@63d4e2ba)
+            END:   head:toVariableBundleStream(state:VALUE_RETURNED, value:java.util.stream.ReferencePipeline$3@47fd17e3)
+        END:   func:toVariableBundleStream(state:VALUE_RETURNED, value:java.util.stream.ReferencePipeline$Head@63d4e2ba)=state:VALUE_RETURNED, value:java.util.stream.ReferencePipeline$3@47fd17e3
+    END:   tail:toVariableBundleStream(state:VALUE_RETURNED, value:java.util.stream.ReferencePipeline$Head@63d4e2ba)=state:VALUE_RETURNED, value:java.util.stream.ReferencePipeline$3@47fd17e3
+END:   func:streamOf->toVariableBundleStream(state:VALUE_RETURNED, value:hello)=state:VALUE_RETURNED, value:java.util.stream.ReferencePipeline$Head@63d4e2ba
+StreamPredicate:BEGIN: anyMatch[contextPredicate[isNotNull,0]](state:VALUE_RETURNED, value:java.util.stream.ReferencePipeline$Head@63d4e2ba)
+
+
+BEGIN: func:toLowerCase->toLowerCase->length(state:VALUE_RETURNED, value:HELLO)
+    BEGIN: head:toLowerCase->toLowerCase->length(state:VALUE_RETURNED, value:HELLO)
+        -->function:toLowerCase
+        before(evaluationContext): [toLowerCase(HELLO)]
+        before(childContext):      [toLowerCase(HELLO)]
+        after(evaluationContext):  [toLowerCase(HELLO), toLowerCase(HELLO)]
+    END:   head:toLowerCase->toLowerCase->length(state:VALUE_RETURNED, value:hello)
+    BEGIN: tail:toLowerCase->length(state:VALUE_RETURNED, value:hello)
+        BEGIN: func:toLowerCase->length(state:VALUE_RETURNED, value:hello)
+            BEGIN: head:toLowerCase->length(state:VALUE_RETURNED, value:hello)
+                -->function:toLowerCase
+                before(evaluationContext): [toLowerCase(hello)]
+                before(childContext):      [toLowerCase(hello)]
+                after(evaluationContext):  [toLowerCase(hello), toLowerCase(hello)]
+            END:   head:toLowerCase->length(state:VALUE_RETURNED, value:hello)
+            BEGIN: tail:length(state:VALUE_RETURNED, value:hello)
+                BEGIN: func:length(state:VALUE_RETURNED, value:hello)
+                    BEGIN: head:length(state:VALUE_RETURNED, value:hello)
+                    -->function:length
+                    before(evaluationContext): [length(hello)]
+                    before(childContext):      [length(hello)]
+                    after(evaluationContext):  [length(hello), length(hello)]
+                    END:   head:length(state:VALUE_RETURNED, value:5)
+                END:   func:length(state:VALUE_RETURNED, value:hello)=state:VALUE_RETURNED, value:5
+                --->context:[length(hello), length(hello)]
+            END:   tail:length(state:VALUE_RETURNED, value:hello)=state:VALUE_RETURNED, value:5
+            --->context:[toLowerCase(hello), toLowerCase(hello)]
+        END:   tail:toLowerCase->length(state:VALUE_RETURNED, value:hello)=state:VALUE_RETURNED, value:5
+        --->context:[toLowerCase(HELLO), toLowerCase(HELLO)]
+
+
+
+----
+w/ import
+    "HELLO"->transformAndCheck ->false
+X           ->  toLowerCase     ->5
+           ->  toLowerCase     ->"hello"
+X    "hello"->    toLowerCase   ->5
+           ->  toLowerCase     ->"hello"
+X           ->      length      ->5
+           ->  length          ->5
+[0] 5      ->  isEqualTo[6]    ->false
+
+.Detail of failure [0]
+----
+5
+----
+
+****
+    "HELLO"->transformAndCheck ->false
+    "hello"->  toLowerCase     ->"hello"
+           ->  toLowerCase     ->"hello"
+           ->  length          ->5
+[0] 5      ->  isEqualTo[6]    ->false
+
+.Detail of failure [0]
+----
+5
+----
+****
+
+w/o import
+    "HELLO"->transformAndCheck ->false
+           ->  toLowerCase     ->5
+    "hello"->    toLowerCase   ->5
+           ->      length      ->5
+[0] 5      ->  isEqualTo[6]    ->false
+
+.Detail of failure [0]
+----
+5
+----
+

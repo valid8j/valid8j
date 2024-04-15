@@ -1,0 +1,17 @@
+Offers a mechanism to invoke a method dynamically.
+
+The `pcond` has a capability to construct a function predicate that invokes method of a given name on a target object.
+
+[source, java]
+----
+public class Example {
+  public void example() {
+      requireArgument("hello", Predicates.callp("startsWith", "H"));
+  }
+}
+----
+
+This use case requires to resolve a method to be called actually at runtime.
+This is a less straight-forward task than initially looks because we need to take into account the situations, where the methods are overloaded, etc.
+
+This package is intended to provide the mechanism to achieve it.

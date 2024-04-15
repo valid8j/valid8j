@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.dakusui</groupId>
     <artifactId>valid8j-pcond</artifactId>
@@ -36,7 +38,7 @@
     <properties>
         <!-- project variables -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <env.GEM_PATH>${project.basedir}/generated/build/gems</env.GEM_PATH>
+        <env.GEM_PATH>${project.basedir}/.generated/build/gems</env.GEM_PATH>
         <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>1.8</maven-compiler-plugin.target>
         <!-- unit testing -->
@@ -274,6 +276,7 @@
                             --attribute "name=${project.name}"
                             --attribute "version=${project.version}"
                             --attribute "imagesoutdir=.asciidoctor/diagram"
+                            --attribute "imagesdir=.asciidoctor/diagram"
                             --require asciidoctor-diagram
                             --gem-path ${env.GEM_PATH}
                             --attribute data-uri

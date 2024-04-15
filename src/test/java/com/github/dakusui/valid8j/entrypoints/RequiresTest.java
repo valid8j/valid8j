@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j.entrypoints;
 
-import com.github.dakusui.valid8j.Requires;
+import com.github.dakusui.valid8j.classic.Requires;
 import org.junit.Test;
 
 import java.util.function.Predicate;

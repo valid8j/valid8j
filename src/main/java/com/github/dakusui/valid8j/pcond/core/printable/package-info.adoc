@@ -1,0 +1,63 @@
+A package that provides a mechanism to make functions and predicates (lambdas) printable.
+
+Suppose that we have this code fragment.
+
+[source, java]
+----
+public class Example {
+  public static void main(String... args) {
+    Function<String, String> hello = s -> "Hello, " + s + ".";
+    System.out.println(hello.apply("Hanako"));
+    System.out.println(hello);
+  }
+}
+----
+
+This will print the following output.:
+
+----
+Hello, Hanako.
+com.github.dakusui.pcond.core.printable.ExplainablePredicate$$Lambda$1/1023892928@7cca494b
+----
+
+With lambdas, we can make our code readable, but when a lambda is printed, it is not so much readable.
+Somehow, we want to make it more human-readable so that we can more easily debug and analyze log files or test failure reports.
+
+You may think that, we can override the `toString` method of a lambda, however, it is not straight forward in Java language<<LambdaToString>>.
+Functionality-wise, the best way is to resort to "dynamic-proxy" mentioned as an answer to the question in 2020.
+The presented snippet has a few limitations.footnote:[Those are addressable problems.
+So, in the future version of `pcond`, the dynamic-proxy approach may be chosen using another library<<osynth>>.]
+
+1. If you call a method on a returned predicate or function, which creates a new predicate or function, its `toString` will not print a human-readable string anymore (`Predicate#{and,or,negate}`, `Function#{compose,andThen}`).
+2. (Performance) A call by through a dynamic-proxy is multiple-times slower than a normal method call.
+3. (Performance) If you write a logic to create a dynamic proxy instance inside a loop, which would happen frequently, a new proxy instance will be created every time the line is executed.
+This will not happen if you use lambda directly.
+
+This package collects classes to address the challenges and to provide a way to write a code:
+
+[%nowrap, java]
+----
+public class Example {
+  public static void main(String... args) {
+    Function<String, String> hello =
+        Printables.function("hello[name]", (String s) -> "Hello, " + s + ".")
+            .andThen(Printables.function("niceToMeetYou", s -> s + " Nice to meet you!"));
+    System.out.println(hello.apply("Hanako"));
+    System.out.println(hello);
+  }
+}
+----
+
+This results in:
+
+[source]
+----
+Hello, Hanako. Nice to meet you!
+hello[name]->niceToMeetYou
+----
+
+[bibliography]
+== References
+
+- [[[LambdaToString, 1]]] https://stackoverflow.com/questions/23628631/how-to-make-a-lambda-expression-define-tostring-in-java-8[How to make a lambda expression define toString in Java 8?]
+- [[[osynth, 2]]] https://github.com/dakusui/osynth[Osynth: An object synthesizer library]

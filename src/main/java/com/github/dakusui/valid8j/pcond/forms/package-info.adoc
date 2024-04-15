@@ -1,0 +1,5 @@
+This package stores entry-point classes to `static import` for your conveniences.
+
+Functions:: Methods that return printable functions are provided by this class.
+Predicates:: Methods that return printable predicates are provided by this class.
+Printables:: Methods to create printable functions and predicates are provided by this class.

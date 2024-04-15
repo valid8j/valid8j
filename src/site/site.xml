@@ -2,6 +2,7 @@
     <body>
         <menu name="Documents">
             <item href="valid8j-pcond.html" name="About valid8j-pcond"/>
+            <item href="thincrest-pcond.html" name="About thincrest-pcond"/>
         </menu>
         <menu ref="reports" inherit="top"/>
         <menu ref="modules"/>

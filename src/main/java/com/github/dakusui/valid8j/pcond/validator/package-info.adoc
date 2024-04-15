@@ -1,0 +1,255 @@
+:ditaa-option-separation: false
+:toc:
+
+== Evaluator Mechanism
+
+(t.b.d.)
+
+== Message Formatting Mechanism
+
+(t.b.d.)
+
+
+== Report Format
+
+A package to provide a value checker mechanism.
+The `ValueChecker` consists of three parts.
+
+`ExceptionComposer`:: An interface to compose appropriate exceptions from a given message.
+`MessageComposer`:: An interface to compose appropriate messages for various purposes.
+`ReportComposer`:: An interface to compose a report for a given failure.
+
+These are designed replaceable independently.
+
+
+The Figure. <<ReportFormat>> illustrates a high-level format of a failure report of `pcond-thincrest`, which is held by `ComparisonFailure`.
+`getExpected` method of the exception returns expectation-side, while `getActual` method returns the other.
+
+[[ReportFormat]]
+[ditaa, width="80%"]
+.Report Format of `pcond-thincrest`
+----
+  Expectation side             Actual Value side
++----------------------------+----------------------------+
+| Summary                    | Summary                    |
+|                            |                            |
+|                            |                            |
+|                            |                            |
++----------------------------+----------------------------+
+| Explanation [0]            | Explanation [0]            |
+|                            |                            |
+|                            |                            |
+| Explanation [1]            | Explanation [1]            |
+|                            |                            |
+|                            |                            |
+| Explanation [2]            | Explanation [2]            |
+|                            |                            |
+|                            |                            |
++----------------------------+----------------------------+
+----
+
+=== Summary Format
+
+Each line of summary section follows this format
+
+----
+ExplanationIndex InputSummary -> FormNameSummary -> OutputSummary
+----
+
+`ExplanationIndex`::
+An index to specify a detailed explanation.
+The format of explanations will be discussed in <<ExplanationFormat>>.
+`InputSummary`::
+A summary of input value.
+`FormNameSummary`::
+A form (function or predicate) name summary.
+If the same value is repeated more than once, this field will be left blank.
+`OutputSummary`::
+A summary of output value.
+
+==== Expectation Side
+
+Following is an example of a summary part of a report for expectation side.
+
+[[SummaryFormatExpectation]]
+----
+    Book:[title:<...i appellantur.>] ->  transform:title        ->"De Bello Gallico"
+    "De Bello Gallico"               ->  check:allOf            ->true
+                                     ->    isNotNull            ->true
+[0]                                  ->    transform:parseInt   ->(unknown)
+    NumberFormatE... input s...ico"" ->    check:allOf          ->true
+                                     ->      >=[10]             ->true
+                                     ->      <[40]              ->true
+    Book:[title:<...i appellantur.>] ->  transform:abstractText ->"Gallia est ...li appellantur."
+    "Gallia est o...li appellantur." ->  check:allOf            ->true
+                                     ->    not:isNull           ->false
+                                     ->    transform:length     ->145
+    145                              ->    check:allOf          ->true
+[1]                                  ->      >=[200]            ->true
+                                     ->      <[400]             ->true
+
+----
+
+Note that some forms are marked "squashable" internally and such forms are squashed into the next line.
+For instance a predicate `not` is marked squashable.
+See <<SummarySquashing>> Section for more details.
+
+===== `InputSummary` in Expectation Side
+
+`InputSummary` in Expectation side always shows an actual value given to the form as input unless an exception is thrown.
+If an exception is thrown by forms corresponding to the previous line, the thrown exception will be printed as `InputSummary`.
+
+===== OutputSummary in Expectation Side
+
+For predicates, expected boolean values are printed unless an exception is thrown.
+If a direct input of a predicate or a function is not available because of an exception, a string "(not evaluable)" is printed.
+
+`and`, `or`, `allOf`, and `anyOf` predicates may have child predicates.
+If one of those child predicates throws an exception, the parent will print a string "(not available)" will be printed.
+
+For functions, its *actual input value* will be printed even in expectation side unless it throws an exception.
+
+==== Actual Value Side
+
+[[SummaryFormatActualValue]]
+----
+    Book:[title:<D...i appellantur.>]->  transform:title        ->"De Bello Gallico"
+    "De Bello Gallico"               ->  check:allOf            ->(not available)
+                                     ->    isNotNull            ->true
+[0]                                  ->    transform:parseInt   ->NumberFormatE...ico""
+    NumberFormatException:"Fo..ico"" ->    check:allOf          ->(not available)
+                                     ->      >=[10]             ->(not evaluated)
+                                     ->      <[40]              ->(not evaluated)
+    Book:[title:<D...i appellantur.>]->  transform:abstractText ->"Gallia est ...li appellantur."
+    "Gallia est o...li appellantur." ->  check:allOf            ->false
+                                     ->    not:isNull           ->false
+                                     ->    transform:length     ->145
+    145                              ->    check:allOf          ->false
+[1]                                  ->      >=[200]            ->false
+                                     ->      <[400]             ->true
+
+----
+
+[[SummarySquashing]]
+==== Summary Squashing
+
+
+Results of some predicates are determined by other predicates like `allOf`, `not`.
+If we print them in independent line always, the summary becomes much bigger and harder to read.
+
+So, the `pcond` 's framework marks them `squashable` and print them in the same line with the predicate which its child.
+
+For instance, a `not` predicate is printed as follows.
+
+----
+                                     ->    not:isNull->false
+----
+
+Following shows an example summary part before squashing:
+
+.Before Squashing
+----
+    "hello"                          ->transform     ->5
+                                     ->length        ->5
+    5                                ->check         ->true
+                                     ->>[1]          ->true
+----
+
+On the summary squashing happens in a way where:
+
+- The first value is picked up for input
+- The last value is picked up for output
+
+That is, "FILO".
+Form names are joined with `:`.
+
+.Squashed
+----
+    "hello"                          ->transform:length->5
+    5                                ->check:>[1]      ->true
+----
+
+Note that if a predicate marked `squashable` has more than one child, the squashing will not happen.
+
+
+
+[[ExplanationFormat]]
+=== Explanation Format
+
+When a leaf predicate or a function is actually evaluated, and it "fails", an explanation will be generated.
+
+
+==== Expectation Side
+
+In the expectation side, just a form name is printed for predicates:
+
+[[DetailFormatExpectation_predicate]]
+.Expectation Explanation for a Predicate
+----
+ .Detail of failure [1]
+ ----
+ >=[200]
+ ----
+----
+
+This is because the predicate, which is a leaf, itself describes the expectation for the input value.
+
+Note that this feature has limitations as of `4.0.0-alpha2`.
+See <<SquashedNameNotShown>> in the <<Limitations>> section.
+
+For a function, a fixed string `-> returns a value` is appended additionally.
+
+[[DetailFormatExpectation_function]]
+.Expectation Explanation for a Function
+----
+
+ .Detail of failure [0]
+ ----
+ transform:parseInt -> returns a value
+ ----
+----
+
+Also note that this feature has limitations as of `4.0.0-alpha2`.
+See <<SquashedNameNotShown>> in the <<Limitations>> section.
+
+
+==== Actual Value Side
+
+In the actual value side, the input value that broke the expectation of a form is explained.
+
+[[DetailFormatActualValue_exceptionNotThrown]]
+.Actual Value Explanation for a Predicate Mismatch
+----
+ .Detail of failure [1]
+ ----
+ 145
+ ----
+----
+
+If the form throws an exception, its stacktrace will be printed additionally.
+
+[[DetailFormatActualValue_exceptionThrown]]
+.Actual Value Explanation for a Thrown Exception
+----
+ .Detail of failure [0]
+ ----
+ Input: 'De Bello Gallico'
+ Input Type: java.lang.String
+ Thrown Exception: 'java.lang.NumberFormatException'
+ Exception Message: For input string: "De Bello Gallico"
+     java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+     java.lang.Integer.parseInt(Integer.java:580)
+     java.lang.Integer.parseInt(Integer.java:615)
+     com.github.dakusui.pcond.core.printable.PrintableFunction.applyFunction (PrintableFunction.java:73)
+     com.github.dakusui.pcond.core.currying.CurriedFunction.apply(CurriedFunction.java:17)
+     com.github.dakusui.pcond.core.Evaluator$Impl.evaluate(Evaluator.java:357)
+
+ ----
+----
+
+
+[[Limitations]]
+=== Limitations
+
+- [[ExpectedValueNotShown]] Expected Value is not shown in an explanation.
+- [[SquashedNameNotShown]] Squashed form name is not shown in an explanation.

@@ -1,7 +1,7 @@
 package com.github.dakusui.valid8j.entrypoints;
 
-import com.github.dakusui.valid8j.Ensures;
-import com.github.dakusui.valid8j_pcond.validator.exceptions.PostconditionViolationException;
+import com.github.dakusui.valid8j.classic.Ensures;
+import com.github.dakusui.valid8j.pcond.validator.exceptions.PostconditionViolationException;
 import org.junit.Test;
 
 import java.util.function.Predicate;

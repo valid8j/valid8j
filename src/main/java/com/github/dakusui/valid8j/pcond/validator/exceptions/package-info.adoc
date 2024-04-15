@@ -1,0 +1,1 @@
+A package to store exception classes thrown when a condition passed to assertion/validation method of `pcond` is not satisfied.

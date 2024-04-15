@@ -1,0 +1,2 @@
+A package that provides a mechanism to make "identifieable" functions and predicates with at least one parameter for their creations.
+This mechanism is intended to improve the run-time performance of the `pcond` library.

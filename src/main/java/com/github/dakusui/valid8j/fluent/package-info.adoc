@@ -1,0 +1,250 @@
+:toc:
+
+== Fluent Programming Model
+
+This package hosts classes for "Fluent" programming model of `valid8j`.
+The first example of the model looks like following.
+
+[source, java]
+.Before static import
+----
+public class DbC {
+  public void aMethod(int a) {
+    assert Expectations.precondition(Expectations.that(a).satisfies()
+                                                         .greaterThan(0)
+                                                         .lessThan(100));
+  }
+}
+----
+
+Remember, start from the `Expectations` class, then let your IDE help you.
+
+Then, do `static import` to improve readability.
+
+[source, java]
+.After static import
+----
+public class DbC {
+  public void aMethod(int a) {
+    assert precondition(that(a).satisfies()
+                               .greaterThan(0)
+                               .lessThan(100));
+  }
+}
+----
+
+The difference from the existing "fluent" test libraries such as AssertJ or Google Truth here is:
+
+- Your entry point is `Expectations` class.
+- The methods for evaluating condition (`precondition`) and the methods to create the condition are separated.
+
+The second allows us to use the consistent syntax for different contexts such as DbC assertions, test assertions, argument checking, etc.
+
+=== Example: Test assertions
+
+To build a test assertion, you use `Expectations.assertStatement` method, if you have only one variable to be checked.
+
+[source, java]
+.single statement
+----
+public class TestExample {
+  @Test
+  public void testMethod() {
+    assertStatement(that(a).satisfies()
+                           .greaterThan(0)
+                           .lessThan(100));
+  }
+}
+----
+
+However, if you have multiple variables, you need to evaluate multiple statements at once.
+If you do it by calling `assertStatement` multiple times, you will need to look into the failure report, fix it, and run it.
+If it works, it may be okay, however, if it fails at the next point, you will need to do the same again.
+Even worse, the second fix may introduce another failure at a different position.
+
+To avoid it, use `assertAll`, which accepts multiple statements at once.
+
+[source, java]
+.multiple statements
+----
+public class TestExample {
+  @Test
+  public void testMethod() {
+    assertAll(that(a).satisfies()
+                     .greaterThan(0)
+                     .lessThan(0),
+              that(s).satisfies()
+                     .notNull()
+                     .notEmpty());
+  }
+}
+----
+
+=== Example: Overhead-free DbC Assertions
+
+Java has a reserved keyword `assert`, which throws an `AssertionError` if its parameter evaluated `false`, otherwise, it doesn't do anything.
+Not only that, if a VM parameter `-da` is given, it completely doesn't do anything.
+Even evaluation of the parameter doesn't happen.
+The message of the `AssertionError` is given as the second parameter of the `assert` statement.
+
+----
+assert expression: "failed!";
+----
+
+To compose an informative message on a failure, what `valid8j` does is:
+
+1. If the statement is evaluated `true`, it will return `true`.
+2. If `false`, it will compose an informative message and throw an exception, not returning any value.
+
+Following is an example for precondition checking.
+
+[source, java]
+----
+public class OverheadFreeDbC {
+  public void aMethod(int a) {
+    assert precondition(that(a).satisfies()
+                               .greaterThan(0)
+                               .lessThan(100));
+  }
+}
+----
+
+`valid8j` also has `invariant(Statement)` and `postcondition(Statement)` for invariant and postcondition checking respectively.
+
+In case you want to evaluate multiple statements, just use plural versions of theirs, which are `preconditions(Statement...)`, `invariants(Statement...)`, and `postconditions(Statement...)`.
+
+=== Example: Enforced DbC Assertions
+
+In some situations, you may want to enforce the assertions even in production.
+For instance, in financial industry, it may be better to produce an error than creating an inconsistent result.
+
+`valid8j` has another set of methods for it, which are `require(Statement...)`, `hold(Statement...)`, and `ensure(Statement...)`.
+They are used for checking preconditions, invariant conditions, and `postconditions`, respectively.
+
+[source,java]
+----
+public class EnforcedDbC {
+  public void method(int a) {
+    // precondition
+    require(that(a).satisfies()
+                   .greaterThan(0)
+                   .lessThan(100));
+    // invariant condition
+    hold(that(a).satisfies()
+                .greaterThan(0)
+                .lessThan(100));
+    // postcondition
+    ensure(that(a).satisfies()
+                  .greaterThan(0)
+                  .lessThan(100));
+  }
+}
+----
+
+=== Example: Guava-like value checking
+
+Guava has a class called `Preconditions` that allows us to validate a value as an argument with a given predicate.
+
+`valid8j` can do the same, but in a much more powerful way.
+
+[source,java]
+----
+public class ValueChecking {
+  public void method(int a) {
+    int price = requireArgument(that(a).satisfies()
+                                       .greaterThan(0)
+                                       .lessThan(1_000_000));
+    System.out.println(price);
+  }
+}
+----
+
+The code will generate an appropriate message automatically without repeating what you are doing for the value checking as a string literal.
+
+== Formal Definition
+
+Following is a formal definition for how to construct checking logics using `valid8j`.
+
+[%nowrap,yacc]
+----
+// Overhead-free DbC assertions
+"assert" BOOLEAN_VALIDATOR_CALL_SINGULARS "(" STATEMENT ")"
+"assert" BOOLEAN_VALIDATOR_CALL_PLURALS   "(" STATEMENT ("," STATEMENT)* ")"
+
+// Enforced DbC assertions
+"Expectations.require"|                                 <1>
+"Expectations.hold"|                                    <1>
+"Expectations.ensure"|                                  <1>
+
+// Value Checking
+"Expectations.requireArguments"
+"Expectations.requireArgument"
+"Expectations.requireStates"
+"Expectations.requireState"
+
+// Test Assertions
+"Expectations.assertAll"       "(" STATEMENT ")"
+"Expectations.assertStatement" "(" STATEMENT ("," STATEMENT)* ")"
+
+MULTIPLE_STATEMENTS_VALIDATOR_CALL "(" STATEMENT ("," STATEMENT)* ")"
+
+SINGLE_STATEMENT_VALIDATOR_CALL "(" STATEMENT ")"
+
+BOOLEAN_VALIDATOR_CALL_SINGULARS ::=
+             "Expectations.$"|
+             "Expectations.precondition"|
+             "Expectations.invariant"|
+             "Expectations.postcondition"
+
+BOOLEAN_VALIDATOR_CALL_PLURALS ::=
+             "Expectations.all"|
+             "Expectations.preconditions"|
+             "Expectations.invariants"|
+             "Expectations.postconditions"
+
+MULTIPLE_STATEMENTS_VALIDATOR_CALL ::=
+      "Expectations.assertAll"|
+      "Expectations.require"|                                <1>
+      "Expectations.hold"|                                   <1>
+      "Expectations.ensure"|                                 <1>
+      "Expectations.requireArguments"|
+      "Expectations.requireStates"
+
+SINGLE_STATEMENT_VALIDATOR_CALL ::=
+      "Expectations.assertStatement"|
+      "Expectations.require"|                                 <1>
+      "Expectations.hold"|                                    <1>
+      "Expectations.ensure"|                                  <1>
+      "Expectations.requireArgument"|
+      "Expectations.requireState"
+
+STATEMENT ::=
+     ("Expectations.that(T)" TRANSFORMER_METHOD* SATISFIES CHECKER_METHOD+)|
+     ("Expectations.satisfies(T)" CHECKER_METHOD+)|
+      "Expectations.statement(T, Predicate<T>)"
+
+SATISFIES ::=
+  ".then()"|
+  ".satisfies()"|
+  ".toBe()"
+
+TRANSFORMING_METHOD ::=
+     .stringify()|
+     .asObject()|
+     .expectException|
+     .invoke(String,Object...)|
+     .invokeStatic(Class<?>,String,Object...)|                <2>
+     ...
+
+CHECKING_METHOD ::=
+     .notNull()|
+     .equalTo()|
+     .sameReferenceAs()|
+     .instanceOf(Class<?>)|
+     .invoke(String,Object...)|
+     .invokeStatic(Class<?>,String,Object...)|                <3>
+     ...
+----
+<1> For `require`, `hold`, and `ensure`, methods are overloaded.
+<2> Depending on the ongoing context, a different set of transforming methods will become available.
+<3> Depending on the ongoing context, a different set of checking methods will become available.

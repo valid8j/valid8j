@@ -1,7 +1,7 @@
 package com.github.dakusui.valid8j.entrypoints;
 
-import com.github.dakusui.valid8j.Assertions;
-import com.github.dakusui.valid8j_pcond.forms.Predicates;
+import com.github.dakusui.valid8j.classic.Assertions;
+import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

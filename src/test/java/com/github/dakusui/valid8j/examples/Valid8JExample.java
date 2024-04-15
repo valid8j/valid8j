@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j.examples;
 
-import com.github.dakusui.valid8j.ValidationFluents;
+import com.github.dakusui.valid8j.fluent.internals.ValidationFluents;
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation;
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation.EnsureJUnitResult;
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation.ResultPredicateFactory.*;
@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import static com.github.dakusui.valid8j.utils.metatest.TestMethodExpectation.Result.FAILURE;
 import static com.github.dakusui.valid8j.utils.metatest.TestMethodExpectation.Result.PASSING;
-import static com.github.dakusui.valid8j_pcond.fluent.Statement.objectValue;
+import static com.github.dakusui.valid8j.pcond.fluent.Statement.objectValue;
 
 @TestClassExpectation(value = {
     @EnsureJUnitResult(type = WasNotSuccessful.class, args = {}),

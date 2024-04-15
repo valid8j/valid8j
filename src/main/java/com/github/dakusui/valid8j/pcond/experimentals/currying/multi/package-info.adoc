@@ -1,0 +1,3 @@
+A package to handle "multi-parameters" function.
+
+Together with the "curriedContext" and "currying" mechanism, you can handle multi-parameter functions and situations with multiple variables seamlessly with simpler functions/situations.

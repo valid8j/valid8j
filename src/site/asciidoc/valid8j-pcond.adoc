@@ -43,15 +43,15 @@ Visit https://oss.sonatype.org/[oss.sonatype.org] to figure out the most recent 
 
 == Programming with `pcond` twins
 
-`thincrest` and `valid8j` are twins of `pcond` and both libraries for value checking, but intended to be used in respectively different contexts.
-`thincrest` is desinged to be used in test assertions, while `valid8j` should be used for Design by Contract style programming and general value checking in production code.
+`valid8j` and `valid8j` are twins of `pcond` and both libraries for value checking, but intended to be used in respectively different contexts.
+`valid8j` is desinged to be used in test assertions, while `valid8j` should be used for Design by Contract style programming and general value checking in production code.
 In these contexts, how to build a condition to check a value and compose an appropriate message for its failure are common concern.
 However, there is no uniformed style that can be applied to all those.
 `pcond` and its twins are designed to address this challenge.
 
 === First Example
 
-Following is the first example of the `thincrest-pcond` library.
+Following is the first example of the `valid8j-pcond` library.
 
 [%nowrap,java]
 .ThincrestExample.java
@@ -89,7 +89,7 @@ public class ThincrestExample {
 }
 ----
 
-The programming style of `thincrest-pcond` (and `valid8j-pcond` in more general) is to first transform a given value into better known type or form, which is more suitable for examining its validity.
+The programming style of `valid8j-pcond` (and `valid8j-pcond` in more general) is to first transform a given value into better known type or form, which is more suitable for examining its validity.
 
 In this example, a given string is first transformed into all upper cases so that it is equal to "HELLO" if we ignore cases.
 
@@ -125,24 +125,24 @@ HOWDY, WORLD
 
 You can see the violated condition and how it is violated in the stacktrace.
 
-A philosophy behind `thincrest-pcond` 's (and also `valid8j-pcond` 's) approach is:
+A philosophy behind `valid8j-pcond` 's (and also `valid8j-pcond` 's) approach is:
 
 - A human in the end checks the value on a screen as a text.
 - Either way, test can only report a presence of a bug, cannot ensure absence of it.
 If so, rather than trying to build "matcher", "subject", or "assertion" objects that can do a check that detects all the bugs for a given class, it will be more productive to decompose the check into various checks, each of which is concise and understandable.
 
-The style of `thincrest`, where you pass a value and a predicate that checks it to a library entry-point method, is the same for `valid8j`.
+The style of `valid8j`, where you pass a value and a predicate that checks it to a library entry-point method, is the same for `valid8j`.
 
 === "Printable" Predicate
 
-To verify a value with `thincrest` or `valid8j`, you can call a value checking method of them with your value and a predicate to be checked.
+To verify a value with `valid8j` or `valid8j`, you can call a value checking method of them with your value and a predicate to be checked.
 
 [source]
 ----
 valueCheckingMethod(aValue, predicate);
 ----
 
-Value checking methods are defined as public static methods in classes such as `TestAssertions`(`thincrest-pcond`) or `Requires`(`valid8j-pcond`).
+Value checking methods are defined as public static methods in classes such as `TestAssertions`(`valid8j-pcond`) or `Requires`(`valid8j-pcond`).
 It is recommended to import them statically at the beginning of your class.
 
 You can give your own lambda as a predicate to the method, however it will result in non-user friendly string such as following.
@@ -153,9 +153,9 @@ Exception in thread "main" java.lang.IllegalArgumentException: value:"JohnDoe" v
 ----
 
 This is still better than nothing, however, probably it will be much better if you can see what a condition the value "JohnDoe" violated and how it did without visiting the source code.
-In order to make `thincrest` and `valid8j` print a better message on a failure, you need to give a "printable" predicate.
+In order to make `valid8j` and `valid8j` print a better message on a failure, you need to give a "printable" predicate.
 
-`pcond`, which powers `thincrest` and `valid8j`, offers a set of method to create a printable predicate in `Predicates` class.
+`pcond`, which powers `valid8j` and `valid8j`, offers a set of method to create a printable predicate in `Predicates` class.
 It also offers a way to construct a conjunction, disjunction, and negation of given printable predicates.
 
 To create a non-printable function and predicate, you can use static methods in `Printables` class.
@@ -226,9 +226,9 @@ With this `transform` and `check` approach, you can build various printable pred
 `pcond` offers a couple of styles to build conditions, one is conventional, which we already used in the examples in the earlier sections.
 The other is "fluent" style, which will be covered in this section.
 
-For each of them, `thincrest` and `valid8j` have different set of classes and methods.
+For each of them, `valid8j` and `valid8j` have different set of classes and methods.
 
-==== Conventional Value Checking Methods of `thincrest-pcond`
+==== Conventional Value Checking Methods of `valid8j-pcond`
 
 In this category, there are only a couple of static methods.
 For both of them, the first parameter is a value to be checked and the second is a (printable) predicate used for the check.
@@ -242,7 +242,7 @@ If it fails, it means your product doesn't compile on Linux.
 So, you want it to be ignored.
 In this situation, you can write `assumeThat(isRunningOnWindowsPlatorm())` and `AssumptionViolatedException`, which make JUnit4 mark the test ignored,  will be thrown.
 
-==== Fluent Value Checking Methods of `thincrest-pcond`
+==== Fluent Value Checking Methods of `valid8j-pcond`
 
 Methods end with `Statement` accepts only one `Statement`, while ones end with `All` accepts multiple statements.
 Basically, they are doing the same thing and just defined as "syntax-sugara" for readability's sake.
@@ -409,7 +409,7 @@ Thus, you can read the output above as "The check failed because the value `\"Jo
 [[WritingYourCodeFluently]]
 === Writing your Code Fluently
 
-Following is an example that illustrates how to use "Fluent" API of `thincrest-pcond` to build a test.
+Following is an example that illustrates how to use "Fluent" API of `valid8j-pcond` to build a test.
 
 [source,java]
 ----
@@ -539,17 +539,17 @@ a|
 
 In this example, it seems `Salute#inEnglish` method contains a bug, where its return value becomes a string without length.
 
-== Using Together with `thincrest` and `valid8j`
+== Using Together with `valid8j` and `valid8j`
 
-When you use both `thincrest-pcond` and `valid8j-pcond` in one project, please be careful at package names of classes you are going to use.
+When you use both `valid8j-pcond` and `valid8j-pcond` in one project, please be careful at package names of classes you are going to use.
 They both use `pcond` to render messages from predicates.
-But the classes from `pcond` are stored under `com.github.dakusui.thincrest_pcond` in `thincrest-pcond`.
+But the classes from `pcond` are stored under `com.github.dakusui.valid8j_pcond` in `valid8j-pcond`.
 `valid8j` does the same.
 Classes from `pcond` are stored under `com.github.dakusui.valid8j_pcond` in `valid8j-pcond`.
-If you create a predicate using `com.github.dakusui.valid8j_pcond.forms.Predicates`, for instance, the `thincrest` 's mechanism to compose error messages from predicates cannot do its work.
+If you create a predicate using `com.github.dakusui.valid8j_pcond.forms.Predicates`, for instance, the `valid8j` 's mechanism to compose error messages from predicates cannot do its work.
 Because the predicates created by `valid8j-pcond` 's classes will look just normal `Predicate`, not ones that have mechanism to print it, the message will look much poorer than it can be.
 
-The other way around will not happen (fortunately) because `thincrest-pcond` will be a dependency in `test` scope, and it will not be visible from the production scope, which `valid8j-pcond` is usually used.
+The other way around will not happen (fortunately) because `valid8j-pcond` will be a dependency in `test` scope, and it will not be visible from the production scope, which `valid8j-pcond` is usually used.
 
 == Building the `valid8j-pcond` Library
 

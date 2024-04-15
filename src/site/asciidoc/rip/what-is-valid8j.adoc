@@ -60,8 +60,7 @@ First, let's import statically entry points of the library in your code.
 
 [source,java]
 ----
-import static com.github.dakusui.valid8j.Assertions.precondition;
-import static com.github.dakusui.valid8j.Requires.require;
+
 ----
 
 Of course, you can rely on your IDE for it, though.
@@ -102,7 +101,7 @@ isNotNull
 null
 ---
 	at com.github.dakusui.valid8j_pcond.validator.ExceptionComposer$ForRequire.exceptionForGeneralViolation(ExceptionComposer.java:164)
-	at com.github.dakusui.valid8j_pcond.validator.Validator.lambda$require$1(Validator.java:101)----
+	at com.github.dakusui.com.github.dakusui.valid8j_pcond.validator.valid8j_pcond.Validator.lambda$require$1(Validator.java:101)----
 ----
 
 Note that the `that` method throws an exception rather than returning `false` when the given predicate results in `false` and therefore it can compose the descriptive exception message.

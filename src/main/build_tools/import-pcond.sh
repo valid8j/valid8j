@@ -13,19 +13,20 @@ function mangle_package() {
 }
 
 function pcond_version() {
-  echo "4.0.0-beta-13"
+  echo "4.0.0-beta-15-SNAPSHOT"
 }
 
 function main() {
-  local _out=./target/generated-sources/local
-  local _pcond_version
-  _pcond_version="$(pcond_version)"
-  if [[ ! -e "${_out}/.done" ]]; then
-    mkdir -p "${_out}"
-    mvn-unpack "com.github.dakusui:pcond:${_pcond_version}:jar:sources" "${_out}"
-    mangle_package "${_out}"
-    touch "${_out}/.done"
-  fi
+  :
+#  local _out=./target/generated-sources/local
+#  local _pcond_version
+#  _pcond_version="$(pcond_version)"
+#  if [[ ! -e "${_out}/.done" ]]; then
+#    mkdir -p "${_out}"
+#    mvn-unpack "com.github.dakusui:pcond:${_pcond_version}:jar:sources" "${_out}"
+#    mangle_package "${_out}"
+#    touch "${_out}/.done"
+#  fi
 }
 
 main
