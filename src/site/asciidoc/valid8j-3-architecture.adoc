@@ -23,7 +23,8 @@
 (t.b.d.)
 
 ==  Throwing an Exception, instead of returning `false`
-(t.b.d.)
+
+When `false` is given to an `assert`statement, JVM throws an `AssertionError` with a message given to the statement, if any.
 
 include::valid8j-index.adoc[]
 

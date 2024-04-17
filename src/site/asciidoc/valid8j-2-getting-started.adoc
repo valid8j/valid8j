@@ -20,7 +20,80 @@ Visit https://oss.sonatype.org/[oss.sonatype.org] to figure out the most recent 
 
 Following is the first example of the `valid8j` library.
 
-(t.b.d.)
+[source, java]
+.Before static import
+----
+public class DbC {
+  public void aMethod(int a) {
+    assert Expectations.precondition(Expectations.that(a).satisfies()
+                                                         .greaterThan(0)
+                                                         .lessThan(100));
+  }
+}
+----
+
+Remember, start from the `Expectations` class, then let your IDE help you.
+
+Then, do `static import` to improve readability.
+
+[source, java]
+.After static import
+----
+public class DbC {
+  public void aMethod(int a) {
+    assert precondition(that(a).satisfies()
+                               .greaterThan(0)
+                               .lessThan(100));
+  }
+}
+----
+
+The key differences from the existing "fluent" test libraries such as AssertJ or Google Truth are:
+
+- Your entry point is `Expectations` class.
+- The methods for evaluating condition (`precondition`) and the methods to create the condition are separated.
+
+The second allows us to use the consistent syntax for different contexts such as DbC assertions, test assertions, argument checking, etc.
+
+=== Example: Test assertions
+
+To build a test assertion, you use `Expectations.assertStatement` method, if you have only one variable to be checked.
+
+[source, java]
+.single statement
+----
+public class TestExample {
+  @Test
+  public void testMethod() {
+    assertStatement(that(a).satisfies()
+                           .greaterThan(0)
+                           .lessThan(100));
+  }
+}
+----
+
+However, if you have multiple variables, you need to evaluate multiple statements at once.
+If you do it by calling `assertStatement` multiple times, you will need to look into the failure report, fix it, and run it.
+If it works, it may be okay, however, if it fails at the next point, you will need to do the same again.
+Even worse, the second fix may introduce another failure at a different position.
+
+To avoid it, use `assertAll`, which accepts multiple statements at once.
+
+[source, java]
+.multiple statements
+----
+public class TestExample {
+  @Test
+  public void testMethod() {
+    assertAll(that(a).satisfies()
+                     .greaterThan(0)
+                     .lessThan(0),
+              that(s).satisfies()
+                     .notNull()
+                     .notEmpty());
+  }
+}
+----
 
 == Classic Style
 
