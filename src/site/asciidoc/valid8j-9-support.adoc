@@ -1,0 +1,8 @@
+
+= Contact and Support
+
+- Support Resources: GitHub Issues.
+
+include::valid8j-index.adoc[]
+
+include::valid8j-bibliography.adoc[]

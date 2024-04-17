@@ -1,0 +1,11 @@
+= FAQs
+
+When to `assert` and when to `requrie`::
+(t.b.d.)
+
+Making metamorphic testing report look better::
+(t.b.d.)
+
+include::valid8j-index.adoc[]
+
+include::valid8j-bibliography.adoc[]

@@ -1,0 +1,23 @@
+= Development
+
+== Build Process
+`mvn build`::
+(t.b.d.)
+`mvn clean compile test package`::
+(t.b.d.)
+`mvn clean compile test site`::
+(t.b.d.)
+`mvn clean compile test site-deploy`::
+(t.b.d.)
+
+== Testing
+`mvn test`::
+(t.b.d.)
+
+== Contribution Guidelines:
+(t.b.d.)
+asciidoc documentation.
+
+include::valid8j-index.adoc[]
+
+include::valid8j-bibliography.adoc[]

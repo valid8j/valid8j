@@ -1,0 +1,32 @@
+= Guides and Tutorials
+
+== Programming Models
+
+===  Fluent Style
+(t.b.d.)
+
+===  Classic Style
+(t.b.d.)
+
+== Use cases
+
+=== Test Assertions
+(t.b.d.)
+
+=== Value checking
+(t.b.d.)
+
+=== Design by Contract
+(t.b.d.)
+
+=== Reading a Failure Message
+(t.b.d.)
+
+== "Synonyms"
+
+NOTE: When synonym methods are available for your purpose, choose one that best improves readability in code.
+
+
+include::valid8j-index.adoc[]
+
+include::valid8j-bibliography.adoc[]

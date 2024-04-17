@@ -1,0 +1,26 @@
+= Introduction
+
+- **Overview:**
+Consistency across DbC, Value-checking, and Test assertions.
+Readable both in codes and messages.
+Easy to write.
+
+- **Purpose:**
+Make consistent and unified test assertions, DbC, and value checking.
+Make both code and message readable.
+Make it easy to write them.
+
+- **Audience:**
+"Getting Started" - programmers whose use this library at the first time.
+"Architecture, ..." - developers and contributors of this library.
+programmers whose use this library who want to use this library more efficiently.
+"Guides and Tutorials" - programmers who use this library who want to use this library more efficiently.
+"API References" - programmers who use this library in daily basis.
+"Advanced Topics" - programmers who use this library in daily basis and who are interested in "metamorphic testing".
+"Limitation and "Future Works" - programmers who use this library in daily basis.
+"Development" - developers and contributors of this library.
+"FAQs" and "Contact and Support" - when you encounter a problem or have a question to use this library.
+
+include::valid8j-index.adoc[]
+
+include::valid8j-bibliography.adoc[]

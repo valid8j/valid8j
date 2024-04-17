@@ -24,15 +24,15 @@ public class FluentStyleExample {
     // Check if
     // - The last name of the entry is not null and not an empty string.
     // - The last name is "DOE".
-    assertWhen(
+    assertStatement(
         value(lastName)
-            .then()
-            .verifyWith(allOf(
+            .satisifies()
+            .predicate(allOf(
                 isNotNull(),
                 not(isEmptyString()))),
         value(fullName).asListOfClass(String.class)
-            .then()
-            .contains("DOE"));
+            .satisfies()
+            .containing("DOE"));
   }
 }
 ----

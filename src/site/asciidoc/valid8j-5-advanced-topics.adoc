@@ -1,0 +1,17 @@
+= Advanced Topics
+
+== Metamorphic Testing Feature
+(t.b.d.)
+
+== Writing Custom Transformer: How to write your own transformer
+(t.b.d.)
+
+== Writing Custom Predicate: How to write your own printable predicate
+(t.b.d.)
+
+== Customizing exceptions to be thrown
+(t.b.d.)
+
+include::valid8j-index.adoc[]
+
+include::valid8j-bibliography.adoc[]

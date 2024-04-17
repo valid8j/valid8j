@@ -486,7 +486,7 @@
                             <executable>bash</executable>
                             <arguments>
                                 <argument>
-                                    ${basedir}/src/main/build_tools/remove-adoc-diags.sh
+                                    ${basedir}/src/build_tools/remove-adoc-diags.sh
                                 </argument>
                             </arguments>
                         </configuration>
@@ -499,7 +499,7 @@
                         </goals>
                         <configuration>
                             <executable>
-                                ${basedir}/src/main/build_tools/import-pcond.sh
+                                ${basedir}/src/build_tools/import-pcond.sh
                             </executable>
                         </configuration>
                     </execution>
@@ -513,7 +513,7 @@
                             <executable>bash</executable>
                             <arguments>
                                 <argument>
-                                    ${basedir}/src/main/build_tools/package-info-adoc_to_package-info-java.sh
+                                    ${basedir}/src/build_tools/package-info-adoc_to_package-info-java.sh
                                 </argument>
                             </arguments>
                         </configuration>
@@ -528,7 +528,7 @@
                             <executable>bash</executable>
                             <arguments>
                                 <argument>
-                                    ${basedir}/src/main/build_tools/install-asciidoctor-diagram.sh
+                                    ${basedir}/src/build_tools/install-asciidoctor-diagram.sh
                                 </argument>
                             </arguments>
                         </configuration>
@@ -543,7 +543,7 @@
                             <executable>bash</executable>
                             <arguments>
                                 <argument>
-                                    ${basedir}/src/main/build_tools/publish-gh-pages.sh
+                                    ${basedir}/src/build_tools/publish-gh-pages.sh
                                 </argument>
                             </arguments>
                         </configuration>

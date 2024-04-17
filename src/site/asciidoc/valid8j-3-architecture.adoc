@@ -1,0 +1,30 @@
+= Architecture, Design Goals, Design Principles, and Techniques
+
+== Make Predicates Printable and Composable.
+(t.b.d.)
+
+
+== "Transform-and-Check" Model.
+(t.b.d.)
+
+== Separation of "transform" and "checking"
+(t.b.d.)
+
+== Easy user customization for transforming.
+(t.b.d.)
+
+== Limited number of types are supported for checking
+(t.b.d.)
+
+==  Transformers and Checkers
+(t.b.d.)
+
+== "Fluent" programming model
+(t.b.d.)
+
+==  Throwing an Exception, instead of returning `false`
+(t.b.d.)
+
+include::valid8j-index.adoc[]
+
+include::valid8j-bibliography.adoc[]

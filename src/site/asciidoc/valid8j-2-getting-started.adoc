@@ -1,0 +1,106 @@
+= Getting Started
+
+== Installation
+
+Have a following maven dependency in your `pom.xml`.
+
+[source,xml]
+[subs="verbatim,attributes"]
+----
+<dependency>
+  <groupId>com.github.dakusui</groupId>
+  <artifactId>valid8j</artifactId>
+  <version>{valid8j-version}</version>
+</dependency>
+----
+
+Visit https://oss.sonatype.org/[oss.sonatype.org] to figure out the most recent version of `valid8j`.
+
+== Fluent Style
+
+Following is the first example of the `valid8j` library.
+
+(t.b.d.)
+
+== Classic Style
+
+`valid8j` has another style of writing value checks, which is called "classic" and provides a basis of the aforementioned "fluent" style.
+
+[%nowrap,java]
+.Valid8JExample.java
+----
+public class Valid8JExample {
+  @Test
+  public void testString() {
+    TestAssertions.assertThat(
+        "hello World",
+        Predicates.transform(Printables.function("toUpperCase", o -> Objects.toString(o).toUpperCase()))
+            .check(Predicates.containsString("HELLO")));
+  }
+}
+----
+
+For readability's sake, it's recommended to extract a function and do `static import`, where possible.
+
+[%nowrap,java]
+.Valid8JExample.java
+----
+public class Valid8JExample {
+  @Test
+  public void testString() {
+    assertThat(
+        "hello World",
+        transform(toUpperCase()).check(containsString("HELLO")));
+  }
+
+  private static Function<String, String> toUpperCase() {
+    return function("toUpperCase", o -> Objects.toString(o).toUpperCase());
+  }
+}
+----
+
+The programming style of `valid8j` is to first transform a given value into better known type or form, which is more suitable for examining its validity.
+
+In this example, a given string is first transformed into all upper cases so that it is equal to "HELLO" if we ignore cases.
+
+This results in a following output.
+
+.Output of Example.java
+|===
+|Expectation |Actual
+
+a|
+[%nowrap]
+----
+    "Howdy, World"->transform:toUpperCase       ->"HOWDY, WORLD"
+[0] "HOWDY, WORLD"->check:containsString[HELLO] ->true
+
+.Detail of failure [0]
+---
+containsString[hello]
+---
+----
+a|
+[%nowrap]
+----
+    "Howdy, World"->transform:toUpperCase       ->"HOWDY, WORLD"
+[0] "HOWDY, WORLD"->check:containsString[HELLO] ->false
+
+.Detail of failure [0]
+---
+HOWDY, WORLD
+---
+----
+|===
+
+You can see the violated condition and how it is violated in the stacktrace.
+
+A philosophy behind `valid8j` 's approach is:
+
+- A human in the end checks the value on a screen as a text.
+- Either way, test can only report a presence of a bug, cannot ensure absence of it.
+If so, rather than trying to build "matcher", "subject", or "assertion" objects that can do a check that detects all the bugs for a given class, it will be more productive to decompose the check into various checks, each of which is concise and understandable.
+
+include::valid8j-index.adoc[]
+
+include::valid8j-bibliography.adoc[]
