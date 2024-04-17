@@ -72,6 +72,31 @@ public class TestExample {
 }
 ----
 
+This produces output like following:
+
+[nowrap]
+----
+Exception in thread "main" java.lang.AssertionError: value:<[100]> violated precondition:value (at[0] WHEN:(>=[0]&&<[100]))
+Mismatch>:    [100]->allOf             ->false
+                   ->  transform:at[0] ->100
+Mismatch>:    100  ->  WHEN:allOf      ->false
+                   ->      >=[0]       ->true
+Mismatch>:[0]      ->      <[100]      ->false
+
+.Detail of failure [0] (expectation)
+---
+<[100]
+---
+
+.Detail of failure [0] (actual value)
+---
+100
+---
+	at com.github.dakusui.valid8j.pcond.validator.ExceptionComposer$ForAssertion.exceptionPreconditionViolation(ExceptionComposer.java:205)
+	at com.github.dakusui.valid8j.pcond.validator.Validator.lambda$checkPrecondition$7(Validator.java:321)
+    ...
+----
+
 However, if you have multiple variables, you need to evaluate multiple statements at once.
 If you do it by calling `assertStatement` multiple times, you will need to look into the failure report, fix it, and run it.
 If it works, it may be okay, however, if it fails at the next point, you will need to do the same again.

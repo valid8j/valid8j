@@ -879,4 +879,9 @@ public enum Expectations {
       return new LocalTransformer<>(this::value, checkerFactory);
     }
   }
+  
+  public static void main(String... args) {
+    int a = 100;
+    assert preconditions(that(a).satisfies().greaterThanOrEqualTo(0).lessThan(100));
+  }
 }

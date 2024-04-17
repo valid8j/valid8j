@@ -6,7 +6,14 @@
 (t.b.d.)
 
 ===  Classic Style
-(t.b.d.)
+
+The fluent style is implemented based on the printable predicate mechanism.
+You can also directly use it, and it's called "classic style".
+With the style, you will have more control and sometimes more concise error messages because the fluent style needs to compose more complex predicate structure.
+
+=== "Synonyms"
+
+NOTE: When synonym methods are available for your purpose, choose one that best improves readability in code.
 
 == Use cases
 
@@ -19,12 +26,85 @@
 === Design by Contract
 (t.b.d.)
 
+=== Creating a Custom Transformer
+
+Suppose that we have a class `Book`.
+
+[source, java]
+----
+public static class Book {
+  private final String abstractText;
+  private final String title;
+
+  public Book(String title, String abstractText) {
+    this.abstractText = abstractText;
+    this.title = title;
+  }
+
+  String title() {
+    return title;
+  }
+
+  String abstractText() {
+    return abstractText;
+  }
+
+  @Override
+  public String toString() {
+    return "Book:[title:<" + title + ">, abstract:<" + abstractText + ">]";
+  }
+}
+----
+
+To support the class in `valid8j`, what you need to write is as simple as:
+
+[source, java]
+----
+public static class BookTransformer extends CustomTransformer<BookTransformer, Book> {
+  public BookTransformer(Book rootValue) {
+    super(rootValue);
+  }
+
+  public StringTransformer<Book> title() {
+    return toString(Printables.function("title", Book::title));
+  }
+
+  public StringTransformer<Book> abstractText() {
+    return toString(Printables.function("abstractText", Book::abstractText));
+  }
+}
+----
+
+
 === Reading a Failure Message
 (t.b.d.)
 
-== "Synonyms"
+[%nowrap]
+.Message for DbC assertion failure.
+----
+Exception in thread "main" java.lang.AssertionError: value:<[100]> violated precondition:value (at[0] WHEN:(>=[0]&&<[100]))
+Mismatch<:    [100]->allOf             ->true
+Mismatch>:    [100]->allOf             ->false
+                   ->  transform:at[0] ->100
+Mismatch<:    100  ->  WHEN:allOf      ->true
+Mismatch>:    100  ->  WHEN:allOf      ->false
+                   ->      >=[0]       ->true
+Mismatch<:[0]      ->      <[100]      ->true
+Mismatch>:[0]      ->      <[100]      ->false
 
-NOTE: When synonym methods are available for your purpose, choose one that best improves readability in code.
+.Detail of failure [0] (expectation)
+---
+<[100]
+---
+
+.Detail of failure [0] (actual value)
+---
+100
+---
+	at com.github.dakusui.valid8j.pcond.validator.ExceptionComposer$ForAssertion.exceptionPreconditionViolation(ExceptionComposer.java:205)
+	at com.github.dakusui.valid8j.pcond.validator.Validator.lambda$checkPrecondition$7(Validator.java:321)
+    ...
+----
 
 
 include::valid8j-index.adoc[]

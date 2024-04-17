@@ -1,7 +1,13 @@
 = Development
 
+`valid8j` is built and tested using https://www.oracle.com/java/technologies/java8.html[Java 8], which is the most compatible as of April in 2024.
+
 == Build Process
-`mvn build`::
+
+`git clone https://github.com/dakusui/valid8j.git`
+
+
+`mvn clean compile`::
 (t.b.d.)
 `mvn clean compile test package`::
 (t.b.d.)
@@ -14,7 +20,11 @@
 `mvn test`::
 (t.b.d.)
 
-== Contribution Guidelines:
+== Contribution Guidelines
+
+Coding conventions are defined as IDEA's configuration and found under `.idea` directory of the source tree.
+Note that https://asciidoc.org/[`asciidoc`] and https://github.com/asciidoctor/asciidoclet[`asciidoclet`] are used for documentation rather than markdown.
+
 (t.b.d.)
 asciidoc documentation.
 

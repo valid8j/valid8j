@@ -1,7 +1,8 @@
 
 = Contact and Support
 
-- Support Resources: GitHub Issues.
+If you find any, please check https://github.com/dakusui/valid8j/issues[Issues in GitHub] and file a new one if you don't find your problem.
+The source code is found https://github.com/dakusui/valid8j[here].
 
 include::valid8j-index.adoc[]
 
