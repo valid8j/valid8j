@@ -2,7 +2,7 @@ package com.github.dakusui.valid8j.entrypoints;
 
 import org.junit.Test;
 
-import static com.github.dakusui.thincrest.TestFluents.assertStatement;
+import static com.github.dakusui.valid8j.fluent.Expectations.assertStatement;
 import static com.github.dakusui.valid8j.fluent.Expectations.that;
 
 public class ExpectationsTest {

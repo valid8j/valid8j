@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static com.github.dakusui.thincrest.TestFluents.assertStatement;
+import static com.github.dakusui.valid8j.fluent.Expectations.assertStatement;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.isNotNull;
 import static java.util.Arrays.asList;
 

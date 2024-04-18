@@ -2,7 +2,7 @@ package com.github.dakusui.ut.thincrest.ut.styles;
 
 import com.github.dakusui.shared.utils.ut.TestBase;
 import com.github.dakusui.thincrest.TestAssertions;
-import com.github.dakusui.thincrest.TestFluents;
+import com.github.dakusui.valid8j.fluent.Expectations;
 import com.github.dakusui.valid8j.pcond.fluent.ListHolder;
 import com.github.dakusui.valid8j.pcond.fluent.Statement;
 import com.github.dakusui.valid8j.pcond.forms.Functions;
@@ -34,7 +34,7 @@ public class FluentStyleTestAssertionTest {
     public void expectingDifferentException_testFailing() {
       try {
         String givenValue = "helloWorld";
-        TestFluents.assertStatement(stringValue(givenValue)
+        Expectations.assertStatement(stringValue(givenValue)
             .expectException(ArrayIndexOutOfBoundsException.class, Printables.function("substring100", (String s) -> s.substring(100)))
             .getMessage()
             .then()
@@ -53,7 +53,7 @@ public class FluentStyleTestAssertionTest {
     public void expectingExceptionButNotThrown_testFailing() {
       try {
         String givenValue = "helloWorld";
-        TestFluents.assertStatement(stringValue(givenValue)
+        Expectations.assertStatement(stringValue(givenValue)
             .expectException(StringIndexOutOfBoundsException.class, Printables.function("substring0", (String s) -> s.substring(0)))
             .getMessage()
             .then()
@@ -70,7 +70,7 @@ public class FluentStyleTestAssertionTest {
     @Test
     public void expectedExceptionThrown_testPassing() {
       String givenValue = "helloWorld";
-      TestFluents.assertStatement(stringValue(givenValue)
+      Expectations.assertStatement(stringValue(givenValue)
           .expectException(StringIndexOutOfBoundsException.class, Printables.function("substring100", (String s) -> s.substring(100)))
           .getMessage()
           .then()
@@ -81,7 +81,7 @@ public class FluentStyleTestAssertionTest {
     public void string_assertThatTest_failed() {
       String givenValue = "helloWorld";
       try {
-        TestFluents.assertStatement(Statement.stringValue(givenValue)
+        Expectations.assertStatement(Statement.stringValue(givenValue)
             .toLowerCase()
             .then()
             .equalTo("HELLOWORLD"));
@@ -94,7 +94,7 @@ public class FluentStyleTestAssertionTest {
     @Test
     public void string_assertThatTest_passed() {
       String givenValue = "helloWorld";
-      TestFluents.assertStatement(stringValue(givenValue)
+      Expectations.assertStatement(stringValue(givenValue)
           .toLowerCase()
           .then()
           .equalTo("helloworld"));
@@ -103,7 +103,7 @@ public class FluentStyleTestAssertionTest {
     @Test
     public void string_assertThat_useValue_passed() {
       String givenValue = "helloWorld";
-      TestFluents.assertStatement(stringValue(givenValue)
+      Expectations.assertStatement(stringValue(givenValue)
           .toLowerCase()
           .then()
           .equalTo("helloworld"));
@@ -112,7 +112,7 @@ public class FluentStyleTestAssertionTest {
     @Test
     public void int_assertThatTest_passed() {
       int givenValue = 1234;
-      TestFluents.assertStatement(Statement.integerValue(givenValue)
+      Expectations.assertStatement(Statement.integerValue(givenValue)
           .then()
           .equalTo(1234));
     }
@@ -120,7 +120,7 @@ public class FluentStyleTestAssertionTest {
     @Test
     public void boolean_assertThatTest_passed() {
       boolean givenValue = true;
-      TestFluents.assertStatement(booleanValue(givenValue)
+      Expectations.assertStatement(booleanValue(givenValue)
           .then()
           .equalTo(true));
     }
@@ -133,7 +133,7 @@ public class FluentStyleTestAssertionTest {
           return "OBJECT";
         }
       };
-      TestFluents.assertStatement(Statement.objectValue(givenValue)
+      Expectations.assertStatement(Statement.objectValue(givenValue)
           .toString(Object::toString)
           .then()
           .equalTo("OBJECT"));
@@ -142,7 +142,7 @@ public class FluentStyleTestAssertionTest {
     @Test
     public void list_assertThatTest_passed() {
       List<String> givenValue = asList("hello", "world");
-      TestFluents.assertStatement(Statement.listValue(givenValue)
+      Expectations.assertStatement(Statement.listValue(givenValue)
           .then()
           .equalTo(asList("hello", "world")));
     }
@@ -150,7 +150,7 @@ public class FluentStyleTestAssertionTest {
     @Test
     public void stream_assertThatTest_passed() {
       Stream<String> givenValue = Stream.of("hello", "world");
-      TestFluents.assertStatement(Statement.streamValue(givenValue)
+      Expectations.assertStatement(Statement.streamValue(givenValue)
           .toList(v -> v.collect(toList()))
           .then()
           .equalTo(asList("hello", "world")));
@@ -159,7 +159,7 @@ public class FluentStyleTestAssertionTest {
     @Test(expected = ComparisonFailure.class)
     public void multiAssertAll_failed() {
       try {
-        TestFluents.assertAll(
+        Expectations.assertAll(
             stringValue("hello").toUpperCase().then().equalTo("HELLO"),
             stringValue("world").toLowerCase().then().containing("WORLD"));
       } catch (ComparisonFailure e) {
@@ -176,7 +176,7 @@ public class FluentStyleTestAssertionTest {
 
     @Test
     public void assertAll_passed() {
-      TestFluents.assertAll(
+      Expectations.assertAll(
           stringValue("hello").toUpperCase().then().equalTo("HELLO"),
           stringValue("world").toLowerCase().then().containing("world"));
     }
@@ -205,7 +205,7 @@ public class FluentStyleTestAssertionTest {
     public void assumeThatTest_failed() {
       String givenValue = "helloWorld";
       try {
-        TestFluents.assumeStatement(stringValue(givenValue)
+        Expectations.assumeStatement(stringValue(givenValue)
             .toLowerCase()
             .then()
             .equalTo("HELLOWORLD"));
@@ -219,7 +219,7 @@ public class FluentStyleTestAssertionTest {
     @Test
     public void assumeThatTest_passed() {
       String givenValue = "helloWorld";
-      TestFluents.assumeStatement(stringValue(givenValue)
+      Expectations.assumeStatement(stringValue(givenValue)
           .toLowerCase()
           .then()
           .equalTo("helloworld"));
@@ -228,7 +228,7 @@ public class FluentStyleTestAssertionTest {
     @Test(expected = AssumptionViolatedException.class)
     public void multiAssumeAll_failed() {
       try {
-        TestFluents.assumeAll(
+        Expectations.assumeAll(
             stringValue("hello").toUpperCase().then().equalTo("HELLO"),
             stringValue("world").toLowerCase().then().containing("WORLD"));
       } catch (AssumptionViolatedException e) {
@@ -241,7 +241,7 @@ public class FluentStyleTestAssertionTest {
 
     @Test
     public void multiAssumeAll_passed() {
-      TestFluents.assumeAll(
+      Expectations.assumeAll(
           stringValue("hello").toUpperCase().then().equalTo("HELLO"),
           stringValue("world").toLowerCase().then().containing("world"));
     }

@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static com.github.dakusui.thincrest.TestFluents.assertAll;
-import static com.github.dakusui.thincrest.TestFluents.assumeAll;
+import static com.github.dakusui.valid8j.fluent.Expectations.assertAll;
+import static com.github.dakusui.valid8j.fluent.Expectations.assumeAll;
 import static com.github.dakusui.valid8j.pcond.fluent.Statement.stringValue;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.isNull;
 import static java.util.Arrays.asList;

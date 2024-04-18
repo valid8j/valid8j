@@ -1,6 +1,5 @@
 package com.github.dakusui.valid8j.examples;
 
-import com.github.dakusui.valid8j.fluent.Expectations;
 import com.github.dakusui.valid8j.pcond.core.fluent.CustomTransformer;
 import com.github.dakusui.valid8j.pcond.core.fluent.builtins.StringTransformer;
 import com.github.dakusui.valid8j.pcond.forms.Functions;
@@ -14,9 +13,8 @@ import org.junit.Test;
 
 import java.util.Objects;
 
-import static com.github.dakusui.thincrest.TestFluents.*;
 import static com.github.dakusui.valid8j.classic.TestAssertions.assertThat;
-import static com.github.dakusui.valid8j.fluent.Expectations.that;
+import static com.github.dakusui.valid8j.fluent.Expectations.*;
 import static com.github.dakusui.valid8j.pcond.fluent.Statement.objectValue;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;
 import static com.github.dakusui.valid8j.pcond.forms.Printables.function;
@@ -61,9 +59,8 @@ public class ThincrestExample {
             .length()
             .then()
             .greaterThan(0),
-        that(new Salute())
-            .invoke("inEnglish")
-            .asString()
+        that(new Salute(), SaluteTransformer::new)
+            .inEnglish()
             .length()
             .then()
             .greaterThan(0));

@@ -6,7 +6,8 @@ import org.junit.Test;
 
 import java.util.regex.Pattern;
 
-import static com.github.dakusui.thincrest.TestFluents.assertStatement;
+import static com.github.dakusui.valid8j.fluent.Expectations.assertStatement;
+
 
 public class MoreFluentStringTest extends TestBase {
   @Test

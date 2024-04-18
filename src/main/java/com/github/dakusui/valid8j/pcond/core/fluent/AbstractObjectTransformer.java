@@ -16,7 +16,7 @@ import static java.util.Objects.requireNonNull;
 /**
  *
  * @param <TX> The type of the extending class itself.
- * @param <V> A type of a checker produced by this transformer.
+ * @param <V> A type of checker produced by this transformer.
  * @param <T> The type of the target value of the instance of this interface.
  * @param <R> The type of the target value of the checker instance `V`
  */
@@ -47,12 +47,12 @@ public interface AbstractObjectTransformer<
   }
 
   /**
-   * Applies `f`, which is expected to throw an exception of class `exceptionClass`, to the target value of this transformer object.
+   * Applies `f`, which is expected to throw an exception object of class `exceptionClass`, to the target value of this transformer object.
    * In case no exception is thrown, or a different type of exception is thrown, an exception will be thrown.
    * But its type is not specified.
    *
-   * @param exceptionClass A class of exception of the exception to be thrown by `f`.
-   * @param f A function that is expected to throw an exception of `exceptionClass`.
+   * @param exceptionClass A class of exception object of the exception to be thrown by `f`.
+   * @param f A function that is expected to throw an exception object of `exceptionClass`.
    * @return A {@link ThrowableTransformer} instance constructed for the thrown exception by `f`.
    * @param <O> An exception class to be thrown by `f`.
    * @see Functions#expectingException(Class, Function)

@@ -14,8 +14,7 @@ import org.junit.runner.RunWith;
 
 import java.util.function.Predicate;
 
-import static com.github.dakusui.thincrest.TestFluents.assertAll;
-import static com.github.dakusui.thincrest.TestFluents.assertStatement;
+import static com.github.dakusui.valid8j.fluent.Expectations.*;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.length;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;
 import static com.github.dakusui.valid8j.pcond.internals.InternalUtils.makeSquashable;
@@ -25,9 +24,9 @@ public class Fluent4Example {
   public static class Done {
     @Test(expected = ComparisonFailure.class)
     public void test() {
-      assertStatement(stringTransformer("INPUT_VALUE")
+      assertStatement(that("INPUT_VALUE")
           .parseBoolean()
-          .then()
+          .satisfies()
           .isTrue());
     }
 

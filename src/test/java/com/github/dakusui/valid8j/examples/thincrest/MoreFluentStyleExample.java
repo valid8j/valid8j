@@ -1,8 +1,8 @@
 package com.github.dakusui.valid8j.examples.thincrest;
 
 import com.github.dakusui.shared.utils.TestUtils;
-import com.github.dakusui.thincrest.TestFluents;
 import com.github.dakusui.valid8j.examples.thincrest.sut.MemberDatabase;
+import com.github.dakusui.valid8j.fluent.Expectations;
 import com.github.dakusui.valid8j.pcond.fluent.Statement;
 import com.github.dakusui.valid8j.pcond.forms.Printables;
 import org.junit.ComparisonFailure;
@@ -21,7 +21,7 @@ public class MoreFluentStyleExample {
   @Test
   public void test() {
     String givenValue = "helloWorld";
-    TestFluents.assertStatement(Statement.stringValue(givenValue)
+    Expectations.assertStatement(Statement.stringValue(givenValue)
         .toString(TestUtils.stringToLowerCase())
         .then()
         .equalTo("HELLOWORLD"));
@@ -31,7 +31,7 @@ public class MoreFluentStyleExample {
   @Test
   public void testExpectingException() {
     String givenValue = "helloWorld";
-    TestFluents.assertStatement(Statement.stringValue(givenValue)
+    Expectations.assertStatement(Statement.stringValue(givenValue)
         .expectException(Exception.class, TestUtils.stringToLowerCase())
         .then()
         .equalTo("HELLOWORLD"));
@@ -40,7 +40,7 @@ public class MoreFluentStyleExample {
   @Test
   public void testExpectingException2() {
     String givenValue = "helloWorld";
-    TestFluents.assertStatement(Statement.stringValue(givenValue)
+    Expectations.assertStatement(Statement.stringValue(givenValue)
         .expectException(Exception.class, throwRuntimeException())
         .getCause()
         .then()
@@ -50,7 +50,7 @@ public class MoreFluentStyleExample {
   @Test
   public void testThrowableTransformer() {
     String givenValue = "helloWorld";
-    TestFluents.assertStatement(Statement.throwableValue(new Throwable(givenValue)).getMessage().then().equalTo("helloWorld!"));
+    Expectations.assertStatement(Statement.throwableValue(new Throwable(givenValue)).getMessage().then().equalTo("helloWorld!"));
   }
 
   private static Function<String, Object> throwRuntimeException() {
@@ -63,7 +63,7 @@ public class MoreFluentStyleExample {
   @Test
   public void test2() {
     List<String> givenValues = asList("hello", "world");
-    TestFluents.assertStatement(Statement.listValue(givenValues).elementAt(0)
+    Expectations.assertStatement(Statement.listValue(givenValues).elementAt(0)
         .toString(TestUtils.stringToLowerCase())
         .then()
         .equalTo("HELLO"));
@@ -72,7 +72,7 @@ public class MoreFluentStyleExample {
   @Test
   public void test3() {
     List<String> givenValues = asList("hello", "world");
-    TestFluents.assertStatement(Statement.listValue(givenValues).elementAt(0)
+    Expectations.assertStatement(Statement.listValue(givenValues).elementAt(0)
         .toString(TestUtils.stringToLowerCase())
         .then()
         .equalTo("HELLO"));
@@ -81,7 +81,7 @@ public class MoreFluentStyleExample {
   @Test(expected = ComparisonFailure.class)
   public void test4() {
     try {
-      TestFluents.assertAll(
+      Expectations.assertAll(
           Statement.stringValue("hello").toUpperCase().then().equalTo("HELLO"),
           Statement.stringValue("world").toLowerCase().then().containing("WORLD"));
     } catch (ComparisonFailure e) {
@@ -101,7 +101,7 @@ public class MoreFluentStyleExample {
     Function<MemberDatabase.Member, String> memberLastName =
         Printables.function("memberLastName", MemberDatabase.Member::lastName);
 
-    TestFluents.assertStatement(Statement.objectValue(database)
+    Expectations.assertStatement(Statement.objectValue(database)
         .toObject(lookUpMemberWith.apply(identifier))
         .toString(memberLastName)
         .then()
@@ -120,7 +120,7 @@ public class MoreFluentStyleExample {
         .orElseThrow(NoSuchElementException::new)
         .lastName();
     List<String> fullName = database.findMembersByLastName(lastName).get(0).toFullName();
-    TestFluents.assertAll(
+    Expectations.assertAll(
         Statement.stringValue(lastName)
             .then()
             .allOf()
@@ -141,7 +141,7 @@ public class MoreFluentStyleExample {
         .orElseThrow(NoSuchElementException::new)
         .lastName();
     List<String> fullName = database.findMembersByLastName(lastName).get(0).toFullName();
-    TestFluents.assertAll(
+    Expectations.assertAll(
         Statement.stringValue(lastName)
             .then()
             .allOf()
@@ -162,7 +162,7 @@ public class MoreFluentStyleExample {
     String lastName = database.lookUp("0001")
         .orElseThrow(NoSuchElementException::new)
         .lastName();
-    TestFluents.assertAll(
+    Expectations.assertAll(
         Fluents.stringStatement(lastName)
             .then()
             .allOf()
@@ -180,7 +180,7 @@ public class MoreFluentStyleExample {
   public void givenValidName_whenValidatePersonName_thenPass() {
     String s = "John Doe";
 
-    TestFluents.assertStatement(Statement.stringValue(s).split(" ").size()
+    Expectations.assertStatement(Statement.stringValue(s).split(" ").size()
         .then()
         .equalTo(2));
   }
@@ -189,7 +189,7 @@ public class MoreFluentStyleExample {
   public void givenValidName_whenValidatePersonName_thenPass_2() {
     String s = "John doe";
 
-    TestFluents.assertStatement(
+    Expectations.assertStatement(
         Fluents.stringStatement(s)
             .split(" ")
             .then().allOf()
@@ -203,7 +203,7 @@ public class MoreFluentStyleExample {
     String s = "HI";
     List<String> strings = asList("HELLO", "WORLD");
 
-    TestFluents.assertAll(
+    Expectations.assertAll(
         Statement.stringValue(s)
             .toString(TestUtils.stringToLowerCase())
             .then()
@@ -216,7 +216,7 @@ public class MoreFluentStyleExample {
   @Test
   public void checkTwoAspectsOfOneValue() {
     String s = "helloWorld";
-    TestFluents.assertAll(
+    Expectations.assertAll(
         Statement.stringValue(s)
             .then()
             .notNull(),
@@ -228,7 +228,7 @@ public class MoreFluentStyleExample {
   @Test
   public void checkTwoAspectsOfOneValue_2() {
     List<String> list = asList("helloWorld", "HI");
-    TestFluents.assertAll(
+    Expectations.assertAll(
         Statement.listValue(list).size()
             .then()
             .greaterThan(3),
@@ -243,7 +243,7 @@ public class MoreFluentStyleExample {
   @Test
   public void checkTwoAspectsOfOneValue_3a() {
     List<String> list = asList("helloWorld", "HI");
-    TestFluents.assertAll(
+    Expectations.assertAll(
         Fluents.listStatement(list).allOf()
             .appendChild(tx -> tx.size().then().greaterThan(3).toPredicate())
             .appendChild(tx -> tx.elementAt(0)

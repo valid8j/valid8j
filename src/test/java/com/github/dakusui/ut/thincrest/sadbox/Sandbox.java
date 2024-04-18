@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.function.Predicate;
 
-import static com.github.dakusui.thincrest.TestFluents.assertStatement;
+import static com.github.dakusui.valid8j.fluent.Expectations.assertStatement;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;
 
 @SuppressWarnings("NewClassNamingConvention")

@@ -17,7 +17,7 @@ import java.util.function.Predicate;
 import static com.github.dakusui.shared.TestUtils.validate;
 import static com.github.dakusui.shared.TestUtils.validateStatement;
 import static com.github.dakusui.thincrest.TestAssertions.assertThat;
-import static com.github.dakusui.thincrest.TestFluents.assertAll;
+import static com.github.dakusui.valid8j.fluent.Expectations.assertAll;
 import static com.github.dakusui.valid8j.pcond.core.refl.MethodQuery.instanceMethod;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.parameter;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;

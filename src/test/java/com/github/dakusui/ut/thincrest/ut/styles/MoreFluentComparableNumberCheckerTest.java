@@ -3,7 +3,8 @@ package com.github.dakusui.ut.thincrest.ut.styles;
 import com.github.dakusui.valid8j.pcond.fluent.Statement;
 import org.junit.Test;
 
-import static com.github.dakusui.thincrest.TestFluents.assertStatement;
+import static com.github.dakusui.valid8j.fluent.Expectations.assertStatement;
+
 
 public class MoreFluentComparableNumberCheckerTest {
   @Test
