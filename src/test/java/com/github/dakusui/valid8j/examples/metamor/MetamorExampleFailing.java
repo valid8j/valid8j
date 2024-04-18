@@ -1,4 +1,4 @@
-package com.github.dakusui.valid8j.metamor;
+package com.github.dakusui.valid8j.examples.metamor;
 
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation;
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation.EnsureJUnitResult;

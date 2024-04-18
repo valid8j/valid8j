@@ -1,6 +1,7 @@
-package com.github.dakusui.valid8j.metamor;
+package com.github.dakusui.valid8j.examples.metamor;
 
 import com.github.dakusui.valid8j.classic.TestAssertions;
+import com.github.dakusui.valid8j.metamor.*;
 import com.github.dakusui.valid8j.pcond.core.Evaluator;
 import com.github.dakusui.valid8j.pcond.core.printable.PrintableFunction;
 import com.github.dakusui.valid8j.pcond.forms.Functions;

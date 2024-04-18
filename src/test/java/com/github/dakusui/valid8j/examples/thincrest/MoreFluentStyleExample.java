@@ -1,8 +1,8 @@
-package com.github.dakusui.ut.thincrest.examples;
+package com.github.dakusui.valid8j.examples.thincrest;
 
 import com.github.dakusui.shared.utils.TestUtils;
 import com.github.dakusui.thincrest.TestFluents;
-import com.github.dakusui.ut.thincrest.examples.sut.MemberDatabase;
+import com.github.dakusui.valid8j.examples.thincrest.sut.MemberDatabase;
 import com.github.dakusui.valid8j.pcond.fluent.Statement;
 import com.github.dakusui.valid8j.pcond.forms.Printables;
 import org.junit.ComparisonFailure;

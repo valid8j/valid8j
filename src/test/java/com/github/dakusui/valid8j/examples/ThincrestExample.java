@@ -1,20 +1,26 @@
 package com.github.dakusui.valid8j.examples;
 
+import com.github.dakusui.valid8j.fluent.Expectations;
+import com.github.dakusui.valid8j.pcond.core.fluent.CustomTransformer;
+import com.github.dakusui.valid8j.pcond.core.fluent.builtins.StringTransformer;
+import com.github.dakusui.valid8j.pcond.forms.Functions;
+import com.github.dakusui.valid8j.pcond.forms.Predicates;
+import com.github.dakusui.valid8j.pcond.forms.Printables;
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation;
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation.EnsureJUnitResult;
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation.ResultPredicateFactory.*;
 import com.github.dakusui.valid8j.utils.metatest.TestMethodExpectation;
-import com.github.dakusui.valid8j.pcond.forms.Functions;
-import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import org.junit.Test;
 
 import java.util.Objects;
 
-import static com.github.dakusui.valid8j.classic.TestAssertions.*;
-import static com.github.dakusui.valid8j.utils.metatest.TestMethodExpectation.Result.*;
+import static com.github.dakusui.thincrest.TestFluents.*;
+import static com.github.dakusui.valid8j.classic.TestAssertions.assertThat;
+import static com.github.dakusui.valid8j.fluent.Expectations.that;
 import static com.github.dakusui.valid8j.pcond.fluent.Statement.objectValue;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;
 import static com.github.dakusui.valid8j.pcond.forms.Printables.function;
+import static com.github.dakusui.valid8j.utils.metatest.TestMethodExpectation.Result.*;
 import static java.util.Arrays.asList;
 
 @TestClassExpectation(value = {
@@ -49,13 +55,13 @@ public class ThincrestExample {
   @Test
   public void assertAllSalutes() {
     assertAll(
-        objectValue(new Salute())
+        that(new Salute())
             .invoke("inJapanese")
             .asString()
             .length()
             .then()
             .greaterThan(0),
-        objectValue(new Salute())
+        that(new Salute())
             .invoke("inEnglish")
             .asString()
             .length()
@@ -67,13 +73,13 @@ public class ThincrestExample {
   @Test
   public void assertAllSalutes_2() {
     assertAll(
-        objectValue(new Salute())
+        that(new Salute())
             .invoke("inJapanese")
             .asString()
             .length()
             .then()
             .greaterThan(0),
-        objectValue(new Salute())
+        that(new Salute())
             .invoke("inEnglish")
             .asString()
             .transform(v -> allOf(
@@ -88,7 +94,7 @@ public class ThincrestExample {
   @Test
   public void assertSaluteInJapanese() {
     assertStatement(
-        objectValue(new Salute())
+        that(new Salute())
             .invoke("inJapanese")
             .asString()
             .length()
@@ -100,7 +106,7 @@ public class ThincrestExample {
   @Test
   public void assertSaluteInEnglish() {
     assertStatement(
-        objectValue(new Salute())
+        that(new Salute())
             .invoke("inEnglish")
             .asString()
             .length()
@@ -112,7 +118,7 @@ public class ThincrestExample {
   @Test
   public void assumeSalute() {
     assumeStatement(
-        objectValue(new Salute())
+        that(new Salute())
             .invoke("inJapanese")
             .asString()
             .length()
@@ -124,13 +130,13 @@ public class ThincrestExample {
   @Test
   public void assumeAllSalutes() {
     assumeAll(
-        objectValue(new Salute())
+        that(new Salute())
             .invoke("inJapanese")
             .asString()
             .length()
             .then()
             .greaterThan(0),
-        objectValue(new Salute())
+        that(new Salute())
             .invoke("inEnglish")
             .asString()
             .length()
@@ -142,9 +148,8 @@ public class ThincrestExample {
   @Test
   public void assumeSaluteInJapanese() {
     assumeAll(
-        objectValue(new Salute())
-            .invoke("inJapanese")
-            .asString()
+        that(new Salute(), SaluteTransformer::new)
+            .inJapanese()
             .length()
             .then()
             .greaterThan(0));
@@ -169,6 +174,25 @@ public class ThincrestExample {
     
     public String inEnglish() {
       return "";
+    }
+  }
+  
+  static class SaluteTransformer extends CustomTransformer<SaluteTransformer, Salute> {
+    /**
+     * Creates an instance of this class.
+     *
+     * @param baseValue The target value of this transformer.
+     */
+    public SaluteTransformer(Salute baseValue) {
+      super(baseValue);
+    }
+    
+    public StringTransformer<Salute> inJapanese() {
+      return this.toString(Printables.function("inJapanese", Salute::inJapanese));
+    }
+    
+    public StringTransformer<Salute> inEnglish() {
+      return this.toString(Printables.function("inEnglish", Salute::inEnglish));
     }
   }
 }

@@ -153,7 +153,8 @@ public class Fluent4Example {
                   .then()
                   .isTrue()
                   .toPredicate())
-          .checkWithPredicate(Predicates.transform(length()).check(isEqualTo(10))));
+          .satisfies()
+          .predicate(Predicates.transform(length()).check(isEqualTo(10))));
     }
 
     @Test(expected = IllegalStateException.class)

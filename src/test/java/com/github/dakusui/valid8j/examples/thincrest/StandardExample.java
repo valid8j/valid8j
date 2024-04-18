@@ -1,6 +1,6 @@
-package com.github.dakusui.ut.thincrest.examples;
+package com.github.dakusui.valid8j.examples.thincrest;
 
-import com.github.dakusui.ut.thincrest.examples.sut.MemberDatabase;
+import com.github.dakusui.valid8j.examples.thincrest.sut.MemberDatabase;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import com.github.dakusui.valid8j.pcond.forms.Printables;
 import org.junit.Test;

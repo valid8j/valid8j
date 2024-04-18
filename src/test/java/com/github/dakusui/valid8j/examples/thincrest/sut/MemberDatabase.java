@@ -1,4 +1,4 @@
-package com.github.dakusui.ut.thincrest.examples.sut;
+package com.github.dakusui.valid8j.examples.thincrest.sut;
 
 import java.util.List;
 import java.util.Objects;

@@ -928,9 +928,4 @@ public enum Expectations {
       return new LocalTransformer<>(this::value, checkerFactory);
     }
   }
-
-  public static void main(String... args) {
-    int a = 100;
-    assertStatement((that(a).satisfies().greaterThanOrEqualTo(0).lessThan(100)));
-  }
 }

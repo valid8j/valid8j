@@ -1,4 +1,4 @@
-package com.github.dakusui.ut.thincrest.examples;
+package com.github.dakusui.valid8j.examples.thincrest;
 
 import com.github.dakusui.shared.utils.Metatest;
 import com.github.dakusui.shared.utils.TestBase;

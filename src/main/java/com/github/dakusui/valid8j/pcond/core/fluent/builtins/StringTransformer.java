@@ -71,7 +71,8 @@ public interface StringTransformer<T> extends
     requireNonNull(clause);
     return this.addTransformAndCheckClause(tx -> clause.apply((StringTransformer<String>) tx));
   }
-
+  
+ 
   class Impl<T> extends
       Base<
           StringTransformer<T>,
