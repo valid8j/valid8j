@@ -2,7 +2,7 @@ package com.github.dakusui.valid8j_pcond;
 
 import com.github.dakusui.shared.IllegalValueException;
 import com.github.dakusui.shared.utils.ut.TestBase;
-import com.github.dakusui.thincrest.TestAssertions;
+import com.github.dakusui.valid8j.classic.TestAssertions;
 import com.github.dakusui.valid8j.pcond.forms.Functions;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import com.github.dakusui.valid8j.pcond.forms.Printables;

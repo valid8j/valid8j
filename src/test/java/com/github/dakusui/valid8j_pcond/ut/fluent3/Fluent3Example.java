@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-import static com.github.dakusui.thincrest.TestAssertions.assertThat;
+import static com.github.dakusui.valid8j.classic.TestAssertions.assertThat;
 import static com.github.dakusui.valid8j.fluent.Expectations.assertAll;
 import static com.github.dakusui.valid8j.pcond.fluent.Statement.stringValue;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.identity;

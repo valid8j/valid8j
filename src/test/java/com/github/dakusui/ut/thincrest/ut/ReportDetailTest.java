@@ -2,7 +2,7 @@ package com.github.dakusui.ut.thincrest.ut;
 
 import com.github.dakusui.shared.IllegalValueException;
 import com.github.dakusui.shared.utils.ut.TestBase;
-import com.github.dakusui.thincrest.TestAssertions;
+import com.github.dakusui.valid8j.classic.TestAssertions;
 import com.github.dakusui.valid8j.pcond.experimentals.cursor.Cursors;
 import com.github.dakusui.valid8j.pcond.fluent.Statement;
 import com.github.dakusui.valid8j.pcond.forms.Functions;
@@ -16,7 +16,7 @@ import java.util.function.Predicate;
 
 import static com.github.dakusui.shared.TestUtils.validate;
 import static com.github.dakusui.shared.TestUtils.validateStatement;
-import static com.github.dakusui.thincrest.TestAssertions.assertThat;
+import static com.github.dakusui.valid8j.classic.TestAssertions.assertThat;
 import static com.github.dakusui.valid8j.fluent.Expectations.assertAll;
 import static com.github.dakusui.valid8j.pcond.core.refl.MethodQuery.instanceMethod;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.parameter;
@@ -32,7 +32,7 @@ public class ReportDetailTest extends TestBase {
     String actual = "helloHELLOhelloHELLOhelloXYZHELLOhelloHELLOhelloHELLO";
     String expected = "helloHELLOhelloHELLOhelloHELLOhelloHELLOhelloHELLO";
     try {
-      TestAssertions.assertThat(actual, isEqualTo(expected));
+      assertThat(actual, isEqualTo(expected));
       throw new Error(); // Make it fail if PC reaches here.
     } catch (ComparisonFailure e) {
       System.out.println("EXPECTED:<" + e.getExpected() + ">");
@@ -51,7 +51,7 @@ public class ReportDetailTest extends TestBase {
     String actual = "helloHELLOhelloHELLOhelloXYZHELLOhelloHELLOhelloHELLO";
     String expected = "helloHELLOhelloHELLOhelloHELLOhelloHELLOhelloHELLO";
 
-    TestAssertions.assertThat(actual, isEqualTo(expected));
+    assertThat(actual, isEqualTo(expected));
   }
 
   @Ignore
@@ -85,7 +85,7 @@ public class ReportDetailTest extends TestBase {
     String actual = "helloHELLOhelloHELLOhelloXYZHELLOhelloHELLOhelloHELLO";
     String expected = "helloHELLOhelloHELLOhelloHELLOhelloHELLOhelloHELLO";
     try {
-      TestAssertions.assertThat(actual, isEqualTo(expected));
+      assertThat(actual, isEqualTo(expected));
       throw new Error(); // Make it fail if PC reaches here.
     } catch (ComparisonFailure e) {
       e.printStackTrace();

@@ -10,8 +10,8 @@ import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import org.junit.Test;
 
 import static com.github.dakusui.shared.utils.TestMethodExpectation.Result.*;
-import static com.github.dakusui.thincrest.TestAssertions.assertThat;
-import static com.github.dakusui.thincrest.TestAssertions.assumeThat;
+import static com.github.dakusui.valid8j.classic.TestAssertions.assertThat;
+import static com.github.dakusui.valid8j.classic.TestAssertions.assumeThat;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.call;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;
 

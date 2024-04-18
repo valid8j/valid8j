@@ -4,7 +4,7 @@ import com.github.dakusui.valid8j.pcond.validator.ExceptionComposer;
 import org.junit.Test;
 import org.opentest4j.AssertionFailedError;
 
-import static com.github.dakusui.thincrest.TestAssertions.assertThat;
+import static com.github.dakusui.valid8j.classic.TestAssertions.assertThat;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.isNull;
 
 public class ExampleIT {

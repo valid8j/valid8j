@@ -1,7 +1,7 @@
 package com.github.dakusui.ut.thincrest.ut.styles;
 
 import com.github.dakusui.shared.utils.ut.TestBase;
-import com.github.dakusui.thincrest.TestAssertions;
+import com.github.dakusui.valid8j.classic.TestAssertions;
 import com.github.dakusui.valid8j.fluent.Expectations;
 import com.github.dakusui.valid8j.pcond.fluent.ListHolder;
 import com.github.dakusui.valid8j.pcond.fluent.Statement;

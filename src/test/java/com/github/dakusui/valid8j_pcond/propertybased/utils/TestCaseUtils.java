@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static com.github.dakusui.thincrest.TestAssertions.assertThat;
+import static com.github.dakusui.valid8j.classic.TestAssertions.assertThat;
 import static com.github.dakusui.valid8j.pcond.internals.InternalUtils.formatObject;
 import static com.github.dakusui.valid8j.pcond.internals.InternalUtils.wrapIfNecessary;
 import static com.github.dakusui.valid8j_pcond.propertybased.utils.ReportCheckUtils.makePrintablePredicate;

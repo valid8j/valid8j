@@ -1,7 +1,7 @@
 package com.github.dakusui.ut.thincrest.ut;
 
 import com.github.dakusui.shared.utils.ut.TestBase;
-import com.github.dakusui.thincrest.TestAssertions;
+import com.github.dakusui.valid8j.classic.TestAssertions;
 import com.github.dakusui.valid8j.pcond.experimentals.cursor.Cursors;
 import com.github.dakusui.valid8j.pcond.forms.Functions;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;

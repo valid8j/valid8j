@@ -4,8 +4,8 @@ import com.github.dakusui.shared.utils.ut.TestBase;
 import org.junit.ComparisonFailure;
 import org.junit.Test;
 
-import static com.github.dakusui.thincrest.TestAssertions.assertThat;
-import static com.github.dakusui.thincrest.TestAssertions.assumeThat;
+import static com.github.dakusui.valid8j.classic.TestAssertions.assertThat;
+import static com.github.dakusui.valid8j.classic.TestAssertions.assumeThat;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;
 
 public class TestAssertionsTest extends TestBase {

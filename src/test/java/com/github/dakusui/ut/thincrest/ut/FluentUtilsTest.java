@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.stream.Stream;
 
-import static com.github.dakusui.thincrest.TestAssertions.assertThat;
+import static com.github.dakusui.valid8j.classic.TestAssertions.assertThat;
 import static com.github.dakusui.valid8j.pcond.core.printable.ExplainablePredicate.explainableStringIsEqualTo;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;
 

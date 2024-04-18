@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
 
-import static com.github.dakusui.thincrest.TestAssertions.assertThat;
+import static com.github.dakusui.valid8j.classic.TestAssertions.assertThat;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.*;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;
 import static java.lang.String.format;
