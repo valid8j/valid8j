@@ -1,11 +1,11 @@
 package com.github.dakusui.valid8j_pcond.bugfixes;
 
 import com.github.dakusui.shared.IllegalValueException;
-import com.github.dakusui.shared.utils.TestBase;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import org.junit.Test;
 
 import static com.github.dakusui.shared.TestUtils.validate;
-import static com.github.dakusui.shared.utils.TestUtils.lineAt;
+import static com.github.dakusui.valid8j.utils.TestUtils.lineAt;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.elementAt;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.size;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;

@@ -1,13 +1,13 @@
 package com.github.dakusui.valid8j.examples.thincrest;
 
-import com.github.dakusui.shared.utils.TestClassExpectation;
-import com.github.dakusui.shared.utils.TestClassExpectation.EnsureJUnitResult;
-import com.github.dakusui.shared.utils.TestClassExpectation.ResultPredicateFactory.*;
-import com.github.dakusui.shared.utils.TestMethodExpectation;
 import com.github.dakusui.valid8j.examples.thincrest.sut.NameUtils;
+import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation;
+import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation.EnsureJUnitResult;
+import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation.ResultPredicateFactory.*;
+import com.github.dakusui.valid8j.utils.metatest.TestMethodExpectation;
 import org.junit.Test;
 
-import static com.github.dakusui.shared.utils.TestMethodExpectation.Result.*;
+import static com.github.dakusui.valid8j.utils.metatest.TestMethodExpectation.Result.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assume.assumeThat;

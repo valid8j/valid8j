@@ -1,7 +1,7 @@
 package com.github.dakusui.valid8j_pcond.ut;
 
-import com.github.dakusui.shared.utils.TestBase;
 import com.github.dakusui.valid8j.pcond.forms.Printables;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;

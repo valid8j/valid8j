@@ -3,6 +3,11 @@ package com.github.dakusui.valid8j.utils.testbase;
 import com.github.dakusui.valid8j.utils.TestUtils;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
+
+import static com.github.dakusui.valid8j.pcond.internals.InternalUtils.assertFailsWith;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assume.assumeThat;
 
 public abstract class TestBase {
   @Before
@@ -13,5 +18,12 @@ public abstract class TestBase {
   @After
   public void after() {
     TestUtils.restoreStdOutErr();
+  }
+  
+  public static class ForAssertionEnabledVM extends com.github.dakusui.shared.utils.ut.TestBase {
+    @BeforeClass
+    public static void setUpBeforeAll() {
+      assumeThat(assertFailsWith(false), is(true));
+    }
   }
 }

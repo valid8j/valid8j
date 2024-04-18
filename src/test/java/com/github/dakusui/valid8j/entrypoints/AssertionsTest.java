@@ -4,8 +4,6 @@ import com.github.dakusui.valid8j.classic.Assertions;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
-
 public class AssertionsTest {
     public static class ExpectedException extends RuntimeException {
         public ExpectedException(Throwable t) {

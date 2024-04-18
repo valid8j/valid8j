@@ -1,9 +1,9 @@
 package com.github.dakusui.valid8j_pcond.ut;
 
-import com.github.dakusui.shared.utils.TestUtils;
-import com.github.dakusui.shared.utils.ut.TestBase;
+import com.github.dakusui.valid8j.utils.TestUtils;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import com.github.dakusui.valid8j.pcond.forms.Printables;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;

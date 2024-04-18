@@ -10,8 +10,8 @@ import org.junit.Test;
 import java.util.function.Predicate;
 
 import static com.github.dakusui.shared.TestUtils.validate;
-import static com.github.dakusui.shared.utils.TestUtils.lineAt;
-import static com.github.dakusui.shared.utils.TestUtils.simplifyString;
+import static com.github.dakusui.valid8j.utils.TestUtils.lineAt;
+import static com.github.dakusui.valid8j.utils.TestUtils.simplifyString;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.length;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;
 

@@ -151,7 +151,7 @@ public class InternalUtilsTest {
     }
   }
 
-  public static class TestAssertFailsWith extends TestBase.ForAssertionEnabledVM {
+  public static class TestAssertFailsWith extends com.github.dakusui.valid8j.utils.testbase.TestBase.ForAssertionEnabledVM {
     @Test
     public void givenTrue$whenAssertionFailsWith$thenFalse() {
       assertFalse(InternalUtils.assertFailsWith(true));

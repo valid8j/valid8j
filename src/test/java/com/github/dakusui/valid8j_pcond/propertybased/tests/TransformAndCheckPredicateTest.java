@@ -17,8 +17,8 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import static com.github.dakusui.shared.utils.TestUtils.toLowerCase;
-import static com.github.dakusui.shared.utils.TestUtils.toUpperCase;
+import static com.github.dakusui.valid8j.utils.TestUtils.toLowerCase;
+import static com.github.dakusui.valid8j.utils.TestUtils.toUpperCase;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.allOf;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.transform;
 import static com.github.dakusui.valid8j_pcond.propertybased.utils.TestCheck.*;

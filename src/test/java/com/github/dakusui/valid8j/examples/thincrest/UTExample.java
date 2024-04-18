@@ -1,26 +1,26 @@
 package com.github.dakusui.valid8j.examples.thincrest;
 
-import com.github.dakusui.shared.utils.TestClassExpectation;
-import com.github.dakusui.shared.utils.TestClassExpectation.EnsureJUnitResult;
-import com.github.dakusui.shared.utils.TestClassExpectation.ResultPredicateFactory.*;
-import com.github.dakusui.shared.utils.TestMethodExpectation;
 import com.github.dakusui.valid8j.examples.thincrest.sut.NameUtils;
+import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation;
+import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation.EnsureJUnitResult;
+import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation.ResultPredicateFactory.*;
+import com.github.dakusui.valid8j.utils.metatest.TestMethodExpectation;
 import com.github.dakusui.valid8j_pcond.CallTest;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import org.junit.Test;
 
-import static com.github.dakusui.shared.utils.TestMethodExpectation.Result.*;
 import static com.github.dakusui.valid8j.classic.TestAssertions.assertThat;
 import static com.github.dakusui.valid8j.classic.TestAssertions.assumeThat;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.call;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;
+import static com.github.dakusui.valid8j.utils.metatest.TestMethodExpectation.Result.*;
 
-@TestClassExpectation({
-        @EnsureJUnitResult(type = WasNotSuccessful.class, args = {}),
-        @EnsureJUnitResult(type = RunCountIsEqualTo.class, args = "4"),
-        @EnsureJUnitResult(type = IgnoreCountIsEqualTo.class, args = "0"),
-        @EnsureJUnitResult(type = AssumptionFailureCountIsEqualTo.class, args = "1"),
-        @EnsureJUnitResult(type = SizeOfFailuresIsEqualTo.class, args = "1")
+@TestClassExpectation(value = {
+    @EnsureJUnitResult(type = WasNotSuccessful.class, args = {}),
+    @EnsureJUnitResult(type = RunCountIsEqualTo.class, args = "4"),
+    @EnsureJUnitResult(type = IgnoreCountIsEqualTo.class, args = "0"),
+    @EnsureJUnitResult(type = AssumptionFailureCountIsEqualTo.class, args = "1"),
+    @EnsureJUnitResult(type = SizeOfFailuresIsEqualTo.class, args = "1")
 })
 public class UTExample {
     @TestMethodExpectation(PASSING)

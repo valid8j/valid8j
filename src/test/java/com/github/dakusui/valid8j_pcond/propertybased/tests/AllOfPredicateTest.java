@@ -10,8 +10,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import static com.github.dakusui.shared.utils.TestUtils.alwaysFalse;
-import static com.github.dakusui.shared.utils.TestUtils.expectationSummarySizeIsEqualTo;
+import static com.github.dakusui.valid8j.utils.TestUtils.alwaysFalse;
+import static com.github.dakusui.valid8j.utils.TestUtils.expectationSummarySizeIsEqualTo;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.alwaysTrue;
 
 @RunWith(Parameterized.class)

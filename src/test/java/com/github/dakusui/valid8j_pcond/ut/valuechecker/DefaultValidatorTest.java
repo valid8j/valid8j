@@ -10,8 +10,8 @@ import org.junit.Test;
 import java.util.Objects;
 import java.util.Properties;
 
-import static com.github.dakusui.shared.utils.TestUtils.lineAt;
-import static com.github.dakusui.shared.utils.TestUtils.numLines;
+import static com.github.dakusui.valid8j.utils.TestUtils.lineAt;
+import static com.github.dakusui.valid8j.utils.TestUtils.numLines;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.length;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;
 import static org.hamcrest.CoreMatchers.allOf;

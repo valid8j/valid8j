@@ -1,8 +1,8 @@
 package com.github.dakusui.valid8j_pcond.ut;
 
-import com.github.dakusui.shared.utils.ut.TestBase;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import com.github.dakusui.valid8j.pcond.forms.Printables;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
@@ -43,7 +43,7 @@ public class PrintablePredicateTest {
     }
   }
 
-  private abstract static class Conj extends TestBase.ForAssertionEnabledVM {
+  private abstract static class Conj extends com.github.dakusui.valid8j.utils.testbase.TestBase.ForAssertionEnabledVM {
     @Test
     public void examineAllOfWorks() {
       Predicate<?> p1 = create("P", Predicates.isNotNull(), Predicates.isNotNull());

@@ -1,10 +1,10 @@
 package com.github.dakusui.valid8j_pcond.ut.fluent4;
 
 import com.github.dakusui.shared.ReportParser;
-import com.github.dakusui.shared.utils.TestBase;
-import com.github.dakusui.shared.utils.TestUtils;
+import com.github.dakusui.valid8j.utils.TestUtils;
 import com.github.dakusui.valid8j.pcond.core.fluent.builtins.IntegerChecker;
 import com.github.dakusui.valid8j.pcond.core.fluent.builtins.StringTransformer;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j_pcond.ut.fluent4.Fluent4Example.OnGoing.BookTransformer;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;

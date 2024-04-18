@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j_pcond.propertybased.tests;
 
-import com.github.dakusui.shared.utils.TestUtils;
+import com.github.dakusui.valid8j.utils.TestUtils;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import com.github.dakusui.valid8j_pcond.propertybased.utils.*;
 import org.junit.ComparisonFailure;
