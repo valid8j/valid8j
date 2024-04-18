@@ -6,6 +6,18 @@ When to `assert` and when to `requrie`::
 Making metamorphic testing report look better::
 (t.b.d.)
 
-include::valid8j-index.adoc[]
+`assert{All,Statement}` or `assume{All,Statement}` give non-informative error message::
+If you see a message like following:
+[%nowrap]
+----
+Exception in thread "main" org.opentest4j.AssertionFailedError: Value:100 violated: (>=[0]&&<[100])
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.github.dakusui.valid8j.pcond.validator.ExceptionComposer$ForTestAssertion$Opentest4J.lambda$testFailedException$1(ExceptionComposer.java:264)
+----
+It is pretty much because you don't have `ComparisonFailure` class on your classpath, which is frequently caused by running your test in the production code.
+Move your methods to the test code side.
 
-include::valid8j-bibliography.adoc[]
+include::valid8j-footer.adoc[]

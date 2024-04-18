@@ -12,6 +12,4 @@
 == Customizing exceptions to be thrown
 (t.b.d.)
 
-include::valid8j-index.adoc[]
-
-include::valid8j-bibliography.adoc[]
+include::valid8j-footer.adoc[]

@@ -10,17 +10,11 @@ Make consistent and unified test assertions, DbC, and value checking.
 Make both code and message readable.
 Make it easy to write them.
 
-- **Audience:**
-"Getting Started" - programmers whose use this library at the first time.
-"Architecture, ..." - developers and contributors of this library.
-programmers whose use this library who want to use this library more efficiently.
-"Guides and Tutorials" - programmers who use this library who want to use this library more efficiently.
-"API References" - programmers who use this library in daily basis.
-"Advanced Topics" - programmers who use this library in daily basis and who are interested in "metamorphic testing".
-"Limitation and "Future Works" - programmers who use this library in daily basis.
-"Development" - developers and contributors of this library.
-"FAQs" and "Contact and Support" - when you encounter a problem or have a question to use this library.
+Programmers who use this library at the first time, please check link:valid8j-2-getting-started.adoc["Getting Started"].
+To know more about `valid8j` for better usage, link:valid8j-4-guides-and-tutorials.adoc["Guides and Tutorials"] and link:api-docs["API References"] will be useful.
 
-include::valid8j-index.adoc[]
+To contribute the `valid8j` project, please also check the link:valid8j-8-development.adoc["Development"] and link:valid8j-3-architecture.adoc["Architecture, Design Principles, and Techniques"]
 
-include::valid8j-bibliography.adoc[]
+In case you have a trouble, please check link:valid8j-6-limitations-and-future-works.adoc["Limitation and Future Works"] and link:valid8j-7-faq.adoc["FAQs"]
+
+include::valid8j-footer.adoc[]

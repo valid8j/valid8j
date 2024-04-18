@@ -199,6 +199,4 @@ A philosophy behind `valid8j` 's approach is:
 - Either way, test can only report a presence of a bug, cannot ensure absence of it.
 If so, rather than trying to build "matcher", "subject", or "assertion" objects that can do a check that detects all the bugs for a given class, it will be more productive to decompose the check into various checks, each of which is concise and understandable.
 
-include::valid8j-index.adoc[]
-
-include::valid8j-bibliography.adoc[]
+include::valid8j-footer.adoc[]

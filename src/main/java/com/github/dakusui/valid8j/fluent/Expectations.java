@@ -1,12 +1,14 @@
 package com.github.dakusui.valid8j.fluent;
 
 import com.github.dakusui.valid8j.classic.Assertions;
+import com.github.dakusui.valid8j.classic.TestAssertions;
 import com.github.dakusui.valid8j.fluent.internals.ValidationFluents;
 import com.github.dakusui.valid8j.pcond.core.fluent.AbstractObjectTransformer;
 import com.github.dakusui.valid8j.pcond.core.fluent.Checker;
 import com.github.dakusui.valid8j.pcond.core.fluent.Matcher;
 import com.github.dakusui.valid8j.pcond.core.fluent.Transformer;
 import com.github.dakusui.valid8j.pcond.core.fluent.builtins.*;
+import com.github.dakusui.valid8j.pcond.fluent.ListHolder;
 import com.github.dakusui.valid8j.pcond.fluent.Statement;
 import com.github.dakusui.valid8j.pcond.validator.Validator;
 
@@ -504,7 +506,7 @@ public enum Expectations {
    * @param value A value to be validated.
    * @param <T>   The type of `value`.
    * @return A transformer used for building a statement to be evaluated.
-   * @see Expectations#that(Object) 
+   * @see Expectations#that(Object)
    */
   public static <T> ObjectTransformer<T, T> value(T value) {
     return value(value, Statement::objectValue);
@@ -835,6 +837,53 @@ public enum Expectations {
   }
 
   /**
+   * Fluent version of {@link TestAssertions#assertThat(Object, Predicate)}.
+   *
+   * @param statement A statement to be verified
+   * @param <T>       The type of the value to be verified which a given statement holds.
+   */
+  public static <T> void assertStatement(Statement<T> statement) {
+    TestAssertions.assertThat(statement.statementValue(), statement.statementPredicate());
+  }
+
+  /**
+   * Fluent version of {@link TestAssertions#assertThat(Object, Predicate)}.
+   * Use this method when you need to verify multiple values.
+   *
+   * You can use {@link Expectations#assertStatement(Statement)}, if you have only one statement to be verified, for readability's sake.
+   *
+   * @param statements Statements to be verified
+   * @see Expectations#assertStatement(Statement)
+   */
+  public static void assertAll(Statement<?>... statements) {
+    List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
+    TestAssertions.assertThat(ListHolder.fromList(values), createPredicateForAllOf(statements));
+  }
+
+  /**
+   * Fluent version of {@link TestAssertions#assumeThat(Object, Predicate)}.
+   *
+   * @param statement A statement to be verified
+   */
+  public static <T> void assumeStatement(Statement<T> statement) {
+    TestAssertions.assumeThat(statement.statementValue(), statement.statementPredicate());
+  }
+
+  /**
+   * Fluent version of {@link TestAssertions#assumeThat(Object, Predicate)}.
+   * Use this method when you need to verify multiple values.
+   *
+   * You can use {@link Expectations#assumeStatement(Statement)}}, if you have only one statement to be verified, for readability's sake.
+   *
+   * @param statements Statements to be verified
+   * @see Expectations#assumeStatement(Statement)
+   */
+  public static void assumeAll(Statement<?>... statements) {
+    List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
+    TestAssertions.assumeThat(ListHolder.fromList(values), createPredicateForAllOf(statements));
+  }
+
+  /**
    * An interface used as a return value of {@link Expectations#fail(Function)} method.
    */
   @FunctionalInterface
@@ -879,9 +928,9 @@ public enum Expectations {
       return new LocalTransformer<>(this::value, checkerFactory);
     }
   }
-  
+
   public static void main(String... args) {
     int a = 100;
-    assert preconditions(that(a).satisfies().greaterThanOrEqualTo(0).lessThan(100));
+    assertStatement((that(a).satisfies().greaterThanOrEqualTo(0).lessThan(100)));
   }
 }

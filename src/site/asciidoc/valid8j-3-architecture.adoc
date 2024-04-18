@@ -92,12 +92,15 @@ The approach `valid8j` takes to address these challenges is:
 Note that The value transformation can be repeated multiple times, and it will be eventually converted into basic types, such as `string`, numbers, boolean, and their arrays.
 
 
-=== Easy user customization for transforming
+=== Easy user type support for transformation
 
 (t.b.d.)
 
 === Limited number of types are supported for checking
 
+
+
+NOTE: Currently `BigDecimal` is not supported.
 
 ==  Throwing an Exception, instead of returning `false`
 
@@ -140,8 +143,6 @@ Instead, if the given `Statement` doesn't satisfy the predicate, it will compose
 It is built and tested using https://www.oracle.com/java/technologies/java8.html[Java 8], which is the most compatible Java as of April in 2024.
 
 
-include::valid8j-index.adoc[]
-
-include::valid8j-bibliography.adoc[]
+include::valid8j-footer.adoc[]
 - [[[assertj, 10]]] AssertJ https://assertj.github.io/doc/
 - [[[google-truth, 11]]] truth, Google Truth https://github.com/google/truth
