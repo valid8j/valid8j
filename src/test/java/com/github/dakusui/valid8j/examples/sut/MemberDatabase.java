@@ -1,4 +1,4 @@
-package com.github.dakusui.valid8j.examples.misc.sut;
+package com.github.dakusui.valid8j.examples.sut;
 
 import java.util.List;
 import java.util.Objects;

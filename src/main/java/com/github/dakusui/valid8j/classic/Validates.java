@@ -1,9 +1,8 @@
-package com.github.dakusui.valid8j.utils;
+package com.github.dakusui.valid8j.classic;
 
 import com.github.dakusui.valid8j.pcond.fluent.Statement;
 import com.github.dakusui.valid8j.pcond.validator.ExceptionComposer;
 import com.github.dakusui.valid8j.pcond.validator.Validator;
-import com.github.dakusui.valid8j.utils.exceptions.IllegalValueException;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -44,7 +43,6 @@ public enum Validates {
 
   public interface TestValidator {
     ExceptionComposer.ForValidate exceptionComposerForValidate();
-
 
     default <T> T validate(T value, Predicate<? super T> cond) {
       return instance().validate(value, cond, exceptionComposerForValidate());

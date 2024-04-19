@@ -1,11 +1,11 @@
-package com.github.dakusui.valid8j_pcond.ut.fluent4;
+package com.github.dakusui.valid8j.it;
 
+import com.github.dakusui.valid8j.examples.fluent.Fluent4Example;
 import com.github.dakusui.valid8j.utils.reporting.ReportParser;
 import com.github.dakusui.valid8j.utils.TestUtils;
 import com.github.dakusui.valid8j.pcond.core.fluent.builtins.IntegerChecker;
 import com.github.dakusui.valid8j.pcond.core.fluent.builtins.StringTransformer;
 import com.github.dakusui.valid8j.utils.testbase.TestBase;
-import com.github.dakusui.valid8j_pcond.ut.fluent4.Fluent4Example.OnGoing.BookTransformer;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.junit.AssumptionViolatedException;
@@ -213,15 +213,15 @@ public class SmokeTest extends TestBase {
         getTransform(book));
   }
 
-  private static BookTransformer getTransform(Fluent4Example.OnGoing.Book book) {
-    return new BookTransformer(book)
-        .transform((BookTransformer b) -> b.title()
+  private static Fluent4Example.OnGoing.BookTransformer getTransform(Fluent4Example.OnGoing.Book book) {
+    return new Fluent4Example.OnGoing.BookTransformer(book)
+        .transform((Fluent4Example.OnGoing.BookTransformer b) -> b.title()
             .transform((StringTransformer<String> ty) -> ty.then().notNull().done())
             .transform((StringTransformer<String> ty) -> ty.parseInt().then() // This is intended to produce a NumberFormatException
                 .greaterThanOrEqualTo(10)
                 .lessThan(40)
                 .done()).done())
-        .transform((BookTransformer b) -> b.abstractText()
+        .transform((Fluent4Example.OnGoing.BookTransformer b) -> b.abstractText()
             .transform((StringTransformer<String> ty) -> ty.then().checkWithPredicate(isNull().negate()).done())
             .transform((StringTransformer<String> ty) -> ty.length().then()
                 .greaterThanOrEqualTo(200)

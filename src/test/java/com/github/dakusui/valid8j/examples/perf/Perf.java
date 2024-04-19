@@ -9,7 +9,7 @@ import org.junit.runners.MethodSorters;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-import static com.github.dakusui.valid8j.utils.Validates.validate;
+import static com.github.dakusui.valid8j.classic.Validates.validate;
 import static com.github.dakusui.valid8j.classic.Assertions.that;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.length;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;

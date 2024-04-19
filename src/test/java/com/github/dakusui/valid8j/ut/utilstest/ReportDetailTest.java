@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j.ut.utilstest;
 
-import com.github.dakusui.valid8j.utils.exceptions.IllegalValueException;
+import com.github.dakusui.valid8j.classic.IllegalValueException;
 import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.pcond.experimentals.cursor.Cursors;
 import com.github.dakusui.valid8j.pcond.fluent.Statement;
@@ -13,8 +13,8 @@ import org.junit.Test;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-import static com.github.dakusui.valid8j.utils.Validates.validate;
-import static com.github.dakusui.valid8j.utils.Validates.validateStatement;
+import static com.github.dakusui.valid8j.classic.Validates.validate;
+import static com.github.dakusui.valid8j.classic.Validates.validateStatement;
 import static com.github.dakusui.valid8j.classic.TestAssertions.assertThat;
 import static com.github.dakusui.valid8j.fluent.Expectations.assertAll;
 import static com.github.dakusui.valid8j.pcond.core.refl.MethodQuery.instanceMethod;

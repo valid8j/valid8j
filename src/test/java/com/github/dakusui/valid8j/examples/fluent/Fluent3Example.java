@@ -1,7 +1,6 @@
-package com.github.dakusui.valid8j_pcond.ut.fluent3;
+package com.github.dakusui.valid8j.examples.fluent;
 
 import com.github.dakusui.valid8j.utils.reporting.ReportParser;
-import com.github.dakusui.valid8j_pcond.ut.fluent4.Fluent4Example;
 import org.junit.ComparisonFailure;
 import org.junit.Ignore;
 import org.junit.Test;

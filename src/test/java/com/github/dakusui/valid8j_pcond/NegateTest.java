@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import java.util.function.Predicate;
 
-import static com.github.dakusui.valid8j.utils.Validates.validate;
+import static com.github.dakusui.valid8j.classic.Validates.validate;
 import static com.github.dakusui.valid8j.utils.TestUtils.lineAt;
 import static com.github.dakusui.valid8j.utils.TestUtils.simplifyString;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.length;

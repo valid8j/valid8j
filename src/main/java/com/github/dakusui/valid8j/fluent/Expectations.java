@@ -10,8 +10,11 @@ import com.github.dakusui.valid8j.pcond.core.fluent.Transformer;
 import com.github.dakusui.valid8j.pcond.core.fluent.builtins.*;
 import com.github.dakusui.valid8j.pcond.fluent.ListHolder;
 import com.github.dakusui.valid8j.pcond.fluent.Statement;
+import com.github.dakusui.valid8j.pcond.forms.Functions;
+import com.github.dakusui.valid8j.pcond.internals.InternalException;
 import com.github.dakusui.valid8j.pcond.validator.Validator;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -22,6 +25,7 @@ import java.util.stream.Stream;
 
 import static com.github.dakusui.valid8j.pcond.fluent.Statement.*;
 import static com.github.dakusui.valid8j.pcond.internals.InternalUtils.trivialIdentityFunction;
+import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toList;
 
 /**
@@ -85,8 +89,7 @@ public enum Expectations {
    * @return `true` if all the statements are satisfied.
    */
   public static boolean all(Statement<?>... statements) {
-    List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
-    return Assertions.that(values, Statement.createPredicateForAllOf(statements));
+    return ValidationFluents.all(statements);
   }
 
   /**
@@ -116,8 +119,7 @@ public enum Expectations {
    * @return `true` if all the statements are satisfied.
    */
   public static boolean preconditions(Statement<?>... statements) {
-    List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
-    return Assertions.precondition(values, Statement.createPredicateForAllOf(statements));
+    return ValidationFluents.preconditions(statements);
   }
 
   /**
@@ -131,7 +133,7 @@ public enum Expectations {
    * @see Expectations#preconditions(Statement[])
    */
   public static boolean precondition(Statement<?> statement) {
-    return preconditions(statement);
+    return ValidationFluents.precondition(statement);
   }
 
   /**
@@ -144,8 +146,7 @@ public enum Expectations {
    * @return `true` if all the statements are satisfied.
    */
   public static boolean invariants(Statement<?>... statements) {
-    List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
-    return Assertions.that(values, Statement.createPredicateForAllOf(statements));
+    return ValidationFluents.all(statements);
   }
 
   /**
@@ -156,10 +157,10 @@ public enum Expectations {
    *
    * @param statement to be evaluated by `assert` statement of Java.
    * @return `true` if all the given statements are satisfied.
-   * @see Expectations#preconditions(Statement[])
+   * @see Expectations#invariants(Statement[])
    */
   public static boolean invariant(Statement<?> statement) {
-    return invariants(statement);
+    return ValidationFluents.that(statement);
   }
 
   /**
@@ -205,8 +206,7 @@ public enum Expectations {
    * @param statement A precondition to be checked.
    */
   public static <T> T require(Statement<T> statement) {
-    ValidationFluents.requireAll(statement);
-    return statement.statementValue();
+    return ValidationFluents.requireStatement(statement);
   }
 
   /**
@@ -365,7 +365,7 @@ public enum Expectations {
    * @param <T> The type of the value.
    * @param <TX> The type of the transformer.
    * @param <V> The type of the
-   * @see com.github.dakusui.valid8j.pcond.core.fluent.CustomTransformer
+   * @see CustomTransformer
    */
   public static <T, TX extends Transformer<TX, V, T, T>, V extends Checker<V, T, T>> TX that(T value, Function<T, TX> transformerFactory) {
     return transformerFactory.apply(value);
@@ -493,7 +493,7 @@ public enum Expectations {
    * @param <TX>        The type of {@link Transformer}.
    * @param <V>         The type of {@link Checker}.
    * @return A transformer used for building a statement to validate the `value`.
-   * @see com.github.dakusui.valid8j.pcond.core.fluent.CustomTransformer
+   * @see CustomTransformer
    * @see Expectations#that(Object, Function)
    */
   public static <T, TX extends Transformer<TX, V, T, T>, V extends Checker<V, T, T>> TX value(T value, Function<T, TX> transformer) {
@@ -926,6 +926,90 @@ public enum Expectations {
     @Override
     protected Matcher<?, T, T> rebase() {
       return new LocalTransformer<>(this::value, checkerFactory);
+    }
+  }
+  
+  /**
+   * A base class for a custom transformer.
+   *
+   * [source,java]
+   * .Example Transformer
+   * ----
+   * public static class BookTransformer extends CustomTransformer<BookTransformer, Book> {
+   *   public BookTransformer(Book rootValue) {
+   *     super(rootValue);
+   *   }
+   *
+   *   public StringTransformer<Book> title() {
+   *     return toString(Printables.function("title", Book::title));
+   *   }
+   *
+   *   public StringTransformer<Book> abstractText() {
+   *     return toString(Printables.function("abstractText", Book::abstractText));
+   *   }
+   * }
+   * ----
+   *
+   * In the example above, the custom transformer class `BookTransformer`, which targets `Book` type value is specified for `TX`,
+   * while the `Book` is specified for `T`.
+   *
+   * @param <TX> This class
+   * @param <T> Type of the class that is targeted by the transformer.
+   */
+  public abstract static class CustomTransformer<
+      TX extends AbstractObjectTransformer<
+                  TX,
+          ObjectChecker<T, T>,
+                  T,
+                  T>,
+      T> extends
+      Transformer.Base<
+          TX,
+          ObjectChecker<T, T>,
+          T,
+          T> implements
+      AbstractObjectTransformer<
+              TX,
+          ObjectChecker<T, T>,
+              T,
+              T> {
+    /**
+     * Creates an instance of this class.
+     *
+     * @param baseValue The target value of this transformer.
+     */
+    public CustomTransformer(T baseValue) {
+      super(() -> baseValue, Functions.identity());
+    }
+  
+    /**
+     * A method to be used for internal purposes.
+     *
+     * @return this object.
+     */
+    @Override
+    protected TX rebase() {
+      return create(this.value());
+    }
+  
+    @Override
+    protected ObjectChecker<T, T> toChecker(Function<T, T> transformFunction) {
+      return new ObjectChecker.Impl<>(this::value, transformFunction);
+    }
+  
+    @SuppressWarnings("unchecked")
+    public TX transform(Function<TX, Predicate<T>> clause) {
+      requireNonNull(clause);
+      return this.addTransformAndCheckClause(tx -> clause.apply((TX) tx));
+    }
+  
+    @SuppressWarnings("unchecked")
+    protected TX create(T value) {
+      try {
+        return (TX) this.getClass().getConstructor(value.getClass()).newInstance(value);
+      } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+        throw new InternalException(String.format("Failed to create an instance of this class: <%s>", this.getClass()), e);
+      }
     }
   }
 }

@@ -10,7 +10,12 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assume.assumeThat;
 
 /**
- * Created by hiroshi.ukai on 8/26/17.
+ * A base class for tests.
+ * If you extend this class,  it suppresses all output to `stdout` and `stderr` during tests when the class is run under maven.
+ * When the class is run from your IDE, the messages you write by `System.out.println` will be shown in output, for instance.
+ *
+ * Once a test fails, you may sometimes want to know how your test and SUT work through their output without looking into log files or through debugger.
+ * This class is useful for that.
  */
 public class TestBase {
   @Before

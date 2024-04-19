@@ -1,11 +1,11 @@
-package com.github.dakusui.valid8j.entrypoints.n;
+package com.github.dakusui.valid8j.entrypoints;
 
 import com.github.dakusui.valid8j.utils.exceptions.ApplicationException;
 import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import com.github.dakusui.valid8j.pcond.forms.Printables;
 import com.github.dakusui.valid8j.pcond.validator.exceptions.ValidationException;
-import com.github.dakusui.valid8j.utils.Validates;
+import com.github.dakusui.valid8j.classic.Validates;
 import org.junit.Test;
 
 import java.util.function.Function;
@@ -13,7 +13,7 @@ import java.util.function.Function;
 import static com.github.dakusui.valid8j.utils.TestUtils.firstLineOf;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.call;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;
-import static com.github.dakusui.valid8j.utils.Validates.validateState;
+import static com.github.dakusui.valid8j.classic.Validates.validateState;
 import static org.junit.Assert.assertEquals;
 
 public class ValidatesTest extends TestBase {

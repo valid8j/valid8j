@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j_pcond;
 
-import com.github.dakusui.valid8j.utils.exceptions.IllegalValueException;
+import com.github.dakusui.valid8j.classic.IllegalValueException;
 import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.classic.TestAssertions;
 import com.github.dakusui.valid8j.pcond.forms.Functions;
@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 import java.util.Objects;
 import java.util.function.Function;
 
-import static com.github.dakusui.valid8j.utils.Validates.validate;
+import static com.github.dakusui.valid8j.classic.Validates.validate;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;

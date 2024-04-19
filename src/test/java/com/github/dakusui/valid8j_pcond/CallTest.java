@@ -12,7 +12,7 @@ import org.junit.Test;
 import java.util.Objects;
 import java.util.function.Function;
 
-import static com.github.dakusui.valid8j.utils.Validates.validate;
+import static com.github.dakusui.valid8j.classic.Validates.validate;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;

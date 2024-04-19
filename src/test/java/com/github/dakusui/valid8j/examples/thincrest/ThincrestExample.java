@@ -1,6 +1,6 @@
-package com.github.dakusui.valid8j.examples;
+package com.github.dakusui.valid8j.examples.thincrest;
 
-import com.github.dakusui.valid8j.pcond.core.fluent.CustomTransformer;
+import com.github.dakusui.valid8j.fluent.Expectations;
 import com.github.dakusui.valid8j.pcond.core.fluent.builtins.StringTransformer;
 import com.github.dakusui.valid8j.pcond.forms.Functions;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
@@ -174,7 +174,7 @@ public class ThincrestExample {
     }
   }
   
-  static class SaluteTransformer extends CustomTransformer<SaluteTransformer, Salute> {
+  static class SaluteTransformer extends Expectations.CustomTransformer<SaluteTransformer, Salute> {
     /**
      * Creates an instance of this class.
      *

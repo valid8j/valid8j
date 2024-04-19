@@ -74,7 +74,7 @@ public class TestExample {
 
 This produces output like following:
 
-[nowrap]
+[%nowrap]
 ----
 Exception in thread "main" java.lang.AssertionError: value:<[100]> violated precondition:value (at[0] WHEN:(>=[0]&&<[100]))
 Mismatch>:    [100]->allOf             ->false

@@ -1,4 +1,4 @@
-package com.github.dakusui.valid8j.ut.compatibility;
+package com.github.dakusui.valid8j.ut.typesupports;
 
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import org.junit.Test;

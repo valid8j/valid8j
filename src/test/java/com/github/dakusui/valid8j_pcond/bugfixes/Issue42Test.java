@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j_pcond.bugfixes;
 
-import com.github.dakusui.valid8j.utils.Validates;
+import com.github.dakusui.valid8j.classic.Validates;
 import com.github.dakusui.valid8j_pcond.bugfixes.issue42.Issue42Utils;
 import org.junit.Test;
 

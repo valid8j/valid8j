@@ -1,10 +1,10 @@
 package com.github.dakusui.valid8j_pcond.types;
 
-import com.github.dakusui.valid8j.utils.exceptions.IllegalValueException;
+import com.github.dakusui.valid8j.classic.IllegalValueException;
 import com.github.dakusui.valid8j.pcond.fluent.Statement;
 import org.junit.Test;
 
-import static com.github.dakusui.valid8j.utils.Validates.validateStatement;
+import static com.github.dakusui.valid8j.classic.Validates.validateStatement;
 
 public class FloatTest {
   @Test

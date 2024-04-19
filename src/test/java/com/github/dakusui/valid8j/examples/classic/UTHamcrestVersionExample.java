@@ -1,6 +1,6 @@
-package com.github.dakusui.valid8j.examples.thincrest;
+package com.github.dakusui.valid8j.examples.classic;
 
-import com.github.dakusui.valid8j.examples.thincrest.sut.NameUtils;
+import com.github.dakusui.valid8j.examples.sut.NameUtils;
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation;
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation.EnsureJUnitResult;
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation.ResultPredicateFactory.*;

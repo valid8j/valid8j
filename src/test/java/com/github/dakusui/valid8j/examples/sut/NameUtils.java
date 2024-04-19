@@ -1,4 +1,4 @@
-package com.github.dakusui.valid8j.examples.thincrest.sut;
+package com.github.dakusui.valid8j.examples.sut;
 
 public enum NameUtils {
   ;

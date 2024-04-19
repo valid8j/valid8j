@@ -1,7 +1,9 @@
-package com.github.dakusui.valid8j.examples;
+package com.github.dakusui.valid8j.examples.test;
 
+import com.github.dakusui.valid8j.examples.thincrest.Valid8JExample;
 import com.github.dakusui.valid8j.examples.metamor.MetamorExampleFailing;
 import com.github.dakusui.valid8j.examples.metamor.MetamorExamplePassing;
+import com.github.dakusui.valid8j.examples.thincrest.ThincrestExample;
 import com.github.dakusui.valid8j.utils.metatest.Metatest;
 import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import org.junit.Test;

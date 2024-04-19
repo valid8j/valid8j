@@ -1,7 +1,7 @@
-package com.github.dakusui.valid8j_pcond.ut.fluent4;
+package com.github.dakusui.valid8j.examples.fluent;
 
+import com.github.dakusui.valid8j.fluent.Expectations;
 import com.github.dakusui.valid8j.utils.reporting.ReportParser;
-import com.github.dakusui.valid8j.pcond.core.fluent.CustomTransformer;
 import com.github.dakusui.valid8j.pcond.core.fluent.builtins.StringTransformer;
 import com.github.dakusui.valid8j.pcond.forms.Functions;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
@@ -239,7 +239,7 @@ public class Fluent4Example {
       }
     }
 
-    public static class BookTransformer extends CustomTransformer<BookTransformer, Book> {
+    public static class BookTransformer extends Expectations.CustomTransformer<BookTransformer, Book> {
       public BookTransformer(Book rootValue) {
         super(rootValue);
       }

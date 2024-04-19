@@ -1,4 +1,4 @@
-package com.github.dakusui.valid8j.ut.compatibility;
+package com.github.dakusui.valid8j.ut.typesupports;
 
 import org.junit.Test;
 

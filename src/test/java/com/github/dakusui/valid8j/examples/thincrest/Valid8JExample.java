@@ -1,4 +1,4 @@
-package com.github.dakusui.valid8j.examples;
+package com.github.dakusui.valid8j.examples.thincrest;
 
 import com.github.dakusui.valid8j.fluent.internals.ValidationFluents;
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation;
