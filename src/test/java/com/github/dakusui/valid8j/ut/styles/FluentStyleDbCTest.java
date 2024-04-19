@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j.ut.styles;
 
-import com.github.dakusui.shared.utils.ut.TestBase;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.fluent.internals.ValidationFluents;
 import com.github.dakusui.valid8j.pcond.validator.exceptions.PostconditionViolationException;
 import com.github.dakusui.valid8j.pcond.validator.exceptions.PreconditionViolationException;

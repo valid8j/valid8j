@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j_pcond.ut.fluent3;
 
-import com.github.dakusui.shared.ReportParser;
+import com.github.dakusui.valid8j.utils.reporting.ReportParser;
 import com.github.dakusui.valid8j_pcond.ut.fluent4.Fluent4Example;
 import org.junit.ComparisonFailure;
 import org.junit.Ignore;
@@ -27,7 +27,7 @@ public class Fluent3Example {
     public void secondExample() {
       assertAll(
           stringValue("Hello")
-              .then()
+              .toBe()
               .nullValue());
     }
 
@@ -36,7 +36,7 @@ public class Fluent3Example {
       assertAll(
           stringValue("Hello")
               .allOf()
-              .then()
+              .toBe()
               .notNull()
               .nullValue());
     }
@@ -46,7 +46,7 @@ public class Fluent3Example {
       assertAll(
           stringValue("Hello")
               .allOf()
-              .then()
+              .toBe()
               .notNull()
               .nullValue());
     }

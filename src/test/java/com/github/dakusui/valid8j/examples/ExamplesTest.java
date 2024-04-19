@@ -11,12 +11,12 @@ public class ExamplesTest extends TestBase {
   public void testClassicExample() {
     Metatest.verifyTestClass(ThincrestExample.class);
   }
-  
+
   @Test
   public void testFluentExample() {
     Metatest.verifyTestClass(Valid8JExample.class);
   }
-  
+
   @Test
   public void testMetarmorExamplePassing() {
     Metatest.verifyTestClass(MetamorExamplePassing.class);

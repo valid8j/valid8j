@@ -1,7 +1,7 @@
 package com.github.dakusui.valid8j_pcond;
 
-import com.github.dakusui.shared.ApplicationException;
-import com.github.dakusui.shared.utils.ut.TestBase;
+import com.github.dakusui.valid8j.utils.exceptions.ApplicationException;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.pcond.forms.Printables;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import java.util.function.Predicate;
 
-import static com.github.dakusui.shared.TestUtils.validate;
+import static com.github.dakusui.valid8j.utils.Validates.validate;
 import static com.github.dakusui.valid8j.utils.TestUtils.lineAt;
 import static com.github.dakusui.valid8j.utils.TestUtils.simplifyString;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.length;

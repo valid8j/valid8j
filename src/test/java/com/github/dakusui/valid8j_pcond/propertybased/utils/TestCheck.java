@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j_pcond.propertybased.utils;
 
-import com.github.dakusui.shared.ReportParser;
+import com.github.dakusui.valid8j.utils.reporting.ReportParser;
 import org.junit.ComparisonFailure;
 
 import java.util.Collection;

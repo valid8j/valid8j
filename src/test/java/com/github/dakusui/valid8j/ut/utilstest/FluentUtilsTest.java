@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j.ut.utilstest;
 
-import com.github.dakusui.shared.utils.ut.TestBase;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import org.junit.ComparisonFailure;
 import org.junit.Test;
 

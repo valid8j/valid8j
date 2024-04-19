@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j.ut.compatibility;
 
-import com.github.dakusui.shared.utils.ut.TestBase;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import org.junit.Test;
 

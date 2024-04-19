@@ -1,8 +1,6 @@
 package com.github.dakusui.valid8j.ut.styles.fluent;
 
-import com.github.dakusui.shared.ReportParser;
-import com.github.dakusui.shared.utils.ut.TestBase;
-import com.github.dakusui.valid8j.metamor.MetamorphicReportComposer;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.pcond.fluent.Statement;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import com.github.dakusui.valid8j.pcond.forms.Printables;
@@ -39,17 +37,17 @@ public class GeneralFluentTest extends TestBase {
     final List<Function<T, Predicate<T>>> statementFactories;
     final List<T>                         passingValues;
     final List<T>                         failingValues;
-    
+
     TestSuite(Function<T, Predicate<T>> statementFactory, List<T> passingValues, List<T> failingValues) {
       this(singletonList(statementFactory), passingValues, failingValues);
     }
-    
+
     TestSuite(List<Function<T, Predicate<T>>> statementFactories, List<T> passingValues, List<T> failingValues) {
       this.statementFactories = statementFactories;
       this.passingValues = passingValues;
       this.failingValues = failingValues;
     }
-    
+
     List<TestCase<T, ?>> createTestCases() {
       return Stream.concat(
               this.passingValues.stream()
@@ -61,18 +59,18 @@ public class GeneralFluentTest extends TestBase {
           .collect(toList());
     }
   }
-  
+
   private final TestCase<?, ?> testCase;
-  
+
   public GeneralFluentTest(TestCase<?, ?> testCase) {
     this.testCase = testCase;
   }
-  
+
   @Test
   public void exerciseTestCase() throws Throwable {
     TestCaseUtils.exerciseTestCase(this.testCase);
   }
-  
+
   @Parameterized.Parameters(name = "{index}: {0}")
   public static List<TestCase<?, ?>> toTestCases() {
     return Stream.of(
@@ -93,14 +91,14 @@ public class GeneralFluentTest extends TestBase {
         .flatMap(each -> each.createTestCases().stream())
         .collect(toList());
   }
-  
+
   private static TestSuite<Boolean> booleanTestSuite_1() {
     return new TestSuite<>(
         v -> Statement.booleanValue(v).then().isTrue().done(),
         asList(true, Boolean.TRUE),
         asList(false, Boolean.FALSE, null));
   }
-  
+
   private static TestSuite<List<String>> listTestSuite_1() {
     return new TestSuite<>(
         asList(
@@ -113,29 +111,29 @@ public class GeneralFluentTest extends TestBase {
             singletonList("X"),
             Collections.emptyList()));
   }
-  
+
   private static TestSuite<List<String>> listTestSuite_2() {
     return new TestSuite<>(
         singletonList((List<String> v) -> Statement.listValue(v).then().isEmpty().done()),
         singletonList(emptyList()),
         singletonList(singletonList("X")));
   }
-  
+
   private static TestSuite<List<String>> listTestSuite_3a() {
     return new TestSuite<>(
         singletonList((List<String> v) -> Statement.objectValue(v).asList().then().isEmpty().done()),
         singletonList(emptyList()),
         singletonList(singletonList("X")));
   }
-  
+
   private static TestSuite<List<String>> listTestSuite_3b() {
     return new TestSuite<>(
         singletonList((List<String> v) -> Statement.objectValue(v).asListOf(String.class).then().isEmpty().done()),
         singletonList(emptyList()),
         singletonList(singletonList("X")));
   }
-  
-  
+
+
   private static TestSuite<String> stringTestSuite_1() {
     return new TestSuite<>(
         asList(
@@ -147,7 +145,7 @@ public class GeneralFluentTest extends TestBase {
         singletonList("123"),
         asList("456", "A", null));
   }
-  
+
   private static TestSuite<String> stringTestSuite_2() {
     return new TestSuite<>(
         singletonList(
@@ -155,7 +153,7 @@ public class GeneralFluentTest extends TestBase {
         singletonList("true"),
         asList("false", "XYZ", null));
   }
-  
+
   private static TestSuite<String> stringTestSuite_3() {
     return new TestSuite<>(
         asList(
@@ -165,7 +163,7 @@ public class GeneralFluentTest extends TestBase {
         singletonList("A:B:C"),
         asList("A:B", null));
   }
-  
+
   @SuppressWarnings("StringOperationCanBeSimplified")
   private static TestSuite<String> objectTestSuite_1() {
     String s = "hello";
@@ -177,7 +175,7 @@ public class GeneralFluentTest extends TestBase {
         singletonList(s),
         singletonList(new String(s)));
   }
-  
+
   @SuppressWarnings("StringOperationCanBeSimplified")
   private static TestSuite<String> objectTestSuite_2() {
     String s = "hello";
@@ -190,7 +188,7 @@ public class GeneralFluentTest extends TestBase {
         asList(s, new String(s)),
         singletonList("HELLO"));
   }
-  
+
   private static TestSuite<String> objectTestSuite_3() {
     String s = "hello";
     return new TestSuite<>(
@@ -199,7 +197,7 @@ public class GeneralFluentTest extends TestBase {
         singletonList(null),
         singletonList("HELLO"));
   }
-  
+
   private static TestSuite<String> objectTestSuite_4() {
     return new TestSuite<>(
         asList(
@@ -210,9 +208,9 @@ public class GeneralFluentTest extends TestBase {
         singletonList("123"),
         singletonList("124"));
   }
-  
+
   private static TestSuite<String> objectTestSuite_5() {
-    
+
     return new TestSuite<>(
         asList(
             (String v) -> Statement.stringValue(v).parseFloat().asObject().asFloat().then().equalTo(123.4f).done(),
@@ -221,7 +219,7 @@ public class GeneralFluentTest extends TestBase {
         singletonList("123.4"),
         singletonList("123.5"));
   }
-  
+
   private static TestSuite<String> exceptionTestSuite_1() {
     class IntentionalException extends RuntimeException {
     }
@@ -239,5 +237,5 @@ public class GeneralFluentTest extends TestBase {
         singletonList("Hello"),
         singletonList("Bye"));
   }
-  
+
 }

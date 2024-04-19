@@ -1,7 +1,7 @@
 package com.github.dakusui.valid8j_pcond;
 
-import com.github.dakusui.shared.IllegalValueException;
-import com.github.dakusui.shared.utils.ut.TestBase;
+import com.github.dakusui.valid8j.utils.exceptions.IllegalValueException;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.classic.TestAssertions;
 import com.github.dakusui.valid8j.pcond.forms.Functions;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 import java.util.Objects;
 import java.util.function.Function;
 
-import static com.github.dakusui.shared.TestUtils.validate;
+import static com.github.dakusui.valid8j.utils.Validates.validate;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -39,16 +39,16 @@ public class PrintablesFunctionTest {
               not(is(n)),
               not(is(o))));
     }
-    
+
     @Test(expected = IllegalValueException.class)
     public void testHandleNull() {
       Function<String, String> f = Functions.identity();
       String o = null;
       validate(o, Predicates.transform(f).check(Predicates.isNotNull()));
     }
-    
+
   }
-  
+
   public static class Parameterized {
     @Test
     public void test() {
@@ -67,7 +67,7 @@ public class PrintablesFunctionTest {
               not(is(o))));
     }
   }
-  
+
   public static class Composed extends TestBase {
     @Test
     public void testCompose() {
@@ -76,7 +76,7 @@ public class PrintablesFunctionTest {
       Function<?, ?> g = Functions.identity().compose(Functions.stringify());
       Function<?, ?> h = Functions.stringify().compose(Functions.length());
       Object o = new Object();
-      
+
       assertThat(
           f1,
           CoreMatchers.allOf(
@@ -87,7 +87,7 @@ public class PrintablesFunctionTest {
               not(is(o))
           ));
     }
-    
+
     @Test
     public void testAndThen() {
       Function<?, ?> f1 = Functions.identity().andThen(Functions.identity());
@@ -96,7 +96,7 @@ public class PrintablesFunctionTest {
       Function<?, ?> h = Functions.stringify().andThen(Functions.length());
       Function<?, ?> i = Functions.identity().compose(Functions.identity());
       Object o = new Object();
-      
+
       assertThat(
           f1,
           CoreMatchers.allOf(
@@ -108,11 +108,11 @@ public class PrintablesFunctionTest {
               not(is(o))
           ));
     }
-    
+
     @Test
     public void testAndThen$toString() {
       Function<Object, Object> f1 = Functions.identity().andThen(Function.identity());
-      
+
       System.out.println(f1);
       System.out.println(f1.apply("hello"));
       assertThat(
@@ -120,8 +120,8 @@ public class PrintablesFunctionTest {
           startsWith("identity->java.util.function.Function"));
       assertEquals(f1.apply("hello"), "hello");
     }
-    
-    
+
+
     @Test(expected = ComparisonFailure.class)
     public void testFailureFromAndThenStructureInTransformer() {
       TestAssertions.assertThat("hello",
@@ -134,7 +134,7 @@ public class PrintablesFunctionTest {
               .check(Predicates.equalTo("Nothing"))
       );
     }
-    
+
     @Test(expected = ComparisonFailure.class)
     public void testFailureFromComposeStructureInTransformer() {
       TestAssertions.assertThat("hello",
@@ -147,19 +147,19 @@ public class PrintablesFunctionTest {
               .check(Predicates.equalTo("Nothing"))
       );
     }
-    
+
     private static Function<String, String> createToLowerCase(int i) {
       return Printables.function("toLowerCase", o -> Objects.toString(o).toLowerCase() + i);
     }
-    
+
     private static Function<Object, String> createToUpperCase(int i) {
       return Printables.function("toUpperCase", o -> Objects.toString(o).toUpperCase() + i) ;
     }
-    
+
     @Test
     public void testCompose$toString() {
       Function<Object, Object> f1 = Functions.identity().compose(Function.identity());
-      
+
       System.out.println(f1);
       System.out.println(f1.apply("hello"));
       assertThat(
@@ -169,7 +169,7 @@ public class PrintablesFunctionTest {
               endsWith("->identity")));
       assertEquals(f1.apply("hello"), "hello");
     }
-    
+
     @Test
     public void testComposeParameterized() {
       Function<?, ?> f1 = Functions.identity().compose(Functions.elementAt(0));
@@ -178,7 +178,7 @@ public class PrintablesFunctionTest {
       Function<?, ?> h = Functions.cast(String.class).compose(Functions.length());
       Object n = null;
       Object o = new Object();
-      
+
       assertThat(
           f1,
           CoreMatchers.allOf(

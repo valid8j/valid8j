@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j.examples.perf;
 
-import com.github.dakusui.shared.ApplicationException;
+import com.github.dakusui.valid8j.utils.exceptions.ApplicationException;
 import org.junit.*;
 import org.junit.rules.Stopwatch;
 import org.junit.runner.Description;
@@ -9,7 +9,7 @@ import org.junit.runners.MethodSorters;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-import static com.github.dakusui.shared.TestUtils.validate;
+import static com.github.dakusui.valid8j.utils.Validates.validate;
 import static com.github.dakusui.valid8j.classic.Assertions.that;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.length;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;

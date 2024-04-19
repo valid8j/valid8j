@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j.utils;
 
-import com.github.dakusui.shared.ReportParser;
+import com.github.dakusui.valid8j.utils.reporting.ReportParser;
 import com.github.dakusui.valid8j.pcond.forms.Printables;
 import org.junit.ComparisonFailure;
 

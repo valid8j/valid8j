@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j.ut.styles.fluent;
 
-import com.github.dakusui.shared.utils.ut.TestBase;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.pcond.forms.Functions;
 import org.junit.Test;
 

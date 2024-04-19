@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j_pcond.ut;
 
-import com.github.dakusui.shared.utils.ut.TestBase;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.pcond.core.Evaluable;
 import com.github.dakusui.valid8j.pcond.internals.InternalException;
 import com.github.dakusui.valid8j.pcond.internals.InternalUtils;
@@ -151,7 +151,7 @@ public class InternalUtilsTest {
     }
   }
 
-  public static class TestAssertFailsWith extends com.github.dakusui.valid8j.utils.testbase.TestBase.ForAssertionEnabledVM {
+  public static class TestAssertFailsWith extends TestBase.ForAssertionEnabledVM {
     @Test
     public void givenTrue$whenAssertionFailsWith$thenFalse() {
       assertFalse(InternalUtils.assertFailsWith(true));

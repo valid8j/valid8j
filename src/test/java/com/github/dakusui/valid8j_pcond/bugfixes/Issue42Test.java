@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j_pcond.bugfixes;
 
-import com.github.dakusui.shared.TestUtils;
+import com.github.dakusui.valid8j.utils.Validates;
 import com.github.dakusui.valid8j_pcond.bugfixes.issue42.Issue42Utils;
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 public class Issue42Test {
   @Test
   public void givenPrivateClassOverridingPublicMethod$whenPublicMethodIsCalled$thenCallSucceeds() {
-    Map<String, String> map = TestUtils.validate(
+    Map<String, String> map = Validates.validate(
         Issue42Utils.createPrivateExtendingPublicMap("Hello"),
         transform(mapKeySet()).check(not(isEmpty())));
     assertEquals(Collections.singleton("Hello"), map.keySet());

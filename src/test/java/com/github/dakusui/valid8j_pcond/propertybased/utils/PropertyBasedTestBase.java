@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j_pcond.propertybased.utils;
 
-import com.github.dakusui.shared.utils.ut.TestBase;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import org.junit.Test;
 
 import static java.util.Objects.requireNonNull;

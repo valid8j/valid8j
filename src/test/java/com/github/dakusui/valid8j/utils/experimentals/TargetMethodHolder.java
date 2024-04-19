@@ -1,4 +1,4 @@
-package com.github.dakusui.shared;
+package com.github.dakusui.valid8j.utils.experimentals;
 
 import java.util.Objects;
 

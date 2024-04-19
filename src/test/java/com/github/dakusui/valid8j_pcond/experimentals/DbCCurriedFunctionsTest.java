@@ -1,8 +1,8 @@
 package com.github.dakusui.valid8j_pcond.experimentals;
 
-import com.github.dakusui.shared.ExperimentalsUtils;
-import com.github.dakusui.shared.IllegalValueException;
-import com.github.dakusui.shared.TargetMethodHolder;
+import com.github.dakusui.valid8j.utils.experimentals.ExperimentalsUtils;
+import com.github.dakusui.valid8j.utils.exceptions.IllegalValueException;
+import com.github.dakusui.valid8j.utils.experimentals.TargetMethodHolder;
 import com.github.dakusui.valid8j.pcond.experimentals.currying.CurriedFunction;
 import com.github.dakusui.valid8j.pcond.experimentals.currying.CurriedFunctions;
 import com.github.dakusui.valid8j.pcond.experimentals.currying.context.CurriedContext;
@@ -15,9 +15,9 @@ import org.junit.Test;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import static com.github.dakusui.shared.ExperimentalsUtils.areEqual;
-import static com.github.dakusui.shared.ExperimentalsUtils.stringEndsWith;
-import static com.github.dakusui.shared.TestUtils.validate;
+import static com.github.dakusui.valid8j.utils.experimentals.ExperimentalsUtils.areEqual;
+import static com.github.dakusui.valid8j.utils.experimentals.ExperimentalsUtils.stringEndsWith;
+import static com.github.dakusui.valid8j.utils.Validates.validate;
 import static com.github.dakusui.valid8j.utils.TestUtils.lineAt;
 import static com.github.dakusui.valid8j.pcond.experimentals.currying.CurriedFunctions.*;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.stream;

@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j.ut.styles;
 
-import com.github.dakusui.shared.utils.ut.TestBase;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.classic.TestAssertions;
 import com.github.dakusui.valid8j.fluent.Expectations;
 import com.github.dakusui.valid8j.pcond.fluent.ListHolder;

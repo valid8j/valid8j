@@ -9,7 +9,10 @@ import static com.github.dakusui.valid8j.pcond.internals.InternalUtils.assertFai
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assume.assumeThat;
 
-public abstract class TestBase {
+/**
+ * Created by hiroshi.ukai on 8/26/17.
+ */
+public class TestBase {
   @Before
   public void before() {
     TestUtils.suppressStdOutErrIfUnderPitestOrSurefire();
@@ -19,8 +22,8 @@ public abstract class TestBase {
   public void after() {
     TestUtils.restoreStdOutErr();
   }
-  
-  public static class ForAssertionEnabledVM extends com.github.dakusui.shared.utils.ut.TestBase {
+
+  public static class ForAssertionEnabledVM extends TestBase {
     @BeforeClass
     public static void setUpBeforeAll() {
       assumeThat(assertFailsWith(false), is(true));

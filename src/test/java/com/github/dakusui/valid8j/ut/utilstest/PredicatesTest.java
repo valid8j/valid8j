@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j.ut.utilstest;
 
-import com.github.dakusui.shared.utils.ut.TestBase;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.classic.TestAssertions;
 import com.github.dakusui.valid8j.pcond.experimentals.cursor.Cursors;
 import com.github.dakusui.valid8j.pcond.forms.Functions;
@@ -70,7 +70,7 @@ public class PredicatesTest {
       TestAssertions.assertThat(value, Predicates.or(Predicates.isInstanceOf(String.class), Predicates.isInstanceOf(List.class)));
     }
   }
-  public static class IsNullTest extends com.github.dakusui.valid8j.utils.testbase.TestBase.ForAssertionEnabledVM {
+  public static class IsNullTest extends TestBase.ForAssertionEnabledVM {
     @Test
     public void whenMet$thenTrue() {
       assertTrue(Predicates.isNull().test(null));
@@ -82,7 +82,7 @@ public class PredicatesTest {
     }
   }
 
-  public static class IsNotNullTest extends com.github.dakusui.valid8j.utils.testbase.TestBase.ForAssertionEnabledVM {
+  public static class IsNotNullTest extends TestBase.ForAssertionEnabledVM {
     @Test
     public void whenMet$thenTrue() {
       assertTrue(Predicates.isNotNull().test("HELLO"));
@@ -291,7 +291,7 @@ public class PredicatesTest {
     }
   }
 
-  public static class AndTest extends com.github.dakusui.valid8j.utils.testbase.TestBase.ForAssertionEnabledVM {
+  public static class AndTest extends TestBase.ForAssertionEnabledVM {
     @Test
     public void performSingleAnd$thenTrue() {
       assertTrue(Predicates.and(Predicates.alwaysTrue()).test("hello"));

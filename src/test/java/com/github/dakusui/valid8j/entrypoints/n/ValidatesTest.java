@@ -1,7 +1,7 @@
 package com.github.dakusui.valid8j.entrypoints.n;
 
-import com.github.dakusui.shared.ApplicationException;
-import com.github.dakusui.shared.utils.ut.TestBase;
+import com.github.dakusui.valid8j.utils.exceptions.ApplicationException;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import com.github.dakusui.valid8j.pcond.forms.Printables;
 import com.github.dakusui.valid8j.pcond.validator.exceptions.ValidationException;
@@ -13,6 +13,7 @@ import java.util.function.Function;
 import static com.github.dakusui.valid8j.utils.TestUtils.firstLineOf;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.call;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;
+import static com.github.dakusui.valid8j.utils.Validates.validateState;
 import static org.junit.Assert.assertEquals;
 
 public class ValidatesTest extends TestBase {
@@ -104,19 +105,19 @@ transformAndCheck                             -> false
   @Test
   public void test_validateNonNull_pass() {
     String var = "Hello";
-    Validates.validateNonNull(var);
+    assertEquals("Hello", Validates.validateNonNull(var));
   }
 
   @Test
   public void test_validateState_pass() {
     String var = "Hello";
-    Validates.validateState(var, isNotNull());
+    assertEquals(var, validateState(var, isNotNull()));
   }
 
   @Test
   public void test_validateArgument_pass() {
     String var = "Hello";
-    Validates.validateArgument(var, isNotNull());
+    assertEquals(var, Validates.validateArgument(var, isNotNull()));
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -134,7 +135,7 @@ transformAndCheck                             -> false
   @Test(expected = ValidationException.class)
   public void test_validate_fail() {
     String var = "Hello";
-    Validates.validate(var, isNull());
+    Validates.validate(var, isNull(), ValidationException::new);
   }
 
   private Function<String, String> stringToLowerCase() {

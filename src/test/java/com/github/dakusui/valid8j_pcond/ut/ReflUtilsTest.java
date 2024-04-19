@@ -1,6 +1,6 @@
 package com.github.dakusui.valid8j_pcond.ut;
 
-import com.github.dakusui.shared.utils.ut.TestBase;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.pcond.core.refl.ReflUtils;
 import org.junit.Test;
 

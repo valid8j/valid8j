@@ -1,13 +1,13 @@
 package com.github.dakusui.valid8j_pcond.types;
 
-import com.github.dakusui.shared.IllegalValueException;
-import com.github.dakusui.shared.utils.ut.TestBase;
+import com.github.dakusui.valid8j.utils.exceptions.IllegalValueException;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import org.junit.Test;
 
 import java.util.stream.Stream;
 
-import static com.github.dakusui.shared.TestUtils.validate;
+import static com.github.dakusui.valid8j.utils.Validates.validate;
 import static com.github.dakusui.valid8j.pcond.fluent.Statement.streamValue;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.containsString;
 

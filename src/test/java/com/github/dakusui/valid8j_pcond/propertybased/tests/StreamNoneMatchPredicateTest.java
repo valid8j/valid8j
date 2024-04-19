@@ -16,7 +16,7 @@ import org.junit.runners.Parameterized.Parameters;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import static com.github.dakusui.shared.ExperimentalsUtils.stringEndsWith;
+import static com.github.dakusui.valid8j.utils.experimentals.ExperimentalsUtils.stringEndsWith;
 import static com.github.dakusui.valid8j.pcond.experimentals.currying.CurriedFunctions.nest;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.length;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;

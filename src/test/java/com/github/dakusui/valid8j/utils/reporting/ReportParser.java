@@ -1,4 +1,4 @@
-package com.github.dakusui.shared;
+package com.github.dakusui.valid8j.utils.reporting;
 
 import org.junit.ComparisonFailure;
 

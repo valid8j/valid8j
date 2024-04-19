@@ -43,7 +43,7 @@ public class PrintablePredicateTest {
     }
   }
 
-  private abstract static class Conj extends com.github.dakusui.valid8j.utils.testbase.TestBase.ForAssertionEnabledVM {
+  private abstract static class Conj extends TestBase.ForAssertionEnabledVM {
     @Test
     public void examineAllOfWorks() {
       Predicate<?> p1 = create("P", Predicates.isNotNull(), Predicates.isNotNull());
