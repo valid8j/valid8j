@@ -1,0 +1,1 @@
+A package to place utility classes internally used by the `pcond` library.

@@ -1,0 +1,3 @@
+A package to provide the "Context" mechanism of the `pcond` library.
+
+The curriedContext is a key-mechanism to handle a situation, where you need a "nested-loop".

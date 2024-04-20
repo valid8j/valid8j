@@ -1,0 +1,12 @@
+A package to provide the core part of the `pcond` 's functionalities.
+
+One key idea of the `pcond` library is to make predicates and function printable with their input and output values in a human-readable way.
+To achieve this goal, it offers a structure and mechanism to evaluate a tree of functions and predicates.
+
+This package hosts the most important interfaces for this architecture.
+
+Evaluable:: Corresponds to a function and a predicate.
+Sub-interfaces are defined to model a non-simple function and a predicate, such as "and", "or", "not", etc.
+Evaluator:: A visitor that computes a result value of the entire tree composed of the `Evaluable` objects.
+
+These consists the "evaluation framework" of the `pcond` library.

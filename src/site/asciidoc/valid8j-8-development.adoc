@@ -1,0 +1,60 @@
+= Development
+
+`valid8j` is built and tested using https://www.oracle.com/java/technologies/java8.html[Java 8], which is the most compatible as of April in 2024.
+
+== Prerequisites
+
+(t.b.d.)
+
+- `mvn`
+- JDK (Java SE 8. No older, no newer. OpenJDK is recommended.)
+- `dot` (Necessary for building the documentation. You can install it as a part of `graphviz`)
+
+
+== Setting Up a Development Environment
+
+- `git clone https://github.com/dakusui/valid8j.git`
+
+
+== Build Process
+
+=== Build by maven
+
+
+Building a binary::
+`mvn clean compile`
+This compiles your production code.
+The compiled classes will be found under the `target/classes` directory.
+Running the test suite::
+`mvn clean compile test`
+This compiles your production and test code.
+The compiled classes and test report will be found under `target` directory.
+Creating a package::
+`mvn clean compile test package`
+This compiles your production code and executes the unit test suite.
+Reports will be generated under the `target` directory.
+Creating a site on your local::
+`mvn clean compile test site`
+This will generate the product site's under `target/site` directory.
+This is time-consuming because it generates project reports such as JavaDoc, coverage report, etc.
+Generating JavaDoc::
+`mvn clean compile test javadoc:javadoc`
+This is less time-consuming than the "Creating a site on your local" or the `Creating a package` procedures.
+The generated documentation is found under `target/apidocs` directory.
+Deploying the site publicly::
+`mvn clean compile test site-deploy`
+To execute this, you need to have a GitHub account with a permission to do so.
+
+== Testing
+`mvn test`::
+(t.b.d.)
+
+== Contribution Guidelines
+
+Coding conventions are defined as IDEA's configuration and found under `.idea` directory of the source tree.
+Note that https://asciidoc.org/[`asciidoc`] and https://github.com/asciidoctor/asciidoclet[`asciidoclet`] are used for documentation rather than markdown.
+
+(t.b.d.)
+asciidoc documentation.
+
+include::valid8j-footer.adoc[]

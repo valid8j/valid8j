@@ -1,0 +1,11 @@
+= Limitations and Future Works
+
+Simplifying Printable Predicate Mechanism::
+The internal of implementing printable predicate became complex over time.
+Author would try to simplify it.
+
+Cleaning Up Fluent Interface::
+Author developed the fluent programming model by trial and error through dogfooding.
+So, the interface may not be consistent and experience incompatible changes in the future for improvement.
+
+include::valid8j-footer.adoc[]

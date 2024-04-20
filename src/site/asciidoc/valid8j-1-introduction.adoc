@@ -1,0 +1,20 @@
+= Introduction
+
+- **Overview:**
+Consistency across DbC, Value-checking, and Test assertions.
+Readable both in codes and messages.
+Easy to write.
+
+- **Purpose:**
+Make consistent and unified test assertions, DbC, and value checking.
+Make both code and message readable.
+Make it easy to write them.
+
+Programmers who use this library at the first time, please check link:valid8j-2-getting-started.adoc["Getting Started"].
+To know more about `valid8j` for better usage, link:valid8j-4-guides-and-tutorials.adoc["Guides and Tutorials"] and link:api-docs["API References"] will be useful.
+
+To contribute the `valid8j` project, please also check the link:valid8j-8-development.adoc["Development"] and link:valid8j-3-architecture.adoc["Architecture, Design Principles, and Techniques"]
+
+In case you have a trouble, please check link:valid8j-6-limitations-and-future-works.adoc["Limitation and Future Works"] and link:valid8j-7-faq.adoc["FAQs"]
+
+include::valid8j-footer.adoc[]

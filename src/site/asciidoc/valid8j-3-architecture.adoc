@@ -1,0 +1,148 @@
+= Architecture, Design Goals, Design Principles, and Techniques
+
+The design goals of `valid8j` are:
+
+- Make the test code human-readable
+- Make the error messages human-readable
+- Remove repetitive work from human
+  ** Minimize the necessity to repeat what code does as a string message.
+  ** Remove the fail -> fix -> run (-> fail -> fix -> run)* loop.
+- Make it easy to write value checks in DbC's {pre,invariant,post} condition checks, value checks in product code, assertions in test code.
+- Provide programmers with uniformed experience for these use cases.
+
+In this section, concepts that back these goals will be discussed.
+
+== "Fluent" programming model: Statements, Transformers, and Checkers
+
+Like AssertJ<<assertj>> and Truth<<google-truth>>, `valid8j` supports a "Fluent" API.
+You can start writing your checks from `Expectations` class, then let your IDE help you.
+
+[source, java]
+.Before static import
+----
+public class DbC {
+  public void aMethod(int a) {
+    assert Expectations.precondition(Expectations.that(a).satisfies()
+                                                         .greaterThan(0)
+                                                         .lessThan(100));
+  }
+}
+----
+
+Then, do `static import` to improve readability.
+
+[source, java]
+.After static import
+----
+public class DbC {
+  public void aMethod(int a) {
+    assert precondition(that(a).satisfies()
+                               .greaterThan(0)
+                               .lessThan(100));
+  }
+}
+----
+
+The methods for evaluating condition (`precondition`) and the methods to create the condition are separated.
+This us to use the consistent syntax for different contexts such as DbC assertions, test assertions, argument checking, etc.
+
+For instance, to build a test assertion, you use `Expectations.assertStatement` method, if you have only one variable to be checked.
+
+[source, java]
+.single statement
+----
+public class TestExample {
+  @Test
+  public void testMethod() {
+    assertStatement(that(a).satisfies()
+                           .greaterThan(0)
+                           .lessThan(100));
+  }
+}
+----
+
+NOTE: In `valid8j`, performing a check and building a statement to be checked are separate activities as discussed above.
+Both start from the `Expectations` class.
+
+
+== "Transform-and-Check" Model
+
+Either way, we human cannot understand complex predicate without learning cost.
+AssertJ<<assertj>> has a huge set of checking methods, but what they do cannot be understood without reading documentation.
+For instance, its support for `RangeSet` of Google Guava has:
+
+- ...
+- `doesNotEncloseAnyRangesOf(RangeSet<T> rangeSet)`
+- ...
+- `hasSize(int size)`
+- `intersects(Range<T>... ranges)`
+- `intersectsAll(RangeSet<T>... rangeSet)`
+- `intersectsAll(Iterable<Range<T>> ranges)`
+- `intersectsAnyOf(Range<T>... ranges)`
+- ...
+
+This may make users think of "What does `hasSize(int)` check? The number of ranges in the target `RangeSet`?", but actually it checks if the range set has a range whose size is `size`.
+For each verb "contain", "intersect" and "enclose", it has variations of `All`, `AnyOf`, and `doesNot`.
+
+The approach `valid8j` takes to address these challenges is:
+
+- Provide an easy way to support user type for value transformation of into another.
+- Provide rich supports in value checking for limited number of basic types.
+
+Note that The value transformation can be repeated multiple times, and it will be eventually converted into basic types, such as `string`, numbers, boolean, and their arrays.
+
+
+=== Easy user type support for transformation
+
+(t.b.d.)
+
+=== Limited number of types are supported for checking
+
+
+
+NOTE: Currently `BigDecimal` is not supported.
+
+==  Throwing an Exception, instead of returning `false`
+
+When `false` is given to an `assert` statement, JVM throws an `AssertionError` with a message given to the statement, if any.
+
+[source, java]
+----
+class AClass {
+  void aMethod() {
+    assert aCondition() : "aMessage";
+  }
+}
+----
+
+But in `valid8j`, you don't need to give your own message by this syntax.
+You just need to give a condition to be checked and an appropriate message will be composed automatically on a failure.
+
+[source, java]
+----
+class AClass {
+  void aMethod() {
+    assert precondition(that(value).satisfies().predicate(isFruit()));
+  }
+}
+----
+
+How can this be done?
+Actually, the `precondition` method returns `true` if and only if the `value` `isFruit()`, but it does never return `false`.
+Instead, if the given `Statement` doesn't satisfy the predicate, it will compose an informative message and create a new exception by itself and throw it before `assert` statement throws an `AssertionError`.
+
+
+== Make Predicates Printable and Composable.
+
+(t.b.d.)
+
+
+== Java 8 for Development
+
+`valid8j` is intended to be a common library, which can be used by any projects.
+It is built and tested using https://www.oracle.com/java/technologies/java8.html[Java 8], which is the most compatible Java as of April in 2024.
+
+
+include::valid8j-footer.adoc[]
+- [[[assertj, 10]]] AssertJ https://assertj.github.io/doc/
+- [[[google-truth, 11]]] truth, Google Truth https://github.com/google/truth

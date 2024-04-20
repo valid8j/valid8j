@@ -1,0 +1,66 @@
+A package to provide entry-point classes for the `Fluent` style.
+
+The goal of the "fluent" style of the `pcond` library is to make it possible:
+
+- To be able to rely on IDE's help for recalling what you can do now.
+- To write tests in a readable and consistent manner.
+- To show a readable report failure when a test fails.
+- Not to need to a custom support class for your own class.
+
+That is, if you have a following example code:
+
+[source, java]
+.Example Test Code
+----
+public class FluentStyleExample {
+  @Test
+  public void givenKnownLastName_whenFindMembersByFullName_thenLastNastIsNotNullAndContainedInFullName() {
+    // Find a user entry from a member database
+    MemberDatabase database = new MemberDatabase();
+    String lastName = database.lookUp("0001")
+        .orElseThrow(NoSuchElementException::new)
+        .lastName();
+    List<String> fullName = database.findMembersByLastName(lastName).get(0).toFullName();
+    // Check if
+    // - The last name of the entry is not null and not an empty string.
+    // - The last name is "DOE".
+    assertStatement(
+        value(lastName)
+            .satisifies()
+            .predicate(allOf(
+                isNotNull(),
+                not(isEmptyString()))),
+        value(fullName).asListOfClass(String.class)
+            .satisfies()
+            .containing("DOE"));
+  }
+}
+----
+
+May result in the following output:
+
+[%nowrap]
+.Output Example
+----
+ "Doe"               ->WHEN:treatAsIs      ->"Doe"                | "Doe"               ->WHEN:treatAsIs      ->"Doe"
+                       THEN:&&             ->true                 |                       THEN:&&             ->true
+                           isNotNull       ->true                 |                            isNotNull      ->true
+                           !               ->true                 |                            !              ->true
+                             isEmpty       ->false                |                              isEmpty      ->false
+ ["John","Doe","PhD"]->WHEN:treatAsList    ->["John","Doe","PhD"] | ["John","Doe","PhD"]->WHEN:treatAsList    ->["John","Doe","PhD"]
+X                      THEN:contains["DOE"]->true                 |                       THEN:contains["DOE"]->false
+----
+
+== Special Types of `pcond`
+
+In the `pcond` library divides an evaluation of an assertion into two stages.
+"Transform" and "check".
+Not like other assertion libraries, it has separated group of classes for each of them.
+"Transformers"
+
+In order to reduce the necessity of creating custom classes, it takes an approach, where
+
+They are `String`, `Number`(`Integer`), `Boolean`, `List<E>`, `Stream<E>`, and (general) `Object`.
+For each of them, special `Transformer` s and `Checker` s come with the `pcond` library to provide type specific methods, such as `containsString` for `String`.
+
+

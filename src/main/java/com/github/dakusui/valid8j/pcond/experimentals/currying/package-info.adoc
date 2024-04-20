@@ -1,0 +1,1 @@
+The `currying` package provides a mechanism to "curry" a multi-parameters function.

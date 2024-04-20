@@ -1,0 +1,1 @@
+A package for "classic" programming style of `valid8j`, where a value to be checked and a predicate with which the value is checked are passed to checking methods.
