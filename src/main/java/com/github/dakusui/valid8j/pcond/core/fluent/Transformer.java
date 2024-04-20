@@ -28,7 +28,7 @@ public interface Transformer<
   }
 
   TX addTransformAndCheckClause(Function<Transformer<?, ?, R, R>, Predicate<R>> clause);
-
+  
   /**
    * Returns a checker object for this object.
    * @return A checker object for this object.

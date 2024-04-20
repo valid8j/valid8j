@@ -1,12 +1,14 @@
-package com.github.dakusui.valid8j.examples.thincrest;
+package com.github.dakusui.valid8j.examples.fluent;
 
-import com.github.dakusui.valid8j.fluent.internals.ValidationFluents;
+import com.github.dakusui.valid8j.fluent.Expectations;
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation;
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation.EnsureJUnitResult;
 import com.github.dakusui.valid8j.utils.metatest.TestClassExpectation.ResultPredicateFactory.*;
 import com.github.dakusui.valid8j.utils.metatest.TestMethodExpectation;
 import org.junit.Test;
 
+import static com.github.dakusui.valid8j.fluent.Expectations.all;
+import static com.github.dakusui.valid8j.fluent.Expectations.that;
 import static com.github.dakusui.valid8j.utils.metatest.TestMethodExpectation.Result.FAILURE;
 import static com.github.dakusui.valid8j.utils.metatest.TestMethodExpectation.Result.PASSING;
 import static com.github.dakusui.valid8j.pcond.fluent.Statement.objectValue;
@@ -22,8 +24,8 @@ public class Valid8JExample {
   @TestMethodExpectation(FAILURE)
   @Test
   public void assertAllSalutes() {
-    assert ValidationFluents.all(
-        objectValue(new Salute())
+    assert all(
+        that(new Salute())
             .invoke("inJapanese")
             .asString()
             .length()
@@ -40,8 +42,8 @@ public class Valid8JExample {
   @TestMethodExpectation(PASSING)
   @Test
   public void assertSaluteInJapanese() {
-    ValidationFluents.that(
-        objectValue(new Salute())
+    assert Expectations.$(
+        that(new Salute())
             .invoke("inJapanese")
             .asString()
             .length()
@@ -52,8 +54,8 @@ public class Valid8JExample {
   @TestMethodExpectation(FAILURE)
   @Test
   public void assertSaluteInEnglish() {
-    ValidationFluents.that(
-        objectValue(new Salute())
+    assert Expectations.$(
+        that(new Salute())
             .invoke("inEnglish")
             .asString()
             .length()

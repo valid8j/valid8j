@@ -75,7 +75,7 @@ import static java.util.stream.Collectors.toList;
  */
 public enum Expectations {
   ;
-
+  
   /**
    * Checks if all the given `statements` are satisfied.
    *
@@ -91,7 +91,7 @@ public enum Expectations {
   public static boolean all(Statement<?>... statements) {
     return ValidationFluents.all(statements);
   }
-
+  
   /**
    * A "singular" version of {@link Expectations#all(Statement[])}.
    *
@@ -108,7 +108,7 @@ public enum Expectations {
   public static boolean $(Statement<?>... statements) {
     return all(statements);
   }
-
+  
   /**
    * Checks if all the given `statements` are satisfied.
    *
@@ -121,7 +121,7 @@ public enum Expectations {
   public static boolean preconditions(Statement<?>... statements) {
     return ValidationFluents.preconditions(statements);
   }
-
+  
   /**
    * A "singular" version of {@link Expectations#preconditions(Statement[])}.
    *
@@ -135,7 +135,7 @@ public enum Expectations {
   public static boolean precondition(Statement<?> statement) {
     return ValidationFluents.precondition(statement);
   }
-
+  
   /**
    * Checks if all the given `statements` are satisfied.
    *
@@ -148,7 +148,7 @@ public enum Expectations {
   public static boolean invariants(Statement<?>... statements) {
     return ValidationFluents.all(statements);
   }
-
+  
   /**
    * A singular version of {@link Expectations#preconditions(Statement[])}.
    *
@@ -162,7 +162,7 @@ public enum Expectations {
   public static boolean invariant(Statement<?> statement) {
     return ValidationFluents.that(statement);
   }
-
+  
   /**
    * Checks if all the given `statements` are satisfied.
    *
@@ -176,7 +176,7 @@ public enum Expectations {
     List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
     return Assertions.postcondition(values, Statement.createPredicateForAllOf(statements));
   }
-
+  
   /**
    * A singular version of {@link Expectations#postconditions(Statement[])}.
    *
@@ -190,7 +190,7 @@ public enum Expectations {
   public static boolean postcondition(Statement<?> statement) {
     return all(statement);
   }
-
+  
   /**
    * A method to check the given `statements` as preconditions.
    *
@@ -199,7 +199,7 @@ public enum Expectations {
   public static void require(Statement<?>... statements) {
     ValidationFluents.requireAll(statements);
   }
-
+  
   /**
    * A singular version of {@link Expectations#require(Statement[])}.
    *
@@ -208,7 +208,7 @@ public enum Expectations {
   public static <T> T require(Statement<T> statement) {
     return ValidationFluents.requireStatement(statement);
   }
-
+  
   /**
    * //@formatter:off
    * A method to validate a value held by the given statement.
@@ -241,7 +241,7 @@ public enum Expectations {
     Objects.requireNonNull(otherwise);
     return fail(otherwise).unless(statement);
   }
-
+  
   /**
    * //@formatter:off
    * This method is useful to specify an exception class to be thrown on a failure.
@@ -272,7 +272,7 @@ public enum Expectations {
       }
     };
   }
-
+  
   /**
    * A method to check the given `statements` as invariant conditions.
    *
@@ -281,7 +281,7 @@ public enum Expectations {
   public static void hold(Statement<?>... statements) {
     ValidationFluents.all(statements);
   }
-
+  
   /**
    * A singular version of {@link Expectations#hold(Statement[])}.
    *
@@ -291,7 +291,7 @@ public enum Expectations {
     ValidationFluents.all(statement);
     return statement.statementValue();
   }
-
+  
   /**
    * A method to check the given `statements` as post-conditions.
    *
@@ -300,7 +300,7 @@ public enum Expectations {
   public static void ensure(Statement<?>... statements) {
     ValidationFluents.ensureAll(statements);
   }
-
+  
   /**
    * A singular version of {@link Expectations#ensure(Statement[])}.
    *
@@ -309,7 +309,7 @@ public enum Expectations {
   public static <T> T ensure(Statement<T> statement) {
     return ValidationFluents.ensureStatement(statement);
   }
-
+  
   /**
    * Checks if the target values of `statements` satisfy the predicates held by the `statements` as argument values.
    * By default, this method throws an {@link IllegalArgumentException} on a failure.
@@ -319,7 +319,7 @@ public enum Expectations {
   public static void requireArguments(Statement<?>... statements) {
     ValidationFluents.requireArguments(statements);
   }
-
+  
   /**
    * Checks if the target value of `statement` satisfies the predicate held by the `statement` as an argument value.
    * By default, this method throws an {@link IllegalArgumentException} on a failure.
@@ -331,7 +331,7 @@ public enum Expectations {
   public static <T> T requireArgument(Statement<T> statement) {
     return ValidationFluents.requireArgument(statement);
   }
-
+  
   /**
    * Checks if the target values of `statements` satisfy the predicates held by the `statements` as state.
    * By default, this method throws an {@link IllegalStateException} on a failure.
@@ -341,7 +341,7 @@ public enum Expectations {
   public static void requireStates(Statement<?>... statements) {
     ValidationFluents.requireStates(statements);
   }
-
+  
   /**
    * Checks if the target value of `statement` satisfies the predicate held by the `statement` as a state value.
    * By default, this method throws an {@link IllegalStateException} on a failure.
@@ -353,57 +353,57 @@ public enum Expectations {
   public static <T> T requireState(Statement<T> statement) {
     return ValidationFluents.requireState(statement);
   }
-
+  
   /**
    * Returns a transformer to build a statement for the given `value`.
    * The transformer is created by a given `transformerFunction`.
    * This method is called by the other `that(value)` methods and exposed as an entry-point for a user-defined custom transformer.
    *
-   * @param value A value to be validated.
+   * @param value              A value to be validated.
    * @param transformerFactory A function that creates
+   * @param <T>                The type of the value.
+   * @param <TX>               The type of the transformer.
+   * @param <V>                The type of the
    * @return A transformer used for the validation.
-   * @param <T> The type of the value.
-   * @param <TX> The type of the transformer.
-   * @param <V> The type of the
    * @see CustomTransformer
    */
   public static <T, TX extends Transformer<TX, V, T, T>, V extends Checker<V, T, T>> TX that(T value, Function<T, TX> transformerFactory) {
     return transformerFactory.apply(value);
   }
-
+  
   /**
    * Returns a transformer to build a statement for the given `value`.
    *
    * @param value A value to be validated.
+   * @param <T>   A type of the `value`.
    * @return A transformer to build a statement to validate the `value`.
-   * @param <T> A type of the `value`.
    */
   public static <T> ObjectTransformer<T, T> that(T value) {
     return that(value, Statement::objectValue);
   }
-
+  
   /**
    * Returns a transformer to build a statement for the given list `value`.
    *
    * @param value A value to be validated.
+   * @param <T>   A type of element of the `value`.
    * @return A transformer to build a statement to validate the `value`.
-   * @param <T> A type of element of the `value`.
    */
   public static <T> ListTransformer<List<T>, T> that(List<T> value) {
     return that(value, Statement::listValue);
   }
-
+  
   /**
    * Returns a transformer to build a statement for the given stream `value`.
    *
    * @param value A value to be validated.
+   * @param <T>   A type of element of the `value`.
    * @return A transformer to build a statement to validate the `value`.
-   * @param <T> A type of element of the `value`.
    */
   public static <T> StreamTransformer<Stream<T>, T> that(Stream<T> value) {
     return that(value, Statement::streamValue);
   }
-
+  
   /**
    * Returns a transformer to build a statement for the given string `value`.
    *
@@ -413,7 +413,7 @@ public enum Expectations {
   public static StringTransformer<String> that(String value) {
     return that(value, Statement::stringValue);
   }
-
+  
   /**
    * Returns a transformer to build a statement for the given integer `value`.
    *
@@ -423,7 +423,7 @@ public enum Expectations {
   public static IntegerTransformer<Integer> that(int value) {
     return that(value, Statement::integerValue);
   }
-
+  
   /**
    * Returns a transformer to build a statement for the given long `value`.
    *
@@ -433,7 +433,7 @@ public enum Expectations {
   public static LongTransformer<Long> that(long value) {
     return that(value, Statement::longValue);
   }
-
+  
   /**
    * Returns a transformer to build a statement for the given short `value`.
    *
@@ -443,7 +443,7 @@ public enum Expectations {
   public static ShortTransformer<Short> that(short value) {
     return that(value, Statement::shortValue);
   }
-
+  
   /**
    * Returns a transformer to build a statement for the given double `value`.
    *
@@ -453,7 +453,7 @@ public enum Expectations {
   public static DoubleTransformer<Double> that(double value) {
     return that(value, Statement::doubleValue);
   }
-
+  
   /**
    * Returns a transformer to build a statement for the given float `value`.
    *
@@ -463,7 +463,7 @@ public enum Expectations {
   public static FloatTransformer<Float> that(float value) {
     return that(value, Statement::floatValue);
   }
-
+  
   /**
    * Returns a transformer to build a statement for the given boolean `value`.
    *
@@ -473,7 +473,7 @@ public enum Expectations {
   public static BooleanTransformer<Boolean> that(boolean value) {
     return that(value, Statement::booleanValue);
   }
-
+  
   /**
    * Returns a transformer to build a statement for the given throwable `value`.
    *
@@ -483,7 +483,7 @@ public enum Expectations {
   public static <T extends Throwable> ThrowableTransformer<T, T> that(T value) {
     return that(value, Statement::throwableValue);
   }
-
+  
   /**
    * A synonym of {@link Expectations#that(Object, Function)} method.
    *
@@ -499,7 +499,7 @@ public enum Expectations {
   public static <T, TX extends Transformer<TX, V, T, T>, V extends Checker<V, T, T>> TX value(T value, Function<T, TX> transformer) {
     return that(value, transformer);
   }
-
+  
   /**
    * A synonym of {@link Expectations#that(Object)}.
    *
@@ -511,7 +511,7 @@ public enum Expectations {
   public static <T> ObjectTransformer<T, T> value(T value) {
     return value(value, Statement::objectValue);
   }
-
+  
   /**
    * A synonym of {@link Expectations#that(List)}.
    *
@@ -523,7 +523,7 @@ public enum Expectations {
   public static <T> ListTransformer<List<T>, T> value(List<T> value) {
     return value(value, Statement::listValue);
   }
-
+  
   /**
    * A synonym of {@link Expectations#that(Stream)}.
    *
@@ -535,7 +535,7 @@ public enum Expectations {
   public static <T> StreamTransformer<Stream<T>, T> value(Stream<T> value) {
     return value(value, Statement::streamValue);
   }
-
+  
   /**
    * A synonym of {@link Expectations#that(String)}.
    *
@@ -546,7 +546,7 @@ public enum Expectations {
   public static StringTransformer<String> value(String value) {
     return value(value, Statement::stringValue);
   }
-
+  
   /**
    * A synonym of {@link Expectations#that(int)}.
    *
@@ -557,7 +557,7 @@ public enum Expectations {
   public static IntegerTransformer<Integer> value(int value) {
     return value(value, Statement::integerValue);
   }
-
+  
   /**
    * A synonym of {@link Expectations#that(long)}.
    *
@@ -568,7 +568,7 @@ public enum Expectations {
   public static LongTransformer<Long> value(long value) {
     return value(value, Statement::longValue);
   }
-
+  
   /**
    * A synonym of {@link Expectations#that(short)}.
    *
@@ -579,7 +579,7 @@ public enum Expectations {
   public static ShortTransformer<Short> value(short value) {
     return value(value, Statement::shortValue);
   }
-
+  
   /**
    * A synonym of {@link Expectations#that(double)}.
    *
@@ -590,7 +590,7 @@ public enum Expectations {
   public static DoubleTransformer<Double> value(double value) {
     return value(value, Statement::doubleValue);
   }
-
+  
   /**
    * A synonym of {@link Expectations#that(float)}.
    *
@@ -601,7 +601,7 @@ public enum Expectations {
   public static FloatTransformer<Float> value(float value) {
     return value(value, Statement::floatValue);
   }
-
+  
   /**
    * A synonym of {@link Expectations#that(boolean)}.
    *
@@ -612,7 +612,7 @@ public enum Expectations {
   public static BooleanTransformer<Boolean> value(boolean value) {
     return value(value, Statement::booleanValue);
   }
-
+  
   /**
    * A synonym of {@link Expectations#that(Throwable)}.
    *
@@ -623,7 +623,7 @@ public enum Expectations {
   public static <E extends Throwable> ThrowableTransformer<E, E> value(E value) {
     return value(value, Statement::throwableValue);
   }
-
+  
   /**
    * Returns a checker to build a statement for the given `value`.
    * The checker is created by the given `checkerFactory` function.
@@ -634,7 +634,7 @@ public enum Expectations {
   public static <T, V extends Checker<V, T, T>> V satisfies(T value, Function<T, V> checkerFactory) {
     return new LocalTransformer<>(() -> value, checkerFactory).satisfies();
   }
-
+  
   /**
    * Returns a checker to build a statement for the given `value`.
    *
@@ -644,8 +644,8 @@ public enum Expectations {
   public static <T> ObjectChecker<T, T> satisfies(T value) {
     return satisfies(value, v -> objectValue(v).satisfies());
   }
-
-
+  
+  
   /**
    * Returns a checker to build a statement for the given list `value`.
    *
@@ -655,7 +655,7 @@ public enum Expectations {
   public static <T> ListChecker<List<T>, T> satisfies(List<T> value) {
     return satisfies(value, v -> listValue(v).satisfies());
   }
-
+  
   /**
    * Returns a checker to build a statement for the given stream `value`.
    *
@@ -665,7 +665,7 @@ public enum Expectations {
   public static <T> StreamChecker<Stream<T>, T> satisfies(Stream<T> value) {
     return satisfies(value, v -> streamValue(v).satisfies());
   }
-
+  
   /**
    * Returns a checker to build a statement for the given string `value`.
    *
@@ -675,7 +675,7 @@ public enum Expectations {
   public static StringChecker<String> satisfies(String value) {
     return satisfies(value, v -> stringValue(v).satisfies());
   }
-
+  
   /**
    * Returns a checker to build a statement for the given int `value`.
    *
@@ -685,7 +685,7 @@ public enum Expectations {
   public static IntegerChecker<Integer> satisfies(int value) {
     return satisfies(value, v -> integerValue(v).satisfies());
   }
-
+  
   /**
    * Returns a checker to build a statement for the given long `value`.
    *
@@ -695,7 +695,7 @@ public enum Expectations {
   public static LongChecker<Long> satisfies(long value) {
     return satisfies(value, v -> longValue(v).satisfies());
   }
-
+  
   /**
    * Returns a checker to build a statement for the given short `value`.
    *
@@ -705,7 +705,7 @@ public enum Expectations {
   public static ShortChecker<Short> satisfies(short value) {
     return satisfies(value, v -> shortValue(v).satisfies());
   }
-
+  
   /**
    * Returns a checker to build a statement for the given double `value`.
    *
@@ -715,7 +715,7 @@ public enum Expectations {
   public static DoubleChecker<Double> satisfies(double value) {
     return satisfies(value, v -> doubleValue(v).satisfies());
   }
-
+  
   /**
    * Returns a checker to build a statement for the given float `value`.
    *
@@ -725,7 +725,7 @@ public enum Expectations {
   public static FloatChecker<Float> satisfies(float value) {
     return satisfies(value, v -> floatValue(v).satisfies());
   }
-
+  
   /**
    * Returns a checker to build a statement for the given boolean `value`.
    *
@@ -735,7 +735,7 @@ public enum Expectations {
   public static BooleanChecker<Boolean> satisfies(boolean value) {
     return satisfies(value, v -> booleanValue(v).satisfies());
   }
-
+  
   /**
    * Returns a statement whose target is the given `value`.
    *
@@ -745,7 +745,7 @@ public enum Expectations {
   public static <T> Statement<T> statement(T value, Predicate<T> cond) {
     return satisfies(value).predicate(cond);
   }
-
+  
   /**
    * Returns a statement whose target is the given list `value`.
    *
@@ -755,7 +755,7 @@ public enum Expectations {
   public static <T> Statement<List<T>> statement(List<T> value, Predicate<List<T>> cond) {
     return satisfies(value).predicate(cond);
   }
-
+  
   /**
    * Returns a statement whose target is the given stream `value`.
    *
@@ -765,7 +765,7 @@ public enum Expectations {
   public static <T> Statement<Stream<T>> statement(Stream<T> value, Predicate<Stream<T>> cond) {
     return satisfies(value).predicate(cond);
   }
-
+  
   /**
    * Returns a statement whose target is the given string `value`.
    *
@@ -775,7 +775,7 @@ public enum Expectations {
   public static Statement<String> statement(String value, Predicate<String> cond) {
     return satisfies(value).predicate(cond);
   }
-
+  
   /**
    * Returns a statement whose target is the given int `value`.
    *
@@ -785,7 +785,7 @@ public enum Expectations {
   public static Statement<Integer> statement(int value, Predicate<Integer> cond) {
     return satisfies(value).predicate(cond);
   }
-
+  
   /**
    * Returns a statement whose target is the given long `value`.
    *
@@ -795,7 +795,7 @@ public enum Expectations {
   public static Statement<Long> statement(long value, Predicate<Long> cond) {
     return satisfies(value).predicate(cond);
   }
-
+  
   /**
    * Returns a statement whose target is the given short `value`.
    *
@@ -805,7 +805,7 @@ public enum Expectations {
   public static Statement<Short> statement(short value, Predicate<Short> cond) {
     return satisfies(value).predicate(cond);
   }
-
+  
   /**
    * Returns a statement whose target is the given double `value`.
    *
@@ -815,7 +815,7 @@ public enum Expectations {
   public static Statement<Double> statement(double value, Predicate<Double> cond) {
     return satisfies(value).predicate(cond);
   }
-
+  
   /**
    * Returns a statement whose target is the given float `value`.
    *
@@ -825,7 +825,7 @@ public enum Expectations {
   public static Statement<Float> statement(float value, Predicate<Float> cond) {
     return satisfies(value).predicate(cond);
   }
-
+  
   /**
    * Returns a statement whose target is the given boolean `value`.
    *
@@ -835,7 +835,7 @@ public enum Expectations {
   public static Statement<Boolean> statement(boolean value, Predicate<Boolean> cond) {
     return satisfies(value).predicate(cond);
   }
-
+  
   /**
    * Fluent version of {@link TestAssertions#assertThat(Object, Predicate)}.
    *
@@ -845,7 +845,7 @@ public enum Expectations {
   public static <T> void assertStatement(Statement<T> statement) {
     TestAssertions.assertThat(statement.statementValue(), statement.statementPredicate());
   }
-
+  
   /**
    * Fluent version of {@link TestAssertions#assertThat(Object, Predicate)}.
    * Use this method when you need to verify multiple values.
@@ -859,7 +859,7 @@ public enum Expectations {
     List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
     TestAssertions.assertThat(ListHolder.fromList(values), createPredicateForAllOf(statements));
   }
-
+  
   /**
    * Fluent version of {@link TestAssertions#assumeThat(Object, Predicate)}.
    *
@@ -868,7 +868,7 @@ public enum Expectations {
   public static <T> void assumeStatement(Statement<T> statement) {
     TestAssertions.assumeThat(statement.statementValue(), statement.statementPredicate());
   }
-
+  
   /**
    * Fluent version of {@link TestAssertions#assumeThat(Object, Predicate)}.
    * Use this method when you need to verify multiple values.
@@ -882,7 +882,7 @@ public enum Expectations {
     List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
     TestAssertions.assumeThat(ListHolder.fromList(values), createPredicateForAllOf(statements));
   }
-
+  
   /**
    * An interface used as a return value of {@link Expectations#fail(Function)} method.
    */
@@ -897,7 +897,7 @@ public enum Expectations {
      * @return A target value of `statement`, if the `statement` is evaluated `true`.
      */
     <T> T unless(Statement<T> statement);
-
+    
     /**
      * This doesn't return any value because it cannot be determined which value should be the one to be returned.
      *
@@ -909,20 +909,20 @@ public enum Expectations {
           Statement.createPredicateForAllOf(statements)));
     }
   }
-
+  
   private static class LocalTransformer<V extends Checker<V, T, T>, T> extends AbstractObjectTransformer.Base<LocalTransformer<V, T>, V, T, T> {
     private final Function<T, V> checkerFactory;
-
+    
     protected LocalTransformer(Supplier<T> value, Function<T, V> checkerFactory) {
       super(value, trivialIdentityFunction());
       this.checkerFactory = checkerFactory;
     }
-
+    
     @Override
     protected V toChecker(Function<T, T> transformFunction) {
       return checkerFactory.apply(transformFunction.apply(this.baseValue()));
     }
-
+    
     @Override
     protected Matcher<?, T, T> rebase() {
       return new LocalTransformer<>(this::value, checkerFactory);
@@ -930,6 +930,7 @@ public enum Expectations {
   }
   
   /**
+   * @formatter:off
    * A base class for a custom transformer.
    *
    * [source,java]
@@ -952,16 +953,17 @@ public enum Expectations {
    *
    * In the example above, the custom transformer class `BookTransformer`, which targets `Book` type value is specified for `TX`,
    * while the `Book` is specified for `T`.
+   * @formatter:on
    *
    * @param <TX> This class
-   * @param <T> Type of the class that is targeted by the transformer.
+   * @param <T>  Type of the class that is targeted by the transformer.
    */
   public abstract static class CustomTransformer<
       TX extends AbstractObjectTransformer<
-                  TX,
+          TX,
           ObjectChecker<T, T>,
-                  T,
-                  T>,
+          T,
+          T>,
       T> extends
       Transformer.Base<
           TX,
@@ -969,10 +971,10 @@ public enum Expectations {
           T,
           T> implements
       AbstractObjectTransformer<
-              TX,
+          TX,
           ObjectChecker<T, T>,
-              T,
-              T> {
+          T,
+          T> {
     /**
      * Creates an instance of this class.
      *
@@ -981,7 +983,7 @@ public enum Expectations {
     public CustomTransformer(T baseValue) {
       super(() -> baseValue, Functions.identity());
     }
-  
+    
     /**
      * A method to be used for internal purposes.
      *
@@ -991,18 +993,18 @@ public enum Expectations {
     protected TX rebase() {
       return create(this.value());
     }
-  
+    
     @Override
     protected ObjectChecker<T, T> toChecker(Function<T, T> transformFunction) {
       return new ObjectChecker.Impl<>(this::value, transformFunction);
     }
-  
+    
     @SuppressWarnings("unchecked")
     public TX transform(Function<TX, Predicate<T>> clause) {
       requireNonNull(clause);
       return this.addTransformAndCheckClause(tx -> clause.apply((TX) tx));
     }
-  
+    
     @SuppressWarnings("unchecked")
     protected TX create(T value) {
       try {

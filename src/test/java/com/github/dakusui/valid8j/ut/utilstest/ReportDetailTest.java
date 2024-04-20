@@ -1,6 +1,7 @@
 package com.github.dakusui.valid8j.ut.utilstest;
 
 import com.github.dakusui.valid8j.classic.IllegalValueException;
+import com.github.dakusui.valid8j.fluent.Expectations;
 import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.pcond.experimentals.cursor.Cursors;
 import com.github.dakusui.valid8j.pcond.fluent.Statement;
@@ -17,16 +18,13 @@ import static com.github.dakusui.valid8j.classic.Validates.validate;
 import static com.github.dakusui.valid8j.classic.Validates.validateStatement;
 import static com.github.dakusui.valid8j.classic.TestAssertions.assertThat;
 import static com.github.dakusui.valid8j.fluent.Expectations.assertAll;
+import static com.github.dakusui.valid8j.fluent.Expectations.statement;
 import static com.github.dakusui.valid8j.pcond.core.refl.MethodQuery.instanceMethod;
 import static com.github.dakusui.valid8j.pcond.forms.Functions.parameter;
 import static com.github.dakusui.valid8j.pcond.forms.Predicates.*;
 
 public class ReportDetailTest extends TestBase {
-    public static <T> Statement<T> statement(T value, Predicate<T> predicate) {
-      return Statement.objectValue(value).then().checkWithPredicate(predicate);
-    }
-
-    @Test
+  @Test
   public void givenLongString_whenCheckEqualnessWithSlightlyDifferentString_thenFailWithDetailsArePrinted$assertThat() {
     String actual = "helloHELLOhelloHELLOhelloXYZHELLOhelloHELLOhelloHELLO";
     String expected = "helloHELLOhelloHELLOhelloHELLOhelloHELLOhelloHELLO";
@@ -43,16 +41,16 @@ public class ReportDetailTest extends TestBase {
               transform(Functions.<Throwable, String>call(instanceMethod(parameter(), "getExpected"))).check(containsString(expected))));
     }
   }
-
+  
   @Ignore
   @Test
   public void givenLongString_whenCheckEqualnessWithSlightlyDifferentString_thenFailWithDetailsArePrinted$assertThat_forSandbox() {
     String actual = "helloHELLOhelloHELLOhelloXYZHELLOhelloHELLOhelloHELLO";
     String expected = "helloHELLOhelloHELLOhelloHELLOhelloHELLOhelloHELLO";
-
+    
     assertThat(actual, isEqualTo(expected));
   }
-
+  
   @Ignore
   @Test
   public void givenLongString_whenCheckEqualnessWithSlightlyDifferentString_thenFailWithDetailsArePrinted$printed_forSaxbox() {
@@ -60,7 +58,7 @@ public class ReportDetailTest extends TestBase {
     String expected = "helloHELLOhelloHELLOhelloHELLOhelloHELLOhelloHELLO";
     validate(actual, isEqualTo(expected));
   }
-
+  
   @Test(expected = IllegalValueException.class)
   public void givenLongString_whenCheckEqualnessWithSlightlyDifferentString_thenFailWithDetailsArePrinted$assertThat_usingFluentStyle() {
     String actual = "helloHELLOhelloHELLOhelloXYZHELLOhelloHELLOhelloHELLO";
@@ -78,7 +76,7 @@ public class ReportDetailTest extends TestBase {
       throw e;
     }
   }
-
+  
   @Test
   public void givenLongString_whenCheckEqualnessWithSlightlyDifferentString_thenFailWithDetailsArePrinted() {
     String actual = "helloHELLOhelloHELLOhelloXYZHELLOhelloHELLOhelloHELLO";
@@ -88,19 +86,16 @@ public class ReportDetailTest extends TestBase {
       throw new Error(); // Make it fail if PC reaches here.
     } catch (ComparisonFailure e) {
       e.printStackTrace();
-      assertAll(
-          statement(
-              e.getExpected(),
-              allOf(
-                  containsString(expected),
-                  containsString("isEqualTo"))),
-          statement(
-              e.getActual(),
-              containsString(actual)));
+      Expectations.assertAll(
+          Expectations.that(e.getExpected()).toBe()
+              .containing(expected)
+              .containing("isEqualTo"),
+          Expectations.that(e.getActual()).satisfies()
+              .containing(actual));
     }
   }
-
-
+  
+  
   @Test
   public void givenLongString_whenCheckEqualnessUsingCustomPredicateWithSlightlyDifferentString_thenFailWithDetailsArePrinted() {
     String actual = "helloHELLOhelloHELLOhelloXYZHELLOhelloHELLOhelloHELLO";
@@ -116,7 +111,7 @@ public class ReportDetailTest extends TestBase {
               containsString("customEquals")));
     }
   }
-
+  
   @Test
   public void givenLongString_whenCheckEqualnessUsingCustomPredicateWithSlightlyDifferentString_thenExpectationSpecificFragmentsContainedOnlyByExplanationForExpectationAndActualValuesAreAlsoSo() {
     String actualValue = "HelloWorld, everyone, -----------------------------------------,  hi, there!";
@@ -148,12 +143,12 @@ public class ReportDetailTest extends TestBase {
                   containsString(actualValue))));
     }
   }
-
+  
   @Test(expected = IllegalValueException.class)
   public void givenString_whenFails_then() {
     String expectedValue = "EXPECTED VALUE, Expected value, xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz, expected value.";
     String actualValue = "ACTUAL VALUE, actual value, xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz, actual value.";
-
+    
     try {
       validate(actualValue, isEqualTo(expectedValue));
     } catch (IllegalValueException e) {
@@ -163,12 +158,12 @@ public class ReportDetailTest extends TestBase {
       throw e;
     }
   }
-
+  
   @Test(expected = ComparisonFailure.class)
   public void givenString_whenFails_then_2() {
     String expectedValue = "EXPECTED VALUE, Expected value, xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz, expected value.";
     String actualValue = "ACTUAL VALUE, actual value, xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz,xyz, actual value.";
-
+    
     try {
       assertThat(actualValue,
           allOf(
@@ -181,5 +176,5 @@ public class ReportDetailTest extends TestBase {
       throw e;
     }
   }
-
+  
 }
