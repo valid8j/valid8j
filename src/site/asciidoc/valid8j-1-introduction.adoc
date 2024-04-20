@@ -1,17 +1,96 @@
 = Introduction
 
-- **Overview:**
-Consistency across DbC, Value-checking, and Test assertions.
-Readable both in codes and messages.
+`valid8j` is a library that provides consistent programming experiences across DbC, Value-checking, and Test assertions.
+It also provides readability both in codes and messages on failures.
 Easy to write.
 
-- **Purpose:**
-Make consistent and unified test assertions, DbC, and value checking.
-Make both code and message readable.
-Make it easy to write them.
+[%nowrap, java]
+----
+public class IntroductionExample {
+  public String examplePublicPublicMethod(String name, int basePrice) {
+    // Use `Expectations.requireXyz` method to check values in production.
+    requireArguments(
+        that(name).satisfies()
+            .notNull(),
+        that(basePrice).satisfies()
+            .greaterThanOrEqualTo(0)
+            .lessThan(10_000));
+    return examplePrivateMethod(name, basePrice);
+  }
+
+  private String examplePrivateMethod(String name, int basePrice) {
+    // Use `assert` statement with`Expectations.` {`precondition`,`invariant`,`postcondition`} methods
+    // and their plural for Design by Contract programming.
+    assert preconditions(
+        // `value(var)` and `that(var)` are synonyms. Use the one you like.
+        // `toBe(var)` and `satisfies(var)` are synonyms. Use the one you like.
+        value(name).toBe()
+            .notNull(),
+        value(basePrice).toBe()
+            .greaterThanOrEqualTo(0)
+            .lessThan(10_000));
+    int price = (int) (basePrice * 1.08);
+    return String.format("%s:%s", name, price);
+  }
+
+  @TestMethodExpectation(FAILURE)
+  @Test
+  public void exampleMethod() {
+    String message = examplePublicPublicMethod("Kirin Ichiban", 100);
+    // Use `Expectations.assertAll` for test assertions.
+    assertAll(
+        that(message)
+            .substringAfter(":")
+            .parseInt()
+            .satisfies()
+            .equalTo(110),
+        that(message)
+            .satisfies()
+            .startingWith("Kirin Ichiban"));
+  }
+}
+----
+
+This gives the following output as your IDE's window.:
+
+.Output of `IntroductionExample.java`
+|===
+|Expectation |Actual
+
+a|
+[%nowrap]
+----
+    "Kirin Ichiban:108"->WHEN:transform                ->true
+                       ->    substringAfter[:]         ->"108"
+    "108"              ->    parseInt                  ->108
+[0] 108                ->  THEN:=[110]                 ->true
+    "Kirin Ichiban:108"->WHEN:startsWith[Kirin Ichiban]->true
+
+.Detail of failure [0]
+---
+=[110]
+---
+----
+a|
+[%nowrap]
+----
+    "Kirin Ichiban:108"->WHEN:transform                ->false
+                       ->    substringAfter[:]         ->"108"
+    "108"              ->    parseInt                  ->108
+[0] 108                ->  THEN:=[110]                 ->false
+    "Kirin Ichiban:108"->WHEN:startsWith[Kirin Ichiban]->true
+
+.Detail of failure [0]
+---
+108
+---
+
+----
+|===
 
 Programmers who use this library at the first time, please check link:valid8j-2-getting-started.adoc["Getting Started"].
-To know more about `valid8j` for better usage, link:valid8j-4-guides-and-tutorials.adoc["Guides and Tutorials"] and link:api-docs["API References"] will be useful.
+// suppress inspection "AsciiDocLinkResolve"
+To know more about `valid8j` for better usage, link:valid8j-4-guides-and-tutorials.adoc["Guides and Tutorials"] and link:apidocs["API References"] will be useful.
 
 To contribute the `valid8j` project, please also check the link:valid8j-8-development.adoc["Development"] and link:valid8j-3-architecture.adoc["Architecture, Design Principles, and Techniques"]
 
