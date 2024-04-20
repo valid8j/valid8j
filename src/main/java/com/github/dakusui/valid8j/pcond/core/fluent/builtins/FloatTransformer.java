@@ -23,10 +23,6 @@ public interface FloatTransformer<
     return new Impl<>(value, trivialIdentityFunction());
   }
 
-  @SuppressWarnings("unchecked")
-  default FloatTransformer<T> transform(Function<FloatTransformer<Float>, Predicate<Float>> clause) {
-    return this.addTransformAndCheckClause(tx -> clause.apply((FloatTransformer<Float>) tx));
-  }
   class Impl<
       T
       > extends

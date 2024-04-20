@@ -78,7 +78,7 @@ public interface Matcher<
     }
 
     protected boolean hasNoChild() {
-      return this.childPredicates.isEmpty();
+      return this.childPredicates().isEmpty();
     }
 
     protected List<Function<Matcher<?, R, R>, Predicate<R>>> childPredicates() {

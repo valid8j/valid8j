@@ -215,18 +215,18 @@ public class SmokeTest extends TestBase {
 
   private static Fluent4Example.OnGoing.BookTransformer getTransform(Fluent4Example.OnGoing.Book book) {
     return new Fluent4Example.OnGoing.BookTransformer(book)
-        .transform((Fluent4Example.OnGoing.BookTransformer b) -> b.title()
-            .transform((StringTransformer<String> ty) -> ty.then().notNull().done())
-            .transform((StringTransformer<String> ty) -> ty.parseInt().then() // This is intended to produce a NumberFormatException
+        .satisfies((Fluent4Example.OnGoing.BookTransformer b) -> b.title()
+            .satisfies((ty) -> ty.then().notNull())
+            .satisfies((ty) -> ty.parseInt().then() // This is intended to produce a NumberFormatException
                 .greaterThanOrEqualTo(10)
                 .lessThan(40)
-                .done()).done())
-        .transform((Fluent4Example.OnGoing.BookTransformer b) -> b.abstractText()
-            .transform((StringTransformer<String> ty) -> ty.then().checkWithPredicate(isNull().negate()).done())
-            .transform((StringTransformer<String> ty) -> ty.length().then()
+                ))
+        .satisfies((Fluent4Example.OnGoing.BookTransformer b) -> b.abstractText()
+            .satisfies((ty) -> ty.then().checkWithPredicate(isNull().negate()))
+            .satisfies((ty) -> ty.length().then()
                 .greaterThanOrEqualTo(200)
                 .lessThan(400)
-                .done()).done());
+                ));
   }
 
   private static IntegerChecker<String> getHello() {

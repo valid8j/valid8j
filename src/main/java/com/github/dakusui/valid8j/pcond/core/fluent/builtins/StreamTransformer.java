@@ -22,11 +22,6 @@ public interface StreamTransformer<
     return new Impl<>(value, trivialIdentityFunction());
   }
 
-  @SuppressWarnings("unchecked")
-  default StreamTransformer<T, E> transform(Function<StreamTransformer<T, E>, Predicate<Stream<E>>> clause) {
-    return this.addTransformAndCheckClause(tx -> clause.apply((StreamTransformer<T, E>) tx));
-  }
-
   class Impl<
       T,
       E> extends

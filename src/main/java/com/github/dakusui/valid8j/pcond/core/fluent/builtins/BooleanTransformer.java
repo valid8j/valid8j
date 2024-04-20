@@ -21,10 +21,6 @@ public interface BooleanTransformer<T> extends
     return new Impl<>(value, trivialIdentityFunction());
   }
 
-  @SuppressWarnings("unchecked")
-  default BooleanTransformer<T> transform(Function<BooleanTransformer<Boolean>, Predicate<Boolean>> clause) {
-    return this.addTransformAndCheckClause(tx -> clause.apply((BooleanTransformer<Boolean>) tx));
-  }
   class Impl<T> extends
       Base<
           BooleanTransformer<T>,

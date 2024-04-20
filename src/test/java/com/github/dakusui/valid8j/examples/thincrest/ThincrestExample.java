@@ -23,7 +23,7 @@ import static java.util.Arrays.asList;
 
 @TestClassExpectation(value = {
     @EnsureJUnitResult(type = WasNotSuccessful.class, args = {}),
-    @EnsureJUnitResult(type = RunCountIsEqualTo.class, args = "10"),
+    @EnsureJUnitResult(type = RunCountIsEqualTo.class, args = "11"),
     @EnsureJUnitResult(type = IgnoreCountIsEqualTo.class, args = "0"),
     @EnsureJUnitResult(type = AssumptionFailureCountIsEqualTo.class, args = "3"),
     @EnsureJUnitResult(type = SizeOfFailuresIsEqualTo.class, args = "5")
@@ -79,12 +79,23 @@ public class ThincrestExample {
         that(new Salute())
             .invoke("inEnglish")
             .asString()
-            .transform(v -> allOf(
-                v.length()
-                    .then()
-                    .greaterThan(0).toPredicate(),
-                v.then().containing("Hello").toPredicate()
-                )));
+            .satisfies(v -> v.length()
+                .toBe()
+                .greaterThan(0))
+            .satisfies(v -> v.toBe().containing("Hello")));
+  }
+  
+  @Test
+  public void assertAnySalutes() {
+    assertStatement(
+        that(new Salute())
+            .invoke("inJapanese")
+            .asString()
+            .length()
+            .then()
+            .anyOf()
+            .greaterThanOrEqualTo(100)
+            .greaterThan(0));
   }
   
   @TestMethodExpectation(PASSING)

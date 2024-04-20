@@ -23,11 +23,6 @@ public interface ThrowableTransformer<
   }
 
   @SuppressWarnings("unchecked")
-  default ThrowableTransformer<T, E> transform(Function<ThrowableTransformer<T, E>, Predicate<E>> clause) {
-    return this.addTransformAndCheckClause(tx -> clause.apply((ThrowableTransformer<T, E>) tx));
-  }
-
-  @SuppressWarnings("unchecked")
   default <OUT2 extends Throwable> ThrowableTransformer<T, OUT2> getCause() {
     return this.toThrowable(Printables.function("getCause", e -> (OUT2) e.getCause()));
   }

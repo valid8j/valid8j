@@ -18,11 +18,6 @@ public interface ShortTransformer<
     return new Impl<>(value, trivialIdentityFunction());
   }
 
-  @SuppressWarnings("unchecked")
-  default ShortTransformer<T> transform(Function<ShortTransformer<Short>, Predicate<Short>> clause) {
-    return this.addTransformAndCheckClause(tx -> clause.apply((ShortTransformer<Short>) tx));
-  }
-
   class Impl<
       T
       > extends

@@ -18,11 +18,6 @@ public interface DoubleTransformer<
     return new Impl<>(value, trivialIdentityFunction());
   }
 
-  @SuppressWarnings("unchecked")
-  default DoubleTransformer<T> transform(Function<DoubleTransformer<Double>, Predicate<Double>> clause) {
-    return this.addTransformAndCheckClause(tx -> clause.apply((DoubleTransformer<Double>) tx));
-  }
-
   class Impl<
       OIN
       > extends

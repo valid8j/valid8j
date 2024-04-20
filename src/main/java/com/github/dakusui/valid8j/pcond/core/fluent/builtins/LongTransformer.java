@@ -18,10 +18,6 @@ public interface LongTransformer<
     return new Impl<>(value, trivialIdentityFunction());
   }
 
-  @SuppressWarnings("unchecked")
-  default LongTransformer<T> transform(Function<LongTransformer<Long>, Predicate<Long>> clause) {
-    return this.addTransformAndCheckClause(tx -> clause.apply((LongTransformer<Long>) tx));
-  }
   class Impl<
       T
       > extends

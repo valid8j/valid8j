@@ -21,12 +21,6 @@ public interface Transformer<
     Matcher<TX, T, R>,
     Statement<T> {
 
-  @SuppressWarnings("unchecked")
-  default TX checkWithPredicate(Predicate<? super R> predicate) {
-    requireNonNull(predicate);
-    return addTransformAndCheckClause(tx -> (Predicate<R>) predicate);
-  }
-
   TX addTransformAndCheckClause(Function<Transformer<?, ?, R, R>, Predicate<R>> clause);
   
   /**
@@ -34,6 +28,12 @@ public interface Transformer<
    * @return A checker object for this object.
    */
   V then();
+  
+  @SuppressWarnings("unchecked")
+  default TX satisfies(Function<TX, Statement<T>> clause) {
+    requireNonNull(clause);
+    return this.addTransformAndCheckClause(tx -> (Predicate<R>) clause.apply((TX) tx).statementPredicate());
+  }
 
   /**
    * A synonym of {@link Transformer#then()} method.
@@ -49,10 +49,6 @@ public interface Transformer<
    */
   default V toBe() {
     return then();
-  }
-
-  default Predicate<T> done() {
-    return this.statementPredicate();
   }
 
   <TY extends Transformer<TY, W, T, RR>,
@@ -94,12 +90,6 @@ public interface Transformer<
           (Function<T, RR>) func :
           tf.andThen(func);
       return transformerFactory.apply(this::baseValue, transformFunction);
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public TX checkWithPredicate(Predicate<? super R> predicate) {
-      return this.addTransformAndCheckClause(tx -> (Predicate<R>) predicate);
     }
 
     @SuppressWarnings("unchecked")

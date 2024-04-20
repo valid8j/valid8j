@@ -26,11 +26,6 @@ public interface ListTransformer<
     return new Impl<>(value, trivialIdentityFunction());
   }
 
-  @SuppressWarnings("unchecked")
-  default ListTransformer<T, E> transform(Function<ListTransformer<T, E>, Predicate<List<E>>> clause) {
-    return this.addTransformAndCheckClause(tx -> clause.apply((ListTransformer<T, E>) tx));
-  }
-
   default ObjectTransformer<T, E> elementAt(int i) {
     return this.toObject(Functions.elementAt(i));
   }

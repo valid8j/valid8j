@@ -111,7 +111,6 @@ public interface AbstractObjectTransformer<
     return this.transformValueWith(function, StringTransformer.Impl::new);
   }
 
-
   default <E> ListTransformer<T, E> toList(Function<? super R, List<E>> function) {
     return this.transformValueWith(function, ListTransformer.Impl::new);
   }

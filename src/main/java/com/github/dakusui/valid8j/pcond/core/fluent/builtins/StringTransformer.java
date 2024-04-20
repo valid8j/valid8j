@@ -66,13 +66,6 @@ public interface StringTransformer<T> extends
     return toFloat(Printables.function("parseFloat", Float::parseFloat));
   }
 
-  @SuppressWarnings("unchecked")
-  default StringTransformer<T> transform(Function<StringTransformer<String>, Predicate<String>> clause) {
-    requireNonNull(clause);
-    return this.addTransformAndCheckClause(tx -> clause.apply((StringTransformer<String>) tx));
-  }
-  
- 
   class Impl<T> extends
       Base<
           StringTransformer<T>,

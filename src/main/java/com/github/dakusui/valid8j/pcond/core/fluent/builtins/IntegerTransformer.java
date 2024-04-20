@@ -18,10 +18,6 @@ public interface IntegerTransformer<
     return new Impl<>(value, trivialIdentityFunction());
   }
 
-  @SuppressWarnings("unchecked")
-  default IntegerTransformer<T> transform(Function<IntegerTransformer<Integer>, Predicate<Integer>> clause) {
-    return this.addTransformAndCheckClause(tx -> clause.apply((IntegerTransformer<Integer>) tx));
-  }
   class Impl<
       T
       > extends

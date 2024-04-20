@@ -26,7 +26,7 @@ public class FluentBooleanTest extends TestBase {
 
   @Test
   public void givenFalse_whenTransformIsTrue_thenComparisonFailure() {
-    exerciseStatementExpectingComparisonFailure(booleanValue(false).transform(b -> b.then().isTrue().done()));
+    exerciseStatementExpectingComparisonFailure(booleanValue(false).satisfies(b -> b.then().isTrue()));
   }
 
 

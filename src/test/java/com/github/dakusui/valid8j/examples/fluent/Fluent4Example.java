@@ -29,7 +29,7 @@ public class Fluent4Example {
           .satisfies()
           .isTrue());
     }
-
+    
     @Test//(expected = ComparisonFailure.class)
     public void test_b() {
       assertAll(
@@ -39,7 +39,7 @@ public class Fluent4Example {
               .then()
               .isTrue());
     }
-
+    
     @Test//(expected = ComparisonFailure.class)
     public void test_c() {
       assertAll(
@@ -48,7 +48,7 @@ public class Fluent4Example {
               .then()
               .isTrue());
     }
-
+    
     @Test(expected = ComparisonFailure.class)
     public void test_allOf_inWhen() {
       assertStatement(stringTransformer("INPUT_VALUE")
@@ -57,8 +57,8 @@ public class Fluent4Example {
           .isTrue()
           .isTrue());
     }
-
-
+    
+    
     @Test(expected = ComparisonFailure.class)
     public void test_allOf_inWhen_2() {
       assertStatement(stringTransformer("INPUT_VALUE")
@@ -67,7 +67,7 @@ public class Fluent4Example {
           .addCheckPhrase(v -> v.checkWithPredicate(Predicates.isNotNull()).toPredicate())
           .addCheckPhrase(v -> v.checkWithPredicate(Predicates.isTrue()).toPredicate()));
     }
-
+    
     @Test(expected = ComparisonFailure.class)
     public void test_allOf_inWhen_3() {
       assertStatement(stringTransformer("INPUT_VALUE")
@@ -76,7 +76,7 @@ public class Fluent4Example {
           .check(v -> v.isTrue().toPredicate())
           .check(v -> v.isTrue().toPredicate()));
     }
-
+    
     @Test(expected = ComparisonFailure.class)
     public void test_allOf_inWhen_4() {
       assertStatement(stringTransformer("INPUT_VALUE")
@@ -85,7 +85,7 @@ public class Fluent4Example {
           .check(v -> v.containing("XYZ1").toPredicate())
           .check(v -> v.containing("ABC1").toPredicate()));
     }
-
+    
     @Test(expected = ComparisonFailure.class)
     public void test_allOf_inWhen_5() {
       assertStatement(stringTransformer("INPUT_VALUE")
@@ -95,28 +95,28 @@ public class Fluent4Example {
           .check(v -> v.isTrue().toPredicate())
           .check(v -> v.isTrue().toPredicate()));
     }
-
+    
     @Test(expected = ComparisonFailure.class)
     public void test_allOf_inWhen_7() {
       assertStatement(stringTransformer("INPUT_VALUE")
-          .transform(
+          .satisfies(
               tx -> tx.toLowerCase()
                   .parseBoolean()
                   .then()
                   .isTrue()
-                  .toPredicate())
-          .transform(
+          )
+          .satisfies(
               tx -> tx.toLowerCase()
                   .parseBoolean()
                   .then()
                   .isTrue()
-                  .toPredicate()));
+          ));
     }
-
+    
     @Test(expected = ComparisonFailure.class)
     public void test_allOf_inWhen_6() {
       assertStatement(stringTransformer("INPUT_VALUE")
-          .transform(
+          .satisfies(
               tx -> {
                 Predicate<String> stringPredicate = tx.toLowerCase()
                     .parseBoolean()
@@ -124,61 +124,60 @@ public class Fluent4Example {
                     .isTrue()
                     .toPredicate();
                 System.out.println(stringPredicate);
-                return stringPredicate;
+                return tx.toBe().predicate(stringPredicate);
               }));
     }
-
+    
     @Test(expected = ComparisonFailure.class)
     public void test_allOf_inWhen_6a() {
       assertStatement(stringTransformer("INPUT_VALUE")
-          .transform(
+          .satisfies(
               tx -> tx.toLowerCase()
                   .parseBoolean()
                   .then()
                   .isTrue()
-                  .toPredicate())
-          .checkWithPredicate(Predicates.transform(length()).check(isEqualTo(10))));
+          )
+          .satisfies().predicate(Predicates.transform(length()).check(isEqualTo(10))));
     }
   }
-
+  
   @Ignore
   public static class OnGoing {
     @Test
     public void test_allOf_inWhen_6a() {
       assertStatement(stringTransformer("helloWorld1")
-          .transform(
+          .satisfies(
               tx -> tx.toLowerCase()
                   .parseBoolean()
                   .then()
                   .isTrue()
-                  .toPredicate())
+          )
           .satisfies()
           .predicate(Predicates.transform(length()).check(isEqualTo(10))));
     }
-
+    
     @Test(expected = IllegalStateException.class)
     public void test_allOf_inWhen_6b() {
       assertStatement(stringTransformer("helloWorld2")
-          .transform(
+          .satisfies(
               tx -> tx.toLowerCase()
                   .parseBoolean()
                   .then()
-                  .isTrue().done())
-          .checkWithPredicate(Predicates.transform(length()).check(isEqualTo(10)))
-          .then());
+                  .isTrue())
+          .satisfies().predicate(Predicates.transform(length()).check(isEqualTo(10))));
     }
-
+    
     @Test(expected = ComparisonFailure.class)
     public void test_allOf_inWhen_6c() {
       assertStatement(stringTransformer("helloWorld2")
-          .transform(
+          .satisfies(
               tx -> tx.toLowerCase()
                   .parseBoolean()
                   .then()
-                  .isTrue().done())
-          .checkWithPredicate(Predicates.transform(length()).check(isEqualTo(10))));
+                  .isTrue())
+          .satisfies().predicate(Predicates.transform(length()).check(isEqualTo(10))));
     }
-
+    
     @Test
     public void givenBook_whenCheckTitleAndAbstract_thenTheyAreNotNullAndAppropriateLength() {
       try {
@@ -188,72 +187,69 @@ public class Fluent4Example {
                 + "aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli appellantur.");
         assertAll(
             new BookTransformer(book)
-                .transform(tx -> tx.title()
-                    .transform(ty -> ty
+                .satisfies(tx -> tx.title()
+                    .satisfies(ty -> ty
                         .then()
-                        .checkWithPredicate(not(isNotNull())).done())
-                    .transform(ty -> ty
+                        .checkWithPredicate(not(isNotNull())))
+                    .satisfies(ty -> ty
                         .parseInt()
                         .then()
                         .greaterThanOrEqualTo(10)
-                        .lessThan(40)
-                        .done())
-                    .done())
-                .transform(tx -> tx.abstractText()
-                    .transform(ty -> ty
+                        .lessThan(40)))
+                .satisfies(tx -> tx.abstractText()
+                    .satisfies(ty -> ty
                         .then()
-                        .notNull().done())
-                    .transform(ty -> ty
+                        .notNull())
+                    .satisfies(ty -> ty
                         .length()
                         .then()
                         .greaterThanOrEqualTo(200)
-                        .lessThan(400).done())
-                    .done()));
+                        .lessThan(400))));
       } catch (ComparisonFailure e) {
         ReportParser reportParser = new ReportParser(e.getActual());
         reportParser.summary().records().forEach(each -> System.out.println(each.toString()));
         throw e;
       }
     }
-
+    
     public static class Book {
       private final String abstractText;
       private final String title;
-
+      
       public Book(String title, String abstractText) {
         this.abstractText = abstractText;
         this.title = title;
       }
-
+      
       String title() {
         return title;
       }
-
+      
       String abstractText() {
         return abstractText;
       }
-
+      
       @Override
       public String toString() {
         return "Book:[title:<" + title + ">, abstract:<" + abstractText + ">]";
       }
     }
-
+    
     public static class BookTransformer extends Expectations.CustomTransformer<BookTransformer, Book> {
       public BookTransformer(Book rootValue) {
         super(rootValue);
       }
-
+      
       public StringTransformer<Book> title() {
         return toString(Printables.function("title", Book::title));
       }
-
+      
       public StringTransformer<Book> abstractText() {
         return toString(Printables.function("abstractText", Book::abstractText));
       }
     }
   }
-
+  
   private static StringTransformer.Impl<String> stringTransformer(String value) {
     return new StringTransformer.Impl<>(() -> value, makeSquashable(Functions.identity()));
   }
