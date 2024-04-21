@@ -27,7 +27,7 @@ With this knowledge, we can verify the correctness of the implementation of a si
 // suppress inspection "AsciiDocLinkResolve"
 Check link:apidocs/com/github/dakusui/valid8j/metamor/package-summary.html[com.github.dakusui.valid8j.metamor] package for more detail.
 
-This feature is experimental and currently no support in "Fluent" programming model.
+NOTE: This feature is experimental and currently no support in "Fluent" programming model.
 
 == Currying
 
@@ -193,7 +193,11 @@ And the item `world!` violated it because it ends with `!`.
 Notice that, this check fails as soon as the first counter example is found.
 This behavior may be changed in the future, or it may become configurable.
 
-This feature is experimental and currently no support in "Fluent" programming model.
+// suppress inspection "AsciiDocLinkResolve"
+Check link:apidocs/com/github/dakusui/valid8j/pcond/experimentals/currying/package-summary.html[com.github.dakusui.valid8j.metamor] package for more detail.
+
+
+NOTE: This feature is experimental and currently no support in "Fluent" programming model.
 
 include::valid8j-footer.adoc[]
 - [[[frege, 10]]]   Frege, Gottlob (1893). "§ 36". Grundgesetze der arithmetik (in German). Book from the collections of University of Wisconsin - Madison, digitized by Google on 26 August 2008. Jena: Hermann Pohle. pp. 54–55.

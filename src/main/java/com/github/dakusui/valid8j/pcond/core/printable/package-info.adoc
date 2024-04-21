@@ -1,5 +1,7 @@
 A package that provides a mechanism to make functions and predicates (lambdas) printable.
 
+== the `printable` package
+
 Suppose that we have this code fragment.
 
 [source, java]

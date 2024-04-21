@@ -16,7 +16,7 @@ public enum Printables {
   
   /**
    * Returns a printable predicate for a given one.
-   * This is a short hand of `Printables.predicate(() -> name, predicate)`.
+   * This is a shorthand of `Printables.predicate(() -> name, predicate)`.
    *
    * @param name      A name of the returned predicate.
    * @param predicate A predicate from which a printable predicate is created.

@@ -1,9 +1,71 @@
+:toc:
+
 = Guides and Tutorials
 
 == Programming Models
 
+`valid8j` supports two programming models, which are "fluent style" and the other is "classic style".
+In general, it is easier to write your code in "fluents style" because IDE helps are available.
+But the "fluent style" is implemented on top of "classic style" and some features may be only available in the classic one.
+
+In this section, we walk through both styles and discuss points that would matter in everyday programming.
+
 ===  Fluent Style
-(t.b.d.)
+
+Following is an example code written in fluent style.
+
+[%nowrap, java]
+.`IntroductionExample` class
+----
+public class IntroductionExample {
+  public String examplePublicPublicMethod(String name, int basePrice) {
+    // Use `Expectations.requireXyz` method to check values in production.
+    requireArguments(
+        that(name).satisfies()
+            .notNull(),
+        that(basePrice).satisfies()
+            .greaterThanOrEqualTo(0)
+            .lessThan(10_000));
+    return examplePrivateMethod(name, basePrice);
+  }
+
+  private String examplePrivateMethod(String name, int basePrice) {
+    // Use `assert` statement with`Expectations.` {`precondition`,`invariant`,`postcondition`} methods
+    // and their plural for Design by Contract programming.
+    assert preconditions(
+        // `value(var)` and `that(var)` are synonyms. Use the one you like.
+        // `toBe(var)` and `satisfies(var)` are synonyms. Use the one you like.
+        value(name).toBe()
+            .notNull(),
+        value(basePrice).toBe()
+            .greaterThanOrEqualTo(0)
+            .lessThan(10_000));
+    int price = (int) (basePrice * 1.08);
+    return String.format("%s:%s", name, price);
+  }
+
+  @TestMethodExpectation(FAILURE)
+  @Test
+  public void exampleMethod() {
+    String message = examplePublicPublicMethod("Kirin Ichiban", 100);
+    // Use `Expectations.assertAll` for test assertions.
+    assertAll(
+        that(message)
+            .substringAfter(":")
+            .parseInt()
+            .satisfies()
+            .equalTo(110),
+        that(message)
+            .satisfies()
+            .startingWith("Kirin Ichiban"));
+  }
+}
+----
+
+NOTE: In `Transfomer` interface, and `Checker` interface, which gives you choices automatically through your IDE, some methods that do the same things are available.
+For instance, `that()` and `toBe()` do the same as `then`.
+They are synonym methods defined to increase your code readability.
+When synonym methods are available for your purpose, choose one that best improves readability in code.
 
 ===  Classic Style
 
@@ -11,22 +73,71 @@ The fluent style is implemented based on the printable predicate mechanism.
 You can also directly use it, and it's called "classic style".
 With the style, you will have more control and sometimes more concise error messages because the fluent style needs to compose more complex predicate structure.
 
-=== "Synonyms"
 
-NOTE: When synonym methods are available for your purpose, choose one that best improves readability in code.
+Test Assertions::
+Use static methods in `com.github.dakusui.valid8j.classic.TestAssertions` class such as `assertThat(T, Predicate<? super T> predicate)`.
 
-== Use cases
+Design by Contract::
+Use static methods in `com.github.dakusui.valid8j.classic.Assertions` class such as `that(T, Predicate<? super T> predicate)`.
 
-=== Test Assertions
-(t.b.d.)
+Value Checking::
+Use static methods in `com.github.dakusui.valid8j.classic.Requires`, `com.github.dakusui.valid8j.classic.Ensures`, and ``com.github.dakusui.valid8j.classic.Validates` classes.
 
-=== Value checking
-(t.b.d.)
+For creating predicates to give to those methods, you can refer to static methods in `com.github.dakusui.valid8j.pcond.forms.Predicates` class.
 
-=== Design by Contract
-(t.b.d.)
+To compose a "transform-and-check" structure, use `Predicates#transform(Function)` method, which returns `TransformingPredicate.Factory` instance.
+The returned instance has `check(Predicate)` method that returns a printable predicate.
 
-=== Creating a Custom Transformer
+There is another entry point class `com.github.dakusui.valid8j.pcond.forms.Functions`.
+This class has methods that return printable functions whose return value can be passed to `Predicates#transform(Function)`.
+
+In order to create your own printable functions and predicates, you can use `function` and `predicate` methods in `com.github.dakusui.valid8j.pcond.forms.Printables`.
+
+In case you want to directly make your own function printable when you call `Predicates#transform` method, use its overloaded version: `Predicates#transform(String, Function)`.
+
+
+== Working with Your Own Class
+
+You may sometime want to check your own class's behavior.
+In `valid8j`, there are a couple of ways to do so.
+One is to create a custom transformer, another is to use `ObjectTransformer`, which is designed for general objects.
+
+In this section both of them will be discussed.
+
+=== Using `ObjectTransformer`
+
+`ObjectTransformer` is a general transformer which is returned by `that(Object)` method in `Expectations` class.
+Since `AbstractObjectTransformer#invoke(String, Object...)` method is available from it, you play with your class without needing to implement your own transformer.
+
+[%nowrap, java]
+----
+class Example {
+  public void assertAllSalutes() {
+    assert all(
+        that(new Salute())
+            .invoke("inJapanese")
+            .asString()
+            .length()
+            .then()
+            .greaterThan(0),
+        that(new Salute())
+            .invoke("inEnglish")
+            .asString()
+            .length()
+            .then()
+            .greaterThan(0));
+  }
+}
+----
+
+To invoke a static method, you can use `AbstractObjectTransformer#invokeStatic(Class,String,Object...)` method.
+
+=== Custom Transformer Approach
+
+`ObjectTransformer` is a handy way, but it sacrifices type safety.
+A way to implement your own transformer will be discussed here.
+
+==== Creating a Custom Transformer
 
 Suppose that we have a class `Book`.
 
@@ -41,11 +152,11 @@ public static class Book {
     this.title = title;
   }
 
-  String title() {
+  public String title() {
     return title;
   }
 
-  String abstractText() {
+  public String abstractText() {
     return abstractText;
   }
 
@@ -75,9 +186,32 @@ public static class BookTransformer extends CustomTransformer<BookTransformer, B
 }
 ----
 
+==== Testing Your Class with a Custom Transformer
 
-=== Reading a Failure Message
-(t.b.d.)
+[%nowrap, java]
+.Test Example
+----
+class BookTest {
+    @Test
+    public void givenBook_whenCheckTitleAndAbstract_thenTheyAreNotNullAndAppropriateLength() {
+        Book book = new Book(
+            "De Bello Gallico",
+            "Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae, " +
+            "aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli appellantur.");
+        assertAll(value(book, BookTransformer::new)
+                  .satisfies(tx -> tx.title()
+                    .satisfies(ty -> ty.toBe().notNull())
+                    .satisfies(ty -> ty.parseInt().toBe().greaterThanOrEqualTo(10).lessThan(40)))
+                  .satisfies(tx -> tx.abstractText()
+                    .satisfies(ty -> ty.toBe().notNull())
+                    .satisfies(ty -> ty.length().toBe().greaterThanOrEqualTo(200).lessThan(400))));
+    }
+}
+----
+
+== Reading a Failure Message
+
+Following is a failure message when a `precondition` check fails.
 
 [%nowrap]
 .Message for DbC assertion failure.
@@ -105,6 +239,11 @@ Mismatch>:[0]      ->      <[100]      ->false
 	at com.github.dakusui.valid8j.pcond.validator.Validator.lambda$checkPrecondition$7(Validator.java:321)
     ...
 ----
+
+The lines starting with `Mismatch<:` are expectations and ones with `Mismatch>:` are actually observed values.
+
+NOTE: Maybe we will not be printing lines with `Mismatch<:` in future for conciseness.
+
 
 
 include::valid8j-footer.adoc[]

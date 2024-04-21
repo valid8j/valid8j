@@ -930,7 +930,7 @@ public enum Expectations {
   }
   
   /**
-   * @formatter:off
+   * //@formatter:off
    * A base class for a custom transformer.
    *
    * [source,java]
@@ -953,7 +953,7 @@ public enum Expectations {
    *
    * In the example above, the custom transformer class `BookTransformer`, which targets `Book` type value is specified for `TX`,
    * while the `Book` is specified for `T`.
-   * @formatter:on
+   * //@formatter:on
    *
    * @param <TX> This class
    * @param <T>  Type of the class that is targeted by the transformer.
