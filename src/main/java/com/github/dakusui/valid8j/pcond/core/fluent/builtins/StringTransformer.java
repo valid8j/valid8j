@@ -1,11 +1,10 @@
 package com.github.dakusui.valid8j.pcond.core.fluent.builtins;
 
+import com.github.dakusui.valid8j.pcond.core.fluent.AbstractObjectTransformer;
 import com.github.dakusui.valid8j.pcond.forms.Functions;
 import com.github.dakusui.valid8j.pcond.forms.Printables;
-import com.github.dakusui.valid8j.pcond.core.fluent.AbstractObjectTransformer;
 
 import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 import static com.github.dakusui.valid8j.pcond.internals.InternalUtils.trivialIdentityFunction;
@@ -64,6 +63,10 @@ public interface StringTransformer<T> extends
 
   default FloatTransformer<T> parseFloat() {
     return toFloat(Printables.function("parseFloat", Float::parseFloat));
+  }
+  
+  default StringTransformer<T> substringAfter(String token) {
+    return toString(Printables.function("substringAfter[" + token + "]", str -> str.substring(str.indexOf(token) + token.length())));
   }
 
   class Impl<T> extends

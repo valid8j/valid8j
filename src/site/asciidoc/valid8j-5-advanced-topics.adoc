@@ -1,15 +1,202 @@
 = Advanced Topics
 
 == Metamorphic Testing Feature
-(t.b.d.)
 
-== Writing Custom Transformer: How to write your own transformer
-(t.b.d.)
 
-== Writing Custom Predicate: How to write your own printable predicate
-(t.b.d.)
+Metamorphic testing is a technique to alleviate "oracle problem" by verifying known relationship among IOs of multiple executions of a target function under test.
 
-== Customizing exceptions to be thrown
-(t.b.d.)
+For instance, let's look at a situation, where you are testing an implementation of a mathematical function `sin(double x)`.
+If you are going to check the function if the function gives a value equal to a value you calculated without using the function under test itself, you will need to calculate it by hand, which is error-prone and very expensive.
+
+However, we know some characteristics, which a `sin(x)` function must satisfy if it is properly implemented.
+For instance, this equation holds for any real `x`.
+
+----
+sin(x) = sin(Math.PI - x)
+----
+
+Also, we can think of following:
+
+----
+ (sin(x))^2 + (cos(x))^2 = 1
+≡(sin(x))^2 + (sin(Math.PI/2 - x))^2 = 1
+----
+
+With this knowledge, we can verify the correctness of the implementation of a sine function even if we don't know the value _sin(x)_ should return for a given _x_.
+
+// suppress inspection "AsciiDocLinkResolve"
+Check link:apidocs/com/github/dakusui/valid8j/metamor/package-summary.html[com.github.dakusui.valid8j.metamor] package for more detail.
+
+This feature is experimental and currently no support in "Fluent" programming model.
+
+== Currying
+
+Currying is a technique to convert a multi-parameter function into a sequence of single parameter functions.
+`valid8j` has experimental currying support.
+
+In this section, let's walk through what currying, how it looks like in `valid8j`, and how we can use it.
+
+=== What is currying?
+
+The concept was first introduced by Gottlob Frege<<frege>> and developed by Moses Schönfinkel<<shonfinkel>>,and Haskell Curry<<curry>>.
+And perhaps you've already read a wikipedia article about it<<currying-wikipedia>>.
+As the article says, and unlike it is implemented in other languages, it is different from "partial application", where a new function is created by applying some actual arguments to multi-parameter function.
+
+Sacrificing mathematical formality, we first express it using Java-like syntax.
+
+If we use Java's lambda, a three parameter function whose parers are `a`, `b`, and `c` can be described like this.
+
+.Function before currying
+----
+F: (a, b, c) -> X
+----
+If the function is adding `a` and `b` and `c`, it will be:
+
+.Function before currying
+----
+F: (a, b, c) -> a + b + c
+----
+
+What does the wikipedia article say about currying?
+Yes, "currying is the technique of translating a function that takes multiple arguments into a sequence of families of functions, each taking a single argument."<<currying-wikipedia>>
+
+.Function after currying
+----
+Fcurried: (a) -> (b) -> (c) -> a + b + c
+----
+
+Is this really useful?
+Yes, it is.
+In programming, in the end, you know want to calculate `a + b + c`, but sometimes you only have actual value for `a` but not for `b` and `c` in the context you are working in.
+Still you want to let other contexts (e.g., functions that you call) know the formula you want them to calculate, you can curry it, apply the value for `a`, pass the result to functions as a parameter.
+
+Let's check how it looks in the next section.
+
+=== How it looks like in `valid8j`
+
+Suppose that you have a following class that has multi-parameter functions.
+
+[%nowrap,java]
+----
+public enum ExampleMethods {
+  ;
+
+  public static boolean stringEndsWith(String s, String suffix) {
+    return s.endsWith(suffix);
+  }
+
+  public static boolean areEqual(Object object, Object another) {
+    return Objects.equals(object, another);
+  }
+}
+----
+
+We can curry them by the following code.
+
+[%nowrap,java]
+----
+import static com.github.dakusui.valid8j.pcond.experimentals.currying.CurriedFunctions.*;
+
+public enum CurryExampleMethods {
+  ;
+
+  public static CurriedFunction<Object, Object> stringEndsWith() {
+    return curry(ExampleMethods.class, "stringEndsWith", String.class, String.class);
+  }
+
+  public static CurriedFunction<Object, Object> areEqual() {
+    return curry(ExampleMethods.class, "areEqual", Object.class, Object.class);
+  }
+}
+----
+
+=== When it is useful?
+
+Now we can curry a function, but how to use it and when?
+
+Shortly, when you have multiple items, and you want to make sure all of them satisfy a certain relationship with another set of items, it will be useful in `valid8j` 's context.
+
+Following is such an example.:
+
+[%nowrap, java]
+----
+import static com.github.dakusui.valid8j.pcond.experimentals.currying.CurriedFunctions.*;
+
+public class CurryingExampleTest {
+  @Test
+  public void testUsingCurrying() {
+    assertThat(
+        asList("hello", "world!"),
+        transform(
+          stream().andThen(nest(asList(".", "?", "!"))))
+            .check(anyMatch(toCurriedContextPredicate(stringEndsWith()))));
+  }
+}
+----
+
+In this example, you have a first dataset, a list of words: `"hello"` and `world`.
+The second dataset is punctuations and non-alphabet symbols: `"."`, `","`, `"?"`, and `"!""`.
+You want to make sure any word in the word list doesn't contain any non-alphabets for some reason.
+
+This test fails with the following output:
+
+|===
+|Expectation |Actual
+
+a|
+[%nowrap]
+----
+
+    ["hello","world!"]             ->transform                               ->ReferencePipeline$7@4c203ea1
+                                   ->  stream                                ->ReferencePipeline$Head@445b84c0
+    ReferencePipeline$Head@445b84c0->  nest[".",",","!"...;4]                ->ReferencePipeline$7@4c203ea1
+    ReferencePipeline$7@4c203ea1   ->check:noneMatch[curry(...ng)(String)[])]->true
+    variables:[hello, .]           ->    curry(stringEndsWi...ing)(String)[])->false
+    variables:[hello, ,]           ->    curry(stringEndsWi...ing)(String)[])->false
+    variables:[hello, !]           ->    curry(stringEndsWi...ing)(String)[])->false
+    variables:[hello, ?]           ->    curry(stringEndsWi...ing)(String)[])->false
+    variables:[world!, .]          ->    curry(stringEndsWi...ing)(String)[])->false
+    variables:[world!, ,]          ->    curry(stringEndsWi...ing)(String)[])->false
+[0] variables:[world!, !]          ->    curry(stringEndsWi...ing)(String)[])->false
+
+.Detail of failure [0]
+---
+curry(stringEndsWith(String)(String)[])
+---
+----
+a|
+[%nowrap]
+----
+    ["hello","world!"]             ->transform                               ->ReferencePipeline$7@4c203ea1
+                                   ->  stream                                ->ReferencePipeline$Head@445b84c0
+    ReferencePipeline$Head@445b84c0->  nest[".",",","!"...;4]                ->ReferencePipeline$7@4c203ea1
+    ReferencePipeline$7@4c203ea1   ->check:noneMatch[curry(...ng)(String)[])]->false
+    variables:[hello, .]           ->    curry(stringEndsWi...ing)(String)[])->false
+    variables:[hello, ,]           ->    curry(stringEndsWi...ing)(String)[])->false
+    variables:[hello, !]           ->    curry(stringEndsWi...ing)(String)[])->false
+    variables:[hello, ?]           ->    curry(stringEndsWi...ing)(String)[])->false
+    variables:[world!, .]          ->    curry(stringEndsWi...ing)(String)[])->false
+    variables:[world!, ,]          ->    curry(stringEndsWi...ing)(String)[])->false
+[0] variables:[world!, !]          ->    curry(stringEndsWi...ing)(String)[])->true
+
+.Detail of failure [0]
+---
+variables:[world!, !]
+---
+
+----
+|===
+
+As you see, it is shown that each string from the first set is expected *not* to end with symbols in the second set as you see on the left side.
+And the item `world!` violated it because it ends with `!`.
+
+Notice that, this check fails as soon as the first counter example is found.
+This behavior may be changed in the future, or it may become configurable.
+
+This feature is experimental and currently no support in "Fluent" programming model.
 
 include::valid8j-footer.adoc[]
+- [[[frege, 10]]]   Frege, Gottlob (1893). "§ 36". Grundgesetze der arithmetik (in German). Book from the collections of University of Wisconsin - Madison, digitized by Google on 26 August 2008. Jena: Hermann Pohle. pp. 54–55.
+- [[[shonfinkel, 11]]] Schönfinkel, Moses (September 1924) [Presented at the Mathematischen Gesellschaft (Mathematical Society) in Göttingen on 7 December 1920. Received by Mathematische Annalen on 15 March 1924.]. Written at Moskau. "Über die Bausteine der mathematischen Logik" [On the building blocks of mathematical logic] (PDF). Mathematische Annalen. 92 (3–4). Berlin?: Springer: 305–316. doi:10.1007/BF01448013. S2CID 118507515.
+- [[[curry, 12]]]  Originally published as Reynolds, John C. (1 August 1972). "Definitional interpreters for higher-order programming languages". In Rosemary Shields (ed.). Proceedings of the ACM annual conference - ACM '72. Vol. 2. ACM Press. pp. 717–740. doi:10.1145/800194.805852. ISBN 9781450374927. S2CID 163294. In the last line we have used a trick called Currying (after the logician H. Curry) to solve the problem of introducing a binary operation into a language where all functions must accept a single argument. (The referee comments that although "Currying" is tastier, "Schönfinkeling" might be more accurate.) Republished as Reynolds, John C. (1998). "Definitional Interpreters for Higher-Order Programming Languages". Higher-Order and Symbolic Computation. 11 (4). Boston: Kluwer Academic Publishers: 363–397. doi:10.1023/A:1010027404223. 13 – via Syracuse University: College of Engineering and Computer Science - Former Departments, Centers, Institutes and Projects.
+- [[[currying-wikipedia, 13]]] Currying https://en.wikipedia.org/wiki/Currying#cite_note-Reynolds-8

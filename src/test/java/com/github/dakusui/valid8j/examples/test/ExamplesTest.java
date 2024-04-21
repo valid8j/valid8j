@@ -3,6 +3,7 @@ package com.github.dakusui.valid8j.examples.test;
 import com.github.dakusui.valid8j.examples.fluent.Valid8JExample;
 import com.github.dakusui.valid8j.examples.metamor.MetamorExampleFailing;
 import com.github.dakusui.valid8j.examples.metamor.MetamorExamplePassing;
+import com.github.dakusui.valid8j.examples.misc.IntroductionExample;
 import com.github.dakusui.valid8j.examples.thincrest.ThincrestExample;
 import com.github.dakusui.valid8j.utils.metatest.Metatest;
 import com.github.dakusui.valid8j.utils.testbase.TestBase;
@@ -17,6 +18,11 @@ public class ExamplesTest extends TestBase {
   @Test
   public void testFluentExample() {
     Metatest.verifyTestClass(Valid8JExample.class);
+  }
+  
+  @Test
+  public void testIntroductionExample() {
+    Metatest.verifyTestClass(IntroductionExample.class);
   }
 
   @Test

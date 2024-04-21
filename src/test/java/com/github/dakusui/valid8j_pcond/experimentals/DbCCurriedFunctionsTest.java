@@ -1,5 +1,6 @@
 package com.github.dakusui.valid8j_pcond.experimentals;
 
+import com.github.dakusui.valid8j.classic.TestAssertions;
 import com.github.dakusui.valid8j.utils.experimentals.ExperimentalsUtils;
 import com.github.dakusui.valid8j.classic.IllegalValueException;
 import com.github.dakusui.valid8j.utils.experimentals.TargetMethodHolder;
@@ -10,6 +11,7 @@ import com.github.dakusui.valid8j.pcond.forms.Functions;
 import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j_pcond.ut.IntentionalException;
 import org.hamcrest.CoreMatchers;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.function.Function;
@@ -43,7 +45,16 @@ public class DbCCurriedFunctionsTest extends TestBase {
         transform(stream().andThen(nest(asList("1", "2", "o"))))
             .check(anyMatch(toCurriedContextPredicate(stringEndsWith()))));
   }
-
+  
+  @Ignore
+  @Test
+  public void testUsingCurrying() {
+    TestAssertions.assertThat(
+        asList("hello", "world!"),
+        transform(stream().andThen(nest(asList(".", ",", "!", "?"))))
+            .check(noneMatch(toCurriedContextPredicate(stringEndsWith()))));
+  }
+  
   @Test
   public void hello_a() {
     validate(

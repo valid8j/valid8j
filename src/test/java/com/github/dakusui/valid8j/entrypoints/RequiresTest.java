@@ -4,6 +4,7 @@ import com.github.dakusui.valid8j.classic.Requires;
 import com.github.dakusui.valid8j.pcond.forms.Functions;
 import com.github.dakusui.valid8j.pcond.forms.Predicates;
 import com.github.dakusui.valid8j.pcond.validator.exceptions.PreconditionViolationException;
+import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import org.junit.Test;
 
 import java.util.function.Predicate;
@@ -16,7 +17,7 @@ import static org.hamcrest.core.AllOf.allOf;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class RequiresTest {
+public class RequiresTest extends TestBase {
     @Test
     public void givenValidValue_whenRequire_thenValueReturned() {
         Integer v = Requires.require(0, Predicate.isEqual(0));

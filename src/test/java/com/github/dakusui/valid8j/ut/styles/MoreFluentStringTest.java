@@ -2,11 +2,13 @@ package com.github.dakusui.valid8j.ut.styles;
 
 import com.github.dakusui.valid8j.utils.testbase.TestBase;
 import com.github.dakusui.valid8j.pcond.fluent.Statement;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.regex.Pattern;
 
 import static com.github.dakusui.valid8j.fluent.Expectations.assertStatement;
+import static com.github.dakusui.valid8j.fluent.Expectations.that;
 
 
 public class MoreFluentStringTest extends TestBase {
@@ -73,7 +75,14 @@ public class MoreFluentStringTest extends TestBase {
 
   @Test
   public void test_findSubstrings() {
-    String var = "hello";
-    assertStatement(Statement.stringValue(var).then().containingSubstrings("hel", "lo"));
+    String var = "hello world";
+    assertStatement(Statement.stringValue(var).then().containingSubstrings("hello", "world"));
+  }
+  
+  @Ignore
+  @Test
+  public void test_findSubstrings_failing() {
+    String var = "hello world";
+    assertStatement(that(var).then().containingSubstrings("hello", "WORLD"));
   }
 }

@@ -94,11 +94,100 @@ Note that The value transformation can be repeated multiple times, and it will b
 
 === Easy user type support for transformation
 
-(t.b.d.)
+If you have a class `Book` as follows:
+[%nowrap,java]
+----
+public static class Book {
+  private final String abstractText;
+  private final String title;
+
+  public Book(String title, String abstractText) {
+    this.abstractText = abstractText;
+    this.title = title;
+  }
+
+  String title() {
+    return title;
+  }
+
+  String abstractText() {
+    return abstractText;
+  }
+}
+
+----
+
+In order to support it in `valid8j` 's framework, you just need to write a class: `BookTransformer`, which is straight-forward.
+
+[%nowrap,java]
+----
+public class BookTransformer extends Expectations.CustomTransformer<BookTransformer, Book> {
+  public BookTransformer(Book rootValue) {
+    super(rootValue);
+  }
+
+  public StringTransformer<Book> title() {
+    return toString(Printables.function("title", Book::title));
+  }
+
+  public StringTransformer<Book> abstractText() {
+    return toString(Printables.function("abstractText", Book::abstractText));
+  }
+}
+----
+
+This can be used in your test code like this:
+
+[source, java]
+----
+public class BookExample {
+  @Test
+  public void givenBook_whenCheckTitleAndAbstract_thenTheyAreNotNullAndAppropriateLength() {
+    Book book = new Book(
+        "De Bello Gallico",
+        "Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae, "
+            + "aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli appellantur.");
+    assertAll(
+      new BookTransformer(book)
+          .title()
+          .parseInt()
+          .satisfies()
+          .greaterThanOrEqualTo(10)
+          .lessThan(40));
+  }
+}
+----
 
 === Limited number of types are supported for checking
 
+The `valid8j` 's philosophy of "transform-and-check" is to divide an assertion into two.
+One is to transform a given value to a value which we can easily check and understand.
+The other is to check the transformed value.
 
+What values are easy to check and understand if the check fails?
+Even if we use complex types and test them, we don't actually test them and understand their failures directly.
+In reality, we test and understand their components, which may be strings, numbers, a collection of theirs.
+
+The types `valid8j` offers for checking are:
+
+- `String`
+- `int` (`Integer`)
+- `long` (`Long`)
+- `short` (`Short`)
+- `float` (`Float`)
+- `double` (`Double`)
+- `Stream<T>`
+- `List<T>`
+- `Throwable`
+
+Each of them has its own transformer and checker out-of-box.
+Depending on the type to be supported, individual transformers and checkers have transforming and checking methods.
+For instances, `StringTransformer` has `length` method, which returns `IntegerTransformer`, `IntegerChecker` has `greaterThan` method to check if the current value satisfies the conditions built by the methods users called.
+
+As the example shows, if you call `satisfies` method, the current transformer returns a checker for the type is returned.
+You can also use `toBe` method or `then` method depending on context to maximize the readability.
+
+NOTE: Author decided not to support primitives directly but trust and rely on Java's wrapper classes.
 
 NOTE: Currently `BigDecimal` is not supported.
 
@@ -134,8 +223,16 @@ Instead, if the given `Statement` doesn't satisfy the predicate, it will compose
 
 == Make Predicates Printable and Composable.
 
-(t.b.d.)
+In Java's ecosystem, there is no reliable way to make lambdas human-readable.
+The approach `valid8j` took is to override `toString` method of `Predicate` and `Function` so that it returns a string that a user gives to a lambda.
 
+However, it is not sufficient.
+Because `Predicate` has `and`, `or`, and `negate` methods to create a new predicate from existing ones.
+For `Function`, there are `compose` and `andThen` methods.
+We need a mechanism, where appropriate implementation are provided for those composed predicates and functions automatically and behind the scenes.
+
+// suppress inspection "AsciiDocLinkResolve"
+Check link:apidocs/com/github/dakusui/valid8j/pcond/core/printable/package-summary.html[com.github.dakusui.valid8j.pcond.core.printable] package for more detail.
 
 == Java 8 for Development
 

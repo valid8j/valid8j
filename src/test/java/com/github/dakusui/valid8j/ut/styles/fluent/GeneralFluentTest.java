@@ -138,6 +138,7 @@ public class GeneralFluentTest extends TestBase {
     return new TestSuite<>(
         asList(
             (String v) -> Statement.stringValue(v).substring(1).parseShort().then().instanceOf(Short.class).equalTo((short) 23).done(),
+            (String v) -> Statement.stringValue(v).substringAfter("1").parseShort().then().instanceOf(Short.class).equalTo((short) 23).done(),
             (String v) -> Statement.stringValue(v).parseShort().then().instanceOf(Short.class).equalTo((short) 123).done(),
             (String v) -> Statement.stringValue(v).parseLong().then().instanceOf(Long.class).equalTo((long) 123).done(),
             (String v) -> Statement.stringValue(v).parseFloat().then().instanceOf(Float.class).equalTo((float) 123).done(),

@@ -1,10 +1,14 @@
 = FAQs
 
-When to `assert` and when to `requrie`::
-(t.b.d.)
-
 Making metamorphic testing report look better::
-(t.b.d.)
+Please don't forget including fragment in your test class, which customize the report generation Metamorphic Testing feature of `valid8j`.
+[source,java]
+----
+  @BeforeClass
+  public static void beforeAll() {
+    Validator.reconfigure(b -> b.reportComposer(new MetamorphicReportComposer()));
+  }
+----
 
 `assert{All,Statement}` or `assume{All,Statement}` give non-informative error message::
 If you see a message like following:
