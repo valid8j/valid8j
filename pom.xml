@@ -3,7 +3,7 @@
     <groupId>com.github.dakusui</groupId>
     <artifactId>valid8j</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.1-SNAPSHOT</version>
+    <version>2.0.1</version>
     <description>Overhead-less DbC library</description>
     <name>valid8j</name>
     <url>https://github.com/dakusui/valid8j</url>
@@ -22,7 +22,7 @@
         <developerConnection>scm:git:git@github.com:dakusui/${project.name}.git
         </developerConnection>
         <url>http://dakusui.github.io/${project.name}</url>
-        <tag>${project.artifactId}-${project.version}</tag>
+        <tag>valid8j-2.0.1</tag>
     </scm>
 
     <developers>
