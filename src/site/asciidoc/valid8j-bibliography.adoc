@@ -3,7 +3,7 @@
 
 - [[[DbC, 1]]] Wikipedia article on Design by Contract, https://en.wikipedia.org/wiki/Design_by_contract[Design by contract]
 - [[[valid4j, 2]]] valid4j https://www.valid4j.org/[valid4j.org]
-- [[[pcond, 3]]] pcond https://dakusui.github.io/pcond/[github.com/pcond]
+- [[[pcond, 3]]] pcond https://dakusui.github.io/pcond/[dakusui.github.io/pcond]
 - [[[v4j, 4]]] Valid4j, http://www.valid4j.org[valid4j.org]
 - [[[GuavaPreconditions, 5]]] PreconditionsExplained, https://github.com/google/guava/wiki/PreconditionsExplained[PreconditionsExplained]
 - [[[hamcrest, 6]]] Hamcrest https://hamcrest.org/[hamcrest.org]
