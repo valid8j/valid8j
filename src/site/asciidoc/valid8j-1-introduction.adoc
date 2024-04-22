@@ -5,6 +5,7 @@ It also provides readability both in codes and messages on failures.
 Easy to write.
 
 [%nowrap, java]
+.`IntroductionExample` class
 ----
 public class IntroductionExample {
   public String examplePublicPublicMethod(String name, int basePrice) {

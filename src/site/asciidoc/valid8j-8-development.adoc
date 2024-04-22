@@ -4,22 +4,22 @@
 
 == Prerequisites
 
-(t.b.d.)
-
-- `mvn`
 - JDK (Java SE 8. No older, no newer. OpenJDK is recommended.)
+- `mvn` (3.6.x is recommended)
 - `dot` (Necessary for building the documentation. You can install it as a part of `graphviz`)
-
+- `ruby` (3.0.x is recommended)
+- `bash` (5.1.x is recommended. I don't think macOS's default one works.)
 
 == Setting Up a Development Environment
 
 - `git clone https://github.com/dakusui/valid8j.git`
+- then `cd valid8j`.
 
+Also, import the directory to your IDE as a project.
 
 == Build Process
 
 === Build by maven
-
 
 Building a binary::
 `mvn clean compile`
@@ -47,14 +47,18 @@ To execute this, you need to have a GitHub account with a permission to do so.
 
 == Testing
 `mvn test`::
-(t.b.d.)
+Runs tests.
 
 == Contribution Guidelines
 
 Coding conventions are defined as IDEA's configuration and found under `.idea` directory of the source tree.
 Note that https://asciidoc.org/[`asciidoc`] and https://github.com/asciidoctor/asciidoclet[`asciidoclet`] are used for documentation rather than markdown.
 
-(t.b.d.)
-asciidoc documentation.
+When you open a pull request, don't forget:
+
+- Running a test (`mvn test`)
+- If the tests pass, try `mvn site` or run "all tests" from your IntelliJ to make sure your changes are exercised by the tests.
+If not, please write tests.
+- The main branch is `main`
 
 include::valid8j-footer.adoc[]

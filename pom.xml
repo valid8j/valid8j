@@ -3,8 +3,8 @@
     <groupId>com.github.dakusui</groupId>
     <artifactId>valid8j</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.2-SNAPSHOT</version>
-    <description>Overhead-less DbC library</description>
+    <version>2.0.3-SNAPSHOT</version>
+    <description>Java Library Providing Uniformed Programming Experiences across DbC, Value Checking, and Test Assertions</description>
     <name>valid8j</name>
     <url>https://github.com/dakusui/valid8j</url>
 

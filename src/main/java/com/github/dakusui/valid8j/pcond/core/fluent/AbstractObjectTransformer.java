@@ -4,6 +4,7 @@ import com.github.dakusui.valid8j.pcond.core.fluent.builtins.*;
 import com.github.dakusui.valid8j.pcond.forms.Functions;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
@@ -37,13 +38,17 @@ public interface AbstractObjectTransformer<
   default StringTransformer<String> stringify() {
     return (StringTransformer<String>) this.toString(Functions.stringify());
   }
-
+  
+  default <E> ObjectTransformer<T, E> function(Function<R, E> function) {
+    return this.toObject(Objects.requireNonNull(function));
+  }
+  
   default <E> ObjectTransformer<T, E> invoke(String methodName, Object... args) {
-    return this.toObject(call(instanceMethod(parameter(), methodName, args)));
+    return this.function(call(instanceMethod(parameter(), methodName, args)));
   }
 
   default <E> ObjectTransformer<T, E> invokeStatic(Class<?> klass, String methodName, Object... args) {
-    return this.toObject(call(classMethod(klass, methodName, args)));
+    return this.function(call(classMethod(klass, methodName, args)));
   }
 
   /**
