@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.github.dakusui</groupId>
+    <groupId>com.github.valid8j</groupId>
     <artifactId>valid8j</artifactId>
     <packaging>jar</packaging>
     <version>2.0.3-SNAPSHOT</version>
     <description>Java Library Providing Uniformed Programming Experiences across DbC, Value Checking, and Test Assertions</description>
     <name>valid8j</name>
-    <url>https://github.com/dakusui/valid8j</url>
+    <url>https://github.com/valid8j/valid8j</url>
 
     <licenses>
         <license>
@@ -17,11 +17,11 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com/dakusui/${project.name}.git
+        <connection>scm:git:git@github.com/valid8j/${project.name}.git
         </connection>
-        <developerConnection>scm:git:git@github.com:dakusui/${project.name}.git
+        <developerConnection>scm:git:git@github.com:valid8j/${project.name}.git
         </developerConnection>
-        <url>http://dakusui.github.io/${project.name}</url>
+        <url>http://valid8j.github.io/${project.name}</url>
         <tag>${project.artifactId}-${project.version}</tag>
     </scm>
 
@@ -377,7 +377,7 @@
                             <jvmArg>-Dunderpitest=yes</jvmArg>
                         </jvmArgs>
                         <targetClasses>
-                            <param>com.github.dakusui.valid8j.*</param>
+                            <param>com.github.valid8j.*</param>
                         </targetClasses>
                         <targetTests>
                             <param>*Test</param>
@@ -391,11 +391,8 @@
                     <configuration>
                         <instrumentation>
                             <includes>
-                                <include>com/github/dakusui/**/*.class</include>
+                                <include>com/github/valid8j/**/*.class</include>
                             </includes>
-                            <excludes>
-                                <exclude>com/github/dakusui/valid8j_pcond/**/*.class</exclude>
-                            </excludes>
                         </instrumentation>
                         <formats>
                             <format>html</format>
@@ -410,7 +407,7 @@
                     <version>${jacoco-maven-plugin.version}</version>
                     <configuration>
                         <excludes>
-                            <exclude>com/github/dakusui/valid8j_pcond/**/*.class</exclude>
+                            <exclude>com/github/valid8j/**/*.class</exclude>
                         </excludes>
                     </configuration>
                     <executions>
