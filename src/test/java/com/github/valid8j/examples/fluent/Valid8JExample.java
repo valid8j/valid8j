@@ -7,11 +7,9 @@ import com.github.valid8j.utils.metatest.TestClassExpectation.ResultPredicateFac
 import com.github.valid8j.utils.metatest.TestMethodExpectation;
 import org.junit.Test;
 
-import static com.github.valid8j.fluent.Expectations.all;
-import static com.github.valid8j.fluent.Expectations.that;
+import static com.github.valid8j.fluent.Expectations.*;
 import static com.github.valid8j.utils.metatest.TestMethodExpectation.Result.FAILURE;
 import static com.github.valid8j.utils.metatest.TestMethodExpectation.Result.PASSING;
-import static com.github.valid8j.pcond.fluent.Statement.objectValue;
 
 @TestClassExpectation(value = {
     @EnsureJUnitResult(type = WasNotSuccessful.class, args = {}),
@@ -25,18 +23,10 @@ public class Valid8JExample {
   @Test
   public void assertAllSalutes() {
     assert all(
-        that(new Salute())
-            .invoke("inJapanese")
-            .asString()
-            .length()
-            .then()
-            .greaterThan(0),
-        objectValue(new Salute())
-            .invoke("inEnglish")
-            .asString()
-            .length()
-            .then()
-            .greaterThan(0));
+        that(new Salute()).invoke("inJapanese").asString()
+            .length().toBe().greaterThan(0),
+        that(new Salute()).invoke("inEnglish").asString()
+            .length().toBe().greaterThan(0));
   }
 
   @TestMethodExpectation(PASSING)
