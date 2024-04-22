@@ -10,8 +10,8 @@ import java.util.function.Predicate;
  *
  * [source, java]
  * ----
- * import static com.github.dakusui.valid8j.pcond.core.functions.Predicates.isNotNull;
- * import static com.github.dakusui.valid8j.pcond.classic.Assertions.*
+ * import static com.github.valid8j.pcond.core.functions.Predicates.isNotNull;
+ * import static com.github.valid8j.pcond.classic.Assertions.*
  *
  * public class TestClass {
  *   public static void aMethod(Object value) {
@@ -25,9 +25,9 @@ import java.util.function.Predicate;
  * ----
  * Exception in thread "main" java.lang.AssertionError: Value:null violated: isNotNull
  * null -> isNotNull -> false
- * 	at com.github.dakusui.valid8j.pcond.provider.impls.DefaultAssertionProvider.checkValue(DefaultAssertionProvider.java:70)
- * 	at com.github.dakusui.valid8j.pcond.provider.AssertionProviderBase.checkInvariant(AssertionProviderBase.java:78)
- * 	at com.github.dakusui.valid8j.pcond.classic.Assertions.that(Assertions.java:51)
+ * 	at com.github.valid8j.pcond.provider.impls.DefaultAssertionProvider.checkValue(DefaultAssertionProvider.java:70)
+ * 	at com.github.valid8j.pcond.provider.AssertionProviderBase.checkInvariant(AssertionProviderBase.java:78)
+ * 	at com.github.valid8j.pcond.classic.Assertions.that(Assertions.java:51)
  * 	...
  * ----
  *

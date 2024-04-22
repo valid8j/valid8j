@@ -40,7 +40,7 @@ public interface Validator {
 
   /**
    * Returns a provider instance created from a given `Properties` object.
-   * This method reads the value for the FQCN of this class (`com.github.dakusui.valid8j.pcond.provider.AssertionProvider`) and creates an instance of a class specified by the value.
+   * This method reads the value for the FQCN of this class (`com.github.valid8j.pcond.provider.AssertionProvider`) and creates an instance of a class specified by the value.
    * If the value is not set, this value instantiates an object of `DefaultAssertionProvider` and returns it.
    *
    * @param properties A {@code Properties} object from which an {@code AssertionProvider} is created
@@ -471,7 +471,7 @@ public interface Validator {
 
   interface Configuration {
     /**
-     * When `com.github.dakusui.valid8j.pcond.debug` is not `true`, it is assumed that those methods in this interface return `false`.
+     * When `com.github.valid8j.pcond.debug` is not `true`, it is assumed that those methods in this interface return `false`.
      */
     interface Debugging {
       default boolean suppressSquashing() {

@@ -10,7 +10,7 @@ import static com.github.valid8j.pcond.forms.Predicates.isNull;
 public class ExampleIT {
   @Test(expected = AssertionFailedError.class)
   public void useOpentest4j() {
-    System.setProperty("com.github.dakusui.valid8j.pcond.exceptionComposerForTestFailures", ExceptionComposer.ForTestAssertion.Opentest4J.class.getName());
+    System.setProperty("com.github.valid8j.pcond.exceptionComposerForTestFailures", ExceptionComposer.ForTestAssertion.Opentest4J.class.getName());
 
     assertThat("hello", isNull());
   }

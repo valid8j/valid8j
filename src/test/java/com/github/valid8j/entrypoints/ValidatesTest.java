@@ -54,7 +54,7 @@ public class ValidatesTest extends TestBase {
   }
 
   /*
-  com.github.dakusui.pcond.provider.ApplicationException: Value:"HELLO, WORLD" violated: <P> <= (<P>.toLowerCase()) (<P> <= (<P>.equals(<hello, world>))&&<P> <= (<P>.toUpperCase()) isEqualTo["Non!"])
+  com.github.pcond.provider.ApplicationException: Value:"HELLO, WORLD" violated: <P> <= (<P>.toLowerCase()) (<P> <= (<P>.equals(<hello, world>))&&<P> <= (<P>.toUpperCase()) isEqualTo["Non!"])
 transformAndCheck                                       -> false
   <P> <= (<P>.toLowerCase())("HELLO, WORLD")            -> "hello, world"
   &&                                                    -> false
@@ -79,7 +79,7 @@ transformAndCheck                                       -> false
   }
 
   /*
-com.github.dakusui.pcond.provider.ApplicationException: Value:"HELLO, WORLD" violated: toLowerCase (isEqualTo["hello, world"]&&toUpperCase isEqualTo["Non!"])
+com.github.pcond.provider.ApplicationException: Value:"HELLO, WORLD" violated: toLowerCase (isEqualTo["hello, world"]&&toUpperCase isEqualTo["Non!"])
 transformAndCheck                             -> false
   toLowerCase("HELLO, WORLD")                 -> "hello, world"
   &&                                          -> false
