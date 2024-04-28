@@ -35,6 +35,7 @@ import static com.github.valid8j.pcond.core.EvaluationEntry.Type.*;
  *
  * .Evaluation Summary Format
  * ----
+ *
  * +----------------------------------------------------------------------------- Failure Detail Index
  * |  +-------------------------------------------------------------------------- Input
  * |  |                                            +----------------------------- Form (Function/Predicate)
@@ -56,6 +57,7 @@ import static com.github.valid8j.pcond.core.EvaluationEntry.Type.*;
  *    145                                       ->        check:allOf       ->false
  * [1]                                                         >=[200]       ->true
  * <[400]        ->true
+ *
  * ----
  *
  * Failure Detail Index::

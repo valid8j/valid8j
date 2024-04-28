@@ -3,7 +3,7 @@
 :toc:
 :toclevels: 4
 
-= `valid8j-pcond`: Unified DbC, Value Checking, Test Assertion Library
+= `valid8j`: Unified DbC, Value Checking, Test Assertion Library
 
 `valid8j` (pronounced "validate-j") is a DbC (design by contract<<DbC>>) library named after `valid4j`<<valid4j>>.
 
@@ -40,12 +40,12 @@ Have a following maven dependency in your `pom.xml`.
 ----
 <dependency>
   <groupId>com.github.dakusui</groupId>
-  <artifactId>valid8j-pcond</artifactId>
-  <version>{valid8j-pcond-version}</version>
+  <artifactId>valid8j</artifactId>
+  <version>{valid8j-version}</version>
 </dependency>
 ----
 
-Visit https://oss.sonatype.org/[oss.sonatype.org] to figure out the most recent version of `valid8j-pcond`.
+Visit https://oss.sonatype.org/[oss.sonatype.org] to figure out the most recent version of `valid8j`.
 
 == Programming with `pcond` twins
 
@@ -57,7 +57,7 @@ However, there is no uniformed style that can be applied to all those.
 
 === First Example
 
-Following is the first example of the `valid8j-pcond` library.
+Following is the first example of the `valid8j` library.
 
 [%nowrap,java]
 .ThincrestExample.java
@@ -95,7 +95,7 @@ public class ThincrestExample {
 }
 ----
 
-The programming style of `valid8j-pcond` (and `valid8j-pcond` in more general) is to first transform a given value into better known type or form, which is more suitable for examining its validity.
+The programming style of `valid8j` is to first transform a given value into better known type or form, which is more suitable for examining its validity.
 
 In this example, a given string is first transformed into all upper cases so that it is equal to "HELLO" if we ignore cases.
 
@@ -131,7 +131,7 @@ HOWDY, WORLD
 
 You can see the violated condition and how it is violated in the stacktrace.
 
-A philosophy behind `valid8j-pcond` 's (and also `valid8j-pcond` 's) approach is:
+A philosophy behind `valid8j` 's approach is:
 
 - A human in the end checks the value on a screen as a text.
 - Either way, test can only report a presence of a bug, cannot ensure absence of it.
@@ -141,14 +141,14 @@ The style of `valid8j`, where you pass a value and a predicate that checks it to
 
 === "Printable" Predicate
 
-To verify a value with `valid8j` or `valid8j`, you can call a value checking method of them with your value and a predicate to be checked.
+To verify a value with `valid8j`, you can call a value checking method of them with your value and a predicate to be checked.
 
 [source]
 ----
 valueCheckingMethod(aValue, predicate);
 ----
 
-Value checking methods are defined as public static methods in classes such as `TestAssertions`(`valid8j-pcond`) or `Requires`(`valid8j-pcond`).
+Value checking methods are defined as public static methods in classes such as `TestAssertions` or `Requires`.
 It is recommended to import them statically at the beginning of your class.
 
 You can give your own lambda as a predicate to the method, however it will result in non-user friendly string such as following.
@@ -234,7 +234,7 @@ The other is "fluent" style, which will be covered in this section.
 
 For each of them, `valid8j` and `valid8j` have different set of classes and methods.
 
-==== Conventional Value Checking Methods of `valid8j-pcond`
+==== Conventional Value Checking Methods of `valid8j`
 
 In this category, there are only a couple of static methods.
 For both of them, the first parameter is a value to be checked and the second is a (printable) predicate used for the check.
@@ -248,7 +248,7 @@ If it fails, it means your product doesn't compile on Linux.
 So, you want it to be ignored.
 In this situation, you can write `assumeThat(isRunningOnWindowsPlatorm())` and `AssumptionViolatedException`, which make JUnit4 mark the test ignored,  will be thrown.
 
-==== Fluent Value Checking Methods of `valid8j-pcond`
+==== Fluent Value Checking Methods of `valid8j`
 
 Methods end with `Statement` accepts only one `Statement`, while ones end with `All` accepts multiple statements.
 Basically, they are doing the same thing and just defined as "syntax-sugara" for readability's sake.
@@ -260,7 +260,7 @@ Basically, they are doing the same thing and just defined as "syntax-sugara" for
 
 For the detail of how to create a statement object, check <<WritingYourCodeFluently>>.
 
-==== Conventional Value Checking Methods of `valid8j-pcond`
+==== Conventional Value Checking Methods of `valid8j`
 
 Depending on the context, where you are going to examine a given value, an appropriate message and exception to be thrown on a failure can be different.
 `pcond` provides methods that offer such messages and exceptions.
@@ -323,9 +323,9 @@ In production, this check is useless and just a performance over-head, because s
 Such a check should be done with `assert` so that it can be turned off  in production.
 
 
-==== Fluent Value Checking Methods of `valid8j-pcond`
+==== Fluent Value Checking Methods of `valid8j`
 
-The matrix below shows "Fluent" versions of value checking methods of `valid8j-pcond`.
+The matrix below shows "Fluent" versions of value checking methods of `valid8j`.
 They are defined in `ValidationFluents` class.
 
 There are two axes to think of `valid8j` 's use cases.
@@ -415,7 +415,7 @@ Thus, you can read the output above as "The check failed because the value `\"Jo
 [[WritingYourCodeFluently]]
 === Writing your Code Fluently
 
-Following is an example that illustrates how to use "Fluent" API of `valid8j-pcond` to build a test.
+Following is an example that illustrates how to use "Fluent" API of `valid8j` to build a test.
 
 [source,java]
 ----
@@ -545,19 +545,7 @@ a|
 
 In this example, it seems `Salute#inEnglish` method contains a bug, where its return value becomes a string without length.
 
-== Using Together with `valid8j` and `valid8j`
-
-When you use both `valid8j-pcond` and `valid8j-pcond` in one project, please be careful at package names of classes you are going to use.
-They both use `pcond` to render messages from predicates.
-But the classes from `pcond` are stored under `com.github.dakusui.valid8j_pcond` in `valid8j-pcond`.
-`valid8j` does the same.
-Classes from `pcond` are stored under `com.github.dakusui.valid8j_pcond` in `valid8j-pcond`.
-If you create a predicate using `com.github.dakusui.valid8j_pcond.forms.Predicates`, for instance, the `valid8j` 's mechanism to compose error messages from predicates cannot do its work.
-Because the predicates created by `valid8j-pcond` 's classes will look just normal `Predicate`, not ones that have mechanism to print it, the message will look much poorer than it can be.
-
-The other way around will not happen (fortunately) because `valid8j-pcond` will be a dependency in `test` scope, and it will not be visible from the production scope, which `valid8j-pcond` is usually used.
-
-== Building the `valid8j-pcond` Library
+== Building the `valid8j` Library
 
 === How to Build the Project
 

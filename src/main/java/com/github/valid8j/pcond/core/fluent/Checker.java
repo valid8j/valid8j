@@ -11,7 +11,7 @@ import static java.util.Objects.requireNonNull;
 /**
  * An interface that defines methods to check a target value.
  * By default, calls of checking methods defined in this and sub-interfaces of this interface will be a conjunction of them.
- * To make it a disjunction, call {@link this#anyOf()}.
+ * To make it a disjunction, call {@link Checker#anyOf()}.
  *
  * User-exposing methods to check values in this method names should be progressive and its objective so that they can
  * follow "to be" or "satisfies" in an English sentence.
@@ -41,7 +41,7 @@ public interface Checker<
   }
   
   /**
-   * A synonym of {@link this#checkWithPredicate(Predicate)}.
+   * A synonym of {@link Checker#checkWithPredicate(Predicate)}.
    *
    * @param predicate A predicate to check the target value.
    * @return this object.

@@ -1,14 +1,14 @@
+A package that holds classes providing core functionality of the `pcond` package.
+
 :ditaa-option-separation: false
-:toc:
 
 == Evaluator Mechanism
 
-(t.b.d.)
+A mechanism to evaluate printable predicates and transforming functions.
 
 == Message Formatting Mechanism
 
-(t.b.d.)
-
+A mechanism to compose failure messages using the structure of printable predicates and transforming functions.
 
 == Report Format
 

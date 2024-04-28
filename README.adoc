@@ -1,6 +1,6 @@
 :toc:
 
-= `valid8j-pcond`: DbC, Validation, and Test Assertion Library
+= `valid8j`: DbC, Validation, and Test Assertion Library
 
 `valid8j` is a library that provides consistent programming experiences across DbC<<DbC>>, Value-checking, and Test assertions.
 It is named after `valid4j`<<valid4j>>, but it does more.
@@ -108,21 +108,7 @@ Have a following maven dependency in your `pom.xml`.
 ----
 
 Visit https://oss.sonatype.org/[oss.sonatype.org] to figure out the most recent version of `valid8j`.
-
-== Building the `valid8j-pcond` Library
-
-=== How to Build the Project
-
-Compile and Test:: `mvn clean compile test`
-Docs:: `mvn clean compile test site`, you will see generated docs under `target/site` directory.
-
-=== Build dependencies
-
-- Java SDK8
-- `mvn`
-- `gem`
-- `xmllint`
-- `git`
+Check https://valid8j.github.io/valid8j/[valid8j]'s documentation site for more detail.
 
 [bibliography]
 == References

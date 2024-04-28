@@ -1,13 +1,15 @@
+:toc:
+
 = `valid8j`: A modern DbC library for Java.
 
-The `valid8j` is a DbC (design by contract) programming supporting library for Java intended to be a successor of `valid4j`.
-You can also replace Guava's `Preconditions` class, Apache Common's `Validate` class, and test assertion libraries with this.
+The `valid8j` is a DbC (design by contract) programming supporting library for Java intended to be a successor of `valid4j`<<valid4j>>.
+You can also use this library instead of Guava's `Preconditions` class, Apache Common's `Validate` class, and test assertion libraries such as Hamcrest<<hamcrest>>, AssertJ<<assertj>> or Google Truth<<truth>> with this.
 
 == Design Goals
 
 Following is a list of goals that the `pcond` library tries to achieve.
 
-* **Unified Support for Value Check, DbC, Test Assertion programming:**  Input/status value checking, user input validation, Checks in Design by Contract, and test assertions have similar concerns, however, completely different solutions are provided footnote:[Valid4J is the only example to the best knowledge of author of `pcond` library.
+* **Unified Support for Value Validation, DbC, Test Assertion programming:**  Input/status value checking, user input validation, Checks in Design by Contract, and test assertions have similar concerns, however, completely different solutions are provided footnote:[Valid4J is the only example to the best knowledge of author of `pcond` library.
 It offers a style that unifies test assertions and DbC programming based on the Hamcrest library.].
 The `pcond` tries to offer a unified solution to those use cases.
 * **More Programmer-Friendly Readability and Writability:** Test assertion libraries have more and more focused on writability of code from readability of code and output.
@@ -152,7 +154,9 @@ These returned objects also need to have overridden version of `toString`.
 
 The `pcond` library provides a solution to these problems by offering its own base classes for `Predicate` and `Function`.
 
-The implementation of this feature is provided by the link:com/github/dakusui/pcond/core/printable/package-summary.html[`com.github.dakusui.pcond.core.printable`] package.
+// suppress inspection "AsciiDocLinkResolve"
+// suppress inspection "GrazieInspection"
+The implementation of this feature is provided by the link:com/github/valid8j/pcond/core/printable/package-summary.html[`com.github.valid8j.pcond.core.printable`] package.
 
 
 === `Identifiable` mechanism
@@ -172,23 +176,27 @@ class Example{
 }
 ----
 
-`pcond` is designed to return `true` for this check.
+`valid8j` is designed to return `true` for this check.
 
-The implementation of this feature is provided by the link:com/github/dakusui/pcond/core/identifieable/package-summary.html[`com.github.dakusui.pcond.core.identifieable`] package.
+// suppress inspection "AsciiDocLinkResolve"
+// suppress inspection "GrazieInspection"
+The implementation of this feature is provided by the link:com/github/valid8j/pcond/core/identifieable/package-summary.html[`com.github.dakusui.valid8j.pcond.core.identifieable`] package.
 
 == Entry points
 
-The package link:com/github/dakusui/pcond/package-summary.html:[`com.github.dakusui.pcond`] holds entry point classes of the `pcond` library.
+// suppress inspection "AsciiDocLinkResolve"
+// suppress inspection "GrazieInspection"
+The packages link:com/github/valid8j/classic/package-summary.html:[`com.github.valid8j.classic`] and link:com/github/valid8j/fluent/package-summary.html:[`com.github.valid8j.fluent`] hold entry point classes of the `valid8j` library.
 
 === (Test) Assertion Library
 
-The other usage of the `pcond` library is an assertion library.
+One usage of the `pcond` library is an assertion library for testing.
 It supports two styles.
 One is traditional "Hamcrest" like style and the other is more recently fashioned "fluent" style like AssertJ or Google Truth.
 
 ==== Hamcrest Style
 
-Hamcrest [<<hamcrest>>] is the first popular assertion library.
+Hamcrest <<hamcrest>> is the first popular assertion library.
 The style JUnit itself presented at the time Hamcrest was published is to call `assertEquals`, `assertTrue`, `assertFalse` methods.
 Those methods fail if the given value do not satisfy the desired condition.
 Also, they print human-readable message about what happened. That is, what the given value was and what was expected.
@@ -197,7 +205,7 @@ This approach leads to an explosion of the number of `assertXyz` methods because
 
 Hamcrest separated an assertion into two parts, one of which controls a value checking flow and the other is the part that defines a condition to be satisfied.
 
-Following is an example found in Hamcrest's tutorial[<<hamcrest-tutorial>>]:
+Following is an example found in Hamcrest's tutorial<<hamcrest-tutorial>>:
 
 [source, java]
 ----
@@ -291,7 +299,7 @@ You will notice the only last predicate `startsWith["Y"]` was not satisfied by t
 While you will need to analyze which part of the `Expected` was not satisfied by the input value `""` and how by yourself from the Hamcrest's report.
 
 
-==== Fluent Style (Experimental)
+==== Fluent Style: Challenges in Existing Libraries
 
 The next challenge assertion libraries faced was the explosion of the static methods to be imported.
 There is a bunch of static methods to be imported and classes to which they belong.
@@ -342,7 +350,9 @@ public static class AssertJMultiValueExample {
 
 This is a bit verbose, and it will silently PASS, if you forget calling `assertAll` in the end.
 
-An example for the `pcond` 's fluent style support looks like the following:
+==== Fluent Style: `valid8j`, the Solution
+
+An example for the `valid8j` 's fluent style looks like the following:
 
 [source,java]
 ----
@@ -353,16 +363,18 @@ public class MoreFluentExample {
     List<String> strings = asList("HELLO", "WORLD");
 
     assertAll(
-        valueOf(s).asString()
-          .exercise(TestUtils.stringToLowerCase())
-          .then()
-          .isEqualTo("HI"),
-        valueOf(strings).asListOf((String)value())
-          .then()
-          .findElementsInOrder("hello", "world"));
+        that(s).asString()
+          .function(TestUtils.stringToLowerCase())
+          .satisfies()
+          .equalTo("HI"),
+        that(strings).asListOf((String)value())
+          .satisfies()
+          .containingElementsInOrder("hello", "world"));
   }
 }
 ----
+
+Entry-point methods such as `assertAll` and `that` and others are defined in `Expectations` class.
 
 This leads to the following report.:
 
@@ -380,7 +392,7 @@ Thus, we can keep both the code and report human-readable.
 
 === As a Helper Library for Design by Contract programming
 
-The `pcond` can be used as a library for Design by Contract style programming in Java.
+The `valid8j` can be used as a library for Design by Contract style programming in Java.
 There is a couple of ways for this usage.
 
 ==== With `assert` statement
@@ -399,34 +411,48 @@ public class Example {
 
 You will see a human-readable and analyzable output, when an assertion fails.
 At the same time, once the assertion is disabled by the VM option `-da`, you will see no performance penalty for the feature.
+This style is useful in private methods, where you do not want to perform those checks in production.
 
 Aside from the `precondition` method, `that` method is prepared for checking an invariant condition and `postcondition` method is prepared for what the name suggests.
 
 ==== With `requireXyz` and `ensureXyz` methods
 
-That said, you may want to force your code to conduct a check for input value.
+You may want to force your code to conduct a check for input value.
 
 [source,java]
 ----
 public class Example {
   public static String hello(String yourName) {
-    // <2>
+    // <1>
     requireArgument(yourName, and(isNotNull(), transform(length()).check(gt(0)), containsString(" ")));
     String ret = String.format("Hello, %s", NameUtils.firstNameOf(yourName));
-    // <3>
+    // <2>
     return ensureNonNull(ret);
   }
 }
 ----
+<1> `requireArgument` method is defined in `Requires` class.
+<2> `ensureNonNull` method is defined in `Ensures` class.
 
+This approach useful for value checking in public methods, where you don't want to accept illegal values in production.
+Since there is no way to disable it.
 
+==== Fluent Style
+
+Also for DbC programming and value validation, `valid8j` provides "fluent" programming style entry points.
+They can be found in `Expectations` class and they are:
+
+- `precondition`, `preconditions`, `invariant`, `invariants`, `postcondition`, and `postconditions`.
+- `reqreuire`, `requireArgument`, `requireArguments`, `requireState`, `ensure`, etc.
+
+[bibliography]
 == Related Works
 
-
-- [[valid4j, 1]] Valid4J https://www.valid4j.org/[valid4j]: 2015
-- [[hamcrest, 2]] Hamcrest, Matchers that can be combined to create flexible expressions of intent https://hamcrest.org/[Hamcrest]: 2019
-- [[hamcrest-tutorial, 3]] Hamcrest, Hamcrest Tutorial https://hamcrest.org/JavaHamcrest/tutorial[Hamcrest Tutorial]: 2019
-- [[assertj, 4]] AssertJ, Fluent assertions for java https://joel-costigliola.github.io/assertj/[AssertJ]: 2022
-- [[truth, 5]] Truth - Fluent assertions for Java and Android Truth https://truth.dev/[Truth]: 2022
+- [[[valid4j, 1]]] Valid4J https://www.valid4j.org/[valid4j]: 2015
+- [[[hamcrest, 2]]] Hamcrest, Matchers that can be combined to create flexible expressions of intent https://hamcrest.org/[Hamcrest]: 2019
+- [[[hamcrest-tutorial, 3]]] Hamcrest, Hamcrest Tutorial https://hamcrest.org/JavaHamcrest/tutorial[Hamcrest Tutorial]: 2019
+- [[[assertj, 4]]] AssertJ, Fluent assertions for java https://joel-costigliola.github.io/assertj/[AssertJ]: 2022
+// suppress inspection "GrazieInspection"
+- [[[truth, 5]]] Truth - Fluent assertions for Java and Android Truth https://truth.dev/[Truth]: 2022
 
 Enjoy.
