@@ -14,7 +14,7 @@ Have a following maven dependency in your `pom.xml`.
 </dependency>
 ----
 
-Visit https://oss.sonatype.org/[oss.sonatype.org] to figure out the most recent version of `valid8j`.
+Visit https://oss.sonatype.org/#nexus-search;quick~valid8j[oss.sonatype.org] to figure out the most recent version of `valid8j`.
 
 == Fluent Style
 
