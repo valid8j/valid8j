@@ -94,7 +94,7 @@ public class GeneralFluentTest extends TestBase {
 
   private static TestSuite<Boolean> booleanTestSuite_1() {
     return new TestSuite<>(
-        v -> Statement.booleanValue(v).then().isTrue().done(),
+        v -> Statement.booleanValue(v).then().trueValue().done(),
         asList(true, Boolean.TRUE),
         asList(false, Boolean.FALSE, null));
   }
@@ -102,8 +102,8 @@ public class GeneralFluentTest extends TestBase {
   private static TestSuite<List<String>> listTestSuite_1() {
     return new TestSuite<>(
         asList(
-            (List<String> v) -> Statement.listValue(v).subList(1).then().isNotEmpty().done(),
-            (List<String> v) -> Statement.listValue(v).subList(1, v.size()).then().isNotEmpty().done()),
+            (List<String> v) -> Statement.listValue(v).subList(1).then().notEmpty().done(),
+            (List<String> v) -> Statement.listValue(v).subList(1, v.size()).then().notEmpty().done()),
         asList(
             asList("A", "B", "C"),
             asList("A", "B")),
@@ -114,21 +114,21 @@ public class GeneralFluentTest extends TestBase {
 
   private static TestSuite<List<String>> listTestSuite_2() {
     return new TestSuite<>(
-        singletonList((List<String> v) -> Statement.listValue(v).then().isEmpty().done()),
+        singletonList((List<String> v) -> Statement.listValue(v).then().empty().done()),
         singletonList(emptyList()),
         singletonList(singletonList("X")));
   }
 
   private static TestSuite<List<String>> listTestSuite_3a() {
     return new TestSuite<>(
-        singletonList((List<String> v) -> Statement.objectValue(v).asList().then().isEmpty().done()),
+        singletonList((List<String> v) -> Statement.objectValue(v).asList().then().empty().done()),
         singletonList(emptyList()),
         singletonList(singletonList("X")));
   }
 
   private static TestSuite<List<String>> listTestSuite_3b() {
     return new TestSuite<>(
-        singletonList((List<String> v) -> Statement.objectValue(v).asListOf(String.class).then().isEmpty().done()),
+        singletonList((List<String> v) -> Statement.objectValue(v).asListOf(String.class).then().empty().done()),
         singletonList(emptyList()),
         singletonList(singletonList("X")));
   }
@@ -150,7 +150,7 @@ public class GeneralFluentTest extends TestBase {
   private static TestSuite<String> stringTestSuite_2() {
     return new TestSuite<>(
         singletonList(
-            (String v) -> Statement.stringValue(v).parseBoolean().then().instanceOf(Boolean.class).isTrue().done()),
+            (String v) -> Statement.stringValue(v).parseBoolean().then().instanceOf(Boolean.class).trueValue().done()),
         singletonList("true"),
         asList("false", "XYZ", null));
   }
@@ -158,9 +158,9 @@ public class GeneralFluentTest extends TestBase {
   private static TestSuite<String> stringTestSuite_3() {
     return new TestSuite<>(
         asList(
-            (String v) -> Statement.stringValue(v).split(":").then().isNotEmpty().contains("A").contains("B").contains("C").done(),
-            (String v) -> Statement.stringValue(v).split(":").then().findElementsInOrder("A", "B", "C").done(),
-            (String v) -> Statement.stringValue(v).split(":").then().findElementsInOrderBy(asList(Predicates.isEqualTo("A"), Predicates.isEqualTo("B"), Predicates.isEqualTo("C"))).done()),
+            (String v) -> Statement.stringValue(v).split(":").then().notEmpty().containing("A").containing("B").containing("C").done(),
+            (String v) -> Statement.stringValue(v).split(":").then().containingElementsInOrder("A", "B", "C").done(),
+            (String v) -> Statement.stringValue(v).split(":").then().containingElementsInOrder(asList(Predicates.isEqualTo("A"), Predicates.isEqualTo("B"), Predicates.isEqualTo("C"))).done()),
         singletonList("A:B:C"),
         asList("A:B", null));
   }
@@ -184,8 +184,8 @@ public class GeneralFluentTest extends TestBase {
         asList(
             (String v) -> Statement.stringValue(v).then().invokeStatic(Objects.class, "equals", "hello", parameter()).done(),
             (String v) -> Statement.stringValue(v).then().invoke("equals", "hello").done(),
-            (String v) -> Statement.stringValue(v).invokeStatic(Objects.class, "equals", "hello", parameter()).asBoolean().then().isTrue().done(),
-            (String v) -> Statement.stringValue(v).invoke("equals", "hello").asBoolean().then().isTrue().done()),
+            (String v) -> Statement.stringValue(v).invokeStatic(Objects.class, "equals", "hello", parameter()).asBoolean().then().trueValue().done(),
+            (String v) -> Statement.stringValue(v).invoke("equals", "hello").asBoolean().then().trueValue().done()),
         asList(s, new String(s)),
         singletonList("HELLO"));
   }

@@ -185,7 +185,7 @@ public class FluentStyleTestAssertionTest {
     public void assertAllDifferentTypes_passed() {
       boolean b = TestFluents_assertAll(
           stringValue("hello").toUpperCase().then().equalTo("HELLO").$(),
-          booleanValue(false).then().isFalse().$());
+          booleanValue(false).then().falseValue().$());
       MatcherAssert.assertThat(b, CoreMatchers.is(true));
     }
 

@@ -128,7 +128,7 @@ public class MoreFluentStyleExample {
             .checkWithPredicate(not(isEmptyString())),
         Statement.listValue(fullName)
             .then()
-            .contains("DOE"));
+            .containing("DOE"));
   }
 
   /**
@@ -152,7 +152,7 @@ public class MoreFluentStyleExample {
             .check(v -> v.notEmpty().toPredicate()),
         Statement.listValue(fullName)
             .then()
-            .contains("DOE"));
+            .containing("DOE"));
   }
 
   /*
@@ -210,7 +210,7 @@ public class MoreFluentStyleExample {
             .equalTo("HI"),
         Statement.listValue(strings)
             .then()
-            .findElementsInOrder("HELLO", "WORLD"));
+            .containingElementsInOrder("HELLO", "WORLD"));
   }
 
   @Test
