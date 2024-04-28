@@ -23,7 +23,7 @@ With this knowledge, we can verify the correctness of the implementation of a si
 
 == Design
 
-Forllowing is a diagram that illustrates the pipeline of the metamorphic testing support by `valid8j-pcond`.
+Following is a diagram that illustrates the pipeline of the metamorphic testing support by `valid8j`.
 
 .Metamorphic Testing Support Package's Pipeline Design
 [ditaa]
