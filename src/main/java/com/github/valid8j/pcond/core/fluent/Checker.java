@@ -8,28 +8,57 @@ import java.util.function.Supplier;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * An interface that defines methods to check a target value.
+ * By default, calls of checking methods defined in this and sub-interfaces of this interface will be a conjunction of them.
+ * To make it a disjunction, call {@link this#anyOf()}.
+ *
+ * User-exposing methods to check values in this method names should be progressive and its objective so that they can
+ * follow "to be" or "satisfies" in an English sentence.
+ *
+ * @param <V> The type of the checker.
+ * @param <T> The type from which the target value is transformed.
+ * @param <R> The type of the target value.
+ */
 public interface Checker<
     V extends Checker<V, T, R>,
     T,
     R> extends
     Matcher<V, T, R>,
-        Statement<T> {
+    Statement<T> {
   V addCheckPhrase(Function<Checker<?, R, R>, Predicate<R>> clause);
-
+  
+  /**
+   * Checks if the target value satisfies the given `predicate`.
+   *
+   * @param predicate A predicate to check the target value.
+   * @return This object.
+   */
   @SuppressWarnings("unchecked")
   default V checkWithPredicate(Predicate<? super R> predicate) {
     requireNonNull(predicate);
     return addCheckPhrase(w -> (Predicate<R>) predicate);
   }
-
+  
+  /**
+   * A synonym of {@link this#checkWithPredicate(Predicate)}.
+   *
+   * @param predicate A predicate to check the target value.
+   * @return this object.
+   */
   default V predicate(Predicate<? super R> predicate) {
     return checkWithPredicate(predicate);
   }
-
+  
+  /**
+   * Convert this object into a printable predicate to check the target value.
+   *
+   * @return A predicate to check the target value.
+   */
   default Predicate<T> done() {
     return statementPredicate();
   }
-
+  
   /**
    * // @formatter:off
    * When you use an assertion method that accepts multiple statements (`Statement`), it requires all the elements in the array (`varargs`) should have the same generic parameter type.
@@ -44,6 +73,7 @@ public interface Checker<
    *        objectValue(arg[0]).isNotNull().$(),
    *        objectValue(new Example()).isNotNull().$(),
    *        ...
+   *     );
    *   }
    * }
    * ```

@@ -27,7 +27,7 @@ public class Fluent4Example {
       assertStatement(that("INPUT_VALUE")
           .parseBoolean()
           .satisfies()
-          .isTrue());
+          .trueValue());
     }
 
     @Test//(expected = ComparisonFailure.class)
@@ -37,7 +37,7 @@ public class Fluent4Example {
               .toLowerCase()
               .parseBoolean()
               .then()
-              .isTrue());
+              .trueValue());
     }
 
     @Test//(expected = ComparisonFailure.class)
@@ -46,7 +46,7 @@ public class Fluent4Example {
           stringTransformer("INPUT_VALUE")
               .parseBoolean()
               .then()
-              .isTrue());
+              .trueValue());
     }
 
     @Test(expected = ComparisonFailure.class)
@@ -54,8 +54,8 @@ public class Fluent4Example {
       assertStatement(stringTransformer("INPUT_VALUE")
           .parseBoolean()
           .then()
-          .isTrue()
-          .isTrue());
+          .trueValue()
+          .trueValue());
     }
 
 
@@ -73,8 +73,8 @@ public class Fluent4Example {
       assertStatement(stringTransformer("INPUT_VALUE")
           .parseBoolean()
           .then()
-          .check(v -> v.isTrue().toPredicate())
-          .check(v -> v.isTrue().toPredicate()));
+          .check(v -> v.trueValue().toPredicate())
+          .check(v -> v.trueValue().toPredicate()));
     }
 
     @Test(expected = ComparisonFailure.class)
@@ -92,8 +92,8 @@ public class Fluent4Example {
           .toLowerCase()
           .parseBoolean()
           .then()
-          .check(v -> v.isTrue().toPredicate())
-          .check(v -> v.isTrue().toPredicate()));
+          .check(v -> v.trueValue().toPredicate())
+          .check(v -> v.trueValue().toPredicate()));
     }
 
     @Test(expected = ComparisonFailure.class)
@@ -103,13 +103,13 @@ public class Fluent4Example {
               tx -> tx.toLowerCase()
                   .parseBoolean()
                   .then()
-                  .isTrue()
+                  .trueValue()
           )
           .satisfies(
               tx -> tx.toLowerCase()
                   .parseBoolean()
                   .then()
-                  .isTrue()
+                  .trueValue()
           ));
     }
 
@@ -121,7 +121,7 @@ public class Fluent4Example {
                 Predicate<String> stringPredicate = tx.toLowerCase()
                     .parseBoolean()
                     .then()
-                    .isTrue()
+                    .trueValue()
                     .toPredicate();
                 System.out.println(stringPredicate);
                 return tx.toBe().predicate(stringPredicate);
@@ -135,7 +135,7 @@ public class Fluent4Example {
               tx -> tx.toLowerCase()
                   .parseBoolean()
                   .then()
-                  .isTrue()
+                  .trueValue()
           )
           .satisfies().predicate(Predicates.transform(length()).check(isEqualTo(10))));
     }
@@ -150,7 +150,7 @@ public class Fluent4Example {
               tx -> tx.toLowerCase()
                   .parseBoolean()
                   .then()
-                  .isTrue()
+                  .trueValue()
           )
           .satisfies()
           .predicate(Predicates.transform(length()).check(isEqualTo(10))));
@@ -163,7 +163,7 @@ public class Fluent4Example {
               tx -> tx.toLowerCase()
                   .parseBoolean()
                   .then()
-                  .isTrue())
+                  .trueValue())
           .satisfies().predicate(Predicates.transform(length()).check(isEqualTo(10))));
     }
 
@@ -174,7 +174,7 @@ public class Fluent4Example {
               tx -> tx.toLowerCase()
                   .parseBoolean()
                   .then()
-                  .isTrue())
+                  .trueValue())
           .satisfies().predicate(Predicates.transform(length()).check(isEqualTo(10))));
     }
 
