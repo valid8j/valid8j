@@ -16,11 +16,11 @@ public interface BooleanChecker<T> extends
                     T,
                     Boolean> {
 
-  default BooleanChecker<T> isTrue() {
+  default BooleanChecker<T> trueValue() {
     return this.checkWithPredicate(Predicates.isTrue());
   }
 
-  default BooleanChecker<T> isFalse() {
+  default BooleanChecker<T> falseValue() {
     return this.checkWithPredicate(Predicates.isFalse());
   }
 

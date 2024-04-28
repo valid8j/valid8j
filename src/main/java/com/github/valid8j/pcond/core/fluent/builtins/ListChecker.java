@@ -22,26 +22,26 @@ public interface ListChecker<
                     ListChecker<T, E>,
                     T,
                     List<E>> {
-  default ListChecker<T, E> isEmpty() {
+  default ListChecker<T, E> empty() {
     return checkWithPredicate(Predicates.isEmpty());
   }
 
-  default ListChecker<T, E> isNotEmpty() {
+  default ListChecker<T, E> notEmpty() {
     return checkWithPredicate(Predicates.not(Predicates.isEmpty()));
   }
 
-  default ListChecker<T, E> contains(E element) {
+  default ListChecker<T, E> containing(E element) {
     return checkWithPredicate(Predicates.contains(element));
   }
 
   @SuppressWarnings("unchecked")
-  default ListChecker<T, E> findElementsInOrderBy(List<Predicate<E>> predicates) {
+  default ListChecker<T, E> containingMatchingElementsInOrder(List<Predicate<E>> predicates) {
     return checkWithPredicate(Cursors.findElements(predicates.toArray(new Predicate[0])));
   }
 
   @SuppressWarnings("unchecked")
-  default ListChecker<T, E> findElementsInOrder(E... elements) {
-    return this.findElementsInOrderBy(
+  default ListChecker<T, E> containingElementsInOrder(E... elements) {
+    return this.containingMatchingElementsInOrder(
         Arrays.stream(elements)
             .map(v -> Printables.predicate("[" + v + "]", e -> Objects.equals(v, e)))
             .map(p -> (Predicate<E>) p)
