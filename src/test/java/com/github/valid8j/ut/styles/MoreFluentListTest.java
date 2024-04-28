@@ -47,6 +47,6 @@ public class MoreFluentListTest {
   @Test
   public void test_isEmpty() {
     List<String> var = asList("hello", "world");
-    assertStatement(Statement.listValue(var).isEmpty().then().isFalse());
+    assertStatement(Statement.listValue(var).isEmpty().then().falseValue());
   }
 }

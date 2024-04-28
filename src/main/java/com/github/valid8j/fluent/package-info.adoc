@@ -1,8 +1,7 @@
-:toc:
+This package hosts classes for "Fluent" programming model of `valid8j`.
 
 == Fluent Programming Model
 
-This package hosts classes for "Fluent" programming model of `valid8j`.
 The first example of the model looks like following.
 
 [source, java]
