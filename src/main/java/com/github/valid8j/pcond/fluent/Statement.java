@@ -17,7 +17,7 @@ import static com.github.valid8j.pcond.internals.InternalUtils.makeSquashable;
 /**
  * An interface to model a "statement", which .
  *
- * @param <T> A type of a value held by an instance of this interface.
+ * @param <T> A type of value held by an instance of this interface.
  */
 @FunctionalInterface
 public interface Statement<T> {

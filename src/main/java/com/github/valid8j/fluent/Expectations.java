@@ -73,6 +73,7 @@ import static java.util.stream.Collectors.toList;
  *
  * //@formatter:on
  */
+@SuppressWarnings("GrazieInspection")
 public enum Expectations {
   ;
 
@@ -236,6 +237,7 @@ public enum Expectations {
    * @see Statement
    * @see Expectations#fail(Function)
    */
+  @SuppressWarnings("GrazieInspection")
   public static <T> T expect(Statement<T> statement, Function<String, Throwable> otherwise) {
     Objects.requireNonNull(statement);
     Objects.requireNonNull(otherwise);

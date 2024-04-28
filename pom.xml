@@ -407,7 +407,6 @@
                     <version>${jacoco-maven-plugin.version}</version>
                     <configuration>
                         <excludes>
-                            <exclude>com/github/valid8j/**/*.class</exclude>
                         </excludes>
                     </configuration>
                     <executions>
