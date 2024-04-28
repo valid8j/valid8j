@@ -1,15 +1,97 @@
 :toc:
 
-= `valid8j-pcond`: DbC and Value Checking Library
+= `valid8j-pcond`: DbC, Validation, and Test Assertion Library
 
-`valid8j` (pronounced validate-j) is a DbC (design by contract<<DbC>>) library named after `valid4j`<<v4j>>.
-It uses `pcond`, which provides you with predicates that can print descriptive message on a failure, instead of `hamcrest` used by `valid4j`.
-The benefit of `pcond` over `hamcrest` is its compatibility and extensibility.
-Instead of "matchers" that `hamcrest` uses to verify values, `pcond` uses Java's plain `Predicate` and provide useful preset predicates from which you can build your own predicates for complex types.
-So, you can reuse the predicates you created for assertions for other purposes, such as value checking and testing.
+`valid8j` is a library that provides consistent programming experiences across DbC<<DbC>>, Value-checking, and Test assertions.
+It is named after `valid4j`<<valid4j>>, but it does more.
 
-For full documentation, visit https://dakusui.github.io/valid8j/[here].
-Also, check its https://dakusui.github.io/valid8j/valid8j-pcond.html[overview].
+It also provides readability both in codes and messages on failures.
+Easy to write.
+
+[%nowrap, java]
+.`IntroductionExample` class
+----
+public class IntroductionExample {
+  public String examplePublicPublicMethod(String name, int basePrice) {
+    // Use `Expectations.requireXyz` method to check values in production.
+    requireArguments(
+        that(name).satisfies()
+            .notNull(),
+        that(basePrice).satisfies()
+            .greaterThanOrEqualTo(0)
+            .lessThan(10_000));
+    return examplePrivateMethod(name, basePrice);
+  }
+
+  private String examplePrivateMethod(String name, int basePrice) {
+    // Use `assert` statement with`Expectations.` {`precondition`,`invariant`,`postcondition`} methods
+    // and their plural for Design by Contract programming.
+    assert preconditions(
+        // `value(var)` and `that(var)` are synonyms. Use the one you like.
+        // `toBe(var)` and `satisfies(var)` are synonyms. Use the one you like.
+        value(name).toBe()
+            .notNull(),
+        value(basePrice).toBe()
+            .greaterThanOrEqualTo(0)
+            .lessThan(10_000));
+    int price = (int) (basePrice * 1.08);
+    return String.format("%s:%s", name, price);
+  }
+
+  @TestMethodExpectation(FAILURE)
+  @Test
+  public void exampleMethod() {
+    String message = examplePublicPublicMethod("Kirin Ichiban", 100);
+    // Use `Expectations.assertAll` for test assertions.
+    assertAll(
+        that(message)
+            .substringAfter(":")
+            .parseInt()
+            .satisfies()
+            .equalTo(110),
+        that(message)
+            .satisfies()
+            .startingWith("Kirin Ichiban"));
+  }
+}
+----
+
+This gives the following output as your IDE's window.:
+
+.Output of `IntroductionExample.java`
+|===
+|Expectation |Actual
+
+a|
+[%nowrap]
+----
+    "Kirin Ichiban:108"->WHEN:transform                ->true
+                       ->    substringAfter[:]         ->"108"
+    "108"              ->    parseInt                  ->108
+[0] 108                ->  THEN:=[110]                 ->true
+    "Kirin Ichiban:108"->WHEN:startsWith[Kirin Ichiban]->true
+
+.Detail of failure [0]
+---
+=[110]
+---
+----
+a|
+[%nowrap]
+----
+    "Kirin Ichiban:108"->WHEN:transform                ->false
+                       ->    substringAfter[:]         ->"108"
+    "108"              ->    parseInt                  ->108
+[0] 108                ->  THEN:=[110]                 ->false
+    "Kirin Ichiban:108"->WHEN:startsWith[Kirin Ichiban]->true
+
+.Detail of failure [0]
+---
+108
+---
+
+----
+|===
 
 == Installation
 
@@ -19,13 +101,13 @@ Have a following maven dependency in your `pom.xml`.
 [subs="verbatim,attributes"]
 ----
 <dependency>
-  <groupId>com.github.dakusui</groupId>
-  <artifactId>valid8j-pcond</artifactId>
-  <version>{valid8j-pcond-version}</version>
+  <groupId>com.github.valid8j</groupId>
+  <artifactId>valid8j</artifactId>
+  <version>{valid8j}</version>
 </dependency>
 ----
 
-Visit https://oss.sonatype.org/[oss.sonatype.org] to figure out the most recent version of `valid8j-pcond`.
+Visit https://oss.sonatype.org/[oss.sonatype.org] to figure out the most recent version of `valid8j`.
 
 == Building the `valid8j-pcond` Library
 
