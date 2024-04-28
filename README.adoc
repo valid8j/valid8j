@@ -101,7 +101,7 @@ Have a following maven dependency in your `pom.xml`.
 [subs="verbatim,attributes"]
 ----
 <dependency>
-  <groupId>com.github.valid8j</groupId>
+  <groupId>com.github.dakusui</groupId>
   <artifactId>valid8j</artifactId>
   <version>{valid8j}</version>
 </dependency>
