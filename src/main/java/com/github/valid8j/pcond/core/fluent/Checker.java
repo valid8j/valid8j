@@ -25,7 +25,7 @@ public interface Checker<
     T,
     R> extends
     Matcher<V, T, R>,
-    Statement<T> {
+        Statement<T> {
   V addCheckPhrase(Function<Checker<?, R, R>, Predicate<R>> clause);
   
   /**
