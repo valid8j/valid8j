@@ -625,7 +625,7 @@
         </repository>
         <site>
             <id>${project.name}</id>
-            <url>file:///${user.dir}/target/site-staging</url>
+            <url>https://valid8j.github.io/valid8j</url>
         </site>
     </distributionManagement>
 
