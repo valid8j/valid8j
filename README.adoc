@@ -12,7 +12,7 @@ Easy to write.
 .`IntroductionExample` class
 ----
 public class IntroductionExample {
-  public String examplePublicPublicMethod(String name, int basePrice) {
+  public String examplePublicMethod(String name, int basePrice) {
     // Use `Expectations.requireXyz` method to check values in production.
     requireArguments(
         that(name).satisfies()
@@ -41,7 +41,7 @@ public class IntroductionExample {
   @TestMethodExpectation(FAILURE)
   @Test
   public void exampleMethod() {
-    String message = examplePublicPublicMethod("Kirin Ichiban", 100);
+    String message = examplePublicMethod("Kirin Ichiban", 100);
     // Use `Expectations.assertAll` for test assertions.
     assertAll(
         that(message)
