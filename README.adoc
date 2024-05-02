@@ -3,7 +3,7 @@
 = `valid8j`: DbC, Validation, and Test Assertion Library
 
 `valid8j` is a library that provides consistent programming experiences across DbC<<DbC>>, Value-checking, and Test assertions.
-It is named after `valid4j`<<valid4j>>, but it does more.
+It is named after `valid4j`<<v4j>>, but it does more.
 
 It also provides readability both in codes and messages on failures.
 Easy to write.
