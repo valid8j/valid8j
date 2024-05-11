@@ -987,7 +987,7 @@ public enum Expectations {
     }
 
     /**
-     * A method to be used for internal purposes.
+     * {@inheritDoc}
      *
      * @return this object.
      */
