@@ -1,18 +1,16 @@
 package com.github.valid8j.ut.propertybased.tests;
 
 import com.github.valid8j.pcond.forms.Predicates;
-import com.github.valid8j.ut.propertybased.utils.PropertyBasedTestBase;
-import com.github.valid8j.ut.propertybased.utils.TestCase;
-import com.github.valid8j.ut.propertybased.utils.TestCaseParameter;
-import com.github.valid8j.ut.propertybased.utils.TestCaseUtils;
+import com.github.valid8j.ut.propertybased.utils.*;
 import org.junit.ComparisonFailure;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import static com.github.valid8j.ut.propertybased.utils.TestCheck.*;
 import static com.github.valid8j.utils.TestUtils.alwaysFalse;
-import static com.github.valid8j.utils.TestUtils.expectationSummarySizeIsEqualTo;
 import static com.github.valid8j.pcond.forms.Predicates.alwaysTrue;
+import static com.github.valid8j.utils.TestUtils.throwExceptionWithMessage;
 
 @RunWith(Parameterized.class)
 public class AllOfPredicateTest extends PropertyBasedTestBase {
@@ -42,6 +40,17 @@ public class AllOfPredicateTest extends PropertyBasedTestBase {
         Predicates.allOf(alwaysFalse(), alwaysTrue(), alwaysTrue()),
         ComparisonFailure.class)
         .addCheck(expectationSummarySizeIsEqualTo(1 /*all*/ + 3 /*alwaysFalse, alwaysTrue, alwaysTrue*/))
+        .build();
+  }
+
+  @TestCaseParameter
+  public static TestCase<String, ComparisonFailure> whenOnePredicateThrowingExceptionUnderAllOf_thenComparisonFailure() {
+    return new TestCase.Builder.ForThrownException<>(
+        "Hello",
+        Predicates.allOf(alwaysFalse(), throwExceptionWithMessage("INTENTIONAL EXCEPTION")), ComparisonFailure.class)
+        .addCheck(expectationSummarySizeIsEqualTo(/* anyOf */1 /* always true*/ + 1 /*intentional exception*/ + 1))
+        .addCheck(numberOfExpectSummariesWithDetailsIsEqualTo(2))
+        .addCheck(actualDetailAtContainsToken(1, "INTENTIONAL EXCEPTION"))
         .build();
   }
 

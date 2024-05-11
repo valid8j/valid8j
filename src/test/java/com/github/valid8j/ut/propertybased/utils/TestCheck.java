@@ -1,5 +1,6 @@
 package com.github.valid8j.ut.propertybased.utils;
 
+import com.github.valid8j.pcond.forms.Printables;
 import com.github.valid8j.utils.reporting.ReportParser;
 import org.junit.ComparisonFailure;
 
@@ -25,7 +26,23 @@ public class TestCheck<T, R> {
     this.transform = requireNonNull(transform);
     this.check = requireNonNull(check);
   }
-
+  
+  public static Predicate<ComparisonFailure> expectationSummarySizeIsEqualTo(final int expectedSize) {
+    return Printables.predicate(
+        "expectationSummarySize==" + expectedSize,
+        comparisonFailure ->
+            new ReportParser(comparisonFailure.getExpected()).summary().records().size() == expectedSize);
+  }
+  
+  public static List<ReportParser.Summary.Record> summariesWithDetailsOf(String expectedOrActualStringInComparisonFailure) {
+    return new ReportParser(expectedOrActualStringInComparisonFailure)
+        .summary()
+        .records()
+        .stream()
+        .filter(r -> r.detailIndex().isPresent())
+        .collect(Collectors.toList());
+  }
+  
   public String toString() {
     return transform + "=>" + check;
   }

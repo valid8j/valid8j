@@ -91,6 +91,7 @@ public interface Matcher<
     }
 
     /**
+     * This method is called when a matcher object is converted into a predicate.
      * Override this method so that it returns extending class.
      *
      * @return A rebased transformer.

@@ -435,11 +435,6 @@ public interface Validator {
     reconfigure(configurator, b);
   }
 
-  static void reconfigure(Consumer<Configuration.Builder> configurator, Properties properties) {
-    Configuration.Builder b = Configuration.Builder.fromProperties(properties);
-    reconfigure(configurator, b);
-  }
-
   static void reconfigure(Consumer<Configuration.Builder> configurator, Configuration.Builder b) {
     Objects.requireNonNull(configurator).accept(b);
     INSTANCE.set(new Impl(b.build()));
