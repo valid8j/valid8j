@@ -21,7 +21,7 @@
         </connection>
         <developerConnection>scm:git:git@github.com:valid8j/${project.name}.git
         </developerConnection>
-        <url>http://valid8j.github.io/${project.name}</url>
+        <url>https://github.com/valid8j/${project.name}</url>
         <tag>${project.artifactId}-${project.version}</tag>
     </scm>
 
