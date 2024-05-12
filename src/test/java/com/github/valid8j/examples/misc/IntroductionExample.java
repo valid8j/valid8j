@@ -43,6 +43,7 @@ public class IntroductionExample {
     return String.format("%s:%s", name, price);
   }
 
+  @SuppressWarnings("Convert2MethodRef")
   @TestMethodExpectation(FAILURE)
   @Test
   public void exampleMethod() {
@@ -56,6 +57,7 @@ public class IntroductionExample {
             .equalTo(110),
         that(message)
             .satisfies()
+            .not(v -> v.nullValue())
             .startingWith("Kirin Ichiban"));
   }
 }
