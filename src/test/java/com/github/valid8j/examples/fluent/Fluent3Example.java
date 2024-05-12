@@ -1,5 +1,6 @@
 package com.github.valid8j.examples.fluent;
 
+import com.github.valid8j.pcond.core.fluent.AbstractObjectChecker;
 import com.github.valid8j.utils.reporting.ReportParser;
 import org.junit.ComparisonFailure;
 import org.junit.Ignore;
@@ -58,6 +59,15 @@ public class Fluent3Example {
               .toBe()
               .notNull()
               .nullValue());
+    }
+
+    @Test(expected = ComparisonFailure.class)
+    public void thirdExample_c() {
+      assertAll(
+              stringValue(null)
+                      .anyOf()
+                      .toBe()
+                      .not(AbstractObjectChecker::nullValue));
     }
 
     @Test(expected = ComparisonFailure.class)

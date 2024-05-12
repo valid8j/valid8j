@@ -47,6 +47,7 @@ public class IntroductionExample {
             .equalTo(110),
         that(message)
             .satisfies()
+            .not(v -> v.nullValue())
             .startingWith("Kirin Ichiban"));
   }
 }
@@ -65,7 +66,9 @@ a|
                        ->    substringAfter[:]         ->"108"
     "108"              ->    parseInt                  ->108
 [0] 108                ->  THEN:=[110]                 ->true
-    "Kirin Ichiban:108"->WHEN:startsWith[Kirin Ichiban]->true
+    "Kirin Ichiban:108"->WHEN:allOf                    ->true
+                       ->    not:isNull                ->true
+                       ->    startsWith[Kirin Ichiban] ->true
 
 .Detail of failure [0]
 ---
@@ -79,7 +82,9 @@ a|
                        ->    substringAfter[:]         ->"108"
     "108"              ->    parseInt                  ->108
 [0] 108                ->  THEN:=[110]                 ->false
-    "Kirin Ichiban:108"->WHEN:startsWith[Kirin Ichiban]->true
+    "Kirin Ichiban:108"->WHEN:allOf                    ->true
+                       ->    not:isNull                ->true
+                       ->    startsWith[Kirin Ichiban] ->true
 
 .Detail of failure [0]
 ---

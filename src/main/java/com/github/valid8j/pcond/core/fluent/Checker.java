@@ -1,6 +1,7 @@
 package com.github.valid8j.pcond.core.fluent;
 
 import com.github.valid8j.pcond.fluent.Statement;
+import com.github.valid8j.pcond.forms.Predicates;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -9,12 +10,15 @@ import java.util.function.Supplier;
 import static java.util.Objects.requireNonNull;
 
 /**
+ * // @formatter:off
  * An interface that defines methods to check a target value.
  * By default, calls of checking methods defined in this and sub-interfaces of this interface will be a conjunction of them.
  * To make it a disjunction, call {@link Checker#anyOf()}.
  *
  * User-exposing methods to check values in this method names should be progressive and its objective so that they can
  * follow "to be" or "satisfies" in an English sentence.
+ *
+ * // @formatter:on
  *
  * @param <V> The type of the checker.
  * @param <T> The type from which the target value is transformed.
@@ -25,9 +29,9 @@ public interface Checker<
     T,
     R> extends
     Matcher<V, T, R>,
-        Statement<T> {
-  V addCheckPhrase(Function<Checker<?, R, R>, Predicate<R>> clause);
-  
+    Statement<T> {
+  V addCheckPhrase(Function<Checker<?, R, R>, Predicate<R>> phrase);
+
   /**
    * Checks if the target value satisfies the given `predicate`.
    *
@@ -39,7 +43,7 @@ public interface Checker<
     requireNonNull(predicate);
     return addCheckPhrase(w -> (Predicate<R>) predicate);
   }
-  
+
   /**
    * A synonym of {@link Checker#checkWithPredicate(Predicate)}.
    *
@@ -49,7 +53,7 @@ public interface Checker<
   default V predicate(Predicate<? super R> predicate) {
     return checkWithPredicate(predicate);
   }
-  
+
   /**
    * Convert this object into a printable predicate to check the target value.
    *
@@ -58,7 +62,12 @@ public interface Checker<
   default Predicate<T> done() {
     return statementPredicate();
   }
-  
+
+  @SuppressWarnings("unchecked")
+  default V not(Function<V, V> phrase) {
+    return this.addCheckPhrase((v) -> (Predicate<R>) Predicates.not(phrase.apply((V) v).done()));
+  }
+
   /**
    * // @formatter:off
    * When you use an assertion method that accepts multiple statements (`Statement`), it requires all the elements in the array (`varargs`) should have the same generic parameter type.
@@ -106,8 +115,8 @@ public interface Checker<
 
     @SuppressWarnings("unchecked")
     @Override
-    public V addCheckPhrase(Function<Checker<?, R, R>, Predicate<R>> clause) {
-      return this.addPredicate((Matcher<?, R, R> v) -> clause.apply((Checker<?, R, R>) v));
+    public V addCheckPhrase(Function<Checker<?, R, R>, Predicate<R>> phrase) {
+      return this.addPredicate((Matcher<?, R, R> v) -> phrase.apply((Checker<?, R, R>) v));
     }
 
     @Override
