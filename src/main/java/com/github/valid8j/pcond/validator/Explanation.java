@@ -52,7 +52,6 @@ public class Explanation {
       if (i < Math.min(e.length, a.length) && Objects.equals(e[i], a[i])) {
         b.add(format("          %s", a[i]));
       } else {
-        b.add(format("Mismatch<:%s", i < e.length ? e[i] : ""));
         b.add(format("Mismatch>:%s", i < a.length ? a[i] : ""));
       }
     }
