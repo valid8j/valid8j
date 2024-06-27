@@ -39,7 +39,7 @@ public class DbCCurriedFunctionsTest extends TestBase {
    * A {@code Context} may have one or more values at once and those values are indexed.
    */
   @Test
-  public void hello() {
+  public void performCurriedPredicate() {
     validate(
         asList("hello", "world"),
         transform(stream().andThen(nest(asList("1", "2", "o"))))
@@ -145,15 +145,7 @@ public class DbCCurriedFunctionsTest extends TestBase {
       assertThat(
           lineAt(e.getMessage(), ++i),
           CoreMatchers.allOf(
-              CoreMatchers.containsString("anyMatch"),
-              CoreMatchers.containsString("curry"),
-              CoreMatchers.containsString("isNull"),
-              CoreMatchers.containsString("0"),
-              CoreMatchers.containsString("true")));
-      // expected (3)
-      assertThat(
-          lineAt(e.getMessage(), ++i),
-          CoreMatchers.allOf(
+              CoreMatchers.containsString("Mismatch>:"),
               CoreMatchers.containsString("anyMatch"),
               CoreMatchers.containsString("curry"),
               CoreMatchers.containsString("isNull"),
@@ -187,23 +179,6 @@ public class DbCCurriedFunctionsTest extends TestBase {
               CoreMatchers.containsString("hello"),
               CoreMatchers.containsString("toCurriedContext"),
               CoreMatchers.containsString("variables:[hello]")
-          ));
-      // expected (2) -1
-      assertThat(
-          lineAt(e.getMessage(), ++i),
-          CoreMatchers.allOf(
-              CoreMatchers.containsString("variables:[hello]"),
-              CoreMatchers.containsString("check")
-          ));
-      // expected (2) -2
-      assertThat(
-          lineAt(e.getMessage(), i),
-          CoreMatchers.allOf(
-              CoreMatchers.containsString("curry"),
-              CoreMatchers.containsString("isNull"),
-              CoreMatchers.containsString("0"),
-              CoreMatchers.containsString("->"),
-              CoreMatchers.containsString("true")
           ));
       // actual (2) -1
       assertThat(
@@ -253,18 +228,11 @@ public class DbCCurriedFunctionsTest extends TestBase {
           CoreMatchers.allOf(
               CoreMatchers.containsString("nest"),
               CoreMatchers.containsString("\"1\",\"2\",\"o\"")));
-      // expected (3)
-      assertThat(
-          lineAt(e.getMessage(), ++i),
-          CoreMatchers.allOf(
-              CoreMatchers.containsString("allMatch"),
-              CoreMatchers.containsString("curry"),
-              CoreMatchers.containsString("String"),
-              CoreMatchers.containsString("true")));
       // actual (3)
       assertThat(
           lineAt(e.getMessage(), ++i),
           CoreMatchers.allOf(
+              CoreMatchers.containsString("Mismatch>:"),
               CoreMatchers.containsString("allMatch"),
               CoreMatchers.containsString("curry"),
               CoreMatchers.containsString("String"),
