@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>DoubleChecker.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.github.valid8j.pcond.core.fluent.builtins;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.github.valid8j.pcond.internals.InternalUtils;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.function.Function;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.function.Supplier;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public interface DoubleChecker&#60;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    T</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    &#62; extends</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    ComparableNumberChecker&#60;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                DoubleChecker&#60;T&#62;,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                T,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                Double&#62; {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  class Impl&#60;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      T</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      &#62; extends</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      Base&#60;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>          DoubleChecker&#60;T&#62;,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>          T,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>          Double&#62; implements</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      DoubleChecker&#60;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>          T&#62; {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Impl(Supplier&#60;T&#62; baseValue, Function&#60;T, Double&#62; transformFunction) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>      super(baseValue, transformFunction);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected DoubleChecker&#60;Double&#62; rebase() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_32'/>
+32
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_32'>1</a>
+<span>
+1. rebase : replaced return value with null for com/github/valid8j/pcond/core/fluent/builtins/DoubleChecker$Impl::rebase &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>      return new Impl&#60;&#62;(this::value, InternalUtils.trivialIdentityFunction());</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_34'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1e10468e_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1e10468e_32'>32</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1e10468e_32'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>rebase<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/builtins/DoubleChecker$Impl::rebase &rarr; SURVIVED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[203: UNLESS_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[52: Given:<"A:B">:When:<split[:] THEN:toCursoredList (findElementBy[isEqualTo[A]]&&findElementBy[isEqualTo[B]]&&findElementBy[isEqualTo[C]]&&(end))>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[50: Given:<"A:B">:When:<split[:] THEN:(!isEmpty&&contains[A]&&contains[B]&&contains[C])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[27: PRECONDITIONS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[80: Given:<"123.4">:When:<parseFloat->identity->castTo[Float] THEN:=[123.4]>:Then:<valueReturned:[identity=>identicalWith(value:123.4)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[104: REQUIRE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[53: Given:<null>:When:<split[:] THEN:(!isEmpty&&contains[A]&&contains[B]&&contains[C])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[14: Given:<["X"]>:When:<isEmpty>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[170: HOLD: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[137: REQUIRE_STATES: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[8: Given:<["A","B"]>:When:<subList[1,2] THEN:!isEmpty>:Then:<valueReturned:[identity=>identicalWith(value:[A, B])]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (4 ms)</li><li>com.github.valid8j.ut.styles.MoreFluentComparableNumberCheckerTest.test_greaterThan(com.github.valid8j.ut.styles.MoreFluentComparableNumberCheckerTest) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[28: Given:<"456">:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[159: HOLD_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[31: Given:<"A">:When:<substring[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[45: Given:<"XYZ">:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Boolean]&&isTrue)>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[214: UNLESS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[70: Given:<"HELLO">:When:<java.util.Objects.equals(<hello>,<>)->castTo[Boolean] THEN:isTrue>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[48: Given:<"A:B:C">:When:<split[:] THEN:toCursoredList (findElementBy[[A]]&&findElementBy[[B]]&&findElementBy[[C]]&&(end))>:Then:<valueReturned:[identity=>identicalWith(value:A:B:C)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[159: HOLD_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[1: Given:<true>:When:<isTrue>:Then:<valueReturned:[identity=>identicalWith(value:true)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.MoreFluentComparableNumberCheckerTest.test_equalTo(com.github.valid8j.ut.styles.MoreFluentComparableNumberCheckerTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[126: REQUIRE_ARGUMENT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[40: Given:<null>:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[55: Given:<null>:When:<split[:] THEN:toCursoredList (findElementBy[isEqualTo[A]]&&findElementBy[isEqualTo[B]]&&findElementBy[isEqualTo[C]]&&(end))>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[10: Given:<["X"]>:When:<subList[1,1] THEN:!isEmpty>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (10 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[225: EXPECT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[25: Given:<"456">:When:<substring[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (4 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[54: Given:<null>:When:<split[:] THEN:toCursoredList (findElementBy[[A]]&&findElementBy[[B]]&&findElementBy[[C]]&&(end))>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[22: Given:<"123">:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (5 ms)</li><li>com.github.valid8j.ut.styles.MoreFluentComparableNumberCheckerTest.test_greaterThanOrEqualTo(com.github.valid8j.ut.styles.MoreFluentComparableNumberCheckerTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[82: POSTCONDITION: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[71: POSTCONDITIONS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[19: Given:<"123">:When:<substring[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[83: Given:<"123.5">:When:<parseDouble->identity->castTo[Double] THEN:=[123.4]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[192: ENSURE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[39: Given:<null>:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[72: Given:<null>:When:<isNull>:Then:<valueReturned:[identity=>identicalWith(value:null)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[5: ALL: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[38: PRECONDITION: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[5: ALL: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[203: UNLESS_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[47: Given:<"A:B:C">:When:<split[:] THEN:(!isEmpty&&contains[A]&&contains[B]&&contains[C])>:Then:<valueReturned:[identity=>identicalWith(value:A:B:C)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[65: Given:<"hello">:When:<<>.equals(<hello>)>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[44: Given:<"false">:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Boolean]&&isTrue)>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[33: Given:<"A">:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[74: Given:<"123">:When:<parseLong->identity->castTo[Long] THEN:=[123]>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[24: Given:<"123">:When:<parseDouble THEN:(isInstanceOf[class java.lang.Double]&&=[123.0])>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (5 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[68: Given:<"HELLO">:When:<java.util.Objects.equals(<hello>,<>)>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[21: Given:<"123">:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[123])>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[49: INVARIANTS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[84: Given:<"Hello">:When:<expectingException(Exception,throwRuntimeException) THEN:isInstanceOf[class com....tionalException]>:Then:<valueReturned:[identity=>identicalWith(value:Hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[115: REQUIRE_ARGUMENTS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.ut.styles.MoreFluentComparableNumberCheckerTest.test_Double(com.github.valid8j.ut.styles.MoreFluentComparableNumberCheckerTest) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[71: Given:<"HELLO">:When:<<>.equals(<hello>)->castTo[Boolean] THEN:isTrue>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[29: Given:<"456">:When:<parseFloat THEN:(isInstanceOf[class java.lang.Float]&&=[123.0])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[170: HOLD: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[85: Given:<"Bye">:When:<expectingException(Exception,throwRuntimeException) THEN:isInstanceOf[class com....tionalException]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[38: PRECONDITION: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[181: ENSURE_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[93: REQUIRE_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[57: Given:<"hello">:When:<stringify THEN:==[hello]>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.MoreFluentComparableNumberCheckerTest.test_lessThan(com.github.valid8j.ut.styles.MoreFluentComparableNumberCheckerTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[137: REQUIRE_STATES: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[126: REQUIRE_ARGUMENT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[79: Given:<"124">:When:<parseBoolean->identity->castTo[Short] THEN:=[123]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[37: Given:<null>:When:<substring[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[16: DOLLAR: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[16: Given:<["X"]>:When:<castTo[List<Object>] THEN:isEmpty>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[225: EXPECT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[12: Given:<[]>:When:<subList[1,0] THEN:!isEmpty>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (7 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[5: ALL: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[2: Given:<false>:When:<isTrue>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[63: Given:<"hello">:When:<<>.equals(<hello>)->castTo[Boolean] THEN:isTrue>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[214: UNLESS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[3: Given:<false>:When:<isTrue>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[41: Given:<null>:When:<parseFloat THEN:(isInstanceOf[class java.lang.Float]&&=[123.0])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[27: PRECONDITIONS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[11: Given:<[]>:When:<subList[1] THEN:!isEmpty>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (14 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[181: ENSURE_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[81: Given:<"123.4">:When:<parseDouble->identity->castTo[Double] THEN:=[123.4]>:Then:<valueReturned:[identity=>identicalWith(value:123.4)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[49: INVARIANTS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[66: Given:<"hello">:When:<java.util.Objects.equals(<hello>,<>)->castTo[Boolean] THEN:isTrue>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[18: Given:<["X"]>:When:<castTo[List<String>] THEN:isEmpty>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[82: Given:<"123.5">:When:<parseFloat->identity->castTo[Float] THEN:=[123.4]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[42: Given:<null>:When:<parseDouble THEN:(isInstanceOf[class java.lang.Double]&&=[123.0])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.entrypoints.AssertionsTest$Failing (29 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[32: Given:<"A">:When:<substringAfter[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[71: POSTCONDITIONS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[137: REQUIRE_STATES: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[0: Given:<true>:When:<isTrue>:Then:<valueReturned:[identity=>identicalWith(value:true)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (9 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[9: Given:<["X"]>:When:<subList[1] THEN:!isEmpty>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (4 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[35: Given:<"A">:When:<parseFloat THEN:(isInstanceOf[class java.lang.Float]&&=[123.0])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[26: Given:<"456">:When:<substringAfter[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[6: Given:<["A","B","C"]>:When:<subList[1,3] THEN:!isEmpty>:Then:<valueReturned:[identity=>identicalWith(value:[A, B, C])]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[148: REQUIRE_STATE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[192: ENSURE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[93: REQUIRE_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[82: POSTCONDITION: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[159: HOLD_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (5 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[60: INVARIANT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[69: Given:<"HELLO">:When:<<>.equals(<hello>)>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[73: Given:<"HELLO">:When:<isNull>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[104: REQUIRE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[16: DOLLAR: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[67: Given:<"hello">:When:<<>.equals(<hello>)->castTo[Boolean] THEN:isTrue>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[49: INVARIANTS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[5: Given:<["A","B","C"]>:When:<subList[1] THEN:!isEmpty>:Then:<valueReturned:[identity=>identicalWith(value:[A, B, C])]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[77: Given:<"124">:When:<parseLong->identity->castTo[Long] THEN:=[123]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[60: Given:<"hello">:When:<java.util.Objects.equals(<hello>,<>)>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[38: Given:<null>:When:<substringAfter[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[75: Given:<"123">:When:<parseInt->identity->castTo[Integer] THEN:=[123]>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[46: Given:<null>:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Boolean]&&isTrue)>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[181: ENSURE_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[13: Given:<[]>:When:<isEmpty>:Then:<valueReturned:[identity=>identicalWith(value:[])]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[17: Given:<[]>:When:<castTo[List<String>] THEN:isEmpty>:Then:<valueReturned:[identity=>identicalWith(value:[])]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[36: Given:<"A">:When:<parseDouble THEN:(isInstanceOf[class java.lang.Double]&&=[123.0])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[4: Given:<null>:When:<isTrue>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[51: Given:<"A:B">:When:<split[:] THEN:toCursoredList (findElementBy[[A]]&&findElementBy[[B]]&&findElementBy[[C]]&&(end))>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[170: HOLD: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[192: ENSURE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[104: REQUIRE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (10 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[76: Given:<"123">:When:<parseBoolean->identity->castTo[Short] THEN:=[123]>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[115: REQUIRE_ARGUMENTS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[82: POSTCONDITION: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[23: Given:<"123">:When:<parseFloat THEN:(isInstanceOf[class java.lang.Float]&&=[123.0])>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (5 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[15: Given:<[]>:When:<castTo[List<Object>] THEN:isEmpty>:Then:<valueReturned:[identity=>identicalWith(value:[])]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (7 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[16: DOLLAR: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[214: UNLESS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[58: Given:<"hello">:When:<==[hello]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[60: INVARIANT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[78: Given:<"124">:When:<parseInt->identity->castTo[Integer] THEN:=[123]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[115: REQUIRE_ARGUMENTS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[43: Given:<"true">:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Boolean]&&isTrue)>:Then:<valueReturned:[identity=>identicalWith(value:true)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[49: Given:<"A:B:C">:When:<split[:] THEN:toCursoredList (findElementBy[isEqualTo[A]]&&findElementBy[isEqualTo[B]]&&findElementBy[isEqualTo[C]]&&(end))>:Then:<valueReturned:[identity=>identicalWith(value:A:B:C)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[56: Given:<"hello">:When:<==[hello]>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[62: Given:<"hello">:When:<java.util.Objects.equals(<hello>,<>)->castTo[Boolean] THEN:isTrue>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[93: REQUIRE_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[61: Given:<"hello">:When:<<>.equals(<hello>)>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[34: Given:<"A">:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[64: Given:<"hello">:When:<java.util.Objects.equals(<hello>,<>)>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[38: PRECONDITION: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[59: Given:<"hello">:When:<stringify THEN:==[hello]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[27: Given:<"456">:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[148: REQUIRE_STATE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[71: POSTCONDITIONS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[20: Given:<"123">:When:<substringAfter[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[7: Given:<["A","B"]>:When:<subList[1] THEN:!isEmpty>:Then:<valueReturned:[identity=>identicalWith(value:[A, B])]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[203: UNLESS_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[60: INVARIANT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[27: PRECONDITIONS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[126: REQUIRE_ARGUMENT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[225: EXPECT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.MoreFluentComparableNumberCheckerTest.test_lessThanOrEqualTo(com.github.valid8j.ut.styles.MoreFluentComparableNumberCheckerTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[148: REQUIRE_STATE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[30: Given:<"456">:When:<parseDouble THEN:(isInstanceOf[class java.lang.Double]&&=[123.0])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.7.3
+
+</body>
+</html>

@@ -1,0 +1,4752 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>ExceptionComposer.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.github.valid8j.pcond.validator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.github.valid8j.pcond.validator.exceptions.PostconditionViolationException;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.github.valid8j.pcond.validator.exceptions.PreconditionViolationException;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.github.valid8j.pcond.validator.exceptions.ValidationException;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.lang.reflect.InvocationTargetException;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static com.github.valid8j.pcond.validator.Explanation.reportToString;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * An interface to define how an exception is composed based on a given message,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * a class of a condition that the value violates (non-null constraint, invalid state,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * input validation), and the context the violation happened (pre-, post-condition check,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * test-assertion, etc.).</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * This interface has methods to return objects, each of which composes actual exceptions.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Each of them intended to group methods that compose exceptions for a single context.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public interface ExceptionComposer {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * Returns an instance to compose exceptions used with `requireXyz` methods in</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * {@code Requires} entry-point class of valid8j library.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @return An object to compose exceptions for methods in {@code Requires}.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  ForRequire forRequire();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * Returns an instance to compose exceptions used with `ensureXyz` methods in</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * {@code Ensures} entry-point class of valid8j library.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @return An object to compose exceptions for methods in {@code Ensures}.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_34'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  ForEnsure forEnsure();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * Returns an instance to compose exceptions used with `validateXyz` methods in</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * {@code Validates} entry-point class of valid8j library.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_40'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_41'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @return An object to compose exceptions for methods in {@code Validates}.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_43'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  ForValidate defaultForValidate();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_45'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_46'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * Returns an instance to compose exceptions used in `assert` statements.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_47'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_48'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @return An object to compose exceptions for &#34;precondition&#34; violation.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_49'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_50'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  ForAssertion forAssert();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_51'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_52'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_53'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * Returns an instance to compose exceptions used in `assertThat` and `assumeThat`</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_54'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * methods in {@code TestAssertions} entry-point class of thincrest library.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_55'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * Other entry-point classes provided for use cases of the `pcond` library as</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_56'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * a test assertion library may also use this method.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_57'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_58'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @return An object to compose exceptions for test assertions</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_59'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_60'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  ForTestAssertion forAssertThat();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_61'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_62'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_63'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * An implementation of the {@link ExceptionComposer} interface.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_64'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * You usually do not need to extend this method to customize its behavior.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_65'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * Rather you only need to control the arguments passed to its constructor</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_66'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * through {@link Validator.Configuration.Builder}.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_67'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_68'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @see Validator.Configuration</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_69'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @see Validator.Configuration.Builder</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_70'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_71'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  class Impl implements ExceptionComposer {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_72'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    final private ForRequire       forRequire;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_73'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    final private ForEnsure        forEnsure;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_74'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    final private ForValidate      defaultForValidate;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_75'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    final private ForAssertion     forAssert;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_76'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    final private ForTestAssertion forAssertThat;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_77'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_78'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public Impl(ForRequire forRequire, ForEnsure forEnsure, ForValidate defaultForValidate, ForAssertion forAssert, ForTestAssertion forAssertThat) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_79'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>      this.forRequire = forRequire;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_80'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>      this.forEnsure = forEnsure;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_81'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>      this.defaultForValidate = defaultForValidate;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_82'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>      this.forAssert = forAssert;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_83'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>      this.forAssertThat = forAssertThat;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_84'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_85'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_86'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_87'/>
+87
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_87'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public ForRequire forRequire() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_88'/>
+88
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_88'>1</a>
+<span>
+1. forRequire : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Impl::forRequire &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>      return this.forRequire;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_89'/>
+89
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_89'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_90'/>
+90
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_90'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_91'/>
+91
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_91'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_92'/>
+92
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_92'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public ForEnsure forEnsure() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_93'/>
+93
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_93'>1</a>
+<span>
+1. forEnsure : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Impl::forEnsure &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>      return this.forEnsure;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_94'/>
+94
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_94'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_95'/>
+95
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_95'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_96'/>
+96
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_96'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_97'/>
+97
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_97'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public ForValidate defaultForValidate() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_98'/>
+98
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_98'>1</a>
+<span>
+1. defaultForValidate : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Impl::defaultForValidate &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>      return this.defaultForValidate;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_99'/>
+99
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_99'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_100'/>
+100
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_100'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_101'/>
+101
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_101'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_102'/>
+102
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_102'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public ForAssertion forAssert() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_103'/>
+103
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_103'>1</a>
+<span>
+1. forAssert : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Impl::forAssert &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>      return this.forAssert;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_104'/>
+104
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_104'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_105'/>
+105
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_105'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_106'/>
+106
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_106'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_107'/>
+107
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_107'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public ForTestAssertion forAssertThat() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_108'/>
+108
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_108'>1</a>
+<span>
+1. forAssertThat : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Impl::forAssertThat &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>      return this.forAssertThat;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_109'/>
+109
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_109'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_110'/>
+110
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_110'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_111'/>
+111
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_111'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_112'/>
+112
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_112'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_113'/>
+113
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_113'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * An interface that defines common methods that an object returned by each method</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_114'/>
+114
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_114'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * in the {@link ExceptionComposer} has.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_115'/>
+115
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_115'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_116'/>
+116
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_116'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  interface Base {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_117'/>
+117
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_117'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_118'/>
+118
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_118'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * A method to compose an exception for a &#34;Null-violation&#34;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_119'/>
+119
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_119'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * When you are checking a &#34;pre-condition&#34;, if the value must not be `null`,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_120'/>
+120
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_120'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * you may prefer a {@link NullPointerException}, rather than an exception</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_121'/>
+121
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_121'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * such as `YourPreconditionException` as Google Guava&#39;s `Precondition` does</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_122'/>
+122
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_122'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * so.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_123'/>
+123
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_123'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_124'/>
+124
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_124'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * This method by default, returns a `NullPointerException`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_125'/>
+125
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_125'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_126'/>
+126
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_126'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * In case you prefer to throw `YourPreconditionException` for the sake of uniformity,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_127'/>
+127
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_127'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * you can override this method for an object returned by {@link ExceptionComposer#forRequire()}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_128'/>
+128
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_128'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_129'/>
+129
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_129'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * For more detail, please refer to {@link Validator.Configuration}.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_130'/>
+130
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_130'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_131'/>
+131
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_131'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param message A message attached to the composed exception.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_132'/>
+132
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_132'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return A composed exception.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_133'/>
+133
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_133'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_134'/>
+134
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_134'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    default Throwable exceptionForNonNullViolation(String message) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_135'/>
+135
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_135'>1</a>
+<span>
+1. exceptionForNonNullViolation : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Base::exceptionForNonNullViolation &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>      return new NullPointerException(message);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_136'/>
+136
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_136'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_137'/>
+137
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_137'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_138'/>
+138
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_138'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_139'/>
+139
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_139'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * A method to compose an exception for a &#34;State-violation&#34;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_140'/>
+140
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_140'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_141'/>
+141
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_141'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param message A message attached to the composed exception.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_142'/>
+142
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_142'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return A composed exception.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_143'/>
+143
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_143'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @see Base#exceptionForNonNullViolation(String)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_144'/>
+144
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_144'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_145'/>
+145
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_145'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    default Throwable exceptionForIllegalState(String message) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_146'/>
+146
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_146'>1</a>
+<span>
+1. exceptionForIllegalState : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Base::exceptionForIllegalState &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>      return new IllegalStateException(message);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_147'/>
+147
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_147'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_148'/>
+148
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_148'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_149'/>
+149
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_149'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_150'/>
+150
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_150'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * A method to compose an exception for a general violation.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_151'/>
+151
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_151'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * An extension-point to customize the exception to be thrown for a certain</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_152'/>
+152
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_152'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * context.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_153'/>
+153
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_153'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_154'/>
+154
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_154'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param message A message attached to the composed exception.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_155'/>
+155
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_155'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return A composed exception.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_156'/>
+156
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_156'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_157'/>
+157
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_157'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    Throwable exceptionForGeneralViolation(String message);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_158'/>
+158
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_158'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_159'/>
+159
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_159'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_160'/>
+160
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_160'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  interface ForRequire extends Base {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_161'/>
+161
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_161'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_162'/>
+162
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_162'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    default Throwable exceptionForGeneralViolation(String message) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_163'/>
+163
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_163'>1</a>
+<span>
+1. exceptionForGeneralViolation : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForRequire::exceptionForGeneralViolation &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>      return new PreconditionViolationException(message);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_164'/>
+164
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_164'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_165'/>
+165
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_165'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_166'/>
+166
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_166'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    Throwable exceptionForIllegalArgument(String message);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_167'/>
+167
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_167'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_168'/>
+168
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_168'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @SuppressWarnings(&#34;unused&#34;) // Referenced reflectively</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_169'/>
+169
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_169'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    class Default implements ForRequire {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_170'/>
+170
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_170'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_171'/>
+171
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_171'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      public Throwable exceptionForIllegalArgument(String message) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_172'/>
+172
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_172'>1</a>
+<span>
+1. exceptionForIllegalArgument : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForRequire$Default::exceptionForIllegalArgument &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new IllegalArgumentException(message);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_173'/>
+173
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_173'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_174'/>
+174
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_174'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_175'/>
+175
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_175'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_176'/>
+176
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_176'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_177'/>
+177
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_177'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  interface ForEnsure extends Base {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_178'/>
+178
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_178'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_179'/>
+179
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_179'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    default Throwable exceptionForGeneralViolation(String message) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_180'/>
+180
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_180'>1</a>
+<span>
+1. exceptionForGeneralViolation : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForEnsure::exceptionForGeneralViolation &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>      return new PostconditionViolationException(message);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_181'/>
+181
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_181'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_182'/>
+182
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_182'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_183'/>
+183
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_183'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @SuppressWarnings(&#34;unused&#34;) // Referenced reflectively</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_184'/>
+184
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_184'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    class Default implements ForEnsure {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_185'/>
+185
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_185'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_186'/>
+186
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_186'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_187'/>
+187
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_187'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_188'/>
+188
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_188'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  interface ForValidate extends Base {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_189'/>
+189
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_189'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_190'/>
+190
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_190'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    default Throwable exceptionForGeneralViolation(String message) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_191'/>
+191
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_191'>1</a>
+<span>
+1. exceptionForGeneralViolation : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForValidate::exceptionForGeneralViolation &rarr; NO_COVERAGE<br/>
+
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>      return new ValidationException(message);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_192'/>
+192
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_192'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_193'/>
+193
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_193'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_194'/>
+194
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_194'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    default Throwable exceptionForIllegalArgument(String message) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_195'/>
+195
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_195'>1</a>
+<span>
+1. exceptionForIllegalArgument : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForValidate::exceptionForIllegalArgument &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>      return new IllegalArgumentException(message);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_196'/>
+196
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_196'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_197'/>
+197
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_197'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_198'/>
+198
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_198'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @SuppressWarnings(&#34;unused&#34;) // Referenced reflectively</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_199'/>
+199
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_199'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    class Default implements ForValidate {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_200'/>
+200
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_200'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_201'/>
+201
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_201'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_202'/>
+202
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_202'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_203'/>
+203
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_203'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  interface ForAssertion {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_204'/>
+204
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_204'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    default Throwable exceptionPreconditionViolation(String message) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_205'/>
+205
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_205'>1</a>
+<span>
+1. exceptionPreconditionViolation : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForAssertion::exceptionPreconditionViolation &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>      return new AssertionError(message);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_206'/>
+206
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_206'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_207'/>
+207
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_207'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_208'/>
+208
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_208'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    default Throwable exceptionInvariantConditionViolation(String message) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_209'/>
+209
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_209'>1</a>
+<span>
+1. exceptionInvariantConditionViolation : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForAssertion::exceptionInvariantConditionViolation &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>      return new AssertionError(message);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_210'/>
+210
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_210'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_211'/>
+211
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_211'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_212'/>
+212
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_212'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    default Throwable exceptionPostconditionViolation(String message) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_213'/>
+213
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_213'>1</a>
+<span>
+1. exceptionPostconditionViolation : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForAssertion::exceptionPostconditionViolation &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>      return new AssertionError(message);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_214'/>
+214
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_214'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_215'/>
+215
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_215'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_216'/>
+216
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_216'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @SuppressWarnings(&#34;unused&#34;) // Referenced reflectively</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_217'/>
+217
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_217'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    class Default implements ForAssertion {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_218'/>
+218
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_218'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_219'/>
+219
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_219'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_220'/>
+220
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_220'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_221'/>
+221
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_221'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  interface ForTestAssertion {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_222'/>
+222
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_222'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    &#60;T extends RuntimeException&#62; T testSkippedException(String message, ReportComposer reportComposer);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_223'/>
+223
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_223'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_224'/>
+224
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_224'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    default &#60;T extends RuntimeException&#62; T testSkippedException(Explanation explanation, ReportComposer reportComposer) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_225'/>
+225
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_225'>1</a>
+<span>
+1. testSkippedException : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForTestAssertion::testSkippedException &rarr; NO_COVERAGE<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>      return testSkippedException(explanation.toString(), reportComposer);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_226'/>
+226
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_226'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_227'/>
+227
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_227'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_228'/>
+228
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_228'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    &#60;T extends Error&#62; T testFailedException(Explanation explanation, ReportComposer reportComposer);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_229'/>
+229
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_229'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_230'/>
+230
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_230'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @SuppressWarnings(&#34;unused&#34;) // Referenced reflectively</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_231'/>
+231
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_231'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    class JUnit4 implements ForTestAssertion {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_232'/>
+232
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_232'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      @SuppressWarnings(&#34;unchecked&#34;)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_233'/>
+233
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_233'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_234'/>
+234
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_234'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      public &#60;T extends RuntimeException&#62; T testSkippedException(String message, ReportComposer reportComposer) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_235'/>
+235
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_235'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        throw (T) Utils.createException(</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_236'/>
+236
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_236'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            &#34;org.junit.AssumptionViolatedException&#34;,</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_237'/>
+237
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_237'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            reportComposer.explanationFromMessage(message),</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_238'/>
+238
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_238'>1</a>
+<span>
+1. lambda$testSkippedException$0 : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForTestAssertion$JUnit4::lambda$testSkippedException$0 &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            (c, exp) -&#62; c.getConstructor(String.class).newInstance(exp.message()));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_239'/>
+239
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_239'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_240'/>
+240
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_240'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_241'/>
+241
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_241'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      @SuppressWarnings(&#34;unchecked&#34;)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_242'/>
+242
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_242'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_243'/>
+243
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_243'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      public &#60;T extends Error&#62; T testFailedException(Explanation explanation, ReportComposer reportComposer) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_244'/>
+244
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_244'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        throw (T) Utils.createException(</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_245'/>
+245
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_245'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            &#34;org.junit.ComparisonFailure&#34;,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_246'/>
+246
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_246'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            explanation,</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_247'/>
+247
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_247'>1</a>
+<span>
+1. lambda$testFailedException$1 : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForTestAssertion$JUnit4::lambda$testFailedException$1 &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            (c, exp) -&#62; c.getConstructor(String.class, String.class, String.class).newInstance(exp.message(), reportToString(exp.expected()), reportToString(exp.actual())));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_248'/>
+248
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_248'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_249'/>
+249
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_249'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_250'/>
+250
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_250'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_251'/>
+251
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_251'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @SuppressWarnings(&#34;unused&#34;) // Referenced reflectively</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_252'/>
+252
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_252'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    class Opentest4J implements ForTestAssertion {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_253'/>
+253
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_253'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      @SuppressWarnings(&#34;unchecked&#34;)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_254'/>
+254
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_254'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_255'/>
+255
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_255'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      public &#60;T extends RuntimeException&#62; T testSkippedException(String message, ReportComposer reportComposer) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_256'/>
+256
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_256'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        throw (T) Utils.createException(&#34;org.opentest4j.TestSkippedException&#34;, reportComposer.explanationFromMessage(message), (c, exp) -&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_257'/>
+257
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_257'>1</a>
+<span>
+1. lambda$testSkippedException$0 : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForTestAssertion$Opentest4J::lambda$testSkippedException$0 &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            c.getConstructor(String.class).newInstance(exp.message()));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_258'/>
+258
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_258'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_259'/>
+259
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_259'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_260'/>
+260
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_260'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      @SuppressWarnings(&#34;unchecked&#34;)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_261'/>
+261
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_261'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_262'/>
+262
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_262'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      public &#60;T extends Error&#62; T testFailedException(Explanation explanation, ReportComposer reportComposer) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_263'/>
+263
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_263'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        throw (T) Utils.createException(&#34;org.opentest4j.AssertionFailedError&#34;, explanation, (c, exp) -&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_264'/>
+264
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_264'>1</a>
+<span>
+1. lambda$testFailedException$1 : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForTestAssertion$Opentest4J::lambda$testFailedException$1 &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            c.getConstructor(String.class, Object.class, Object.class).newInstance(exp.message(), reportToString(exp.expected()), reportToString(exp.actual())));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_265'/>
+265
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_265'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_266'/>
+266
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_266'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_267'/>
+267
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_267'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_268'/>
+268
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_268'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_269'/>
+269
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_269'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>  enum Utils {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_270'/>
+270
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_270'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    ;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_271'/>
+271
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_271'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_272'/>
+272
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_272'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @SuppressWarnings(&#34;unchecked&#34;)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_273'/>
+273
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_273'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static &#60;T extends Throwable&#62; T createException(String className, Explanation explanation, ReflectiveExceptionFactory&#60;T&#62; reflectiveExceptionFactory) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_274'/>
+274
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_274'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      try {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_275'/>
+275
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_275'>1</a>
+<span>
+1. createException : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Utils::createException &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return reflectiveExceptionFactory.apply((Class&#60;T&#62;) Class.forName(className), explanation);</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_276'/>
+276
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_276'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>      } catch (ClassNotFoundException e) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_277'/>
+277
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_277'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        throw new RuntimeException(&#34;FAILED TO INSTANTIATE EXCEPTION: &#39;&#34; + className + &#34;&#39; (NOT FOUND)&#34;, e);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_278'/>
+278
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_278'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_279'/>
+279
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_279'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_280'/>
+280
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_280'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_281'/>
+281
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_281'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @FunctionalInterface</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_282'/>
+282
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_282'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_283'/>
+283
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_283'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    interface ReflectiveExceptionFactory&#60;T extends Throwable&#62; {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_284'/>
+284
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_284'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      T create(Class&#60;T&#62; c, Explanation explanation) throws InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_285'/>
+285
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_285'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_286'/>
+286
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_286'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      default T apply(Class&#60;T&#62; c, Explanation explanation) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_287'/>
+287
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_287'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        try {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_288'/>
+288
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_288'>1</a>
+<span>
+1. apply : replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Utils$ReflectiveExceptionFactory::apply &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>          return create(c, explanation);</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_289'/>
+289
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_289'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        } catch (InvocationTargetException | InstantiationException |</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_290'/>
+290
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_290'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            IllegalAccessException | NoSuchMethodException e) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_291'/>
+291
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_291'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>          throw new RuntimeException(&#34;FAILED TO INSTANTIATE EXCEPTION: &#39;&#34; + c.getCanonicalName() + &#34;&#39;&#34;, e);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_292'/>
+292
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_292'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_293'/>
+293
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_293'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_294'/>
+294
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_294'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_295'/>
+295
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_295'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@10660544_296'/>
+296
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@10660544_296'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_88'>88</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_88'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>forRequire<br/><b>Killed by : </b>com.github.valid8j.entrypoints.RequiresTest.givenValidArgument_whenRequireArgument_thenValueReturned(com.github.valid8j.entrypoints.RequiresTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Impl::forRequire &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_93'>93</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_93'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>forEnsure<br/><b>Killed by : </b>com.github.valid8j.entrypoints.EnsuresTest.givenValidState_whenEnsureState_thenStateReturned(com.github.valid8j.entrypoints.EnsuresTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Impl::forEnsure &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_98'>98</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_98'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>defaultForValidate<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Impl::defaultForValidate &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_103'>103</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_103'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>forAssert<br/><b>Killed by : </b>com.github.valid8j.entrypoints.AssertionsTest$Failing</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Impl::forAssert &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_108'>108</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_108'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>forAssertThat<br/><b>Killed by : </b>com.github.valid8j.ut.utilstest.FluentUtilsTest.example2(com.github.valid8j.ut.utilstest.FluentUtilsTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Impl::forAssertThat &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_135'>135</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_135'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>exceptionForNonNullViolation<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Base::exceptionForNonNullViolation &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_146'>146</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_146'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>exceptionForIllegalState<br/><b>Killed by : </b>com.github.valid8j.entrypoints.EnsuresTest.testEnsureState(com.github.valid8j.entrypoints.EnsuresTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Base::exceptionForIllegalState &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_163'>163</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_163'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>exceptionForGeneralViolation<br/><b>Killed by : </b>com.github.valid8j.entrypoints.RequiresTest.testRequire$thenError(com.github.valid8j.entrypoints.RequiresTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForRequire::exceptionForGeneralViolation &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_172'>172</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_172'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>exceptionForIllegalArgument<br/><b>Killed by : </b>com.github.valid8j.entrypoints.RequiresTest.givenIllegalArgument_whenRequireArgument_thenIllegalArgumentThrown(com.github.valid8j.entrypoints.RequiresTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForRequire$Default::exceptionForIllegalArgument &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_180'>180</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_180'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>exceptionForGeneralViolation<br/><b>Killed by : </b>com.github.valid8j.entrypoints.EnsuresTest.givenIllegalValue_whenEnsure_thenPostconditionViolationThrown(com.github.valid8j.entrypoints.EnsuresTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForEnsure::exceptionForGeneralViolation &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_191'>191</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_191'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>exceptionForGeneralViolation<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForValidate::exceptionForGeneralViolation &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_195'>195</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_195'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>exceptionForIllegalArgument<br/><b>Killed by : </b>com.github.valid8j.entrypoints.ValidatesTest.test_validateArgument_fail(com.github.valid8j.entrypoints.ValidatesTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForValidate::exceptionForIllegalArgument &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_205'>205</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_205'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>exceptionPreconditionViolation<br/><b>Killed by : </b>com.github.valid8j.entrypoints.AssertionsTest$Failing</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForAssertion::exceptionPreconditionViolation &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_209'>209</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_209'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>exceptionInvariantConditionViolation<br/><b>Killed by : </b>com.github.valid8j.entrypoints.AssertionsTest$Failing</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForAssertion::exceptionInvariantConditionViolation &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_213'>213</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_213'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>exceptionPostconditionViolation<br/><b>Killed by : </b>com.github.valid8j.entrypoints.AssertionsTest$Failing</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForAssertion::exceptionPostconditionViolation &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_225'>225</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_225'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>testSkippedException<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForTestAssertion::testSkippedException &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_238'>238</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_238'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$testSkippedException$0<br/><b>Killed by : </b>com.github.valid8j.ut.utilstest.TestAssertionsTest.testAssumeThat(com.github.valid8j.ut.utilstest.TestAssertionsTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForTestAssertion$JUnit4::lambda$testSkippedException$0 &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_247'>247</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_247'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$testFailedException$1<br/><b>Killed by : </b>com.github.valid8j.ut.utilstest.FluentUtilsTest.example2(com.github.valid8j.ut.utilstest.FluentUtilsTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForTestAssertion$JUnit4::lambda$testFailedException$1 &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_257'>257</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_257'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$testSkippedException$0<br/><b>Killed by : </b>com.github.valid8j.ut.valuechecker.Opentest4jTest.test_testSkippedException$String(com.github.valid8j.ut.valuechecker.Opentest4jTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForTestAssertion$Opentest4J::lambda$testSkippedException$0 &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_264'>264</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_264'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$testFailedException$1<br/><b>Killed by : </b>com.github.valid8j.ut.valuechecker.Opentest4jTest.test_testFailedException(com.github.valid8j.ut.valuechecker.Opentest4jTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$ForTestAssertion$Opentest4J::lambda$testFailedException$1 &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_275'>275</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_275'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createException<br/><b>Killed by : </b>com.github.valid8j.ut.valuechecker.Opentest4jTest.test_testSkippedException$String(com.github.valid8j.ut.valuechecker.Opentest4jTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Utils::createException &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@10660544_288'>288</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@10660544_288'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>apply<br/><b>Killed by : </b>com.github.valid8j.ut.valuechecker.Opentest4jTest.test_testSkippedException$String(com.github.valid8j.ut.valuechecker.Opentest4jTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/ExceptionComposer$Utils$ReflectiveExceptionFactory::apply &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest.exerciseTestCase[2: givenStreamPredicate$hello_b_e_2$_whenUnexpectedValue_thenComparisonFailure2](com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest) (3 ms)</li><li>com.github.valid8j.ut.utilstest.TestAssertionsTest.testAssumeThat(com.github.valid8j.ut.utilstest.TestAssertionsTest) (1 ms)</li><li>com.github.valid8j.examples.test.ExamplesTest.testIntroductionExample(com.github.valid8j.examples.test.ExamplesTest) (3 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_disj$anyOf$_thenFail(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[131: REQUIRE_ARGUMENT: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[124: REQUIRE_ARGUMENT: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[121: REQUIRE_ARGUMENT: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$FindStringsTest.givenSomeFoundSomeNotFound$whenFindRegexes$thenFailed(com.github.valid8j.ut.utilstest.PredicatesTest$FindStringsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[135: REQUIRE_STATES: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[120: REQUIRE_ARGUMENTS: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[152: REQUIRE_STATE: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[153: REQUIRE_STATE: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenIsTrueAndIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (1 ms)</li><li>com.github.valid8j.ut.valuechecker.Opentest4jTest.test_testSkippedException$Explanation(com.github.valid8j.ut.valuechecker.Opentest4jTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[114: REQUIRE_ARGUMENTS: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.givenIllegalValue_whenEnsure_thenPostconditionViolationThrown(com.github.valid8j.entrypoints.EnsuresTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[136: REQUIRE_STATES: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[150: REQUIRE_STATE: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamAllMatchPredicateTest.exerciseTestCase[1: givenStreamPredicate_whenUnexpectedNullValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.StreamAllMatchPredicateTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[145: REQUIRE_STATE: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireArgumentsTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[146: REQUIRE_STATE: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenTransformIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (2 ms)</li><li>com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest.exerciseTestCase[4: givenTwoChainedTransformingPredicates_whenNonExpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[121: REQUIRE_ARGUMENT: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$IsInstanceOfTest.test(com.github.valid8j.ut.utilstest.PredicatesTest$IsInstanceOfTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test6(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test6(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[114: REQUIRE_ARGUMENTS: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.internal.PrintablesFunctionTest$Composed.testFailureFromComposeStructureInTransformer(com.github.valid8j.ut.internal.PrintablesFunctionTest$Composed) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest.exerciseTestCase[3: whenPredicatesFirstReturningFalseRestReturningTrueUnderAllOf_whenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest) (2 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_columns100_conj(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[131: REQUIRE_ARGUMENT: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.utilstest.FluentUtilsTest.expectationFlipping(com.github.valid8j.ut.utilstest.FluentUtilsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.givenValidArgument_whenRequireArgument_thenValueReturned(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequireWithSatisfyingValue(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest.exerciseTestCase[3: givenStreamPredicate$hello_b_e_4$_whenUnexpectedValue_thenComparisonFailure2](com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[143: REQUIRE_STATE: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[124: REQUIRE_ARGUMENT: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[151: REQUIRE_STATE: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.reqireState_passing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[139: REQUIRE_STATES: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[143: REQUIRE_STATE: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[124: REQUIRE_ARGUMENT: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_columns100$whenShorterThan10(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[131: REQUIRE_ARGUMENT: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[144: REQUIRE_STATE: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[139: REQUIRE_STATES: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[122: REQUIRE_ARGUMENT: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[111: REQUIRE_ARGUMENTS: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testIsEmptyString(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testAllMatch(com.github.valid8j.ut.typesupports.ListTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[136: REQUIRE_STATES: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.BooleanTest.testWrapperIsTrue(com.github.valid8j.ut.typesupports.BooleanTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[120: REQUIRE_ARGUMENTS: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[115: REQUIRE_ARGUMENTS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.multiAssertAll_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.multiAssumeAll_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[147: REQUIRE_STATE: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test5(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.ut.propertybased.tests.NegatedPredicateTest.exerciseTestCase[1: givenNegatedSimplePredicateReturningTrue_whenUnexpectedValue_thenComparisonFailureThrown](com.github.valid8j.ut.propertybased.tests.NegatedPredicateTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testEqualsIgnoreCase(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequireNonNull(com.github.valid8j.entrypoints.RequiresTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenString_whenFails_then_2(com.github.valid8j.ut.utilstest.ReportDetailTest) (2 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.givenNonNull$whenEnsureNonNull$thenPasses(com.github.valid8j.entrypoints.EnsuresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.testEnsureNonNull(com.github.valid8j.entrypoints.EnsuresTest) (1 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withoutEvaluator_conj_thenPass(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[128: REQUIRE_ARGUMENT: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[138: REQUIRE_STATES: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_disj$or$_thenFail(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[123: REQUIRE_ARGUMENT: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.expectingDifferentException_testFailing(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (2 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessWithSlightlyDifferentString_thenFailWithDetailsArePrinted(com.github.valid8j.ut.utilstest.ReportDetailTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (0 ms)</li><li>com.github.valid8j.entrypoints.AssertionsTest$Failing (29 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest.exerciseTestCase[1: givenStreamPredicate$hello_b_e$_whenUnexpectedValue_thenComparisonFailure2](com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[145: REQUIRE_STATE: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[125: REQUIRE_ARGUMENT: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.givenValidState$whenRequireState$thenPass(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[137: REQUIRE_STATES: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequire$thenError(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testMatchesRegex(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testContainsString(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testEqualTo(com.github.valid8j.ut.typesupports.StringTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[128: REQUIRE_ARGUMENT: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.BooleanTest.testIsFalse(com.github.valid8j.ut.typesupports.BooleanTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[116: REQUIRE_ARGUMENTS: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testIsEmptyOrNullString(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$FindStringsTest.givenSomeFoundSomeNot$whenFindString$thenFailed(com.github.valid8j.ut.utilstest.PredicatesTest$FindStringsTest) (2 ms)</li><li>com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest.exerciseTestCase[3: givenTransformingPredicate_whenNonExpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[138: REQUIRE_STATES: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[127: REQUIRE_ARGUMENT: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[142: REQUIRE_STATES: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[110: REQUIRE_ARGUMENTS: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test4(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testStartsWith(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[134: REQUIRE_STATES: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.ut.propertybased.tests.SimplePredicateTest.exerciseTestCase[1: givenSimplePredicate_whenUnexpectedValue_thenComparisonFailureThrown](com.github.valid8j.ut.propertybased.tests.SimplePredicateTest) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenCheckIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (2 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequireWithTransformingPredicate(com.github.valid8j.entrypoints.RequiresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[135: REQUIRE_STATES: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[146: REQUIRE_STATE: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.internal.PrintablesFunctionTest$Composed.testFailureFromAndThenStructureInTransformer(com.github.valid8j.ut.internal.PrintablesFunctionTest$Composed) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[145: REQUIRE_STATE: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[150: REQUIRE_STATE: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[132: REQUIRE_STATES: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[141: REQUIRE_STATES: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.givenInvalidState$whenRequireState$thenIllegalStateExceptionThrown(com.github.valid8j.entrypoints.RequiresTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[141: REQUIRE_STATES: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[110: REQUIRE_ARGUMENTS: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[114: REQUIRE_ARGUMENTS: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[111: REQUIRE_ARGUMENTS: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[115: REQUIRE_ARGUMENTS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.givenNonNullValue_whenRequireNonNull_thenValueReturned(com.github.valid8j.entrypoints.RequiresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[142: REQUIRE_STATES: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ValidatesTest.test(com.github.valid8j.entrypoints.ValidatesTest) (9 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.testEnsure(com.github.valid8j.entrypoints.EnsuresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[149: REQUIRE_STATE: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamAllMatchPredicateTest.exerciseTestCase[2: givenStreamPredicate_whenUnexpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.StreamAllMatchPredicateTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[133: REQUIRE_STATES: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.testEnsureState(com.github.valid8j.entrypoints.EnsuresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[115: REQUIRE_ARGUMENTS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[116: REQUIRE_ARGUMENTS: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.valuechecker.Opentest4jTest.test_testSkippedException$String(com.github.valid8j.ut.valuechecker.Opentest4jTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[120: REQUIRE_ARGUMENTS: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[113: REQUIRE_ARGUMENTS: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequireWithCustomStringTransformingPredicateAndSatisfyingValue(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.givenIllegalArgument_whenRequireArgument_thenIllegalArgumentThrown(com.github.valid8j.entrypoints.RequiresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[148: REQUIRE_STATE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[111: REQUIRE_ARGUMENTS: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.givenNonNullValue_whenEnsureNonNull_thenValueReturned(com.github.valid8j.entrypoints.EnsuresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[119: REQUIRE_ARGUMENTS: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.ut.valuechecker.Opentest4jTest.test_testFailedException(com.github.valid8j.ut.valuechecker.Opentest4jTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[117: REQUIRE_ARGUMENTS: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.givenValidState_whenRequireState_thenStateReturned(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.string_assertThatTest_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (0 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testSameAs(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessUsingCustomPredicateWithSlightlyDifferentString_thenFailWithDetailsArePrinted(com.github.valid8j.ut.utilstest.ReportDetailTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[153: REQUIRE_STATE: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[119: REQUIRE_ARGUMENTS: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest.exerciseTestCase[0: givenChainedTransformingPredicate_whenNonExpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[127: REQUIRE_ARGUMENT: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testListContains(com.github.valid8j.ut.typesupports.ListTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[144: REQUIRE_STATE: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[137: REQUIRE_STATES: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequireArgument(com.github.valid8j.entrypoints.RequiresTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testAnyMatch(com.github.valid8j.ut.typesupports.ListTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[151: REQUIRE_STATE: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireValuesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.assumeThatTest_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[151: REQUIRE_STATE: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[142: REQUIRE_STATES: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[126: REQUIRE_ARGUMENT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[138: REQUIRE_STATES: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[117: REQUIRE_ARGUMENTS: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[134: REQUIRE_STATES: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessUsingCustomPredicateWithSlightlyDifferentString_thenExpectationSpecificFragmentsContainedOnlyByExplanationForExpectationAndActualValuesAreAlsoSo(com.github.valid8j.ut.utilstest.ReportDetailTest) (2 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest.ensureStatesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[110: REQUIRE_ARGUMENTS: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (6 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenToBooleanIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (0 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequireWithCustomStringTransformingPredicate(com.github.valid8j.entrypoints.RequiresTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.FluentUtilsTest.example2(com.github.valid8j.ut.utilstest.FluentUtilsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[127: REQUIRE_ARGUMENT: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testCollectionContains(com.github.valid8j.ut.typesupports.ListTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[112: REQUIRE_ARGUMENTS: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.expectingExceptionButNotThrown_testFailing(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[130: REQUIRE_ARGUMENT: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[132: REQUIRE_STATES: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (10 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[129: REQUIRE_ARGUMENT: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[130: REQUIRE_ARGUMENT: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.TestAssertionsTest.testAllOf(com.github.valid8j.ut.utilstest.TestAssertionsTest) (0 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_transforming_thenFail(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[122: REQUIRE_ARGUMENT: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[123: REQUIRE_ARGUMENT: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[112: REQUIRE_ARGUMENTS: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[152: REQUIRE_STATE: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessWithSlightlyDifferentString_thenFailWithDetailsArePrinted$assertThat(com.github.valid8j.ut.utilstest.ReportDetailTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[147: REQUIRE_STATE: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[129: REQUIRE_ARGUMENT: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testIsInstanceOf(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testEndsWith(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireArgument_passing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$FindElementsTest.givenSomeToBeFoundSomeNotToBe$whenFindElements$thenFailed(com.github.valid8j.ut.utilstest.PredicatesTest$FindElementsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.givenValidState_whenEnsureState_thenStateReturned(com.github.valid8j.entrypoints.EnsuresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.givenValidState$whenEnsureState$thenPasses(com.github.valid8j.entrypoints.EnsuresTest) (1 ms)</li><li>com.github.valid8j.it.SmokeTest.givenBook_whenCheckTitleAndAbstract_thenTheyAreNotNullAndAppropriateLength_2(com.github.valid8j.it.SmokeTest) (15 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[152: REQUIRE_STATE: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testComparison(com.github.valid8j.ut.typesupports.StringTest) (1 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_columns100$whenNull(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[149: REQUIRE_STATE: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[128: REQUIRE_ARGUMENT: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[146: REQUIRE_STATE: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.examples.test.ExamplesTest.testClassicExample(com.github.valid8j.examples.test.ExamplesTest) (35 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[137: REQUIRE_STATES: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[126: REQUIRE_ARGUMENT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[116: REQUIRE_ARGUMENTS: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (5 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[150: REQUIRE_STATE: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[141: REQUIRE_STATES: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[144: REQUIRE_STATE: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[139: REQUIRE_STATES: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest.ensureState_passing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest) (1 ms)</li><li>com.github.valid8j.examples.test.ExamplesTest.testMetarmorExampleFailing(com.github.valid8j.examples.test.ExamplesTest) (61 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[153: REQUIRE_STATE: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test5(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[149: REQUIRE_STATE: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[125: REQUIRE_ARGUMENT: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest.exerciseTestCase[0: givenStreamPredicate$RequireConditionResultingInNPE$_whenUnexpectedValue_thenComparisonFailure2](com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest) (3 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testNoneMatch(com.github.valid8j.ut.typesupports.ListTest) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest.exerciseTestCase[1: givenDoubleChainedTransformingPredicate_whenNonExpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[123: REQUIRE_ARGUMENT: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$MessageTest.testFormat(com.github.valid8j.ut.utilstest.PredicatesTest$MessageTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[135: REQUIRE_STATES: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[133: REQUIRE_STATES: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[148: REQUIRE_STATE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[129: REQUIRE_ARGUMENT: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[136: REQUIRE_STATES: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.examples.test.JUnitBasedExamplesTest.testExampleUT(com.github.valid8j.examples.test.JUnitBasedExamplesTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[112: REQUIRE_ARGUMENTS: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (8 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[119: REQUIRE_ARGUMENTS: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest.exerciseTestCase[1: whenOnePredicateThrowingExceptionUnderAllOf_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ValidatesTest.test_validateArgument_fail(com.github.valid8j.entrypoints.ValidatesTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[125: REQUIRE_ARGUMENT: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[122: REQUIRE_ARGUMENT: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withoutEvaluator_conj_thenFail(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (1 ms)</li><li>com.github.valid8j.examples.test.ExamplesTest.testFluentExample(com.github.valid8j.examples.test.ExamplesTest) (5 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_nativePredicate(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[132: REQUIRE_STATES: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[134: REQUIRE_STATES: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[133: REQUIRE_STATES: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.typesupports.BooleanTest.testIsTrue(com.github.valid8j.ut.typesupports.BooleanTest) (0 ms)</li><li>com.github.valid8j.ut.utilstest.FluentUtilsTest.test4(com.github.valid8j.ut.utilstest.FluentUtilsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[113: REQUIRE_ARGUMENTS: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (5 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[121: REQUIRE_ARGUMENT: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.typesupports.BooleanTest.testWrapperIsFalse(com.github.valid8j.ut.typesupports.BooleanTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test4(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (0 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequireWithTransformingPredicateAndSatisfyingValue(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireStatesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest.exerciseTestCase[0: whenOnePredicateReturningFalseUnderAllOf_whenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest) (4 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AnyOfPredicateTest.exerciseTestCase[1: whenOnePredicateThrowingExceptionUnderAnyOf_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AnyOfPredicateTest) (2 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_disj_thenPass(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[113: REQUIRE_ARGUMENTS: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.utilstest.TestAssertionsTest.testAnyOf(com.github.valid8j.ut.utilstest.TestAssertionsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[143: REQUIRE_STATE: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[147: REQUIRE_STATE: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[130: REQUIRE_ARGUMENT: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest.ensureValuesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[126: REQUIRE_ARGUMENT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[117: REQUIRE_ARGUMENTS: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AnyOfPredicateTest.exerciseTestCase[0: whenOnePredicateReturningFalseUnderAnyOf_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AnyOfPredicateTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testEmpty(com.github.valid8j.ut.typesupports.ListTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[148: REQUIRE_STATE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.7.3
+
+</body>
+</html>

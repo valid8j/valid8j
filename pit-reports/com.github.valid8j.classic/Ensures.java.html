@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>Ensures.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.github.valid8j.classic;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.github.valid8j.pcond.validator.Validator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.function.Predicate;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * A class that offers entry-points for checking &#34;postconditions&#34; with a normal</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * conditional statement of Java language.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * That is, `if` or ternary operator, not an `assert` statement.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * This means, the user of your product is not able to disable the checks you</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * write at runtime, unlike ones written using `assert` statements.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * The author of library thinks these methods should be used in &#34;public facing&#34;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * methods, when you should claim that the &#34;external&#34; party introduced the bug.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * The author of library thinks these methods should be used in &#34;public facing&#34;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * context when the provider of the value to be examined introduced</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * a bug, which makes the condition `false`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * For instance, it is an intended use-case, where you call `ensure` at the end of</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * your method in order to express a condition to be satisfied by the value returned</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * from your method.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>public enum Ensures {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  ;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * Checks if a given value is not `null`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * If not an exception will be thrown.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @param value A value to be checked.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @return The value itself.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_34'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @param &#60;T&#62; The type of the `value`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public static &#60;T&#62; T ensureNonNull(T value) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_37'/>
+37
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_37'>1</a>
+<span>
+1. ensureNonNull : replaced return value with null for com/github/valid8j/classic/Ensures::ensureNonNull &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return Validator.instance().ensureNonNull(value);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_40'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_41'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * Checks if a given state `value`satisfies a postcondition `cond`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * If not an exception will be thrown.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_43'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @param value A value to be checked.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_45'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @param cond A condition that checks `value`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_46'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @return The `value` itself</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_47'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @param &#60;T&#62; The type of the `value`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_48'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_49'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public static &#60;T&#62; T ensureState(T value, Predicate&#60;? super T&#62; cond) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_50'/>
+50
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_50'>1</a>
+<span>
+1. ensureState : replaced return value with null for com/github/valid8j/classic/Ensures::ensureState &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return Validator.instance().ensureState(value, cond);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_51'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_52'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_53'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_54'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * Checks if a given `value` satisfies a postcondition `cond`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_55'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * If not an exception will be thrown.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_56'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_57'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @param value A value to be checked.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_58'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @param cond A condition that checks `value`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_59'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @return The `value` itself.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_60'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @param &#60;T&#62; The type of the `value`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_61'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_62'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public static &#60;T&#62; T ensure(T value, Predicate&#60;? super T&#62; cond) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_63'/>
+63
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_63'>1</a>
+<span>
+1. ensure : replaced return value with null for com/github/valid8j/classic/Ensures::ensure &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return Validator.instance().ensure(value, cond);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_64'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@19b706be_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_65'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@19b706be_37'>37</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_37'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>ensureNonNull<br/><b>Killed by : </b>com.github.valid8j.entrypoints.EnsuresTest.givenNonNullValue_whenEnsureNonNull_thenValueReturned(com.github.valid8j.entrypoints.EnsuresTest)</span></span> replaced return value with null for com/github/valid8j/classic/Ensures::ensureNonNull &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@19b706be_50'>50</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_50'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>ensureState<br/><b>Killed by : </b>com.github.valid8j.entrypoints.EnsuresTest.givenValidState_whenEnsureState_thenStateReturned(com.github.valid8j.entrypoints.EnsuresTest)</span></span> replaced return value with null for com/github/valid8j/classic/Ensures::ensureState &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@19b706be_63'>63</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@19b706be_63'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>ensure<br/><b>Killed by : </b>com.github.valid8j.entrypoints.EnsuresTest.givenValidArgument_whenEnsure_thenValueReturned(com.github.valid8j.entrypoints.EnsuresTest)</span></span> replaced return value with null for com/github/valid8j/classic/Ensures::ensure &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[180: ENSURE_: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[185: ENSURE_: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest.ensureState_passing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[182: ENSURE_: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[191: ENSURE: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[195: ENSURE: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[181: ENSURE_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[193: ENSURE: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test5(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (1 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.givenValidValue$whenEnsure$thenPasses(com.github.valid8j.entrypoints.EnsuresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[178: ENSURE_: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[189: ENSURE: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[193: ENSURE: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[182: ENSURE_: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[190: ENSURE: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.givenValidArgument_whenEnsure_thenValueReturned(com.github.valid8j.entrypoints.EnsuresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[191: ENSURE: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[179: ENSURE_: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test8(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[186: ENSURE_: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[192: ENSURE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[187: ENSURE: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[177: ENSURE_: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[186: ENSURE_: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[178: ENSURE_: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[196: ENSURE: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[188: ENSURE: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[191: ENSURE: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[197: ENSURE: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[183: ENSURE_: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[187: ENSURE: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test8(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[192: ENSURE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[194: ENSURE: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[176: ENSURE_: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[180: ENSURE_: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[195: ENSURE: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[197: ENSURE: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[181: ENSURE_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[196: ENSURE: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[190: ENSURE: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[179: ENSURE_: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[180: ENSURE_: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[188: ENSURE: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest.ensureValue_passing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[194: ENSURE: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[192: ENSURE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[179: ENSURE_: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[190: ENSURE: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[186: ENSURE_: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[176: ENSURE_: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[189: ENSURE: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[182: ENSURE_: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[185: ENSURE_: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.givenValidState_whenEnsureState_thenStateReturned(com.github.valid8j.entrypoints.EnsuresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[193: ENSURE: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.givenValidState$whenEnsureState$thenPasses(com.github.valid8j.entrypoints.EnsuresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[185: ENSURE_: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[187: ENSURE: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[189: ENSURE: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[176: ENSURE_: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.givenNonNullValue_whenEnsureNonNull_thenValueReturned(com.github.valid8j.entrypoints.EnsuresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[195: ENSURE: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test5(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[177: ENSURE_: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[197: ENSURE: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[183: ENSURE_: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[181: ENSURE_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[183: ENSURE_: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.givenNonNull$whenEnsureNonNull$thenPasses(com.github.valid8j.entrypoints.EnsuresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[188: ENSURE: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[177: ENSURE_: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[178: ENSURE_: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[196: ENSURE: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[194: ENSURE: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.7.3
+
+</body>
+</html>

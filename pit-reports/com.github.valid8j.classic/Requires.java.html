@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>Requires.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.github.valid8j.classic;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.github.valid8j.pcond.validator.Validator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.function.Predicate;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * A class that offers entry-points for checking &#34;preconditions&#34; with a normal</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * conditional statement of Java language.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * That is, `if` or ternary operator, not an `assert` statement.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * This means, the user of your product is not able to disable the checks you</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * write at runtime, unlike ones written using `assert` statements.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * The author of library thinks these methods should be used in &#34;public facing&#34;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * context when the provider of the value to be examined introduced</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * a bug, which makes the condition `false`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * For instance, it is an intended use-case, where you call `requireArgument` for</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * a value passed by the caller and the user is expected to make the value satisfy</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * a certain requirement.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>public enum Requires {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  ;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public static &#60;T&#62; T requireNonNull(T value) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_26'/>
+26
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_26'>1</a>
+<span>
+1. requireNonNull : replaced return value with null for com/github/valid8j/classic/Requires::requireNonNull &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return Validator.instance().requireNonNull(value);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public static &#60;T&#62; T requireArgument(T value, Predicate&#60;? super T&#62; cond) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_30'/>
+30
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_30'>1</a>
+<span>
+1. requireArgument : replaced return value with null for com/github/valid8j/classic/Requires::requireArgument &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return Validator.instance().requireArgument(value, cond);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public static &#60;T&#62; T requireState(T value, Predicate&#60;? super T&#62; cond) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_34'/>
+34
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_34'>1</a>
+<span>
+1. requireState : replaced return value with null for com/github/valid8j/classic/Requires::requireState &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return Validator.instance().requireState(value, cond);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  @SuppressWarnings(&#34;RedundantThrows&#34;)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public static &#60;T, E extends Throwable&#62; T require(</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      T value,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_40'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      Predicate&#60;? super T&#62; cond) throws E {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_41'/>
+41
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_41'>1</a>
+<span>
+1. require : replaced return value with null for com/github/valid8j/classic/Requires::require &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return Validator.instance().require(value, cond);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_43'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4ca3634e_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4ca3634e_26'>26</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_26'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>requireNonNull<br/><b>Killed by : </b>com.github.valid8j.entrypoints.RequiresTest.testRequireWithSatisfyingValue(com.github.valid8j.entrypoints.RequiresTest)</span></span> replaced return value with null for com/github/valid8j/classic/Requires::requireNonNull &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4ca3634e_30'>30</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_30'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>requireArgument<br/><b>Killed by : </b>com.github.valid8j.entrypoints.RequiresTest.givenValidArgument_whenRequireArgument_thenValueReturned(com.github.valid8j.entrypoints.RequiresTest)</span></span> replaced return value with null for com/github/valid8j/classic/Requires::requireArgument &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4ca3634e_34'>34</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_34'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>requireState<br/><b>Killed by : </b>com.github.valid8j.entrypoints.RequiresTest.givenValidState_whenRequireState_thenStateReturned(com.github.valid8j.entrypoints.RequiresTest)</span></span> replaced return value with null for com/github/valid8j/classic/Requires::requireState &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4ca3634e_41'>41</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4ca3634e_41'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>require<br/><b>Killed by : </b>com.github.valid8j.entrypoints.RequiresTest.givenValidValue_whenRequire_thenValueReturned(com.github.valid8j.entrypoints.RequiresTest)</span></span> replaced return value with null for com/github/valid8j/classic/Requires::require &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.github.valid8j.examples.test.ExamplesTest.testIntroductionExample(com.github.valid8j.examples.test.ExamplesTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[104: REQUIRE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[107: REQUIRE: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[131: REQUIRE_ARGUMENT: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[124: REQUIRE_ARGUMENT: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[94: REQUIRE_: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[121: REQUIRE_ARGUMENT: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[135: REQUIRE_STATES: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[120: REQUIRE_ARGUMENTS: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[152: REQUIRE_STATE: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[90: REQUIRE_: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[103: REQUIRE: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (5 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[98: REQUIRE_: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[153: REQUIRE_STATE: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[114: REQUIRE_ARGUMENTS: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[136: REQUIRE_STATES: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[150: REQUIRE_STATE: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[145: REQUIRE_STATE: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[146: REQUIRE_STATE: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[121: REQUIRE_ARGUMENT: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test6(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test6(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[114: REQUIRE_ARGUMENTS: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[102: REQUIRE: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[99: REQUIRE: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[99: REQUIRE: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[131: REQUIRE_ARGUMENT: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.givenValidArgument_whenRequireArgument_thenValueReturned(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequireWithSatisfyingValue(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[124: REQUIRE_ARGUMENT: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[143: REQUIRE_STATE: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[151: REQUIRE_STATE: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.reqireState_passing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[139: REQUIRE_STATES: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[143: REQUIRE_STATE: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[94: REQUIRE_: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[124: REQUIRE_ARGUMENT: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequire(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[131: REQUIRE_ARGUMENT: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[144: REQUIRE_STATE: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[139: REQUIRE_STATES: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[122: REQUIRE_ARGUMENT: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[111: REQUIRE_ARGUMENTS: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[109: REQUIRE: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[136: REQUIRE_STATES: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[106: REQUIRE: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[120: REQUIRE_ARGUMENTS: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[115: REQUIRE_ARGUMENTS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[90: REQUIRE_: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[147: REQUIRE_STATE: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testEqualsIgnoreCase(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[128: REQUIRE_ARGUMENT: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[138: REQUIRE_STATES: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[123: REQUIRE_ARGUMENT: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[125: REQUIRE_ARGUMENT: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[145: REQUIRE_STATE: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[105: REQUIRE: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.givenValidState$whenRequireState$thenPass(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[137: REQUIRE_STATES: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[128: REQUIRE_ARGUMENT: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[116: REQUIRE_ARGUMENTS: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[102: REQUIRE: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (5 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[138: REQUIRE_STATES: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[127: REQUIRE_ARGUMENT: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[110: REQUIRE_ARGUMENTS: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[142: REQUIRE_STATES: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test4(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[104: REQUIRE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[134: REQUIRE_STATES: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[95: REQUIRE_: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[135: REQUIRE_STATES: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[146: REQUIRE_STATE: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[145: REQUIRE_STATE: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[150: REQUIRE_STATE: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[132: REQUIRE_STATES: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[141: REQUIRE_STATES: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[89: REQUIRE_: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.givenValidValue_whenRequire_thenValueReturned(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[88: REQUIRE_: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[141: REQUIRE_STATES: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[104: REQUIRE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (10 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[110: REQUIRE_ARGUMENTS: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[114: REQUIRE_ARGUMENTS: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[111: REQUIRE_ARGUMENTS: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[115: REQUIRE_ARGUMENTS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[91: REQUIRE_: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.givenNonNullValue_whenRequireNonNull_thenValueReturned(com.github.valid8j.entrypoints.RequiresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[142: REQUIRE_STATES: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[149: REQUIRE_STATE: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[133: REQUIRE_STATES: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[115: REQUIRE_ARGUMENTS: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[101: REQUIRE: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[116: REQUIRE_ARGUMENTS: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[120: REQUIRE_ARGUMENTS: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[113: REQUIRE_ARGUMENTS: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[103: REQUIRE: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequireWithCustomStringTransformingPredicateAndSatisfyingValue(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[92: REQUIRE_: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[111: REQUIRE_ARGUMENTS: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[148: REQUIRE_STATE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[119: REQUIRE_ARGUMENTS: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[97: REQUIRE_: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[117: REQUIRE_ARGUMENTS: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.givenValidState_whenRequireState_thenStateReturned(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[100: REQUIRE: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[153: REQUIRE_STATE: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[119: REQUIRE_ARGUMENTS: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[109: REQUIRE: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[127: REQUIRE_ARGUMENT: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[144: REQUIRE_STATE: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[106: REQUIRE: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[137: REQUIRE_STATES: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[92: REQUIRE_: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[151: REQUIRE_STATE: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[91: REQUIRE_: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[151: REQUIRE_STATE: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[88: REQUIRE_: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[142: REQUIRE_STATES: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[126: REQUIRE_ARGUMENT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[138: REQUIRE_STATES: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[117: REQUIRE_ARGUMENTS: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[134: REQUIRE_STATES: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[110: REQUIRE_ARGUMENTS: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (6 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[105: REQUIRE: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[127: REQUIRE_ARGUMENT: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[112: REQUIRE_ARGUMENTS: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[130: REQUIRE_ARGUMENT: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[132: REQUIRE_STATES: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (10 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[129: REQUIRE_ARGUMENT: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[108: REQUIRE: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[97: REQUIRE_: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[130: REQUIRE_ARGUMENT: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[122: REQUIRE_ARGUMENT: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[123: REQUIRE_ARGUMENT: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[112: REQUIRE_ARGUMENTS: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[103: REQUIRE: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[152: REQUIRE_STATE: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[98: REQUIRE_: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[147: REQUIRE_STATE: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[129: REQUIRE_ARGUMENT: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[89: REQUIRE_: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testIsInstanceOf(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireArgument_passing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[95: REQUIRE_: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[152: REQUIRE_STATE: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[100: REQUIRE: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[101: REQUIRE: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[105: REQUIRE: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[91: REQUIRE_: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[149: REQUIRE_STATE: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test7(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[102: REQUIRE: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[128: REQUIRE_ARGUMENT: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[93: REQUIRE_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[146: REQUIRE_STATE: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[137: REQUIRE_STATES: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[126: REQUIRE_ARGUMENT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[116: REQUIRE_ARGUMENTS: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (5 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[97: REQUIRE_: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[150: REQUIRE_STATE: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[141: REQUIRE_STATES: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[144: REQUIRE_STATE: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[139: REQUIRE_STATES: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[89: REQUIRE_: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[153: REQUIRE_STATE: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[125: REQUIRE_ARGUMENT: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[149: REQUIRE_STATE: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[123: REQUIRE_ARGUMENT: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[108: REQUIRE: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (5 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[107: REQUIRE: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[106: REQUIRE: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (5 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[135: REQUIRE_STATES: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[133: REQUIRE_STATES: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[148: REQUIRE_STATE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[129: REQUIRE_ARGUMENT: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[136: REQUIRE_STATES: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireValue_passing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[93: REQUIRE_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[99: REQUIRE: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[112: REQUIRE_ARGUMENTS: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (8 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[119: REQUIRE_ARGUMENTS: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[88: REQUIRE_: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[125: REQUIRE_ARGUMENT: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[122: REQUIRE_ARGUMENT: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[94: REQUIRE_: STRING_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[132: REQUIRE_STATES: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[134: REQUIRE_STATES: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[133: REQUIRE_STATES: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[95: REQUIRE_: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[100: REQUIRE: SHORT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (7 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[108: REQUIRE: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[101: REQUIRE: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (5 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[107: REQUIRE: STREAM_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (10 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[113: REQUIRE_ARGUMENTS: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (5 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[121: REQUIRE_ARGUMENT: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test4(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (0 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequireWithTransformingPredicateAndSatisfyingValue(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[90: REQUIRE_: INT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[92: REQUIRE_: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[113: REQUIRE_ARGUMENTS: LONG_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[93: REQUIRE_: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[109: REQUIRE: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[143: REQUIRE_STATE: BOOLEAN_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[147: REQUIRE_STATE: FLOAT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[130: REQUIRE_ARGUMENT: OBJECT_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[126: REQUIRE_ARGUMENT: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingThat[117: REQUIRE_ARGUMENTS: LIST_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test7(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingValue[98: REQUIRE_: THROWABLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ExpectationsTest.testPassingStatement[148: REQUIRE_STATE: DOUBLE_STATEMENT](com.github.valid8j.entrypoints.ExpectationsTest) (2 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.7.3
+
+</body>
+</html>

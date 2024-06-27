@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>MetamorphicReportComposer.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.github.valid8j.metamor;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.github.valid8j.pcond.core.EvaluationEntry;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.github.valid8j.pcond.core.Evaluator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.github.valid8j.pcond.internals.InternalUtils;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.github.valid8j.pcond.validator.ReportComposer;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static com.github.valid8j.pcond.core.EvaluationEntry.Type.FUNCTION;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>public class MetamorphicReportComposer implements ReportComposer {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public FormattedEntry createFormattedEntryForExpectation(EvaluationEntry evaluationEntry) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_14'/>
+14
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_14'>1</a>
+<span>
+1. createFormattedEntryForExpectation : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    if (evaluationEntry.type() == FUNCTION)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_15'/>
+15
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_15'>1</a>
+<span>
+1. createFormattedEntryForExpectation : replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::createFormattedEntryForExpectation &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>      return new FormattedEntry(</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>          InternalUtils.formatObject(extractInput(evaluationEntry.inputExpectation())),</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>          evaluationEntry.formName(),</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>          InternalUtils.indent(evaluationEntry.level()),</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>          InternalUtils.formatObject(extractOutput(evaluationEntry.outputExpectation())),</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>          isExplanationRequiredForExpectation(evaluationEntry)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      );</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_22'/>
+22
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_22'>1</a>
+<span>
+1. createFormattedEntryForExpectation : replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::createFormattedEntryForExpectation &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    return Utils.createFormattedEntryForExpectation(this, evaluationEntry);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public FormattedEntry createFormattedEntryForActualValue(EvaluationEntry evaluationEntry) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_27'/>
+27
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_27'>1</a>
+<span>
+1. createFormattedEntryForActualValue : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    if (evaluationEntry.type() == FUNCTION)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_28'/>
+28
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_28'>1</a>
+<span>
+1. createFormattedEntryForActualValue : replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::createFormattedEntryForActualValue &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>      return new FormattedEntry(</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>          InternalUtils.formatObject(extractInput(evaluationEntry.inputActualValue())),</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>          evaluationEntry.formName(),</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>          InternalUtils.indent(evaluationEntry.level()),</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>          InternalUtils.formatObject(extractOutput(evaluationEntry.outputActualValue())),</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>          isExplanationRequiredForActualValue(evaluationEntry));</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_34'/>
+34
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_34'>1</a>
+<span>
+1. createFormattedEntryForActualValue : replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::createFormattedEntryForActualValue &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    return Utils.createFormattedEntryForActualValue(this, evaluationEntry);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public boolean requiresExplanation(EvaluationEntry evaluationEntry) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_39'/>
+39
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_39'>1</a>
+<span>
+1. requiresExplanation : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    if (evaluationEntry.outputExpectation() instanceof IoContext.Ongoing.Snapshot)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_40'/>
+40
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_40'>1</a>
+<span>
+1. requiresExplanation : replaced boolean return with false for com/github/valid8j/metamor/MetamorphicReportComposer::requiresExplanation &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>      return true;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_41'/>
+41
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_41'>2</a>
+<span>
+1. requiresExplanation : replaced boolean return with false for com/github/valid8j/metamor/MetamorphicReportComposer::requiresExplanation &rarr; SURVIVED<br/>
+2. requiresExplanation : replaced boolean return with true for com/github/valid8j/metamor/MetamorphicReportComposer::requiresExplanation &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    return ReportComposer.super.requiresExplanation(evaluationEntry);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_43'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  private Object extractInput(Object o) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_45'/>
+45
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_45'>1</a>
+<span>
+1. extractInput : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    if (o instanceof IoContext.Ongoing.Snapshot)</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_46'/>
+46
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_46'>1</a>
+<span>
+1. extractInput : replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::extractInput &rarr; NO_COVERAGE<br/>
+
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>      return ((IoContext.Ongoing.Snapshot) o).in();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_47'/>
+47
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_47'>1</a>
+<span>
+1. extractInput : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    if (o instanceof Evaluator.Snapshottable) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_48'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>      Object s = ((Evaluator.Snapshottable) o).snapshot();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_49'/>
+49
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_49'>1</a>
+<span>
+1. extractInput : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>      if (s instanceof IoContext.Ongoing.Snapshot)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_50'/>
+50
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_50'>1</a>
+<span>
+1. extractInput : replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::extractInput &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return ((IoContext.Ongoing.Snapshot) s).in();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_51'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_52'/>
+52
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_52'>1</a>
+<span>
+1. extractInput : replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::extractInput &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    return o;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_53'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_54'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_55'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  private static Object extractOutput(Object o) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_56'/>
+56
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_56'>1</a>
+<span>
+1. extractOutput : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    if (o instanceof IoContext.Ongoing.Snapshot)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_57'/>
+57
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_57'>1</a>
+<span>
+1. extractOutput : replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::extractOutput &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>      return ((IoContext.Ongoing.Snapshot) o).out();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_58'/>
+58
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_58'>1</a>
+<span>
+1. extractOutput : replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::extractOutput &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    return o;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_59'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_60'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_61'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  private static boolean isExplanationRequiredForExpectation(EvaluationEntry evaluationEntry) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_62'/>
+62
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_62'>2</a>
+<span>
+1. isExplanationRequiredForExpectation : replaced boolean return with false for com/github/valid8j/metamor/MetamorphicReportComposer::isExplanationRequiredForExpectation &rarr; SURVIVED<br/>
+2. isExplanationRequiredForExpectation : replaced boolean return with true for com/github/valid8j/metamor/MetamorphicReportComposer::isExplanationRequiredForExpectation &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    return evaluationEntry.outputExpectation() instanceof IoContext.Ongoing.Snapshot;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_63'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_64'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_65'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  private static boolean isExplanationRequiredForActualValue(EvaluationEntry evaluationEntry) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_66'/>
+66
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_66'>2</a>
+<span>
+1. isExplanationRequiredForActualValue : replaced boolean return with false for com/github/valid8j/metamor/MetamorphicReportComposer::isExplanationRequiredForActualValue &rarr; SURVIVED<br/>
+2. isExplanationRequiredForActualValue : replaced boolean return with true for com/github/valid8j/metamor/MetamorphicReportComposer::isExplanationRequiredForActualValue &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    return evaluationEntry.outputActualValue() instanceof IoContext.Ongoing.Snapshot;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_67'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_68'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_14'>14</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_14'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createFormattedEntryForExpectation<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_15'>15</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_15'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createFormattedEntryForExpectation<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::createFormattedEntryForExpectation &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_22'>22</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_22'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createFormattedEntryForExpectation<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::createFormattedEntryForExpectation &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_27'>27</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_27'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createFormattedEntryForActualValue<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_28'>28</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_28'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createFormattedEntryForActualValue<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::createFormattedEntryForActualValue &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_34'>34</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_34'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>createFormattedEntryForActualValue<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::createFormattedEntryForActualValue &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_39'>39</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_39'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>requiresExplanation<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_40'>40</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_40'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>requiresExplanation<br/><b>Killed by : </b>none</span></span> replaced boolean return with false for com/github/valid8j/metamor/MetamorphicReportComposer::requiresExplanation &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_41'>41</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_41'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>requiresExplanation<br/><b>Killed by : </b>none</span></span> replaced boolean return with false for com/github/valid8j/metamor/MetamorphicReportComposer::requiresExplanation &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>requiresExplanation<br/><b>Killed by : </b>none</span></span> replaced boolean return with true for com/github/valid8j/metamor/MetamorphicReportComposer::requiresExplanation &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_45'>45</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_45'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>extractInput<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_46'>46</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_46'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>extractInput<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::extractInput &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_47'>47</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_47'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>extractInput<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_49'>49</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_49'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>extractInput<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_50'>50</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_50'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>extractInput<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::extractInput &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_52'>52</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_52'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>extractInput<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::extractInput &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_56'>56</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_56'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>extractOutput<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_57'>57</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_57'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>extractOutput<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::extractOutput &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_58'>58</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_58'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>extractOutput<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/github/valid8j/metamor/MetamorphicReportComposer::extractOutput &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_62'>62</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_62'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isExplanationRequiredForExpectation<br/><b>Killed by : </b>none</span></span> replaced boolean return with false for com/github/valid8j/metamor/MetamorphicReportComposer::isExplanationRequiredForExpectation &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isExplanationRequiredForExpectation<br/><b>Killed by : </b>none</span></span> replaced boolean return with true for com/github/valid8j/metamor/MetamorphicReportComposer::isExplanationRequiredForExpectation &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_66'>66</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5a2fdb6d_66'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isExplanationRequiredForActualValue<br/><b>Killed by : </b>none</span></span> replaced boolean return with false for com/github/valid8j/metamor/MetamorphicReportComposer::isExplanationRequiredForActualValue &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isExplanationRequiredForActualValue<br/><b>Killed by : </b>none</span></span> replaced boolean return with true for com/github/valid8j/metamor/MetamorphicReportComposer::isExplanationRequiredForActualValue &rarr; SURVIVED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest.exerciseTestCase[2: givenStreamPredicate$hello_b_e_2$_whenUnexpectedValue_thenComparisonFailure2](com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest) (3 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testListContains(com.github.valid8j.ut.typesupports.ListTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.TestAssertionsTest.testAssumeThat(com.github.valid8j.ut.utilstest.TestAssertionsTest) (1 ms)</li><li>com.github.valid8j.ut.internal.CallTest.methodAmbiguous_primitiveBoxed(com.github.valid8j.ut.internal.CallTest) (1 ms)</li><li>com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest.givenStreamOfSingleString$hello$_whenRequireNullIsFound_thenPreconditionViolationWithCorrectMessageIsThrown(com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testAnyMatch(com.github.valid8j.ut.typesupports.ListTest) (0 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$FindStringsTest.givenSomeFoundSomeNotFound$whenFindRegexes$thenFailed(com.github.valid8j.ut.utilstest.PredicatesTest$FindStringsTest) (1 ms)</li><li>com.github.valid8j.ut.types.StreamTest.streamTransformerTestFailure(com.github.valid8j.ut.types.StreamTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireValuesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (1 ms)</li><li>com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest.given$hello$_$world$_whenRequireNestedStreamImpossibleConditions_thenPreconditionViolationExceptionWithCorrectMessage(com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest) (4 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.assumeThatTest_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (0 ms)</li><li>com.github.valid8j.ut.experimentals.TestAssertionsCurriedFunctionsTest.helloError(com.github.valid8j.ut.experimentals.TestAssertionsCurriedFunctionsTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessUsingCustomPredicateWithSlightlyDifferentString_thenExpectationSpecificFragmentsContainedOnlyByExplanationForExpectationAndActualValuesAreAlsoSo(com.github.valid8j.ut.utilstest.ReportDetailTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenIsTrueAndIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest.ensureStatesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenToBooleanIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (0 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamAllMatchPredicateTest.exerciseTestCase[1: givenStreamPredicate_whenUnexpectedNullValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.StreamAllMatchPredicateTest) (2 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireArgumentsTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (2 ms)</li><li>com.github.valid8j.ut.utilstest.FluentUtilsTest.example2(com.github.valid8j.ut.utilstest.FluentUtilsTest) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenTransformIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (2 ms)</li><li>com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest.exerciseTestCase[4: givenTwoChainedTransformingPredicates_whenNonExpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest) (4 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testCollectionContains(com.github.valid8j.ut.typesupports.ListTest) (0 ms)</li><li>com.github.valid8j.ut.bugfixes.Issue11Test.whenReproduceIssue(com.github.valid8j.ut.bugfixes.Issue11Test) (2 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.expectingExceptionButNotThrown_testFailing(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (3 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$IsInstanceOfTest.test(com.github.valid8j.ut.utilstest.PredicatesTest$IsInstanceOfTest) (0 ms)</li><li>com.github.valid8j.ut.internal.PrintablesFunctionTest$Composed.testFailureFromComposeStructureInTransformer(com.github.valid8j.ut.internal.PrintablesFunctionTest$Composed) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest.exerciseTestCase[3: whenPredicatesFirstReturningFalseRestReturningTrueUnderAllOf_whenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest) (2 ms)</li><li>com.github.valid8j.ut.utilstest.TestAssertionsTest.testAllOf(com.github.valid8j.ut.utilstest.TestAssertionsTest) (0 ms)</li><li>com.github.valid8j.ut.utilstest.FluentUtilsTest.expectationFlipping(com.github.valid8j.ut.utilstest.FluentUtilsTest) (0 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessWithSlightlyDifferentString_thenFailWithDetailsArePrinted$assertThat(com.github.valid8j.ut.utilstest.ReportDetailTest) (0 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest.exerciseTestCase[3: givenStreamPredicate$hello_b_e_4$_whenUnexpectedValue_thenComparisonFailure2](com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest) (3 ms)</li><li>com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest.givenString$hello$_whenTransformToContextAndCheckContextValueIsNull_thenPreconditionViolationWithCorrectMessageThrown(com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testEndsWith(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$FindElementsTest.givenSomeToBeFoundSomeNotToBe$whenFindElements$thenFailed(com.github.valid8j.ut.utilstest.PredicatesTest$FindElementsTest) (2 ms)</li><li>com.github.valid8j.ut.internal.NegateTest.whenInvertedTrasformingPredicateFails_thenPrintDesignedMessage$mergedWhenNotMismatch(com.github.valid8j.ut.internal.NegateTest) (2 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testIsEmptyString(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testAllMatch(com.github.valid8j.ut.typesupports.ListTest) (1 ms)</li><li>com.github.valid8j.it.SmokeTest.givenBook_whenCheckTitleAndAbstract_thenTheyAreNotNullAndAppropriateLength_2(com.github.valid8j.it.SmokeTest) (15 ms)</li><li>com.github.valid8j.ut.types.FloatTest.toFloatTest(com.github.valid8j.ut.types.FloatTest) (2 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testComparison(com.github.valid8j.ut.typesupports.StringTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.BooleanTest.testWrapperIsTrue(com.github.valid8j.ut.typesupports.BooleanTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.multiAssertAll_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.multiAssumeAll_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testEqualsIgnoreCase(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.propertybased.tests.NegatedPredicateTest.exerciseTestCase[1: givenNegatedSimplePredicateReturningTrue_whenUnexpectedValue_thenComparisonFailureThrown](com.github.valid8j.ut.propertybased.tests.NegatedPredicateTest) (1 ms)</li><li>com.github.valid8j.ut.types.StreamTest.streamTestFailure(com.github.valid8j.ut.types.StreamTest) (1 ms)</li><li>com.github.valid8j.ut.types.FloatTest.floatTransformerTestFail(com.github.valid8j.ut.types.FloatTest) (0 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenString_whenFails_then_2(com.github.valid8j.ut.utilstest.ReportDetailTest) (2 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenString_whenFails_then(com.github.valid8j.ut.utilstest.ReportDetailTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.expectingDifferentException_testFailing(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (2 ms)</li><li>com.github.valid8j.examples.test.ExamplesTest.testMetarmorExampleFailing(com.github.valid8j.examples.test.ExamplesTest) (61 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessWithSlightlyDifferentString_thenFailWithDetailsArePrinted(com.github.valid8j.ut.utilstest.ReportDetailTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (0 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest.exerciseTestCase[0: givenStreamPredicate$RequireConditionResultingInNPE$_whenUnexpectedValue_thenComparisonFailure2](com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest) (3 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testNoneMatch(com.github.valid8j.ut.typesupports.ListTest) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest.exerciseTestCase[1: givenDoubleChainedTransformingPredicate_whenNonExpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest) (3 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest.exerciseTestCase[1: givenStreamPredicate$hello_b_e$_whenUnexpectedValue_thenComparisonFailure2](com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest) (3 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$MessageTest.testFormat(com.github.valid8j.ut.utilstest.PredicatesTest$MessageTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testMatchesRegex(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testContainsString(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testEqualTo(com.github.valid8j.ut.typesupports.StringTest) (1 ms)</li><li>com.github.valid8j.ut.internal.NegateTest.whenInvertedTransformingPredicateFails_thenPrintDesignedMessage$transformIsntLeafAndNotMerged(com.github.valid8j.ut.internal.NegateTest) (2 ms)</li><li>com.github.valid8j.ut.typesupports.BooleanTest.testIsFalse(com.github.valid8j.ut.typesupports.BooleanTest) (0 ms)</li><li>com.github.valid8j.ut.internal.PrintablesFunctionTest$Simple.testHandleNull(com.github.valid8j.ut.internal.PrintablesFunctionTest$Simple) (0 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testIsEmptyOrNullString(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.examples.test.JUnitBasedExamplesTest.testExampleUT(com.github.valid8j.examples.test.JUnitBasedExamplesTest) (3 ms)</li><li>com.github.valid8j.ut.internal.NegateTest.whenInvertedTrasformingPredicateFails_thenPrintDesignedMessage$notMergedWhenMismatch(com.github.valid8j.ut.internal.NegateTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$FindStringsTest.givenSomeFoundSomeNot$whenFindString$thenFailed(com.github.valid8j.ut.utilstest.PredicatesTest$FindStringsTest) (2 ms)</li><li>com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest.exerciseTestCase[3: givenTransformingPredicate_whenNonExpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest) (2 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest.exerciseTestCase[1: whenOnePredicateThrowingExceptionUnderAllOf_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest) (3 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testStartsWith(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.internal.CallTest.methodAmbiguous_primitiveBoxed_negated(com.github.valid8j.ut.internal.CallTest) (2 ms)</li><li>com.github.valid8j.ut.propertybased.tests.SimplePredicateTest.exerciseTestCase[1: givenSimplePredicate_whenUnexpectedValue_thenComparisonFailureThrown](com.github.valid8j.ut.propertybased.tests.SimplePredicateTest) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenCheckIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (2 ms)</li><li>com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest.nestedLoop_fail(com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest) (1 ms)</li><li>com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest.hello_b_e5(com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest) (2 ms)</li><li>com.github.valid8j.ut.internal.PrintablesFunctionTest$Composed.testFailureFromAndThenStructureInTransformer(com.github.valid8j.ut.internal.PrintablesFunctionTest$Composed) (1 ms)</li><li>com.github.valid8j.ut.internal.CallTest.nullReturningFunctionAsPredicate(com.github.valid8j.ut.internal.CallTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.BooleanTest.testIsTrue(com.github.valid8j.ut.typesupports.BooleanTest) (0 ms)</li><li>com.github.valid8j.ut.types.FloatTest.floatTestFail(com.github.valid8j.ut.types.FloatTest) (0 ms)</li><li>com.github.valid8j.ut.internal.CallTest.methodNotFound(com.github.valid8j.ut.internal.CallTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.FluentUtilsTest.test4(com.github.valid8j.ut.utilstest.FluentUtilsTest) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamAllMatchPredicateTest.exerciseTestCase[2: givenStreamPredicate_whenUnexpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.StreamAllMatchPredicateTest) (2 ms)</li><li>com.github.valid8j.ut.typesupports.BooleanTest.testWrapperIsFalse(com.github.valid8j.ut.typesupports.BooleanTest) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireStatesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest.exerciseTestCase[0: whenOnePredicateReturningFalseUnderAllOf_whenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest) (4 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AnyOfPredicateTest.exerciseTestCase[1: whenOnePredicateThrowingExceptionUnderAnyOf_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AnyOfPredicateTest) (2 ms)</li><li>com.github.valid8j.ut.utilstest.TestAssertionsTest.testAnyOf(com.github.valid8j.ut.utilstest.TestAssertionsTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessWithSlightlyDifferentString_thenFailWithDetailsArePrinted$assertThat_usingFluentStyle(com.github.valid8j.ut.utilstest.ReportDetailTest) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest.ensureValuesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest) (2 ms)</li><li>com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest.hello5(com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testSameAs(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.string_assertThatTest_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (0 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessUsingCustomPredicateWithSlightlyDifferentString_thenFailWithDetailsArePrinted(com.github.valid8j.ut.utilstest.ReportDetailTest) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AnyOfPredicateTest.exerciseTestCase[0: whenOnePredicateReturningFalseUnderAnyOf_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AnyOfPredicateTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testEmpty(com.github.valid8j.ut.typesupports.ListTest) (0 ms)</li><li>com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest.exerciseTestCase[0: givenChainedTransformingPredicate_whenNonExpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest) (2 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.7.3
+
+</body>
+</html>

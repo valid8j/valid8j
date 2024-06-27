@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>Explanation.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.github.valid8j.pcond.validator;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.github.valid8j.pcond.internals.InternalUtils;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.LinkedList;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.List;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Objects;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.stream.IntStream;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static java.lang.String.format;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static java.util.Objects.requireNonNull;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static java.util.stream.Collectors.joining;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>public class Explanation {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  private final String                message;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  private final ReportComposer.Report expected;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  private final ReportComposer.Report actual;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public Explanation(String message) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    this(message, ReportComposer.Utils.composeReport(&#34;&#34;, null), ReportComposer.Utils.composeReport(&#34;&#34;, null));</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>  public Explanation(String message, ReportComposer.Report expected, ReportComposer.Report actual) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    this.message = message;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    this.expected = requireNonNull(expected);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    this.actual = requireNonNull(actual);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public String message() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_30'/>
+30
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_30'>1</a>
+<span>
+1. message : replaced return value with &#34;&#34; for com/github/valid8j/pcond/validator/Explanation::message &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.message;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public ReportComposer.Report expected() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_34'/>
+34
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_34'>1</a>
+<span>
+1. expected : replaced return value with null for com/github/valid8j/pcond/validator/Explanation::expected &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.expected;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public ReportComposer.Report actual() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_38'/>
+38
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_38'>1</a>
+<span>
+1. actual : replaced return value with null for com/github/valid8j/pcond/validator/Explanation::actual &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.actual;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_40'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_41'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public String toString() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_42'/>
+42
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_42'>2</a>
+<span>
+1. toString : negated conditional &rarr; KILLED<br/>
+2. toString : replaced return value with &#34;&#34; for com/github/valid8j/pcond/validator/Explanation::toString &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return actual != null ?</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_43'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        format(&#34;%s%n%s&#34;, message, composeDiff(expected, actual)) :</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        message;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_45'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_46'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_47'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  private static String composeDiff(ReportComposer.Report expected, ReportComposer.Report actual) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_48'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    String[] e = splitAndTrim(expected.summary());</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_49'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    String[] a = splitAndTrim(actual.summary());</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_50'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    List&#60;String&#62; b = new LinkedList&#60;&#62;();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_51'/>
+51
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_51'>3</a>
+<span>
+1. composeDiff : changed conditional boundary &rarr; SURVIVED<br/>
+2. composeDiff : negated conditional &rarr; TIMED_OUT<br/>
+3. composeDiff : Changed increment from 1 to -1 &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>    for (int i = 0; i &#60; Math.max(a.length, e.length); i++) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_52'/>
+52
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_52'>3</a>
+<span>
+1. composeDiff : changed conditional boundary &rarr; SURVIVED<br/>
+2. composeDiff : negated conditional &rarr; KILLED<br/>
+3. composeDiff : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>      if (i &#60; Math.min(e.length, a.length) &#38;&#38; Objects.equals(e[i], a[i])) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_53'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        b.add(format(&#34;          %s&#34;, a[i]));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_54'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      } else {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_55'/>
+55
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_55'>2</a>
+<span>
+1. composeDiff : changed conditional boundary &rarr; SURVIVED<br/>
+2. composeDiff : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        b.add(format(&#34;Mismatch&#62;:%s&#34;, i &#60; a.length ? a[i] : &#34;&#34;));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_56'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>      }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_57'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_58'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    b.add(InternalUtils.newLine());</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_59'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    assert expected.details().size() == actual.details().size();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_60'/>
+60
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_60'>1</a>
+<span>
+1. composeDiff : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return !expected.details().isEmpty() ?</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_61'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        b.stream().collect(joining(InternalUtils.newLine()))</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_62'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            + IntStream.range(0, expected.details().size())</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_63'/>
+63
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_63'>1</a>
+<span>
+1. lambda$composeDiff$0 : replaced return value with &#34;&#34; for com/github/valid8j/pcond/validator/Explanation::lambda$composeDiff$0 &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            .mapToObj(i -&#62; formatDetailItemPair(i, expected.details().get(i), actual.details().get(i)))</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_64'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            .collect(joining(InternalUtils.newLine())) :</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_65'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        &#34;&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_66'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_67'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_68'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  private static String formatDetailItemPair(int i, String detailItemForExpectation, String detailItemForActual) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_69'/>
+69
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_69'>1</a>
+<span>
+1. formatDetailItemPair : replaced return value with &#34;&#34; for com/github/valid8j/pcond/validator/Explanation::formatDetailItemPair &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return format(&#34;.Detail of failure [%s] (expectation)%n&#34;, i)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_70'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        + format(&#34;----%n&#34;)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_71'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        + detailItemForExpectation</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_72'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        + InternalUtils.newLine()</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_73'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        + format(&#34;----%n&#34;)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_74'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        + InternalUtils.newLine()</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_75'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        + format(&#34;.Detail of failure [%s] (actual value)%n&#34;, i)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_76'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        + format(&#34;----%n&#34;)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_77'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        + detailItemForActual</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_78'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        + InternalUtils.newLine()</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_79'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        + &#34;----&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_80'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_81'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_82'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public static String reportToString(ReportComposer.Report report) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_83'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    String ret = report.summary();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_84'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    ret += InternalUtils.newLine();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_85'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    ret += InternalUtils.newLine();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_86'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    ret += IntStream.range(0, report.details().size())</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_87'/>
+87
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_87'>1</a>
+<span>
+1. lambda$reportToString$1 : replaced return value with &#34;&#34; for com/github/valid8j/pcond/validator/Explanation::lambda$reportToString$1 &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        .mapToObj(i -&#62; formatDetailItem(i, report.details().get(i)))</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_88'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        .collect(joining(InternalUtils.newLine()));</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_89'/>
+89
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_89'>1</a>
+<span>
+1. reportToString : replaced return value with &#34;&#34; for com/github/valid8j/pcond/validator/Explanation::reportToString &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return ret;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_90'/>
+90
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_90'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_91'/>
+91
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_91'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_92'/>
+92
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_92'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  private static String formatDetailItem(int i, String detailItem) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_93'/>
+93
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_93'>1</a>
+<span>
+1. formatDetailItem : replaced return value with &#34;&#34; for com/github/valid8j/pcond/validator/Explanation::formatDetailItem &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return format(&#34;.Detail of failure [%s]%n&#34;, i)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_94'/>
+94
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_94'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        + format(&#34;----%n&#34;)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_95'/>
+95
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_95'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        + detailItem</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_96'/>
+96
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_96'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        + InternalUtils.newLine()</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_97'/>
+97
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_97'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        + format(&#34;----%n&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_98'/>
+98
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_98'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_99'/>
+99
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_99'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_100'/>
+100
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_100'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public static Explanation fromMessage(String msg) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_101'/>
+101
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_101'>1</a>
+<span>
+1. fromMessage : replaced return value with null for com/github/valid8j/pcond/validator/Explanation::fromMessage &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return new Explanation(msg);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_102'/>
+102
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_102'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_103'/>
+103
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_103'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_104'/>
+104
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_104'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  private static String[] splitAndTrim(String expected) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_105'/>
+105
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_105'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    String[] in = expected.split(InternalUtils.newLine());</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_106'/>
+106
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_106'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    List&#60;String&#62; out = new LinkedList&#60;&#62;();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_107'/>
+107
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_107'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    boolean nonEmptyFound = false;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_108'/>
+108
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_108'>4</a>
+<span>
+1. splitAndTrim : changed conditional boundary &rarr; KILLED<br/>
+2. splitAndTrim : Changed increment from -1 to 1 &rarr; KILLED<br/>
+3. splitAndTrim : Replaced integer subtraction with addition &rarr; KILLED<br/>
+4. splitAndTrim : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    for (int i = in.length - 1; i &#62;= 0; i--) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_109'/>
+109
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_109'>1</a>
+<span>
+1. splitAndTrim : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>      if (!&#34;&#34;.equals(in[i]))</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_110'/>
+110
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_110'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        nonEmptyFound = true;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_111'/>
+111
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_111'>1</a>
+<span>
+1. splitAndTrim : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>      if (nonEmptyFound)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_112'/>
+112
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_112'>1</a>
+<span>
+1. splitAndTrim : removed call to java/util/List::add &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        out.add(0, in[i]);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_113'/>
+113
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_113'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_114'/>
+114
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_114'>1</a>
+<span>
+1. splitAndTrim : replaced return value with null for com/github/valid8j/pcond/validator/Explanation::splitAndTrim &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return out.toArray(new String[0]);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_115'/>
+115
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_115'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b766082_116'/>
+116
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_116'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_30'>30</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_30'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>message<br/><b>Killed by : </b>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.string_assertThatTest_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest)</span></span> replaced return value with &#34;&#34; for com/github/valid8j/pcond/validator/Explanation::message &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_34'>34</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_34'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>expected<br/><b>Killed by : </b>com.github.valid8j.ut.valuechecker.Opentest4jTest.test_testFailedException(com.github.valid8j.ut.valuechecker.Opentest4jTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/Explanation::expected &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_38'>38</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_38'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>actual<br/><b>Killed by : </b>com.github.valid8j.ut.valuechecker.Opentest4jTest.test_testFailedException(com.github.valid8j.ut.valuechecker.Opentest4jTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/Explanation::actual &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_42'>42</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_42'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toString<br/><b>Killed by : </b>com.github.valid8j.ut.internal.NegateTest.whenInvertedTrasformingPredicateFails_thenPrintDesignedMessage$notMergedWhenMismatch(com.github.valid8j.ut.internal.NegateTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>toString<br/><b>Killed by : </b>com.github.valid8j.ut.internal.InternalUtilsTest$FormatObjectTest.testCreateInstanceFromClassName$thenNotFound(com.github.valid8j.ut.internal.InternalUtilsTest$FormatObjectTest)</span></span> replaced return value with &#34;&#34; for com/github/valid8j/pcond/validator/Explanation::toString &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_51'>51</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_51'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>composeDiff<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>composeDiff<br/><b>Killed by : </b>com.github.valid8j.entrypoints.EnsuresTest.testEnsureState(com.github.valid8j.entrypoints.EnsuresTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>composeDiff<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_52'>52</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_52'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>composeDiff<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>composeDiff<br/><b>Killed by : </b>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_columns100$whenShorterThan10(com.github.valid8j.ut.valuechecker.DefaultValidatorTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>composeDiff<br/><b>Killed by : </b>com.github.valid8j.ut.internal.NegateTest.whenInvertedTrasformingPredicateFails_thenPrintDesignedMessage$notMergedWhenMismatch(com.github.valid8j.ut.internal.NegateTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_55'>55</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_55'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>composeDiff<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>composeDiff<br/><b>Killed by : </b>com.github.valid8j.ut.internal.NegateTest.whenInvertedTrasformingPredicateFails_thenPrintDesignedMessage$notMergedWhenMismatch(com.github.valid8j.ut.internal.NegateTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_60'>60</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_60'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>composeDiff<br/><b>Killed by : </b>com.github.valid8j.ut.internal.NegateTest.whenInvertedTrasformingPredicateFails_thenPrintDesignedMessage$notMergedWhenMismatch(com.github.valid8j.ut.internal.NegateTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_63'>63</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_63'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$composeDiff$0<br/><b>Killed by : </b>com.github.valid8j.ut.internal.CallTest.methodNotFound(com.github.valid8j.ut.internal.CallTest)</span></span> replaced return value with &#34;&#34; for com/github/valid8j/pcond/validator/Explanation::lambda$composeDiff$0 &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_69'>69</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_69'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>formatDetailItemPair<br/><b>Killed by : </b>com.github.valid8j.ut.internal.CallTest.methodNotFound(com.github.valid8j.ut.internal.CallTest)</span></span> replaced return value with &#34;&#34; for com/github/valid8j/pcond/validator/Explanation::formatDetailItemPair &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_87'>87</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_87'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$reportToString$1<br/><b>Killed by : </b>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessUsingCustomPredicateWithSlightlyDifferentString_thenFailWithDetailsArePrinted(com.github.valid8j.ut.utilstest.ReportDetailTest)</span></span> replaced return value with &#34;&#34; for com/github/valid8j/pcond/validator/Explanation::lambda$reportToString$1 &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_89'>89</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_89'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>reportToString<br/><b>Killed by : </b>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessUsingCustomPredicateWithSlightlyDifferentString_thenFailWithDetailsArePrinted(com.github.valid8j.ut.utilstest.ReportDetailTest)</span></span> replaced return value with &#34;&#34; for com/github/valid8j/pcond/validator/Explanation::reportToString &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_93'>93</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_93'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>formatDetailItem<br/><b>Killed by : </b>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessUsingCustomPredicateWithSlightlyDifferentString_thenFailWithDetailsArePrinted(com.github.valid8j.ut.utilstest.ReportDetailTest)</span></span> replaced return value with &#34;&#34; for com/github/valid8j/pcond/validator/Explanation::formatDetailItem &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_101'>101</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_101'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>fromMessage<br/><b>Killed by : </b>com.github.valid8j.ut.valuechecker.Opentest4jTest.test_testSkippedException$String(com.github.valid8j.ut.valuechecker.Opentest4jTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/Explanation::fromMessage &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_108'>108</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_108'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>splitAndTrim<br/><b>Killed by : </b>com.github.valid8j.ut.internal.NegateTest.whenInvertedTrasformingPredicateFails_thenPrintDesignedMessage$notMergedWhenMismatch(com.github.valid8j.ut.internal.NegateTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>splitAndTrim<br/><b>Killed by : </b>com.github.valid8j.ut.internal.exceptionhandling.ExceptionsTest.testWrapIfNecessaryWithCheckedException(com.github.valid8j.ut.internal.exceptionhandling.ExceptionsTest)</span></span> Changed increment from -1 to 1 &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>splitAndTrim<br/><b>Killed by : </b>com.github.valid8j.ut.internal.exceptionhandling.ExceptionsTest.testWrapIfNecessaryWithCheckedException(com.github.valid8j.ut.internal.exceptionhandling.ExceptionsTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>splitAndTrim<br/><b>Killed by : </b>com.github.valid8j.ut.internal.NegateTest.whenInvertedTrasformingPredicateFails_thenPrintDesignedMessage$notMergedWhenMismatch(com.github.valid8j.ut.internal.NegateTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_109'>109</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_109'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>splitAndTrim<br/><b>Killed by : </b>com.github.valid8j.ut.internal.NegateTest.whenInvertedTrasformingPredicateFails_thenPrintDesignedMessage$notMergedWhenMismatch(com.github.valid8j.ut.internal.NegateTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_111'>111</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_111'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>splitAndTrim<br/><b>Killed by : </b>com.github.valid8j.ut.internal.NegateTest.whenInvertedTrasformingPredicateFails_thenPrintDesignedMessage$notMergedWhenMismatch(com.github.valid8j.ut.internal.NegateTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_112'>112</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_112'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>splitAndTrim<br/><b>Killed by : </b>com.github.valid8j.ut.internal.NegateTest.whenInvertedTrasformingPredicateFails_thenPrintDesignedMessage$notMergedWhenMismatch(com.github.valid8j.ut.internal.NegateTest)</span></span> removed call to java/util/List::add &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b766082_114'>114</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b766082_114'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>splitAndTrim<br/><b>Killed by : </b>com.github.valid8j.ut.internal.exceptionhandling.ExceptionsTest.testWrapIfNecessaryWithCheckedException(com.github.valid8j.ut.internal.exceptionhandling.ExceptionsTest)</span></span> replaced return value with null for com/github/valid8j/pcond/validator/Explanation::splitAndTrim &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest.exerciseTestCase[2: givenStreamPredicate$hello_b_e_2$_whenUnexpectedValue_thenComparisonFailure2](com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest) (3 ms)</li><li>com.github.valid8j.examples.test.ExamplesTest.testIntroductionExample(com.github.valid8j.examples.test.ExamplesTest) (3 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testListContains(com.github.valid8j.ut.typesupports.ListTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.TestAssertionsTest.testAssumeThat(com.github.valid8j.ut.utilstest.TestAssertionsTest) (1 ms)</li><li>com.github.valid8j.ut.internal.CallTest.methodAmbiguous_primitiveBoxed(com.github.valid8j.ut.internal.CallTest) (1 ms)</li><li>com.github.valid8j.ut.currying.CurryingTest.undefinedMethod(com.github.valid8j.ut.currying.CurryingTest) (1 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_disj$anyOf$_thenFail(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (1 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequireArgument(com.github.valid8j.entrypoints.RequiresTest) (1 ms)</li><li>com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest.givenStreamOfSingleString$hello$_whenRequireNullIsFound_thenPreconditionViolationWithCorrectMessageIsThrown(com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testAnyMatch(com.github.valid8j.ut.typesupports.ListTest) (0 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$FindStringsTest.givenSomeFoundSomeNotFound$whenFindRegexes$thenFailed(com.github.valid8j.ut.utilstest.PredicatesTest$FindStringsTest) (1 ms)</li><li>com.github.valid8j.ut.types.StreamTest.streamTransformerTestFailure(com.github.valid8j.ut.types.StreamTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireValuesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (1 ms)</li><li>com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest.given$hello$_$world$_whenRequireNestedStreamImpossibleConditions_thenPreconditionViolationExceptionWithCorrectMessage(com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest) (4 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.assumeThatTest_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (0 ms)</li><li>com.github.valid8j.ut.experimentals.TestAssertionsCurriedFunctionsTest.helloError(com.github.valid8j.ut.experimentals.TestAssertionsCurriedFunctionsTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessUsingCustomPredicateWithSlightlyDifferentString_thenExpectationSpecificFragmentsContainedOnlyByExplanationForExpectationAndActualValuesAreAlsoSo(com.github.valid8j.ut.utilstest.ReportDetailTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenIsTrueAndIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (1 ms)</li><li>com.github.valid8j.ut.internal.InternalUtilsTest$FormatObjectTest.testCreateInstanceFromClassName$thenNoConstructor(com.github.valid8j.ut.internal.InternalUtilsTest$FormatObjectTest) (1 ms)</li><li>com.github.valid8j.ut.valuechecker.Opentest4jTest.test_testSkippedException$Explanation(com.github.valid8j.ut.valuechecker.Opentest4jTest) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest.ensureStatesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest) (3 ms)</li><li>com.github.valid8j.ut.internal.InternalUtilsTest$WrapIfNecessaryTest.testWrapIfNecessary(com.github.valid8j.ut.internal.InternalUtilsTest$WrapIfNecessaryTest) (0 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.givenIllegalValue_whenEnsure_thenPostconditionViolationThrown(com.github.valid8j.entrypoints.EnsuresTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenToBooleanIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (0 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamAllMatchPredicateTest.exerciseTestCase[1: givenStreamPredicate_whenUnexpectedNullValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.StreamAllMatchPredicateTest) (2 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequireWithCustomStringTransformingPredicate(com.github.valid8j.entrypoints.RequiresTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireArgumentsTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (2 ms)</li><li>com.github.valid8j.ut.utilstest.FluentUtilsTest.example2(com.github.valid8j.ut.utilstest.FluentUtilsTest) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenTransformIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (2 ms)</li><li>com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest.exerciseTestCase[4: givenTwoChainedTransformingPredicates_whenNonExpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest) (4 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testCollectionContains(com.github.valid8j.ut.typesupports.ListTest) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.expectingExceptionButNotThrown_testFailing(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (3 ms)</li><li>com.github.valid8j.ut.bugfixes.Issue11Test.whenReproduceIssue(com.github.valid8j.ut.bugfixes.Issue11Test) (2 ms)</li><li>com.github.valid8j.ut.internal.InternalUtilsTest$CreateInstanceFromClassNameTest.testUndefinedConstructor(com.github.valid8j.ut.internal.InternalUtilsTest$CreateInstanceFromClassNameTest) (0 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$IsInstanceOfTest.test(com.github.valid8j.ut.utilstest.PredicatesTest$IsInstanceOfTest) (0 ms)</li><li>com.github.valid8j.ut.internal.PrintablesFunctionTest$Composed.testFailureFromComposeStructureInTransformer(com.github.valid8j.ut.internal.PrintablesFunctionTest$Composed) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest.exerciseTestCase[3: whenPredicatesFirstReturningFalseRestReturningTrueUnderAllOf_whenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest) (2 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_columns100_conj(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ValidatesTest.testX(com.github.valid8j.entrypoints.ValidatesTest) (5 ms)</li><li>com.github.valid8j.ut.utilstest.TestAssertionsTest.testAllOf(com.github.valid8j.ut.utilstest.TestAssertionsTest) (0 ms)</li><li>com.github.valid8j.ut.utilstest.FluentUtilsTest.expectationFlipping(com.github.valid8j.ut.utilstest.FluentUtilsTest) (0 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_transforming_thenFail(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessWithSlightlyDifferentString_thenFailWithDetailsArePrinted$assertThat(com.github.valid8j.ut.utilstest.ReportDetailTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ValidatesTest.testValidateMethod$failing(com.github.valid8j.entrypoints.ValidatesTest) (0 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest.exerciseTestCase[3: givenStreamPredicate$hello_b_e_4$_whenUnexpectedValue_thenComparisonFailure2](com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ValidatesTest.test_validate_fail(com.github.valid8j.entrypoints.ValidatesTest) (1 ms)</li><li>com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest.givenString$hello$_whenTransformToContextAndCheckContextValueIsNull_thenPreconditionViolationWithCorrectMessageThrown(com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testEndsWith(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_columns100$whenShorterThan10(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$FindElementsTest.givenSomeToBeFoundSomeNotToBe$whenFindElements$thenFailed(com.github.valid8j.ut.utilstest.PredicatesTest$FindElementsTest) (2 ms)</li><li>com.github.valid8j.ut.internal.NegateTest.whenInvertedTrasformingPredicateFails_thenPrintDesignedMessage$mergedWhenNotMismatch(com.github.valid8j.ut.internal.NegateTest) (2 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testIsEmptyString(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testAllMatch(com.github.valid8j.ut.typesupports.ListTest) (1 ms)</li><li>com.github.valid8j.it.SmokeTest.givenBook_whenCheckTitleAndAbstract_thenTheyAreNotNullAndAppropriateLength_2(com.github.valid8j.it.SmokeTest) (15 ms)</li><li>com.github.valid8j.ut.internal.InternalUtilsTest$FormatObjectTest.testCreateInstanceFromClassName$thenNotFound(com.github.valid8j.ut.internal.InternalUtilsTest$FormatObjectTest) (0 ms)</li><li>com.github.valid8j.ut.types.FloatTest.toFloatTest(com.github.valid8j.ut.types.FloatTest) (2 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testComparison(com.github.valid8j.ut.typesupports.StringTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.BooleanTest.testWrapperIsTrue(com.github.valid8j.ut.typesupports.BooleanTest) (1 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_columns100$whenNull(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.multiAssertAll_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (1 ms)</li><li>com.github.valid8j.ut.internal.InternalUtilsTest$GetMethodTest.testGetMethod(com.github.valid8j.ut.internal.InternalUtilsTest$GetMethodTest) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.multiAssumeAll_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.NegatedPredicateTest.exerciseTestCase[1: givenNegatedSimplePredicateReturningTrue_whenUnexpectedValue_thenComparisonFailureThrown](com.github.valid8j.ut.propertybased.tests.NegatedPredicateTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testEqualsIgnoreCase(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequireNonNull(com.github.valid8j.entrypoints.RequiresTest) (1 ms)</li><li>com.github.valid8j.ut.types.StreamTest.streamTestFailure(com.github.valid8j.ut.types.StreamTest) (1 ms)</li><li>com.github.valid8j.ut.internal.InternalUtilsTest$CreateInstanceFromClassNameTest.testConstructorThrowingException(com.github.valid8j.ut.internal.InternalUtilsTest$CreateInstanceFromClassNameTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenString_whenFails_then_2(com.github.valid8j.ut.utilstest.ReportDetailTest) (2 ms)</li><li>com.github.valid8j.ut.types.FloatTest.floatTransformerTestFail(com.github.valid8j.ut.types.FloatTest) (0 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.testEnsureNonNull(com.github.valid8j.entrypoints.EnsuresTest) (1 ms)</li><li>com.github.valid8j.examples.test.ExamplesTest.testClassicExample(com.github.valid8j.examples.test.ExamplesTest) (35 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenString_whenFails_then(com.github.valid8j.ut.utilstest.ReportDetailTest) (1 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withEvaluator_disj$or$_thenFail(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.expectingDifferentException_testFailing(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (2 ms)</li><li>com.github.valid8j.examples.test.ExamplesTest.testMetarmorExampleFailing(com.github.valid8j.examples.test.ExamplesTest) (61 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessWithSlightlyDifferentString_thenFailWithDetailsArePrinted(com.github.valid8j.ut.utilstest.ReportDetailTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (0 ms)</li><li>com.github.valid8j.ut.internal.InternalUtilsTest$FormatObjectTest.testCreateInstanceFromClassName$thenNotInstance(com.github.valid8j.ut.internal.InternalUtilsTest$FormatObjectTest) (0 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest.exerciseTestCase[0: givenStreamPredicate$RequireConditionResultingInNPE$_whenUnexpectedValue_thenComparisonFailure2](com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest) (3 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testNoneMatch(com.github.valid8j.ut.typesupports.ListTest) (1 ms)</li><li>com.github.valid8j.entrypoints.AssertionsTest$Failing (29 ms)</li><li>com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest.exerciseTestCase[1: givenDoubleChainedTransformingPredicate_whenNonExpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest) (3 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest.exerciseTestCase[1: givenStreamPredicate$hello_b_e$_whenUnexpectedValue_thenComparisonFailure2](com.github.valid8j.ut.propertybased.tests.StreamNoneMatchPredicateTest) (3 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$MessageTest.testFormat(com.github.valid8j.ut.utilstest.PredicatesTest$MessageTest) (1 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequire$thenError(com.github.valid8j.entrypoints.RequiresTest) (0 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testMatchesRegex(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testContainsString(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testEqualTo(com.github.valid8j.ut.typesupports.StringTest) (1 ms)</li><li>com.github.valid8j.ut.internal.NegateTest.whenInvertedTransformingPredicateFails_thenPrintDesignedMessage$transformIsntLeafAndNotMerged(com.github.valid8j.ut.internal.NegateTest) (2 ms)</li><li>com.github.valid8j.ut.typesupports.BooleanTest.testIsFalse(com.github.valid8j.ut.typesupports.BooleanTest) (0 ms)</li><li>com.github.valid8j.ut.internal.PrintablesFunctionTest$Simple.testHandleNull(com.github.valid8j.ut.internal.PrintablesFunctionTest$Simple) (0 ms)</li><li>com.github.valid8j.ut.internal.InternalUtilsTest$FormatObjectTest.testCreateInstanceFromClassName$thenConstructorFails(com.github.valid8j.ut.internal.InternalUtilsTest$FormatObjectTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testIsEmptyOrNullString(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.examples.test.JUnitBasedExamplesTest.testExampleUT(com.github.valid8j.examples.test.JUnitBasedExamplesTest) (3 ms)</li><li>com.github.valid8j.ut.utilstest.PredicatesTest$FindStringsTest.givenSomeFoundSomeNot$whenFindString$thenFailed(com.github.valid8j.ut.utilstest.PredicatesTest$FindStringsTest) (2 ms)</li><li>com.github.valid8j.ut.internal.NegateTest.whenInvertedTrasformingPredicateFails_thenPrintDesignedMessage$notMergedWhenMismatch(com.github.valid8j.ut.internal.NegateTest) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest.exerciseTestCase[3: givenTransformingPredicate_whenNonExpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest) (2 ms)</li><li>com.github.valid8j.ut.internal.exceptionhandling.ExceptionsTest.testWrapIfNecessaryWithCheckedException(com.github.valid8j.ut.internal.exceptionhandling.ExceptionsTest) (0 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest.exerciseTestCase[1: whenOnePredicateThrowingExceptionUnderAllOf_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest) (3 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testStartsWith(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ValidatesTest.test_validateArgument_fail(com.github.valid8j.entrypoints.ValidatesTest) (1 ms)</li><li>com.github.valid8j.ut.internal.CallTest.methodAmbiguous_primitiveBoxed_negated(com.github.valid8j.ut.internal.CallTest) (2 ms)</li><li>com.github.valid8j.ut.propertybased.tests.SimplePredicateTest.exerciseTestCase[1: givenSimplePredicate_whenUnexpectedValue_thenComparisonFailureThrown](com.github.valid8j.ut.propertybased.tests.SimplePredicateTest) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenCheckIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (2 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.testRequireWithTransformingPredicate(com.github.valid8j.entrypoints.RequiresTest) (1 ms)</li><li>com.github.valid8j.ut.valuechecker.DefaultValidatorTest.withoutEvaluator_conj_thenFail(com.github.valid8j.ut.valuechecker.DefaultValidatorTest) (1 ms)</li><li>com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest.nestedLoop_fail(com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest) (1 ms)</li><li>com.github.valid8j.examples.test.ExamplesTest.testFluentExample(com.github.valid8j.examples.test.ExamplesTest) (5 ms)</li><li>com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest.hello_b_e5(com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest) (2 ms)</li><li>com.github.valid8j.ut.internal.PrintablesFunctionTest$Composed.testFailureFromAndThenStructureInTransformer(com.github.valid8j.ut.internal.PrintablesFunctionTest$Composed) (1 ms)</li><li>com.github.valid8j.ut.internal.InternalUtilsTest$CreateInstanceFromClassNameTest.testConstructorPrivate(com.github.valid8j.ut.internal.InternalUtilsTest$CreateInstanceFromClassNameTest) (9 ms)</li><li>com.github.valid8j.ut.internal.CallTest.nullReturningFunctionAsPredicate(com.github.valid8j.ut.internal.CallTest) (1 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.givenInvalidState$whenRequireState$thenIllegalStateExceptionThrown(com.github.valid8j.entrypoints.RequiresTest) (3 ms)</li><li>com.github.valid8j.ut.typesupports.BooleanTest.testIsTrue(com.github.valid8j.ut.typesupports.BooleanTest) (0 ms)</li><li>com.github.valid8j.ut.types.FloatTest.floatTestFail(com.github.valid8j.ut.types.FloatTest) (0 ms)</li><li>com.github.valid8j.ut.internal.CallTest.methodNotFound(com.github.valid8j.ut.internal.CallTest) (1 ms)</li><li>com.github.valid8j.ut.utilstest.FluentUtilsTest.test4(com.github.valid8j.ut.utilstest.FluentUtilsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.testEnsure(com.github.valid8j.entrypoints.EnsuresTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ValidatesTest.test(com.github.valid8j.entrypoints.ValidatesTest) (9 ms)</li><li>com.github.valid8j.ut.propertybased.tests.StreamAllMatchPredicateTest.exerciseTestCase[2: givenStreamPredicate_whenUnexpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.StreamAllMatchPredicateTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ValidatesTest.testY(com.github.valid8j.entrypoints.ValidatesTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.BooleanTest.testWrapperIsFalse(com.github.valid8j.ut.typesupports.BooleanTest) (0 ms)</li><li>com.github.valid8j.entrypoints.EnsuresTest.testEnsureState(com.github.valid8j.entrypoints.EnsuresTest) (0 ms)</li><li>com.github.valid8j.ut.currying.CurryingTest.givenExceptionThrowingFunction$whenApplythenThrown(com.github.valid8j.ut.currying.CurryingTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireStatesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (1 ms)</li><li>com.github.valid8j.ut.valuechecker.Opentest4jTest.test_testSkippedException$String(com.github.valid8j.ut.valuechecker.Opentest4jTest) (0 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest.exerciseTestCase[0: whenOnePredicateReturningFalseUnderAllOf_whenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AllOfPredicateTest) (4 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AnyOfPredicateTest.exerciseTestCase[1: whenOnePredicateThrowingExceptionUnderAnyOf_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AnyOfPredicateTest) (2 ms)</li><li>com.github.valid8j.ut.utilstest.TestAssertionsTest.testAnyOf(com.github.valid8j.ut.utilstest.TestAssertionsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.RequiresTest.givenIllegalArgument_whenRequireArgument_thenIllegalArgumentThrown(com.github.valid8j.entrypoints.RequiresTest) (1 ms)</li><li>com.github.valid8j.ut.currying.CurryingTest.test4_b(com.github.valid8j.ut.currying.CurryingTest) (0 ms)</li><li>com.github.valid8j.ut.valuechecker.Opentest4jTest.test_testFailedException(com.github.valid8j.ut.valuechecker.Opentest4jTest) (2 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessWithSlightlyDifferentString_thenFailWithDetailsArePrinted$assertThat_usingFluentStyle(com.github.valid8j.ut.utilstest.ReportDetailTest) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest.ensureValuesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest) (2 ms)</li><li>com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest.hello5(com.github.valid8j.ut.experimentals.DbCCurriedFunctionsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.string_assertThatTest_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (0 ms)</li><li>com.github.valid8j.ut.typesupports.StringTest.testSameAs(com.github.valid8j.ut.typesupports.StringTest) (0 ms)</li><li>com.github.valid8j.ut.utilstest.ReportDetailTest.givenLongString_whenCheckEqualnessUsingCustomPredicateWithSlightlyDifferentString_thenFailWithDetailsArePrinted(com.github.valid8j.ut.utilstest.ReportDetailTest) (1 ms)</li><li>com.github.valid8j.ut.propertybased.tests.AnyOfPredicateTest.exerciseTestCase[0: whenOnePredicateReturningFalseUnderAnyOf_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.AnyOfPredicateTest) (1 ms)</li><li>com.github.valid8j.ut.typesupports.ListTest.testEmpty(com.github.valid8j.ut.typesupports.ListTest) (0 ms)</li><li>com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest.exerciseTestCase[0: givenChainedTransformingPredicate_whenNonExpectedValue_thenComparisonFailure](com.github.valid8j.ut.propertybased.tests.TransformAndCheckPredicateTest) (2 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.7.3
+
+</body>
+</html>

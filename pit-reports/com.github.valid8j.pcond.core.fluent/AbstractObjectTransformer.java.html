@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>AbstractObjectTransformer.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.github.valid8j.pcond.core.fluent;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.github.valid8j.pcond.forms.Functions;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.github.valid8j.pcond.core.fluent.builtins.*;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.github.valid8j.pcond.core.refl.MethodQuery;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.List;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Objects;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.function.Function;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.stream.Stream;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static com.github.valid8j.pcond.forms.Functions.call;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static java.util.Objects.requireNonNull;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @param &#60;TX&#62; The type of the extending class itself.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @param &#60;V&#62; A type of checker produced by this transformer.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @param &#60;T&#62; The type of the target value of the instance of this interface.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @param &#60;R&#62; The type of the target value of the checker instance `V`</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public interface AbstractObjectTransformer&#60;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    TX extends AbstractObjectTransformer&#60;TX, V, T, R&#62;,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    V extends AbstractObjectChecker&#60;V, T, R&#62;,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    T,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    R</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    &#62; extends</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    Transformer&#60;TX, V, T, R&#62; {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * Corresponds to {@code toString()} method.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @return this object the method appended.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_34'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  @SuppressWarnings(&#34;unchecked&#34;)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default StringTransformer&#60;String&#62; stringify() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_37'/>
+37
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_37'>1</a>
+<span>
+1. stringify : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::stringify &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return (StringTransformer&#60;String&#62;) this.toString(Functions.stringify());</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_40'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default &#60;E&#62; ObjectTransformer&#60;T, E&#62; function(Function&#60;R, E&#62; function) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_41'/>
+41
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_41'>1</a>
+<span>
+1. function : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::function &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.toObject(Objects.requireNonNull(function));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_43'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default &#60;E&#62; ObjectTransformer&#60;T, E&#62; invoke(String methodName, Object... args) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_45'/>
+45
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_45'>1</a>
+<span>
+1. invoke : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::invoke &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.function(Functions.call(MethodQuery.instanceMethod(Functions.parameter(), methodName, args)));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_46'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_47'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_48'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default &#60;E&#62; ObjectTransformer&#60;T, E&#62; invokeStatic(Class&#60;?&#62; klass, String methodName, Object... args) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_49'/>
+49
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_49'>1</a>
+<span>
+1. invokeStatic : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::invokeStatic &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.function(Functions.call(MethodQuery.classMethod(klass, methodName, args)));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_50'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_51'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_52'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_53'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * Applies `f`, which is expected to throw an exception object of class `exceptionClass`, to the target value of this transformer object.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_54'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * In case no exception is thrown, or a different type of exception is thrown, an exception will be thrown.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_55'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * But its type is not specified.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_56'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_57'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @param exceptionClass A class of exception object of the exception to be thrown by `f`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_58'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @param f A function that is expected to throw an exception object of `exceptionClass`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_59'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @return A {@link ThrowableTransformer} instance constructed for the thrown exception by `f`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_60'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @param &#60;O&#62; An exception class to be thrown by `f`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_61'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @see Functions#expectingException(Class, Function)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_62'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_63'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default &#60;O extends Throwable&#62; ThrowableTransformer&#60;T, O&#62; expectException(Class&#60;O&#62; exceptionClass, Function&#60;? super R, ?&#62; f) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_64'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    requireNonNull(exceptionClass);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_65'/>
+65
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_65'>1</a>
+<span>
+1. expectException : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::expectException &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.toThrowable(Functions.expectingException(exceptionClass, f));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_66'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_67'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_68'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_69'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * Mainly used for internal purposes</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_70'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @return Another transformer objecct.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_71'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @param &#60;E&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_72'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_73'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  @SuppressWarnings(&#34;unchecked&#34;)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_74'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default &#60;E&#62; ObjectTransformer&#60;T, E&#62; asObject() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_75'/>
+75
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_75'>1</a>
+<span>
+1. asObject : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::asObject &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return (ObjectTransformer&#60;T, E&#62;)this.toObject(Functions.identity());</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_76'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_77'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_78'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_79'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * Applies a given `function` to the currently targeted value and returns a new `ObjectTransformer` whose target value is the returned value from the `function`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_80'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_81'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @param function A function to be applied to the target value.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_82'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @return A new {@link ObjectTransformer} which targets the result of the `function`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_83'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   * @param &#60;E&#62; The type of the returned value of the `function`.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_84'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_85'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default &#60;E&#62; ObjectTransformer&#60;T, E&#62; toObject(Function&#60;R, E&#62; function) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_86'/>
+86
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_86'>1</a>
+<span>
+1. toObject : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toObject &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.transformValueWith(function, ObjectTransformer.Impl::new);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_87'/>
+87
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_87'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_88'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_89'/>
+89
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_89'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default BooleanTransformer&#60;T&#62; toBoolean(Function&#60;? super R, Boolean&#62; function) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_90'/>
+90
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_90'>1</a>
+<span>
+1. toBoolean : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toBoolean &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.transformValueWith(function, BooleanTransformer.Impl::new);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_91'/>
+91
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_91'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_92'/>
+92
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_92'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_93'/>
+93
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_93'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default IntegerTransformer&#60;T&#62; toInteger(Function&#60;? super R, Integer&#62; function) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_94'/>
+94
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_94'>1</a>
+<span>
+1. toInteger : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toInteger &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.transformValueWith(function, IntegerTransformer.Impl::new);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_95'/>
+95
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_95'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_96'/>
+96
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_96'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_97'/>
+97
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_97'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default LongTransformer&#60;T&#62; toLong(Function&#60;? super R, Long&#62; function) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_98'/>
+98
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_98'>1</a>
+<span>
+1. toLong : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toLong &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.transformValueWith(function, LongTransformer.Impl::new);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_99'/>
+99
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_99'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_100'/>
+100
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_100'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_101'/>
+101
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_101'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default ShortTransformer&#60;T&#62; toShort(Function&#60;? super R, Short&#62; function) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_102'/>
+102
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_102'>1</a>
+<span>
+1. toShort : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toShort &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.transformValueWith(function, ShortTransformer.Impl::new);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_103'/>
+103
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_103'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_104'/>
+104
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_104'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_105'/>
+105
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_105'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default DoubleTransformer&#60;T&#62; toDouble(Function&#60;? super R, Double&#62; function) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_106'/>
+106
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_106'>1</a>
+<span>
+1. toDouble : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toDouble &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.transformValueWith(function, DoubleTransformer.Impl::new);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_107'/>
+107
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_107'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_108'/>
+108
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_108'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_109'/>
+109
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_109'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default FloatTransformer&#60;T&#62; toFloat(Function&#60;? super R, Float&#62; function) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_110'/>
+110
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_110'>1</a>
+<span>
+1. toFloat : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toFloat &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.transformValueWith(function, FloatTransformer.Impl::new);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_111'/>
+111
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_111'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_112'/>
+112
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_112'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_113'/>
+113
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_113'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default StringTransformer&#60;T&#62; toString(Function&#60;? super R, String&#62; function) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_114'/>
+114
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_114'>1</a>
+<span>
+1. toString : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toString &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.transformValueWith(function, StringTransformer.Impl::new);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_115'/>
+115
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_115'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_116'/>
+116
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_116'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_117'/>
+117
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_117'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default &#60;E&#62; ListTransformer&#60;T, E&#62; toList(Function&#60;? super R, List&#60;E&#62;&#62; function) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_118'/>
+118
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_118'>1</a>
+<span>
+1. toList : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toList &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.transformValueWith(function, ListTransformer.Impl::new);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_119'/>
+119
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_119'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_120'/>
+120
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_120'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_121'/>
+121
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_121'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default &#60;E&#62; StreamTransformer&#60;T, E&#62; toStream(Function&#60;? super R, Stream&#60;E&#62;&#62; function) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_122'/>
+122
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_122'>1</a>
+<span>
+1. toStream : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toStream &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.transformValueWith(function, StreamTransformer.Impl::new);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_123'/>
+123
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_123'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_124'/>
+124
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_124'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_125'/>
+125
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_125'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  default &#60;E extends Throwable&#62; ThrowableTransformer&#60;T, E&#62; toThrowable(Function&#60;? super R, E&#62; function) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_126'/>
+126
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_126'>1</a>
+<span>
+1. toThrowable : replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toThrowable &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return this.transformValueWith(function, ThrowableTransformer.Impl::new);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_127'/>
+127
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_127'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_128'/>
+128
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_128'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_129'/>
+129
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_129'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_37'>37</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_37'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>stringify<br/><b>Killed by : </b>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[34: Given:<"A">:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::stringify &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_41'>41</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_41'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>function<br/><b>Killed by : </b>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[34: Given:<"A">:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::function &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_45'>45</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_45'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>invoke<br/><b>Killed by : </b>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[34: Given:<"A">:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::invoke &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_49'>49</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_49'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>invokeStatic<br/><b>Killed by : </b>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[34: Given:<"A">:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::invokeStatic &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_65'>65</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_65'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>expectException<br/><b>Killed by : </b>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.expectedExceptionThrown_testPassing(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::expectException &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_75'>75</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_75'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>asObject<br/><b>Killed by : </b>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[34: Given:<"A">:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::asObject &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_86'>86</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_86'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toObject<br/><b>Killed by : </b>com.github.valid8j.ut.styles.MoreFluentListTest.test_elementAt(com.github.valid8j.ut.styles.MoreFluentListTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toObject &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_90'>90</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_90'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toBoolean<br/><b>Killed by : </b>com.github.valid8j.ut.styles.MoreFluentListTest.test_isEmpty(com.github.valid8j.ut.styles.MoreFluentListTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toBoolean &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_94'>94</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_94'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toInteger<br/><b>Killed by : </b>com.github.valid8j.ut.styles.MoreFluentListTest.test_size(com.github.valid8j.ut.styles.MoreFluentListTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toInteger &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_98'>98</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_98'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toLong<br/><b>Killed by : </b>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[34: Given:<"A">:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toLong &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_102'>102</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_102'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toShort<br/><b>Killed by : </b>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[34: Given:<"A">:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toShort &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_106'>106</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_106'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toDouble<br/><b>Killed by : </b>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[34: Given:<"A">:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toDouble &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_110'>110</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_110'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toFloat<br/><b>Killed by : </b>com.github.valid8j.ut.types.FloatTest.toFloatTest(com.github.valid8j.ut.types.FloatTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toFloat &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_114'>114</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_114'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toString<br/><b>Killed by : </b>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test2(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toString &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_118'>118</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_118'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toList<br/><b>Killed by : </b>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.stream_assertThatTest_passed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toList &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_122'>122</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_122'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toStream<br/><b>Killed by : </b>com.github.valid8j.ut.styles.MoreFluentListTest.test_stream(com.github.valid8j.ut.styles.MoreFluentListTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toStream &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@75a3fc2e_126'>126</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@75a3fc2e_126'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toThrowable<br/><b>Killed by : </b>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.expectedExceptionThrown_testPassing(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest)</span></span> replaced return value with null for com/github/valid8j/pcond/core/fluent/AbstractObjectTransformer::toThrowable &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[52: Given:<"A:B">:When:<split[:] THEN:toCursoredList (findElementBy[isEqualTo[A]]&&findElementBy[isEqualTo[B]]&&findElementBy[isEqualTo[C]]&&(end))>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[50: Given:<"A:B">:When:<split[:] THEN:(!isEmpty&&contains[A]&&contains[B]&&contains[C])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.examples.test.ExamplesTest.testIntroductionExample(com.github.valid8j.examples.test.ExamplesTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[80: Given:<"123.4">:When:<parseFloat->identity->castTo[Float] THEN:=[123.4]>:Then:<valueReturned:[identity=>identicalWith(value:123.4)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (4 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[53: Given:<null>:When:<split[:] THEN:(!isEmpty&&contains[A]&&contains[B]&&contains[C])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[14: Given:<["X"]>:When:<isEmpty>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.string_assertThatTest_passed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[8: Given:<["A","B"]>:When:<subList[1,2] THEN:!isEmpty>:Then:<valueReturned:[identity=>identicalWith(value:[A, B])]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (4 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.object_assertThatTest_passed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[28: Given:<"456">:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[31: Given:<"A">:When:<substring[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[45: Given:<"XYZ">:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Boolean]&&isTrue)>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[70: Given:<"HELLO">:When:<java.util.Objects.equals(<hello>,<>)->castTo[Boolean] THEN:isTrue>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireValuesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[48: Given:<"A:B:C">:When:<split[:] THEN:toCursoredList (findElementBy[[A]]&&findElementBy[[B]]&&findElementBy[[C]]&&(end))>:Then:<valueReturned:[identity=>identicalWith(value:A:B:C)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.assumeThatTest_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (0 ms)</li><li>com.github.valid8j.ut.styles.MoreFluentListTest.test_size(com.github.valid8j.ut.styles.MoreFluentListTest) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[1: Given:<true>:When:<isTrue>:Then:<valueReturned:[identity=>identicalWith(value:true)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[40: Given:<null>:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[55: Given:<null>:When:<split[:] THEN:toCursoredList (findElementBy[isEqualTo[A]]&&findElementBy[isEqualTo[B]]&&findElementBy[isEqualTo[C]]&&(end))>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[10: Given:<["X"]>:When:<subList[1,1] THEN:!isEmpty>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (10 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest.ensureStatesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[25: Given:<"456">:When:<substring[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (4 ms)</li><li>com.github.valid8j.ut.styles.fluent.FluentBooleanTest.givenFalse_whenToBooleanIsTrue_thenComparisonFailure(com.github.valid8j.ut.styles.fluent.FluentBooleanTest) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[54: Given:<null>:When:<split[:] THEN:toCursoredList (findElementBy[[A]]&&findElementBy[[B]]&&findElementBy[[C]]&&(end))>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[22: Given:<"123">:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (5 ms)</li><li>com.github.valid8j.ut.styles.MoreFluentStringTest.test_startingWith(com.github.valid8j.ut.styles.MoreFluentStringTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test3(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireArgumentsTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[19: Given:<"123">:When:<substring[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.expectingExceptionButNotThrown_testFailing(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test2(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.assertAll_passed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test6(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.assertAllDifferentTypes_passed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test6(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[83: Given:<"123.5">:When:<parseDouble->identity->castTo[Double] THEN:=[123.4]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[39: Given:<null>:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[72: Given:<null>:When:<isNull>:Then:<valueReturned:[identity=>identicalWith(value:null)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest.ensureValue_passing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[47: Given:<"A:B:C">:When:<split[:] THEN:(!isEmpty&&contains[A]&&contains[B]&&contains[C])>:Then:<valueReturned:[identity=>identicalWith(value:A:B:C)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.assumeThatTest_passed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.reqireState_passing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test1(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[65: Given:<"hello">:When:<<>.equals(<hello>)>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.MoreFluentStringTest.test_endingWith(com.github.valid8j.ut.styles.MoreFluentStringTest) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireArgument_passing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[44: Given:<"false">:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Boolean]&&isTrue)>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[33: Given:<"A">:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[74: Given:<"123">:When:<parseLong->identity->castTo[Long] THEN:=[123]>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[24: Given:<"123">:When:<parseDouble THEN:(isInstanceOf[class java.lang.Double]&&=[123.0])>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (5 ms)</li><li>com.github.valid8j.it.SmokeTest.givenBook_whenCheckTitleAndAbstract_thenTheyAreNotNullAndAppropriateLength_2(com.github.valid8j.it.SmokeTest) (15 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[68: Given:<"HELLO">:When:<java.util.Objects.equals(<hello>,<>)>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.types.FloatTest.toFloatTest(com.github.valid8j.ut.types.FloatTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[21: Given:<"123">:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[123])>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.MoreFluentListTest.test_stream(com.github.valid8j.ut.styles.MoreFluentListTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test2(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[84: Given:<"Hello">:When:<expectingException(Exception,throwRuntimeException) THEN:isInstanceOf[class com....tionalException]>:Then:<valueReturned:[identity=>identicalWith(value:Hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (4 ms)</li><li>com.github.valid8j.ut.styles.MoreFluentListTest.test_isEmpty(com.github.valid8j.ut.styles.MoreFluentListTest) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[71: Given:<"HELLO">:When:<<>.equals(<hello>)->castTo[Boolean] THEN:isTrue>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.multiAssertAll_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test7(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.multiAssumeAll_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[29: Given:<"456">:When:<parseFloat THEN:(isInstanceOf[class java.lang.Float]&&=[123.0])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test5(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[85: Given:<"Bye">:When:<expectingException(Exception,throwRuntimeException) THEN:isInstanceOf[class com....tionalException]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (4 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[57: Given:<"hello">:When:<stringify THEN:==[hello]>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.examples.test.ExamplesTest.testClassicExample(com.github.valid8j.examples.test.ExamplesTest) (35 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test1(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[79: Given:<"124">:When:<parseBoolean->identity->castTo[Short] THEN:=[123]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[37: Given:<null>:When:<substring[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[16: Given:<["X"]>:When:<castTo[List<Object>] THEN:isEmpty>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[12: Given:<[]>:When:<subList[1,0] THEN:!isEmpty>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (7 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[2: Given:<false>:When:<isTrue>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[63: Given:<"hello">:When:<<>.equals(<hello>)->castTo[Boolean] THEN:isTrue>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[3: Given:<false>:When:<isTrue>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[41: Given:<null>:When:<parseFloat THEN:(isInstanceOf[class java.lang.Float]&&=[123.0])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.expectingDifferentException_testFailing(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[11: Given:<[]>:When:<subList[1] THEN:!isEmpty>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (14 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest.ensureState_passing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[81: Given:<"123.4">:When:<parseDouble->identity->castTo[Double] THEN:=[123.4]>:Then:<valueReturned:[identity=>identicalWith(value:123.4)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test5(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[66: Given:<"hello">:When:<java.util.Objects.equals(<hello>,<>)->castTo[Boolean] THEN:isTrue>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[18: Given:<["X"]>:When:<castTo[List<String>] THEN:isEmpty>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[82: Given:<"123.5">:When:<parseFloat->identity->castTo[Float] THEN:=[123.4]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[42: Given:<null>:When:<parseDouble THEN:(isInstanceOf[class java.lang.Double]&&=[123.0])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.entrypoints.AssertionsTest$Failing (29 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[32: Given:<"A">:When:<substringAfter[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[0: Given:<true>:When:<isTrue>:Then:<valueReturned:[identity=>identicalWith(value:true)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (9 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[9: Given:<["X"]>:When:<subList[1] THEN:!isEmpty>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (4 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test8(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[35: Given:<"A">:When:<parseFloat THEN:(isInstanceOf[class java.lang.Float]&&=[123.0])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[26: Given:<"456">:When:<substringAfter[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[6: Given:<["A","B","C"]>:When:<subList[1,3] THEN:!isEmpty>:Then:<valueReturned:[identity=>identicalWith(value:[A, B, C])]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireValue_passing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (1 ms)</li><li>com.github.valid8j.ut.styles.MoreFluentStringTest.test_contains(com.github.valid8j.ut.styles.MoreFluentStringTest) (1 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test8(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[69: Given:<"HELLO">:When:<<>.equals(<hello>)>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[73: Given:<"HELLO">:When:<isNull>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.stream_assertThatTest_passed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (0 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test4(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[67: Given:<"hello">:When:<<>.equals(<hello>)->castTo[Boolean] THEN:isTrue>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.examples.test.ExamplesTest.testFluentExample(com.github.valid8j.examples.test.ExamplesTest) (5 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[5: Given:<["A","B","C"]>:When:<subList[1] THEN:!isEmpty>:Then:<valueReturned:[identity=>identicalWith(value:[A, B, C])]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[77: Given:<"124">:When:<parseLong->identity->castTo[Long] THEN:=[123]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[60: Given:<"hello">:When:<java.util.Objects.equals(<hello>,<>)>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[38: Given:<null>:When:<substringAfter[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[75: Given:<"123">:When:<parseInt->identity->castTo[Integer] THEN:=[123]>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[46: Given:<null>:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Boolean]&&isTrue)>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.multiAssumeAll_passed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[13: Given:<[]>:When:<isEmpty>:Then:<valueReturned:[identity=>identicalWith(value:[])]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[17: Given:<[]>:When:<castTo[List<String>] THEN:isEmpty>:Then:<valueReturned:[identity=>identicalWith(value:[])]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[36: Given:<"A">:When:<parseDouble THEN:(isInstanceOf[class java.lang.Double]&&=[123.0])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[4: Given:<null>:When:<isTrue>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[51: Given:<"A:B">:When:<split[:] THEN:toCursoredList (findElementBy[[A]]&&findElementBy[[B]]&&findElementBy[[C]]&&(end))>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[76: Given:<"123">:When:<parseBoolean->identity->castTo[Short] THEN:=[123]>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[23: Given:<"123">:When:<parseFloat THEN:(isInstanceOf[class java.lang.Float]&&=[123.0])>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (5 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[15: Given:<[]>:When:<castTo[List<Object>] THEN:isEmpty>:Then:<valueReturned:[identity=>identicalWith(value:[])]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (7 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.string_assertThat_useValue_passed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (0 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[58: Given:<"hello">:When:<==[hello]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[78: Given:<"124">:When:<parseInt->identity->castTo[Integer] THEN:=[123]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Plural.test4(com.github.valid8j.entrypoints.ValidationFluentsTest$Plural) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.expectedExceptionThrown_testPassing(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (1 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest.requireStatesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForRequiresTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[43: Given:<"true">:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Boolean]&&isTrue)>:Then:<valueReturned:[identity=>identicalWith(value:true)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[49: Given:<"A:B:C">:When:<split[:] THEN:toCursoredList (findElementBy[isEqualTo[A]]&&findElementBy[isEqualTo[B]]&&findElementBy[isEqualTo[C]]&&(end))>:Then:<valueReturned:[identity=>identicalWith(value:A:B:C)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[56: Given:<"hello">:When:<==[hello]>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[62: Given:<"hello">:When:<java.util.Objects.equals(<hello>,<>)->castTo[Boolean] THEN:isTrue>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[61: Given:<"hello">:When:<<>.equals(<hello>)>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[34: Given:<"A">:When:<parseLong THEN:(isInstanceOf[class java.lang.Long]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[64: Given:<"hello">:When:<java.util.Objects.equals(<hello>,<>)>:Then:<valueReturned:[identity=>identicalWith(value:hello)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[59: Given:<"hello">:When:<stringify THEN:==[hello]>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[27: Given:<"456">:When:<parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[123])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[20: Given:<"123">:When:<substringAfter[1]->parseBoolean THEN:(isInstanceOf[class java.lang.Short]&&=[23])>:Then:<valueReturned:[identity=>identicalWith(value:123)]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (6 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[7: Given:<["A","B"]>:When:<subList[1] THEN:!isEmpty>:Then:<valueReturned:[identity=>identicalWith(value:[A, B])]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (3 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test3(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest.ensureValuesTest_failing(com.github.valid8j.ut.styles.FluentStyleDbCTest$ForEnsuresTest) (2 ms)</li><li>com.github.valid8j.entrypoints.ValidationFluentsTest$Singular.test7(com.github.valid8j.entrypoints.ValidationFluentsTest$Singular) (0 ms)</li><li>com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest.string_assertThatTest_failed(com.github.valid8j.ut.styles.FluentStyleTestAssertionTest$ForTestAssertionsTest) (0 ms)</li><li>com.github.valid8j.ut.styles.MoreFluentListTest.test_elementAt(com.github.valid8j.ut.styles.MoreFluentListTest) (1 ms)</li><li>com.github.valid8j.ut.styles.fluent.GeneralFluentTest.exerciseTestCase[30: Given:<"456">:When:<parseDouble THEN:(isInstanceOf[class java.lang.Double]&&=[123.0])>:Then:<exceptionThrown:ComparisonFailure:[numberOfActualSummaries=>greaterThanOrEqualTo(1), numbersOfExpectAndActualSummaries=>areEqual, numbersOfExpectAndActualSummariesWithDetails=>areEqual, numberOfExpectDetails=>greaterThanOrEqualTo(1), numbersOfExpectAndActualDetails=>areEqual]>](com.github.valid8j.ut.styles.fluent.GeneralFluentTest) (2 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.7.3
+
+</body>
+</html>
