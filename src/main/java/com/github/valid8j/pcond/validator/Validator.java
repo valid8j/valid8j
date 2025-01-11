@@ -462,11 +462,11 @@ public interface Validator {
     }
 
     static RuntimeException createException(ExceptionFactory<?> exceptionFactory, Explanation explanation) {
-      Throwable t = exceptionFactory.apply(explanation);
-      if (squashStackTraceElements(t) instanceof Error)
-        throw (Error) squashStackTraceElements(t);
-      if (squashStackTraceElements(t) instanceof RuntimeException)
-        throw (RuntimeException) squashStackTraceElements(t);
+      Throwable t = squashStackTraceElements(exceptionFactory.apply(explanation));
+      if (t instanceof Error)
+        throw (Error) t;
+      if (t instanceof RuntimeException)
+        throw (RuntimeException) t;
       throw new AssertionError(format("Checked exception(%s) cannot be used for validation.", squashStackTraceElements(t).getClass()), squashStackTraceElements(t));
     }
   }
