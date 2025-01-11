@@ -293,7 +293,7 @@ public interface Validator {
 
   /**
    * A method to check if a `value` satisfies a predicate `cond`.
-   * <p>
+   *
    * This method is intended to be used by {@code Assertions#that(Object, Predicate)} in valid8j library.
    * If the condition is not satisfied, an exception created by `this.exceptionComposer().forAssert().exceptionInvariantConditionViolation()`
    * method will be thrown.
@@ -312,7 +312,7 @@ public interface Validator {
 
   /**
    * A method to check if a `value` satisfies a predicate `cond`.
-   * <p>
+   *
    * This method is intended to be used by {@code Assertions#precondition(Object, Predicate)} in valid8j library.
    * If the condition is not satisfied, an exception created by `this.exceptionComposer().forAssert().exceptionPreconditionViolation()`
    * method will be thrown.
@@ -331,7 +331,7 @@ public interface Validator {
 
   /**
    * A method to check if a `value` satisfies a predicate `cond`.
-   * <p>
+   *
    * This method is intended to be used by {@code Assertions#postcondition(Object, Predicate)} in valid8j library.
    * If the condition is not satisfied, an exception created by `this.exceptionComposer().forAssert().exceptionPostconditionViolation()`
    * method will be thrown.
