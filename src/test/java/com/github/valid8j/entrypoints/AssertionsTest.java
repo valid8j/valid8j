@@ -10,6 +10,7 @@ import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 
 import java.util.Properties;
+import java.util.function.Function;
 
 import static org.junit.Assert.assertEquals;
 
@@ -155,6 +156,15 @@ public class AssertionsTest {
     @Test
     public void composeMessage$thenComposed() {
       assertEquals("Value:\"hello\" violated: isNull", new Validator.Impl(Validator.configurationFromProperties(new Properties())).configuration().messageComposer().composeMessageForAssertion("hello", Predicates.isNull()));
+    }
+
+    @Test
+    public void givenLambda$whenPreconditionExercised_thenTrueReturned() {
+      try {
+        assertTrue(Assertions.that((Function<String, Integer>)((String v) -> 2), Predicates.not(Predicates.isEqualTo(1))));
+      } catch (AssertionError e) {
+        throw new ExpectedException(e);
+      }
     }
   }
 

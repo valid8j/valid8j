@@ -8,6 +8,7 @@ import com.github.valid8j.pcond.core.fluent.Checker;
 import com.github.valid8j.pcond.core.fluent.Matcher;
 import com.github.valid8j.pcond.core.fluent.Transformer;
 import com.github.valid8j.pcond.core.fluent.builtins.*;
+import com.github.valid8j.pcond.core.refl.Parameter;
 import com.github.valid8j.pcond.fluent.ListHolder;
 import com.github.valid8j.pcond.fluent.Statement;
 import com.github.valid8j.pcond.forms.Functions;
@@ -624,6 +625,15 @@ public enum Expectations {
    */
   public static <E extends Throwable> ThrowableTransformer<E, E> value(E value) {
     return value(value, Statement::throwableValue);
+  }
+
+  /**
+   * Returns a place holder object useful for `invokeStatic` method.
+   *
+   * @return A place holder object.
+   */
+  public static Object parameter() {
+    return Parameter.INSTANCE;
   }
 
   /**
