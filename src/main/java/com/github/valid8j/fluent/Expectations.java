@@ -8,6 +8,7 @@ import com.github.valid8j.pcond.core.fluent.Checker;
 import com.github.valid8j.pcond.core.fluent.Matcher;
 import com.github.valid8j.pcond.core.fluent.Transformer;
 import com.github.valid8j.pcond.core.fluent.builtins.*;
+import com.github.valid8j.pcond.core.refl.Parameter;
 import com.github.valid8j.pcond.fluent.ListHolder;
 import com.github.valid8j.pcond.fluent.Statement;
 import com.github.valid8j.pcond.forms.Functions;
@@ -79,10 +80,10 @@ public enum Expectations {
 
   /**
    * Checks if all the given `statements` are satisfied.
-   *
+   * <p>
    * Otherwise, this method throws an exception whose message describes what happened (how expectations are not satisfied.)
    * This method is supposed to be used with `assert` statement of Java and when:
-   *
+   * <p>
    * - yor are checking invariant conditions in DbC ("Design by Contract") approach.
    * - you are not interested in DbC approach.
    *
@@ -95,10 +96,10 @@ public enum Expectations {
 
   /**
    * A "singular" version of {@link Expectations#all(Statement[])}.
-   *
+   * <p>
    * Prefer this method if you only have one statement to be asserted.
    * This method is supposed to be used with `assert` statement of Java and when:
-   *
+   * <p>
    * - yor are checking invariant conditions in DbC ("Design by Contract") approach.
    * - you are not interested in DbC approach.
    *
@@ -112,7 +113,7 @@ public enum Expectations {
 
   /**
    * Checks if all the given `statements` are satisfied.
-   *
+   * <p>
    * Otherwise, this method throws an exception whose message describes what happened (how expectations are not satisfied.)
    * This method is supposed to be used with `assert` statement of Java and when yor are checking preconditions in DbC ("Design by Contract") approach.
    *
@@ -125,7 +126,7 @@ public enum Expectations {
 
   /**
    * A "singular" version of {@link Expectations#preconditions(Statement[])}.
-   *
+   * <p>
    * Use this method if you only have one statement to be asserted.
    * This method is supposed to be used with `assert` statement of Java and when yor are checking a precondition in DbC ("Design by Contract") approach.
    *
@@ -139,7 +140,7 @@ public enum Expectations {
 
   /**
    * Checks if all the given `statements` are satisfied.
-   *
+   * <p>
    * Otherwise, this method throws an exception whose message describes what happened (how expectations are not satisfied.)
    * This method is supposed to be used with `assert` statement of Java and when yor are checking preconditions in DbC ("Design by Contract") approach.
    *
@@ -152,7 +153,7 @@ public enum Expectations {
 
   /**
    * A singular version of {@link Expectations#preconditions(Statement[])}.
-   *
+   * <p>
    * Use this method if you only have one statement to be asserted.
    * This method is supposed to be used with `assert` statement of Java and when yor are checking a precondition in DbC ("Design by Contract") approach.
    *
@@ -166,7 +167,7 @@ public enum Expectations {
 
   /**
    * Checks if all the given `statements` are satisfied.
-   *
+   * <p>
    * Otherwise, this method throws an exception whose message describes what happened (how expectations are not satisfied.)
    * This method is supposed to be used with `assert` statement of Java and when yor are checking post-conditions in DbC ("Design by Contract") approach.
    *
@@ -180,7 +181,7 @@ public enum Expectations {
 
   /**
    * A singular version of {@link Expectations#postconditions(Statement[])}.
-   *
+   * <p>
    * Use this method if you only have one statement to be asserted.
    * This method is supposed to be used with `assert` statement of Java and when yor are checking a post-condition in DbC ("Design by Contract") approach.
    *
@@ -627,6 +628,15 @@ public enum Expectations {
   }
 
   /**
+   * Returns a place holder object useful for `invokeStatic` method.
+   *
+   * @return A place holder object.
+   */
+  public static Object parameter() {
+    return Parameter.INSTANCE;
+  }
+
+  /**
    * Returns a checker to build a statement for the given `value`.
    * The checker is created by the given `checkerFactory` function.
    *
@@ -851,7 +861,7 @@ public enum Expectations {
   /**
    * Fluent version of {@link TestAssertions#assertThat(Object, Predicate)}.
    * Use this method when you need to verify multiple values.
-   *
+   * <p>
    * You can use {@link Expectations#assertStatement(Statement)}, if you have only one statement to be verified, for readability's sake.
    *
    * @param statements Statements to be verified
@@ -874,7 +884,7 @@ public enum Expectations {
   /**
    * Fluent version of {@link TestAssertions#assumeThat(Object, Predicate)}.
    * Use this method when you need to verify multiple values.
-   *
+   * <p>
    * You can use {@link Expectations#assumeStatement(Statement)}}, if you have only one statement to be verified, for readability's sake.
    *
    * @param statements Statements to be verified

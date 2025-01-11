@@ -6,20 +6,17 @@ import com.github.valid8j.pcond.internals.InternalUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Properties;
+import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-import static com.github.valid8j.pcond.internals.InternalUtils.toEvaluableIfNecessary;
-import static java.lang.String.format;
-import static java.util.Collections.emptyList;
 import static com.github.valid8j.pcond.validator.Validator.Configuration.Utils.instantiate;
 import static com.github.valid8j.pcond.validator.Validator.Configuration.Utils.loadPcondProperties;
+import static java.lang.String.format;
+import static java.util.Collections.emptyList;
 
 /**
  * An interface of a policy for behaviours on 'contract violations'.
@@ -120,7 +117,7 @@ public interface Validator {
         value,
         cond,
         this.configuration().messageComposer()::composeMessageForPrecondition,
-        explanation -> exceptionFactory.apply(explanation.toString()));
+        explanation -> squashStackTraceElements(exceptionFactory.apply(explanation.toString())));
   }
 
   /**
@@ -208,7 +205,17 @@ public interface Validator {
    * @return The value itself.
    */
   default <T> T validate(T value, Predicate<? super T> cond, Function<String, Throwable> exceptionFactory) {
-    return validate_2(value, cond, explanation -> exceptionFactory.apply(explanation.toString()));
+    return validate_2(value, cond, explanation -> squashStackTraceElements(exceptionFactory.apply(explanation.toString())));
+  }
+
+  static Throwable squashStackTraceElements(Throwable throwable) {
+    StackTraceElement[] stackTraceElements = throwable.getStackTrace();
+    StackTraceElement first = stackTraceElements[0];
+    throwable.setStackTrace(Stream.concat(Stream.of(new StackTraceElement(first.getClassName(), "STACKTRACE_WAS_SQUASHED", first.getFileName(), first.getLineNumber())),
+                                      Arrays.stream(stackTraceElements)
+                                            .filter(e -> !e.getClassName().startsWith("com.github.valid8j.")))
+                                  .toArray(StackTraceElement[]::new));
+    return throwable;
   }
 
   default <T> T validate_2(T value, Predicate<? super T> cond, ExceptionFactory<Throwable> exceptionFactory) {
@@ -281,12 +288,12 @@ public interface Validator {
         value,
         cond,
         configuration().messageComposer()::composeMessageForPostcondition,
-        explanation -> exceptionComposer.apply(explanation.toString()));
+        explanation -> squashStackTraceElements(exceptionComposer.apply(explanation.toString())));
   }
 
   /**
    * A method to check if a `value` satisfies a predicate `cond`.
-   *
+   * <p>
    * This method is intended to be used by {@code Assertions#that(Object, Predicate)} in valid8j library.
    * If the condition is not satisfied, an exception created by `this.exceptionComposer().forAssert().exceptionInvariantConditionViolation()`
    * method will be thrown.
@@ -305,7 +312,7 @@ public interface Validator {
 
   /**
    * A method to check if a `value` satisfies a predicate `cond`.
-   *
+   * <p>
    * This method is intended to be used by {@code Assertions#precondition(Object, Predicate)} in valid8j library.
    * If the condition is not satisfied, an exception created by `this.exceptionComposer().forAssert().exceptionPreconditionViolation()`
    * method will be thrown.
@@ -324,7 +331,7 @@ public interface Validator {
 
   /**
    * A method to check if a `value` satisfies a predicate `cond`.
-   *
+   * <p>
    * This method is intended to be used by {@code Assertions#postcondition(Object, Predicate)} in valid8j library.
    * If the condition is not satisfied, an exception created by `this.exceptionComposer().forAssert().exceptionPostconditionViolation()`
    * method will be thrown.
@@ -456,11 +463,11 @@ public interface Validator {
 
     static RuntimeException createException(ExceptionFactory<?> exceptionFactory, Explanation explanation) {
       Throwable t = exceptionFactory.apply(explanation);
-      if (t instanceof Error)
-        throw (Error) t;
-      if (t instanceof RuntimeException)
-        throw (RuntimeException) t;
-      throw new AssertionError(format("Checked exception(%s) cannot be used for validation.", t.getClass()), t);
+      if (squashStackTraceElements(t) instanceof Error)
+        throw (Error) squashStackTraceElements(t);
+      if (squashStackTraceElements(t) instanceof RuntimeException)
+        throw (RuntimeException) squashStackTraceElements(t);
+      throw new AssertionError(format("Checked exception(%s) cannot be used for validation.", squashStackTraceElements(t).getClass()), squashStackTraceElements(t));
     }
   }
 
@@ -560,15 +567,15 @@ public interface Validator {
 
     class Builder implements Cloneable {
       boolean useEvaluator;
-      int     summarizedStringLength;
+      int summarizedStringLength;
 
 
       MessageComposer messageComposer;
       ReportComposer reportComposer;
-      private ExceptionComposer.ForRequire       exceptionComposerForRequire;
-      private ExceptionComposer.ForEnsure        exceptionComposerForEnsure;
-      private ExceptionComposer.ForValidate      defaultExceptionComposerForValidate;
-      private ExceptionComposer.ForAssertion     exceptionComposerForAssert;
+      private ExceptionComposer.ForRequire exceptionComposerForRequire;
+      private ExceptionComposer.ForEnsure exceptionComposerForEnsure;
+      private ExceptionComposer.ForValidate defaultExceptionComposerForValidate;
+      private ExceptionComposer.ForAssertion exceptionComposerForAssert;
       private ExceptionComposer.ForTestAssertion exceptionComposerForTestFailures;
 
       public Builder() {
