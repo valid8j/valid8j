@@ -144,7 +144,7 @@ public interface Validator {
    * Otherwise, an exception created by `forValidate.exceptionForGeneralViolation()`
    * will be thrown.
    * This method is intended to be used by {@code Validates#validateNonNull(Object)}
-   * method in valid8j library.
+   * method in the **valid8j** library.
    *
    * @param value       The value to be checked.
    * @param forValidate An exception composer for "validate" methods.
@@ -196,7 +196,7 @@ public interface Validator {
    * If the value satisfies a condition `cond`, the value itself will be returned.
    * Otherwise, an exception created by `exceptionFactory` will be thrown.
    * This method is intended to be used by {@code Validates#validate(Object, Predicate, Function)}
-   * method in valid8j library.
+   * method in the **valid8j** library.
    *
    * @param value            The value to be checked.
    * @param cond             A condition to validate the `value`.
@@ -467,7 +467,7 @@ public interface Validator {
         throw (Error) t;
       if (t instanceof RuntimeException)
         throw (RuntimeException) t;
-      throw new AssertionError(format("Checked exception(%s) cannot be used for validation.", squashStackTraceElements(t).getClass()), squashStackTraceElements(t));
+      throw new AssertionError(format("Checked exception(%s) cannot be used for validation.", t.getClass()), t);
     }
   }
 
