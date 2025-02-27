@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import static com.github.valid8j.pcond.internals.InternalUtils.*;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 import static java.lang.String.format;
@@ -68,10 +69,10 @@ public interface ReportComposer {
   }
 
   class FormattedEntry {
-    private final String  input;
-    private final String  formName;
-    private final String  indent;
-    private final String  output;
+    private final String input;
+    private final String formName;
+    private final String indent;
+    private final String output;
     private final boolean requiresExplanation;
 
     public FormattedEntry(String input, String formName, String indent, String output, boolean requiresExplanation) {
@@ -135,30 +136,30 @@ public interface ReportComposer {
 
     public static FormattedEntry createFormattedEntryForExpectation(ReportComposer reportComposer, EvaluationEntry entry) {
       return new FormattedEntry(
-          InternalUtils.formatObject(entry.inputExpectation()),
+          formatObject(entry.inputExpectation()),
           entry.formName(),
           InternalUtils.indent(entry.level()),
-          InternalUtils.formatObject(entry.outputExpectation()),
+          formatObject(entry.outputExpectation()),
           reportComposer.requiresExplanation(entry));
     }
 
     public static FormattedEntry createFormattedEntryForActualValue(ReportComposer reportComposer, EvaluationEntry entry) {
       return new FormattedEntry(
-          InternalUtils.formatObject(entry.inputActualValue()),
+          formatObject(entry.inputActualValue()),
           entry.formName(),
           InternalUtils.indent(entry.level()),
-          InternalUtils.formatObject(entry.outputActualValue()),
+          formatObject(entry.outputActualValue()),
           reportComposer.requiresExplanation(entry));
     }
 
     private static List<FormattedEntry> minimizeIndentation(List<FormattedEntry> summaryForActual) {
       String minIndent = summaryForActual.stream()
-          .map(e -> e.indent)
-          .min(Comparator.comparingInt(String::length))
-          .orElse("");
+                                         .map(e -> e.indent)
+                                         .min(Comparator.comparingInt(String::length))
+                                         .orElse("");
       return summaryForActual.stream()
-          .map(e -> new FormattedEntry(e.input, e.formName(), e.indent().replaceFirst(minIndent, ""), e.output, e.requiresExplanation()))
-          .collect(toList());
+                             .map(e -> new FormattedEntry(e.input, e.formName(), e.indent().replaceFirst(minIndent, ""), e.output, e.requiresExplanation()))
+                             .collect(toList());
     }
 
     private static List<EvaluationEntry> squashTrivialEntries(ReportComposer reportComposer, List<EvaluationEntry> evaluationHistory) {
@@ -167,33 +168,33 @@ public interface ReportComposer {
         List<EvaluationEntry> entriesToSquash = new LinkedList<>();
         AtomicReference<EvaluationEntry> cur = new AtomicReference<>();
         evaluationHistory.stream()
-            .filter(each -> !each.ignored() || DebuggingUtils.reportIgnoredEntries())
-            .filter(each -> {
-              if (cur.get() != null)
-                return true;
-              else {
-                cur.set(each);
-                return false;
-              }
-            })
-            .forEach(each -> {
-              if (entriesToSquash.isEmpty()) {
-                if (cur.get().isSquashable(each) && !suppressSquashing()) {
-                  entriesToSquash.add(cur.get());
-                } else {
-                  ret.add(cur.get());
-                }
-              } else {
-                entriesToSquash.add(cur.get());
-                ret.add(squashEntries(reportComposer, entriesToSquash));
-                entriesToSquash.clear();
-              }
-              cur.set(each);
-            });
+                         .filter(each -> !each.ignored() || DebuggingUtils.reportIgnoredEntries())
+                         .filter(each -> {
+                           if (cur.get() != null)
+                             return true;
+                           else {
+                             cur.set(each);
+                             return false;
+                           }
+                         })
+                         .forEach(each -> {
+                           if (entriesToSquash.isEmpty()) {
+                             if (cur.get().isSquashable(each) && !suppressSquashing()) {
+                               entriesToSquash.add(cur.get());
+                             } else {
+                               ret.add(cur.get());
+                             }
+                           } else {
+                             entriesToSquash.add(cur.get());
+                             ret.add(squashEntries(reportComposer, entriesToSquash));
+                             entriesToSquash.clear();
+                           }
+                           cur.set(each);
+                         });
         finishLeftOverEntries(reportComposer, ret, entriesToSquash, cur);
         return ret.stream()
-            .filter(e -> !(e.inputActualValue() instanceof ValueHolder))
-            .collect(toList());
+                  .filter(e -> !(e.inputActualValue() instanceof ValueHolder))
+                  .collect(toList());
       } else {
         return new ArrayList<>(evaluationHistory);
       }
@@ -214,9 +215,9 @@ public interface ReportComposer {
       EvaluationEntry first = squashedItems.get(0);
       return EvaluationEntry.create(
           squashedItems.stream()
-              .map(e -> (EvaluationEntry.Impl) e)
-              .map(EvaluationEntry::formName)
-              .collect(joining(":")),
+                       .map(e -> (EvaluationEntry.Impl) e)
+                       .map(EvaluationEntry::formName)
+                       .collect(joining(":")),
           first.type(),
           first.level(),
           first.inputExpectation(), first.detailInputExpectation(),
@@ -234,10 +235,10 @@ public interface ReportComposer {
 
     private static String computeDetailOutputExpectationFromSquashedItems(List<EvaluationEntry> squashedItems) {
       return squashedItems.stream()
-          .filter(e -> e.type() != EvaluationEntry.Type.TRANSFORM && e.type() != EvaluationEntry.Type.CHECK)
-          .map(EvaluationEntry::detailOutputExpectation)
-          .map(Objects::toString)
-          .collect(joining(":"));
+                          .filter(e -> e.type() != EvaluationEntry.Type.TRANSFORM && e.type() != EvaluationEntry.Type.CHECK)
+                          .map(EvaluationEntry::detailOutputExpectation)
+                          .map(Objects::toString)
+                          .collect(joining(":"));
     }
 
     private static void addToDetailsListIfExplanationIsRequired(ReportComposer reportComposer, List<Object> detailsForExpectation, EvaluationEntry evaluationEntry, Supplier<Object> detailOutput) {
@@ -248,9 +249,9 @@ public interface ReportComposer {
     static Report composeReport(String summary, List<Object> details) {
       List<String> stringFormDetails = details != null ?
           details.stream()
-              .filter(Objects::nonNull)
-              .map(Objects::toString)
-              .collect(toList()) :
+                 .filter(Objects::nonNull)
+                 .map(Objects::toString)
+                 .collect(toList()) :
           emptyList();
       return Report.create(summary, stringFormDetails);
     }
@@ -289,16 +290,18 @@ public interface ReportComposer {
               format("%-4s", formattedEntry.requiresExplanation ?
                   "[" + i.getAndIncrement() + "]" : "") :
               "") +
-              String.format("%-" + max(2, inputColumnWidth) + "s" +
-                      "%-" + (formNameColumnLength + 2) + "s" +
-                      "%-" + max(2, outputColumnLength) + "s",
-                  formattedEntry.input().orElse(""),
-                  formattedEntry.input()
-                      .map(v -> "->")
-                      .orElse("  ") + InternalUtils.formatObject(InternalUtils.toNonStringObject(formattedEntry.indent() + formattedEntry.formName()), formNameColumnLength - 2),
-                  formattedEntry
-                      .output()
-                      .map(v -> "->" + v).orElse(""));
+          formatFields(inputColumnWidth, formNameColumnLength, outputColumnLength, formattedEntry);
+    }
+
+    private static String formatFields(int inputColumnWidth, int formNameColumnLength, int outputColumnLength, FormattedEntry formattedEntry) {
+      return formatInSpecifiedWidth(max(2, inputColumnWidth), formattedEntry.input()
+                                                                            .orElse("")) +
+             formatInSpecifiedWidth(formNameColumnLength + 2, formattedEntry.input()
+                                                                            .map(v -> "->")
+                                                                            .orElse("  ") + formatObject(toNonStringObject(formattedEntry.indent() + formattedEntry.formName()), formNameColumnLength - 2)) +
+             formatInSpecifiedWidth(max(2, outputColumnLength), formattedEntry.output()
+                                                                              .map(v -> "->" + v)
+                                                                              .orElse(""));
     }
 
     private static String evaluatorEntriesToString(List<FormattedEntry> formattedEntries, Function<int[], Function<FormattedEntry, String>> formatterFactory) {
@@ -318,7 +321,7 @@ public interface ReportComposer {
           DebuggingUtils.showEvaluableDetail() ? 80 : 12,
           Math.min(InternalUtils.summarizedStringLength(), maxIndentAndFormNameLength))) + formNameColumnLength % 2;
       Function<FormattedEntry, String> formatter = formatterFactory.apply(
-          new int[] { maxInputLength, formNameColumnLength, maxOutputLength });
+          new int[]{maxInputLength, formNameColumnLength, maxOutputLength});
       return formattedEntries
           .stream()
           .map(formatter)
@@ -329,15 +332,15 @@ public interface ReportComposer {
     private static List<FormattedEntry> hideInputValuesWhenRepeated(List<FormattedEntry> formattedEntries) {
       AtomicReference<Object> previousInput = new AtomicReference<>();
       return formattedEntries.stream()
-          .map(each -> {
-            if (!Objects.equals(previousInput.get(), each.input())) {
-              previousInput.set(each.input());
-              return each;
-            } else {
-              return new FormattedEntry("", each.formName(), each.indent(), each.output().orElse(null), each.requiresExplanation());
-            }
-          })
-          .collect(toList());
+                             .map(each -> {
+                               if (!Objects.equals(previousInput.get(), each.input())) {
+                                 previousInput.set(each.input());
+                                 return each;
+                               } else {
+                                 return new FormattedEntry("", each.formName(), each.indent(), each.output().orElse(null), each.requiresExplanation());
+                               }
+                             })
+                             .collect(toList());
     }
 
 

@@ -310,4 +310,43 @@ public enum InternalUtils {
   public static <T> Function<T, T> trivialIdentityFunction() {
     return Functions.identity();
   }
+
+  public static int estimateWidth(String text) {
+    int width = 0;
+
+    for (char ch : text.toCharArray()) {
+      if (isFullWidth(ch)) {
+        width += 2; // Full-width character
+      } else {
+        width += 1; // Half-width character
+      }
+    }
+
+    return width;
+  }
+
+  private static boolean isFullWidth(char ch) {
+    int codePoint = (int) ch;
+
+    // Unicode ranges for full-width characters
+    return (codePoint >= 0x1100 && codePoint <= 0x115F) || // Hangul Jamo
+           (codePoint >= 0x2E80 && codePoint <= 0xA4CF) || // CJK, Yi, and others
+           (codePoint >= 0xAC00 && codePoint <= 0xD7A3) || // Hangul Syllables
+           (codePoint >= 0xF900 && codePoint <= 0xFAFF) || // CJK Compatibility Ideographs
+           (codePoint >= 0xFE30 && codePoint <= 0xFE6F) || // CJK Compatibility Forms
+           (codePoint >= 0xFF00 && codePoint <= 0xFFEF);   // Full-width Latin letters, digits, punctuation
+  }
+
+  public static void main(String[] args) {
+    String text = "Hello, 世界！";
+    int estimatedWidth = estimateWidth(text);
+    System.out.println("Estimated width: " + estimatedWidth);
+  }
+
+  public static String formatInSpecifiedWidth(int width, Object s) {
+    int numCharacters = Objects.toString(s).length();
+    int estimatedWidth = estimateWidth(Objects.toString(s));
+
+    return format("%-" + (width - (estimatedWidth - numCharacters))+ "s", s);
+  }
 }
