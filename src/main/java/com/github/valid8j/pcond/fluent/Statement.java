@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
+import static com.github.valid8j.pcond.forms.Functions.elementAt;
 import static com.github.valid8j.pcond.forms.Predicates.allOf;
 import static com.github.valid8j.pcond.forms.Predicates.transform;
 import static com.github.valid8j.pcond.internals.InternalUtils.makeSquashable;
@@ -30,9 +31,9 @@ public interface Statement<T> {
   static Predicate<? super List<?>> createPredicateForAllOf(Statement<?>[] statements) {
     AtomicInteger i = new AtomicInteger(0);
     @SuppressWarnings("unchecked") Predicate<? super List<?>>[] predicates = Arrays.stream(statements)
-        .map(e -> makeSquashable(transform(Functions.elementAt(i.getAndIncrement())).check("WHEN", (Predicate<? super Object>) e.statementPredicate())))
+        .map(e -> (transform(elementAt(i.getAndIncrement())).check("WHEN", (Predicate<? super Object>) e.statementPredicate())))
         .toArray(Predicate[]::new);
-    return makeSquashable(allOf(predicates));
+    return (allOf(predicates));
   }
 
   /**

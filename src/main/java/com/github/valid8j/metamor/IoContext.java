@@ -58,7 +58,7 @@ public interface IoContext<I, O> {
 
     public static <I, O> Function<Ongoing<I, O>, IoContext<I, O>> toCloseFunction(String contextName) {
       // close
-      return ((PrintableFunction<Ongoing<I, O>, IoContext<I, O>>) Printables.<Ongoing<I, O>, IoContext<I, O>>function(() -> "end:" + contextName, Ongoing::close)).makeTrivial();
+      return ((PrintableFunction<Ongoing<I, O>, IoContext<I, O>>) Printables.<Ongoing<I, O>, IoContext<I, O>>function(() -> "end:" + contextName, Ongoing::close)).markSquashable();
     }
 
     public static <I, O> Function<IoContext<I, O>, Dataset<O>> toOutputExtractorFunction(String contextName) {

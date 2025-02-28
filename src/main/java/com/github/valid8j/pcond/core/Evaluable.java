@@ -43,7 +43,7 @@ public interface Evaluable<T> {
     return false;
   }
 
-  default Evaluable<T> makeTrivial() {
+  default Evaluable<T> markSquashable() {
     throw new UnsupportedOperationException();
   }
 
