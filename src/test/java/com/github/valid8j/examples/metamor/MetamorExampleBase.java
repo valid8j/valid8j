@@ -228,7 +228,7 @@ public abstract class MetamorExampleBase {
     return ((PrintableFunction<String, String>) Printables.function("toUpperCase", (String s) -> {
       System.out.println("s:" + s);
       return s.toUpperCase();
-    })).makeTrivial();
+    })).markSquashable();
   }
 
   private static Function<String, String> createFunction() {

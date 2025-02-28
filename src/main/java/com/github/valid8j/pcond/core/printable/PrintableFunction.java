@@ -23,7 +23,7 @@ public class PrintableFunction<T, R> extends
   private final Supplier<String>                 formatter;
   private final Function<?, R>                   tailAsFunction;
 
-  boolean trivial = false;
+  boolean squashable = false;
 
   @SuppressWarnings("unchecked")
   protected PrintableFunction(Object creator, List<Object> args, Supplier<String> s, Function<? super T, ? extends R> function, Function<? super T, ?> head, Evaluable<?> tail) {
@@ -122,13 +122,13 @@ public class PrintableFunction<T, R> extends
 
 
   public boolean isSquashable() {
-    return this.trivial;
+    return this.squashable;
   }
 
   @Override
-  public PrintableFunction<T, R> makeTrivial() {
+  public PrintableFunction<T, R> markSquashable() {
     PrintableFunction<T, R> ret = this.clone();
-    ret.trivial = true;
+    ret.squashable = true;
     return ret;
   }
 

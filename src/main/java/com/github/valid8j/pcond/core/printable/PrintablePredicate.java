@@ -71,7 +71,7 @@ public abstract class PrintablePredicate<T> extends Identifiable.Base implements
   }
 
   @Override
-  public PrintablePredicate<T> makeTrivial() {
+  public PrintablePredicate<T> markSquashable() {
     PrintablePredicate<T> ret = this.clone();
     ret.squashable = true;
     return ret;

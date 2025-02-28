@@ -291,7 +291,7 @@ public enum InternalUtils {
    * @return A predicate marked trivial.
    */
   public static <T> Predicate<T> makeSquashable(Predicate<T> predicate) {
-    return ((PrintablePredicate<T>) predicate).makeTrivial();
+    return ((PrintablePredicate<T>) predicate).markSquashable();
   }
 
   /**
@@ -304,7 +304,7 @@ public enum InternalUtils {
    * @return A function marked trivial.
    */
   public static <T, R> Function<T, R> makeSquashable(Function<T, R> function) {
-    return ((PrintableFunction<T, R>) function).makeTrivial();
+    return ((PrintableFunction<T, R>) function).markSquashable();
   }
 
   public static <T> Function<T, T> trivialIdentityFunction() {
