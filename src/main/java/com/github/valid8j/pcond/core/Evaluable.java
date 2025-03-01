@@ -253,26 +253,30 @@ public interface Evaluable<T> {
     Evaluable<E> cut();
 
     /**
+     * // @formatter:off
      * Returns a value to make a "cut" happen.
-     * <p>
+     *
      * A "cut" is a situation, where an evaluation process for the elements in the
      * stream is ended without reaching the last one.
      * This is necessary to model a functionalities of `Stream`, such as
      * `allMatch`, `noneMatch`, and `anyMatch`.
+     * // @formatter:on
      *
      * @return value ( `true` / `false` ) to make a "cut" happen.
      */
     boolean valueToCut();
 
     /**
+     * // @formatter:off
      * In order to generate an informative report, the framework needs information
      * about the expected value for each predicate.
-     * <p>
+     *
      * The "expected" value of a predicate can be different inside the tree of the `Evaluables`,
      * when a negation is used.
-     * <p>
+     *
      * If this `Evaluable` node requests to flip the expectation value under the node,
      * this method should return `true`.
+     * // @formatter:on
      *
      * @return `true`, if the expectation flip is requested.
      */
