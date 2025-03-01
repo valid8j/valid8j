@@ -71,7 +71,7 @@ public class Valid8JExample {
     }
 
     public String toString() {
-      return "Salute[Hello]" + System.identityHashCode(this);
+      return "Salute[Hello]@" + System.identityHashCode(this);
     }
   }
 }
