@@ -13,6 +13,7 @@ public abstract class PrintablePredicate<T> extends Identifiable.Base implements
   protected final Predicate<? super T> predicate;
   final           Supplier<String>     formatter;
   boolean squashable = false;
+  private boolean trivial = false;
 
   protected PrintablePredicate(Object creator, List<Object> args, Supplier<String> formatter, Predicate<? super T> predicate) {
     super(creator, args);
@@ -45,7 +46,6 @@ public abstract class PrintablePredicate<T> extends Identifiable.Base implements
     return PrintablePredicateFactory.not(this);
   }
 
-  @SuppressWarnings("unchecked")
   static <T> Predicate<? super T> unwrap(Predicate<? super T> predicate) {
     Predicate<? super T> ret = predicate;
     if (predicate instanceof PrintablePredicate) {
@@ -66,14 +66,27 @@ public abstract class PrintablePredicate<T> extends Identifiable.Base implements
   }
 
 
+  @Override
   public boolean isSquashable() {
     return this.squashable;
+  }
+
+  @Override
+  public boolean isTrivial() {
+    return this.trivial;
   }
 
   @Override
   public PrintablePredicate<T> markSquashable() {
     PrintablePredicate<T> ret = this.clone();
     ret.squashable = true;
+    return ret;
+  }
+
+  @Override
+  public PrintablePredicate<T> markTrivial() {
+    PrintablePredicate<T> ret = this.clone();
+    ret.trivial = true;
     return ret;
   }
 

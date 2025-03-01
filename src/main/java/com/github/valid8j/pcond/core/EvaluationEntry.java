@@ -77,11 +77,12 @@ import static com.github.valid8j.pcond.core.EvaluationEntry.Type.*;
  * // @formatter:on
  */
 public abstract class EvaluationEntry {
-  private final Type   type;
+  private final Type type;
   /**
    * A name of a form (evaluable; function, predicate)
    */
   private final String formName;
+  private final boolean trivial;
   int level;
 
   Object inputExpectation;
@@ -99,7 +100,7 @@ public abstract class EvaluationEntry {
    */
   final boolean squashable;
 
-  EvaluationEntry(String formName, Type type, int level, Object inputExpectation_, Object detailInputExpectation_, Object outputExpectation, Object detailOutputExpectation, Object inputActualValue, Object detailInputActualValue, boolean squashable) {
+  EvaluationEntry(String formName, Type type, int level, Object inputExpectation_, Object detailInputExpectation_, Object outputExpectation, Object detailOutputExpectation, Object inputActualValue, Object detailInputActualValue, boolean squashable, boolean trivial) {
     this.type = type;
     this.level = level;
     this.formName = formName;
@@ -110,6 +111,7 @@ public abstract class EvaluationEntry {
     this.inputActualValue = inputActualValue;
     this.detailInputActualValue = detailInputActualValue;
     this.squashable = squashable;
+    this.trivial = trivial;
   }
 
   public String formName() {
@@ -181,8 +183,8 @@ public abstract class EvaluationEntry {
     if (throwable.getMessage() == null)
       return null;
     return Arrays.stream(throwable.getMessage().split("\n"))
-        .map(s -> "> " + s)
-        .collect(joining(String.format("%n")));
+                 .map(s -> "> " + s)
+                 .collect(joining(String.format("%n")));
   }
 
   static <T, E extends Evaluable<T>> Object computeInputActualValue(EvaluableIo<T, E, ?> evaluableIo) {
@@ -220,33 +222,37 @@ public abstract class EvaluationEntry {
     AtomicReference<StackTraceElement> firstInternalStackElement = new AtomicReference<>();
     String lastPackageNameElementPattern = "\\.[a-zA-Z0-9_.]+$";
     String internalPackageName = Validator.class.getPackage().getName()
-        .replaceFirst(lastPackageNameElementPattern, "")
-        .replaceFirst(lastPackageNameElementPattern, "");
+                                                .replaceFirst(lastPackageNameElementPattern, "")
+                                                .replaceFirst(lastPackageNameElementPattern, "");
     return Arrays.stream(throwable.getStackTrace())
-        .filter(e -> {
-          if (e.getClassName().startsWith(internalPackageName)) {
-            if (firstInternalStackElement.get() == null) {
-              firstInternalStackElement.set(e);
-              return true;
-            }
-            return false;
-          }
-          firstInternalStackElement.set(null);
-          return true;
-        })
-        .map(e -> {
-          if (e.getClassName().startsWith(internalPackageName)) {
-            return new StackTraceElement("...internal.package.InternalClass", "internalMethod", "InternalClass.java", 0);
-          }
-          return e;
-        })
-        .collect(toList());
+                 .filter(e -> {
+                   if (e.getClassName().startsWith(internalPackageName)) {
+                     if (firstInternalStackElement.get() == null) {
+                       firstInternalStackElement.set(e);
+                       return true;
+                     }
+                     return false;
+                   }
+                   firstInternalStackElement.set(null);
+                   return true;
+                 })
+                 .map(e -> {
+                   if (e.getClassName().startsWith(internalPackageName)) {
+                     return new StackTraceElement("...internal.package.InternalClass", "internalMethod", "InternalClass.java", 0);
+                   }
+                   return e;
+                 })
+                 .collect(toList());
   }
 
   private static boolean returnedValueOrVoidIfSkipped(boolean expectationFlipped, EvaluableIo<?, ?, ?> io) {
     if (io.output().state() == State.EVALUATION_SKIPPED)
       return false;
     return expectationFlipped ^ !(Boolean) io.output().returnedValue();
+  }
+
+  public boolean isTrivial() {
+    return this.trivial;
   }
 
   public enum Type {
@@ -329,8 +335,8 @@ public abstract class EvaluationEntry {
   }
 
   static class Finalized extends EvaluationEntry {
-    final         Object  outputActualValue;
-    final         Object  detailOutputActualValue;
+    final Object outputActualValue;
+    final Object detailOutputActualValue;
     private final boolean requiresExplanation;
     private final boolean ignored;
 
@@ -342,12 +348,13 @@ public abstract class EvaluationEntry {
         Object outputExpectation, Object detailOutputExpectation,
         Object inputActualValue, Object detailInputActualValue,
         Object outputActualValue, Object detailOutputActualValue,
-        boolean squashable, boolean requiresExplanation, boolean ignored) {
+        boolean squashable, boolean trivial, boolean requiresExplanation, boolean ignored) {
       super(
           formName, type, level,
           inputExpectation_, detailInputExpectation_,
           outputExpectation, detailOutputExpectation,
-          inputActualValue, detailInputActualValue, squashable);
+          inputActualValue, detailInputActualValue,
+          squashable, trivial);
       this.outputActualValue = outputActualValue;
       this.detailOutputActualValue = detailOutputActualValue;
       this.requiresExplanation = requiresExplanation;
@@ -382,7 +389,7 @@ public abstract class EvaluationEntry {
       Object outputExpectation, Object detailOutputExpectation,
       Object inputActualValue, Object detailInputActualValue,
       Object outputActualValue, Object detailOutputActualValue,
-      boolean trivial, boolean requiresExplanation, boolean ignored) {
+      boolean squashable, boolean trivial, boolean requiresExplanation, boolean ignored) {
     return new Finalized(
         formName, type,
         level,
@@ -390,19 +397,19 @@ public abstract class EvaluationEntry {
         outputExpectation, detailOutputExpectation,
         inputActualValue, detailInputActualValue,
         outputActualValue, detailOutputActualValue,
-        trivial, requiresExplanation, ignored
+        squashable, trivial, requiresExplanation, ignored
     );
   }
 
   public static class Impl extends EvaluationEntry {
 
     private final EvaluableIo<?, ?, ?> evaluableIo;
-    private final boolean              expectationFlipped;
-    private       boolean              ignored;
+    private final boolean expectationFlipped;
+    private boolean ignored;
 
     private boolean finalized = false;
-    private Object  outputActualValue;
-    private Object  detailOutputActualValue;
+    private Object outputActualValue;
+    private Object detailOutputActualValue;
 
     <T, E extends Evaluable<T>> Impl(
         EvaluationContext<T> evaluationContext,
@@ -417,7 +424,8 @@ public abstract class EvaluationEntry {
           explainOutputExpectation(evaluableIo.evaluable(), evaluableIo),      // detailOutputExpectation
           computeInputActualValue(evaluableIo),                   // inputActualValue
           explainInputActualValue(evaluableIo.evaluable(), computeInputActualValue(evaluableIo)), // detailInputActualValue
-          evaluableIo.evaluable().isSquashable());
+          evaluableIo.evaluable().isSquashable(),
+          evaluableIo.evaluable().isTrivial());
       this.evaluableIo = evaluableIo;
       this.expectationFlipped = evaluationContext.isExpectationFlipped();
       this.ignored = false;
@@ -472,10 +480,10 @@ public abstract class EvaluationEntry {
     public String formName() {
       if (DebuggingUtils.showEvaluableDetail())
         return evaluableIo.formName() + "(" +
-            evaluableIo.evaluableType() + ":" +
-            evaluableIo.input().creatorFormType() + ":" +
-            evaluableIo.output().creatorFormType() +
-            (finalized && this.ignored() ? ":ignored" : "") + ")";
+               evaluableIo.evaluableType() + ":" +
+               evaluableIo.input().creatorFormType() + ":" +
+               evaluableIo.output().creatorFormType() +
+               (finalized && this.ignored() ? ":ignored" : "") + ")";
       return this.evaluableIo.formName();
     }
 
@@ -485,7 +493,7 @@ public abstract class EvaluationEntry {
       this.detailOutputActualValue = explainActual(evaluableIo());
       this.ignored =
           (this.evaluableIo.evaluableType() == TRANSFORM_AND_CHECK && this.evaluableIo.formName().equals("transformAndCheck")) ||
-              (this.evaluableIo.evaluableType() == FUNCTION && this.evaluableIo.output().creatorFormType() == FUNC_TAIL);
+          (this.evaluableIo.evaluableType() == FUNCTION && this.evaluableIo.output().creatorFormType() == FUNC_TAIL);
       this.finalized = true;
     }
 

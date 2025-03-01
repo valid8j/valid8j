@@ -283,6 +283,18 @@ public enum InternalUtils {
   }
 
   /**
+   * Marks "squashable" a given predicate.
+   * A predicate marked trivial will be folded in an execution report, where possible.
+   *
+   * @param predicate A predicate to be marked.
+   * @param <T>      Input type of the function.
+   * @return A predicate marked squashable.
+   */
+  public static <T> Predicate<T> makeSquashable(Predicate<T> predicate) {
+    return ((PrintablePredicate<T>) predicate).markSquashable();
+  }
+
+  /**
    * Marks "trivial" a given function.
    * A predicate marked trivial will not appear in an execution report.
    *
@@ -290,8 +302,21 @@ public enum InternalUtils {
    * @param <T>      Input type of the function.
    * @return A predicate marked trivial.
    */
-  public static <T> Predicate<T> makeSquashable(Predicate<T> predicate) {
-    return ((PrintablePredicate<T>) predicate).markSquashable();
+  public static <T> Predicate<T> makeTrivial(Predicate<T> predicate) {
+    return ((PrintablePredicate<T>) predicate).markTrivial();
+  }
+
+  /**
+   * Marks "squashable" given function.
+   * A function marked trivial will be folded in an execution report, where possible.
+   *
+   * @param function A function to marked.
+   * @param <T>      Input type of the function.
+   * @param <R>      Output type of the function.
+   * @return A function marked squashable.
+   */
+  public static <T, R> Function<T, R> makeSquashable(Function<T, R> function) {
+    return ((PrintableFunction<T, R>) function).markSquashable();
   }
 
   /**
@@ -303,8 +328,8 @@ public enum InternalUtils {
    * @param <R>      Output type of the function.
    * @return A function marked trivial.
    */
-  public static <T, R> Function<T, R> makeSquashable(Function<T, R> function) {
-    return ((PrintableFunction<T, R>) function).markSquashable();
+  public static <T, R> Function<T, R> makeTrivial(Function<T, R> function) {
+    return ((PrintableFunction<T, R>) function).markTrivial();
   }
 
   public static <T> Function<T, T> trivialIdentityFunction() {

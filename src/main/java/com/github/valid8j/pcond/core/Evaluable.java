@@ -9,6 +9,7 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 /**
+ * // @formatter:off
  * An interface that models "forms".
  * A form is a general idea that covers predicates, functions, and "special-forms".
  *
@@ -26,6 +27,7 @@ import java.util.stream.Stream;
  * Just showing the actual value of `v` is not sufficient, because the `v` and the
  * predicates in the evaluation might have internal structures or logics that make
  * it difficult/impossible to infer which predicate is violated.
+ * // @formatter:on
  *
  * @param <T> The type of the value evaluated by this object.
  */
@@ -39,13 +41,46 @@ public interface Evaluable<T> {
    */
   <O> void accept(EvaluableIo<T, Evaluable<T>, O> evaluableIo, EvaluationContext<T> evaluationContext, Evaluator evaluator);
 
+  /**
+   * Returns if this object can be folded in a test failure report.
+   *
+   * @return true - squashable / false - otherwise.
+   */
   default boolean isSquashable() {
     return false;
   }
 
+  /**
+   * Returns if this object can be skipped in a test failure report.
+   *
+   * @return true - can be skipped / false - otherwise.
+   */
+  default boolean isTrivial() {
+    return false;
+  }
+
+
+  /**
+   * Marks this object squashable so that an entry in a failure report can be folded where possible.
+   * This method is overridden by an implementation that allows the behavior described above.
+   *
+   * @return A cloned object marked squashable.
+   */
   default Evaluable<T> markSquashable() {
     throw new UnsupportedOperationException();
   }
+
+
+  /**
+   * Marks this object trivial so that an entry in a failure report can be skipped.
+   * This method is overridden by an implementation that allows the behavior described above.
+   *
+   * @return A cloned object marked ignored.
+   */
+  default Evaluable<T> markTrivial() {
+    throw new UnsupportedOperationException();
+  }
+
 
   /**
    * A base interface to model all the predicates in the model of the evaluation
@@ -70,6 +105,8 @@ public interface Evaluable<T> {
     List<Evaluable<T>> children();
 
     /**
+     * // @formatter:on
+     *
      * Returns `true` if the "shortcut" evaluation is enabled.
      *
      * Suppose you have a following predicate.
@@ -87,6 +124,7 @@ public interface Evaluable<T> {
      * Otherwise, we cannot avoid getting into a fail->fix->run->fail... loop,
      * sometimes.
      *
+     * // @formatter:off
      * @return `true` if the "shortcut" evaluation is enabled.
      */
     boolean shortcut();
@@ -103,7 +141,7 @@ public interface Evaluable<T> {
    * @param <T> The type of the value to be evaluated.
    */
   interface Conjunction<T> extends Composite<T> {
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     @Override
     default <O> void accept(EvaluableIo<T, Evaluable<T>, O> evaluableIo, EvaluationContext<T> evaluationContext, Evaluator evaluator) {
       evaluator.evaluateConjunction((EvaluableIo<T, Conjunction<T>, Boolean>) (EvaluableIo) evaluableIo, evaluationContext);
@@ -116,7 +154,7 @@ public interface Evaluable<T> {
    * @param <T> The type of the value to be evaluated.
    */
   interface Disjunction<T> extends Composite<T> {
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     @Override
     default <O> void accept(EvaluableIo<T, Evaluable<T>, O> evaluableIo, EvaluationContext<T> evaluationContext, Evaluator evaluator) {
       evaluator.evaluateDisjunction((EvaluableIo<T, Disjunction<T>, Boolean>) (EvaluableIo) evaluableIo, evaluationContext);
@@ -129,7 +167,7 @@ public interface Evaluable<T> {
    * @param <T> The type of the value to be evaluated.
    */
   interface Negation<T> extends Pred<T> {
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     @Override
     default <O> void accept(EvaluableIo<T, Evaluable<T>, O> evaluableIo, EvaluationContext<T> evaluationContext, Evaluator evaluator) {
       evaluator.evaluateNegation((EvaluableIo<T, Negation<T>, Boolean>) (EvaluableIo) evaluableIo, evaluationContext);
@@ -154,7 +192,7 @@ public interface Evaluable<T> {
    * @param <T> The type of the value to be evaluated.
    */
   interface LeafPred<T> extends Pred<T> {
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     @Override
     default <O> void accept(EvaluableIo<T, Evaluable<T>, O> evaluableIo, EvaluationContext<T> evaluationContext, Evaluator evaluator) {
       evaluator.evaluateLeaf((EvaluableIo<T, LeafPred<T>, Boolean>) (EvaluableIo) evaluableIo, evaluationContext);
@@ -174,7 +212,7 @@ public interface Evaluable<T> {
    * @see CurriedContext
    */
   interface CurriedContextPred extends Pred<CurriedContext> {
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     @Override
     default <O> void accept(EvaluableIo<CurriedContext, Evaluable<CurriedContext>, O> evaluableIo, EvaluationContext<CurriedContext> evaluationContext, Evaluator evaluator) {
       evaluator.evaluateCurriedContextPredicate((EvaluableIo<CurriedContext, CurriedContextPred, Boolean>) (EvaluableIo) evaluableIo, evaluationContext);
@@ -191,7 +229,7 @@ public interface Evaluable<T> {
    * @param <E> The type of elements in the stream to be evaluated.
    */
   interface StreamPred<E> extends Pred<Stream<E>> {
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     @Override
     default <O> void accept(EvaluableIo<Stream<E>, Evaluable<Stream<E>>, O> evaluableIo, EvaluationContext<Stream<E>> evaluationContext, Evaluator evaluator) {
       evaluator.evaluateStreamPredicate((EvaluableIo<Stream<E>, StreamPred<E>, Boolean>) (EvaluableIo) evaluableIo, evaluationContext);
@@ -216,7 +254,7 @@ public interface Evaluable<T> {
 
     /**
      * Returns a value to make a "cut" happen.
-     *
+     * <p>
      * A "cut" is a situation, where an evaluation process for the elements in the
      * stream is ended without reaching the last one.
      * This is necessary to model a functionalities of `Stream`, such as
@@ -229,10 +267,10 @@ public interface Evaluable<T> {
     /**
      * In order to generate an informative report, the framework needs information
      * about the expected value for each predicate.
-     *
+     * <p>
      * The "expected" value of a predicate can be different inside the tree of the `Evaluables`,
      * when a negation is used.
-     *
+     * <p>
      * If this `Evaluable` node requests to flip the expectation value under the node,
      * this method should return `true`.
      *
@@ -240,7 +278,8 @@ public interface Evaluable<T> {
      */
     default boolean requestExpectationFlip() {
       return false;
-    }  }
+    }
+  }
 
   /**
    * An interface to model a "transforming predicate", which models the "transform and check" style of value validation.
@@ -250,7 +289,7 @@ public interface Evaluable<T> {
    * @param <R> The type to which the value (`T`) is transformed and then tested.
    */
   interface Transformation<T, R> extends Pred<T> {
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     @Override
     default <O> void accept(EvaluableIo<T, Evaluable<T>, O> evaluableIo, EvaluationContext<T> evaluationContext, Evaluator evaluator) {
       evaluator.evaluateTransformation((EvaluableIo<T, Transformation<T, R>, Boolean>) (EvaluableIo) evaluableIo, evaluationContext);
@@ -287,7 +326,7 @@ public interface Evaluable<T> {
    * @param <T> The type of the value to be evaluated.
    */
   interface Func<T> extends Evaluable<T> {
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     @Override
     default <O> void accept(EvaluableIo<T, Evaluable<T>, O> evaluableIo, EvaluationContext<T> evaluationContext, Evaluator evaluator) {
       evaluator.evaluateFunction((EvaluableIo<T, Func<T>, O>) (EvaluableIo) evaluableIo, evaluationContext);

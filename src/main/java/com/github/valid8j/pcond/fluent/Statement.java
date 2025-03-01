@@ -14,6 +14,7 @@ import static com.github.valid8j.pcond.forms.Functions.elementAt;
 import static com.github.valid8j.pcond.forms.Predicates.allOf;
 import static com.github.valid8j.pcond.forms.Predicates.transform;
 import static com.github.valid8j.pcond.internals.InternalUtils.makeSquashable;
+import static com.github.valid8j.pcond.internals.InternalUtils.makeTrivial;
 
 /**
  * An interface to model a "statement", which .
@@ -31,9 +32,9 @@ public interface Statement<T> {
   static Predicate<? super List<?>> createPredicateForAllOf(Statement<?>[] statements) {
     AtomicInteger i = new AtomicInteger(0);
     @SuppressWarnings("unchecked") Predicate<? super List<?>>[] predicates = Arrays.stream(statements)
-        .map(e -> (transform(elementAt(i.getAndIncrement())).check("WHEN", (Predicate<? super Object>) e.statementPredicate())))
+        .map(e -> makeTrivial(transform(makeTrivial(elementAt(i.getAndIncrement()))).check("WHEN", (Predicate<? super Object>) e.statementPredicate())))
         .toArray(Predicate[]::new);
-    return (allOf(predicates));
+    return makeTrivial(allOf(predicates));
   }
 
   /**

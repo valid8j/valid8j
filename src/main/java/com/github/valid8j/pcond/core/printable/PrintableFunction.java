@@ -24,6 +24,7 @@ public class PrintableFunction<T, R> extends
   private final Function<?, R>                   tailAsFunction;
 
   boolean squashable = false;
+   boolean trivial = false;
 
   @SuppressWarnings("unchecked")
   protected PrintableFunction(Object creator, List<Object> args, Supplier<String> s, Function<? super T, ? extends R> function, Function<? super T, ?> head, Evaluable<?> tail) {
@@ -121,14 +122,27 @@ public class PrintableFunction<T, R> extends
   }
 
 
+  @Override
   public boolean isSquashable() {
     return this.squashable;
+  }
+
+  @Override
+  public boolean isTrivial() {
+    return this.trivial;
   }
 
   @Override
   public PrintableFunction<T, R> markSquashable() {
     PrintableFunction<T, R> ret = this.clone();
     ret.squashable = true;
+    return ret;
+  }
+
+  @Override
+  public PrintableFunction<T, R> markTrivial() {
+    PrintableFunction<T, R> ret = this.clone();
+    ret.trivial = true;
     return ret;
   }
 
