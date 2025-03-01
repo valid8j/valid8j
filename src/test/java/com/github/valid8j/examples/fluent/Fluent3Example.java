@@ -318,7 +318,7 @@ public class Fluent3Example {
     }
 
     @Test(expected = ComparisonFailure.class)
-    public void makeTrivialTest() {
+    public void makeSquashableTest() {
       assertThat("hello", transform(makeSquashable(identity())).check(transform(makeSquashable(identity())).check(isEqualTo("HELLO"))));
     }
   }

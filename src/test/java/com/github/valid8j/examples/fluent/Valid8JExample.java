@@ -69,5 +69,9 @@ public class Valid8JExample {
     public String inEnglish() {
       return "";
     }
+
+    public String toString() {
+      return "Salute[Hello]" + System.identityHashCode(this);
+    }
   }
 }

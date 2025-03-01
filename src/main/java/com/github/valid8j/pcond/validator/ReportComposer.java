@@ -116,19 +116,20 @@ public interface ReportComposer {
      */
     public static Explanation composeExplanation(ReportComposer reportComposer, String message, List<EvaluationEntry> evaluationHistory) {
       List<Object> detailsForExpectation = new LinkedList<>();
-      List<FormattedEntry> summaryDataForExpectations = squashTrivialEntries(reportComposer, evaluationHistory)
+      List<EvaluationEntry> nonTrivialEvaluationHistory = evaluationHistory.stream().filter(each -> !each.isTrivial()).collect(toList());
+      List<FormattedEntry> summaryDataForExpectations = squashEntriesWhenPossible(reportComposer, nonTrivialEvaluationHistory)
           .stream()
           .peek((EvaluationEntry each) -> addToDetailsListIfExplanationIsRequired(reportComposer, detailsForExpectation, each, each::detailOutputExpectation))
           .map(reportComposer::createFormattedEntryForExpectation)
           .collect(toList());
-      String textSummaryForExpectations = composeSummaryForExpectations(minimizeIndentation(summaryDataForExpectations));
+      String textSummaryForExpectations = composeSummary(minimizeIndentation(summaryDataForExpectations));
       List<Object> detailsForActual = new LinkedList<>();
-      List<FormattedEntry> summaryForActual = squashTrivialEntries(reportComposer, evaluationHistory)
+      List<FormattedEntry> summaryForActual = squashEntriesWhenPossible(reportComposer, nonTrivialEvaluationHistory)
           .stream()
           .peek((EvaluationEntry each) -> addToDetailsListIfExplanationIsRequired(reportComposer, detailsForActual, each, each::detailOutputActualValue))
           .map(reportComposer::createFormattedEntryForActualValue)
           .collect(toList());
-      String textSummaryForActualResult = composeSummaryForActualResults(minimizeIndentation(summaryForActual));
+      String textSummaryForActualResult = composeSummary(minimizeIndentation(summaryForActual));
       return new Explanation(message,
           composeReport(textSummaryForExpectations, detailsForExpectation),
           composeReport(textSummaryForActualResult, detailsForActual));
@@ -162,7 +163,7 @@ public interface ReportComposer {
                              .collect(toList());
     }
 
-    private static List<EvaluationEntry> squashTrivialEntries(ReportComposer reportComposer, List<EvaluationEntry> evaluationHistory) {
+    private static List<EvaluationEntry> squashEntriesWhenPossible(ReportComposer reportComposer, List<EvaluationEntry> evaluationHistory) {
       if (evaluationHistory.size() > 1) {
         List<EvaluationEntry> ret = new LinkedList<>();
         List<EvaluationEntry> entriesToSquash = new LinkedList<>();
@@ -224,7 +225,7 @@ public interface ReportComposer {
           first.outputExpectation(), computeDetailOutputExpectationFromSquashedItems(squashedItems),
           first.inputActualValue(), null,
           first.outputActualValue(), squashedItems.get(squashedItems.size() - 1).detailOutputActualValue(),
-          false,
+          false, false,
           squashedItems.stream().anyMatch(reportComposer::requiresExplanation), false);
     }
 
@@ -256,12 +257,8 @@ public interface ReportComposer {
       return Report.create(summary, stringFormDetails);
     }
 
-    private static String composeSummaryForActualResults(List<FormattedEntry> formattedEntries) {
-      return composeSummary(formattedEntries);
-    }
-
     private static String composeSummaryForExpectations(List<FormattedEntry> formattedEntries) {
-      return composeSummaryForActualResults(formattedEntries);
+      return composeSummary(formattedEntries);
     }
 
     private static String composeSummary(List<FormattedEntry> formattedEntries) {
