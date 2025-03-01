@@ -1,6 +1,5 @@
-:toc:
-
 A package that holds classes providing core functionality of the `pcond` package.
+
 
 :ditaa-option-separation: false
 
@@ -249,7 +248,72 @@ If the form throws an exception, its stacktrace will be printed additionally.
 
 A mechanism to compose failure messages using the structure of printable predicates and transforming functions.
 
-include::reporting-pipeline.adoc[]
+Following is a diagram that illustrates the pipeline of **valid8j**'s reporting.
+
+[ditaa]
+.Reporting Pipeline Overview
+----
+
+    +---------------------+
+    |  List               |
+    | +-----------------+ |
+    | | EvaluationEntry | |
+    | +-----------------+ |
+    +---------------------+
+              ^
+              |
+    /---------+----------\
+    |filterTrivialEntries|
+    \---------+----------/
+              :
+              |
+              V
+    +---------------------+
+    |  List               |
+    | +-----------------+ |  +--------------------------+     +------------+
+    | | EvaluationEntry |<---+addToDetailsListIfRequired+-=-->|detailOutput|
+    | +-----------------+ |  +--------------------------+     +------------+
+    +---------^-----------+
+              |
+              |
+     /--------+--------\
+     |  squashEntries  |
+     \--------+--------/
+              :
+              |
+              V
+       +--------------+
+       |FormattedEntry|
+       +--------------+
+              ^
+              |
+     /--------+----------\
+     |minimizeIndentation|
+     \--------+----------/
+              |
+              :
+    +---------|---------+
+    | List    V         |
+    |  +--------------+ |
+    |  |FormattedEntry| |
+    |  +------+-------+ |
+    +-------------------+
+              ^
+              |
+/-------------+-----------------\
+|composeSummary                 |
+|                               |
+| /---------------------------\ |
+| |hideInputValuesWhenRepeated| |
+| \---------------------------/ |
+\-------------+-----------------/
+              |
+              :
+              V
+    +-------------------+
+    |textSummary: String|
+    +-------------------+
+----
 
 [[Limitations]]
 === Limitations

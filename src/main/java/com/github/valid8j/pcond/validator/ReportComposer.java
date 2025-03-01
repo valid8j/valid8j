@@ -24,34 +24,34 @@ public interface ReportComposer {
   default Explanation explanationFromMessage(String msg) {
     return Explanation.fromMessage(msg);
   }
-
+  
   default Explanation composeExplanation(String message, List<EvaluationEntry> evaluationEntries) {
     return Utils.composeExplanation(this, message, evaluationEntries);
   }
-
+  
   default FormattedEntry createFormattedEntryForExpectation(EvaluationEntry evaluationEntry) {
     return Utils.createFormattedEntryForExpectation(this, evaluationEntry);
   }
-
+  
   default FormattedEntry createFormattedEntryForActualValue(EvaluationEntry evaluationEntry) {
     return Utils.createFormattedEntryForActualValue(this, evaluationEntry);
   }
-
+  
   default boolean requiresExplanation(EvaluationEntry evaluationEntry) {
     return evaluationEntry.requiresExplanation();
   }
-
+  
   /**
    * A default implementation of `ReportComposer`.
    */
   class Default implements ReportComposer {
   }
-
+  
   interface Report {
     String summary();
-
+    
     List<String> details();
-
+    
     static Report create(String summary, List<String> details) {
       List<String> detailsCopy = unmodifiableList(new ArrayList<>(details));
       return new Report() {
@@ -59,7 +59,7 @@ public interface ReportComposer {
         public String summary() {
           return summary;
         }
-
+        
         @Override
         public List<String> details() {
           return detailsCopy;
@@ -67,14 +67,14 @@ public interface ReportComposer {
       };
     }
   }
-
+  
   class FormattedEntry {
     private final String input;
     private final String formName;
     private final String indent;
     private final String output;
     private final boolean requiresExplanation;
-
+    
     public FormattedEntry(String input, String formName, String indent, String output, boolean requiresExplanation) {
       this.input = input;
       this.formName = formName;
@@ -82,31 +82,31 @@ public interface ReportComposer {
       this.output = output;
       this.requiresExplanation = requiresExplanation;
     }
-
+    
     Optional<String> input() {
       return Optional.ofNullable(this.input);
     }
-
+    
     String indent() {
       return this.indent;
     }
-
+    
     String formName() {
       return this.formName;
     }
-
+    
     Optional<String> output() {
       return Optional.ofNullable(this.output);
     }
-
+    
     public boolean requiresExplanation() {
       return this.requiresExplanation;
     }
   }
-
+  
   enum Utils {
     ;
-
+    
     /**
      * Note that an exception thrown during an evaluation is normally caught by the framework.
      *
@@ -117,42 +117,53 @@ public interface ReportComposer {
     public static Explanation composeExplanation(ReportComposer reportComposer, String message, List<EvaluationEntry> evaluationHistory) {
       List<Object> detailsForExpectation = new LinkedList<>();
       List<EvaluationEntry> nonTrivialEvaluationHistory = evaluationHistory.stream().filter(each -> !each.isTrivial()).collect(toList());
-      List<FormattedEntry> summaryDataForExpectations = squashEntriesWhenPossible(reportComposer, nonTrivialEvaluationHistory)
-          .stream()
-          .peek((EvaluationEntry each) -> addToDetailsListIfExplanationIsRequired(reportComposer, detailsForExpectation, each, each::detailOutputExpectation))
-          .map(reportComposer::createFormattedEntryForExpectation)
-          .collect(toList());
+      List<FormattedEntry> summaryDataForExpectations = formatEvaluationEntries(detailsForExpectation,
+                                                                                reportComposer,
+                                                                                nonTrivialEvaluationHistory,
+                                                                                reportComposer::createFormattedEntryForExpectation,
+                                                                                each -> each::detailOutputExpectation);
       String textSummaryForExpectations = composeSummary(minimizeIndentation(summaryDataForExpectations));
+      
       List<Object> detailsForActual = new LinkedList<>();
-      List<FormattedEntry> summaryForActual = squashEntriesWhenPossible(reportComposer, nonTrivialEvaluationHistory)
-          .stream()
-          .peek((EvaluationEntry each) -> addToDetailsListIfExplanationIsRequired(reportComposer, detailsForActual, each, each::detailOutputActualValue))
-          .map(reportComposer::createFormattedEntryForActualValue)
-          .collect(toList());
+      List<FormattedEntry> summaryForActual = formatEvaluationEntries(detailsForActual,
+                                                                      reportComposer,
+                                                                      nonTrivialEvaluationHistory,
+                                                                      reportComposer::createFormattedEntryForActualValue,
+                                                                      each -> each::detailOutputActualValue);
       String textSummaryForActualResult = composeSummary(minimizeIndentation(summaryForActual));
       return new Explanation(message,
-          composeReport(textSummaryForExpectations, detailsForExpectation),
-          composeReport(textSummaryForActualResult, detailsForActual));
+                             composeReport(textSummaryForExpectations, detailsForExpectation),
+                             composeReport(textSummaryForActualResult, detailsForActual));
     }
-
+    
+    private static List<FormattedEntry> formatEvaluationEntries(List<Object> detailsOutput,
+                                                                ReportComposer reportComposer,
+                                                                List<EvaluationEntry> nonTrivialEvaluationHistory,
+                                                                Function<EvaluationEntry, FormattedEntry> evaluationEntryFormatter,
+                                                                Function<EvaluationEntry, Supplier<Object>> detailGenerator) {
+      return squashEntriesWhenPossible(reportComposer, nonTrivialEvaluationHistory)
+          .stream()
+          .peek((EvaluationEntry each) -> addToDetailsListIfExplanationIsRequired(reportComposer, detailsOutput, each, detailGenerator.apply(each)))
+          .map(evaluationEntryFormatter)
+          .collect(toList());
+    }
+    
     public static FormattedEntry createFormattedEntryForExpectation(ReportComposer reportComposer, EvaluationEntry entry) {
-      return new FormattedEntry(
-          formatObject(entry.inputExpectation()),
-          entry.formName(),
-          InternalUtils.indent(entry.level()),
-          formatObject(entry.outputExpectation()),
-          reportComposer.requiresExplanation(entry));
+      return new FormattedEntry(formatObject(entry.inputExpectation()),
+                                entry.formName(),
+                                InternalUtils.indent(entry.level()),
+                                formatObject(entry.outputExpectation()),
+                                reportComposer.requiresExplanation(entry));
     }
-
+    
     public static FormattedEntry createFormattedEntryForActualValue(ReportComposer reportComposer, EvaluationEntry entry) {
-      return new FormattedEntry(
-          formatObject(entry.inputActualValue()),
-          entry.formName(),
-          InternalUtils.indent(entry.level()),
-          formatObject(entry.outputActualValue()),
-          reportComposer.requiresExplanation(entry));
+      return new FormattedEntry(formatObject(entry.inputActualValue()),
+                                entry.formName(),
+                                InternalUtils.indent(entry.level()),
+                                formatObject(entry.outputActualValue()),
+                                reportComposer.requiresExplanation(entry));
     }
-
+    
     private static List<FormattedEntry> minimizeIndentation(List<FormattedEntry> summaryForActual) {
       String minIndent = summaryForActual.stream()
                                          .map(e -> e.indent)
@@ -162,7 +173,7 @@ public interface ReportComposer {
                              .map(e -> new FormattedEntry(e.input, e.formName(), e.indent().replaceFirst(minIndent, ""), e.output, e.requiresExplanation()))
                              .collect(toList());
     }
-
+    
     private static List<EvaluationEntry> squashEntriesWhenPossible(ReportComposer reportComposer, List<EvaluationEntry> evaluationHistory) {
       if (evaluationHistory.size() > 1) {
         List<EvaluationEntry> ret = new LinkedList<>();
@@ -200,7 +211,7 @@ public interface ReportComposer {
         return new ArrayList<>(evaluationHistory);
       }
     }
-
+    
     private static void finishLeftOverEntries(ReportComposer reportComposer, List<EvaluationEntry> out, List<EvaluationEntry> leftOverEntriesToSquash, AtomicReference<EvaluationEntry> leftOver) {
       if (!leftOverEntriesToSquash.isEmpty() && leftOverEntriesToSquash.get(leftOverEntriesToSquash.size() - 1).isSquashable(leftOver.get()) && !suppressSquashing()) {
         leftOverEntriesToSquash.add(leftOver.get());
@@ -211,7 +222,7 @@ public interface ReportComposer {
         out.add(leftOver.get());
       }
     }
-
+    
     private static EvaluationEntry squashEntries(ReportComposer reportComposer, List<EvaluationEntry> squashedItems) {
       EvaluationEntry first = squashedItems.get(0);
       return EvaluationEntry.create(
@@ -228,12 +239,12 @@ public interface ReportComposer {
           false, false,
           squashedItems.stream().anyMatch(reportComposer::requiresExplanation), false);
     }
-
+    
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean suppressSquashing() {
       return DebuggingUtils.suppressSquashing();
     }
-
+    
     private static String computeDetailOutputExpectationFromSquashedItems(List<EvaluationEntry> squashedItems) {
       return squashedItems.stream()
                           .filter(e -> e.type() != EvaluationEntry.Type.TRANSFORM && e.type() != EvaluationEntry.Type.CHECK)
@@ -241,26 +252,26 @@ public interface ReportComposer {
                           .map(Objects::toString)
                           .collect(joining(":"));
     }
-
+    
     private static void addToDetailsListIfExplanationIsRequired(ReportComposer reportComposer, List<Object> detailsForExpectation, EvaluationEntry evaluationEntry, Supplier<Object> detailOutput) {
       if (reportComposer.requiresExplanation(evaluationEntry))
         detailsForExpectation.add(detailOutput.get());
     }
-
+    
     static Report composeReport(String summary, List<Object> details) {
       List<String> stringFormDetails = details != null ?
-          details.stream()
-                 .filter(Objects::nonNull)
-                 .map(Objects::toString)
-                 .collect(toList()) :
-          emptyList();
+                                       details.stream()
+                                              .filter(Objects::nonNull)
+                                              .map(Objects::toString)
+                                              .collect(toList()) :
+                                       emptyList();
       return Report.create(summary, stringFormDetails);
     }
-
+    
     private static String composeSummaryForExpectations(List<FormattedEntry> formattedEntries) {
       return composeSummary(formattedEntries);
     }
-
+    
     private static String composeSummary(List<FormattedEntry> formattedEntries) {
       AtomicInteger mismatchExplanationCount = new AtomicInteger(0);
       boolean mismatchExplanationFound = formattedEntries
@@ -275,7 +286,7 @@ public interface ReportComposer {
               mismatchExplanationCount,
               mismatchExplanationFound));
     }
-
+    
     private static Function<FormattedEntry, String> formattedEntryToString(
         int inputColumnWidth,
         int formNameColumnLength,
@@ -284,23 +295,23 @@ public interface ReportComposer {
         boolean mismatchExplanationFound) {
       return (FormattedEntry formattedEntry) ->
           (mismatchExplanationFound ?
-              format("%-4s", formattedEntry.requiresExplanation ?
-                  "[" + i.getAndIncrement() + "]" : "") :
-              "") +
-          formatFields(inputColumnWidth, formNameColumnLength, outputColumnLength, formattedEntry);
+           format("%-4s", formattedEntry.requiresExplanation ?
+                          "[" + i.getAndIncrement() + "]" : "") :
+           "") +
+              formatFields(inputColumnWidth, formNameColumnLength, outputColumnLength, formattedEntry);
     }
-
+    
     private static String formatFields(int inputColumnWidth, int formNameColumnLength, int outputColumnLength, FormattedEntry formattedEntry) {
       return formatInSpecifiedWidth(max(2, inputColumnWidth), formattedEntry.input()
                                                                             .orElse("")) +
-             formatInSpecifiedWidth(formNameColumnLength + 2, formattedEntry.input()
-                                                                            .map(v -> "->")
-                                                                            .orElse("  ") + formatObject(toNonStringObject(formattedEntry.indent() + formattedEntry.formName()), formNameColumnLength - 2)) +
-             formatInSpecifiedWidth(max(2, outputColumnLength), formattedEntry.output()
-                                                                              .map(v -> "->" + v)
-                                                                              .orElse(""));
+          formatInSpecifiedWidth(formNameColumnLength + 2, formattedEntry.input()
+                                                                         .map(v -> "->")
+                                                                         .orElse("  ") + formatObject(toNonStringObject(formattedEntry.indent() + formattedEntry.formName()), formNameColumnLength - 2)) +
+          formatInSpecifiedWidth(max(2, outputColumnLength), formattedEntry.output()
+                                                                           .map(v -> "->" + v)
+                                                                           .orElse(""));
     }
-
+    
     private static String evaluatorEntriesToString(List<FormattedEntry> formattedEntries, Function<int[], Function<FormattedEntry, String>> formatterFactory) {
       int maxInputLength = 0, maxIndentAndFormNameLength = 0, maxOutputLength = 0;
       for (FormattedEntry eachEntry : formattedEntries) {
@@ -325,7 +336,7 @@ public interface ReportComposer {
           .map(s -> ("+" + s).trim().substring(1))
           .collect(joining(format("%n")));
     }
-
+    
     private static List<FormattedEntry> hideInputValuesWhenRepeated(List<FormattedEntry> formattedEntries) {
       AtomicReference<Object> previousInput = new AtomicReference<>();
       return formattedEntries.stream()
@@ -339,7 +350,7 @@ public interface ReportComposer {
                              })
                              .collect(toList());
     }
-
-
+    
+    
   }
 }
