@@ -13,6 +13,14 @@ import java.util.function.Supplier;
 import static java.lang.String.format;
 import static java.util.Objects.requireNonNull;
 
+/**
+ * A transformer can be chained through `transformValueWith(,)` method.
+ *
+ * @param <TX> The "current" transformer type
+ * @param <V> The checker type returned directory by `then()` method.
+ * @param <T> The type of original value given.
+ * @param <R> The type of the target value of the "current" transformer type.
+ */
 public interface Transformer<
     TX extends Transformer<TX, V, T, R>,  // SELF
     V extends Checker<V, T, R>,
@@ -50,7 +58,16 @@ public interface Transformer<
   default V toBe() {
     return then();
   }
-
+  
+  /**
+   *
+   * @param func A function to transform the target value of `TX` to `TY`.
+   * @param transformerFactory A factory function to create a transformer to be returned.
+   * @return A transformer `TY`.
+   * @param <TY> The type of transformer returned by this method.
+   * @param <W> The type of checker returned by the transformer `TY` 's `then()` method.
+   * @param <RR> The type of target value of the transformer `TY`
+   */
   <TY extends Transformer<TY, W, T, RR>,
       W extends Checker<W, T, RR>,
       RR>
