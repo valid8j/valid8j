@@ -85,7 +85,13 @@ public interface AbstractObjectTransformer<
   default <E> ObjectTransformer<T, E> toObject(Function<R, E> function) {
     return this.transformValueWith(function, ObjectTransformer.Impl::new);
   }
-
+  
+  /**
+   * A function to create a new transformer connected to this transformer.
+   *
+   * @param function A function that maps the target value to `Boolean`.
+   * @return A desired transformer.
+   */
   default BooleanTransformer<T> toBoolean(Function<? super R, Boolean> function) {
     return this.transformValueWith(function, BooleanTransformer.Impl::new);
   }
