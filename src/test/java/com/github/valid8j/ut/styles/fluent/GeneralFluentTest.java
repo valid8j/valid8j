@@ -21,6 +21,8 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import static com.github.valid8j.pcond.forms.Functions.parameter;
+import static com.github.valid8j.pcond.forms.Predicates.eq;
+import static com.github.valid8j.pcond.forms.Predicates.equalTo;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
@@ -82,6 +84,7 @@ public class GeneralFluentTest extends TestBase {
             stringTestSuite_1(),
             stringTestSuite_2(),
             stringTestSuite_3(),
+            stringTestSuite_4(),
             objectTestSuite_1(),
             objectTestSuite_2(),
             objectTestSuite_3(),
@@ -159,6 +162,22 @@ public class GeneralFluentTest extends TestBase {
     return new TestSuite<>(
         asList(
             (String v) -> Statement.stringValue(v).split(":").then().notEmpty().containing("A").containing("B").containing("C").done(),
+            (String v) -> Statement.stringValue(v).split(":").then().containingElementsInOrder("A", "B", "C").done(),
+            (String v) -> Statement.stringValue(v).split(":").then().containingElementsInOrder(asList(Predicates.isEqualTo("A"), Predicates.isEqualTo("B"), Predicates.isEqualTo("C"))).done()),
+        singletonList("A:B:C"),
+        asList("A:B", null));
+  }
+  
+  private static TestSuite<String> stringTestSuite_4() {
+    return new TestSuite<>(
+        asList(
+            (String v) -> Statement.stringValue(v)
+                                   .split(":")
+                                   .then()
+                                   .notEmpty()
+                                   .firstElementToBe(equalTo("A"))
+                                   .containingElementToBe(equalTo("B"))
+                                   .lastElementToBe(equalTo("C")).done(),
             (String v) -> Statement.stringValue(v).split(":").then().containingElementsInOrder("A", "B", "C").done(),
             (String v) -> Statement.stringValue(v).split(":").then().containingElementsInOrder(asList(Predicates.isEqualTo("A"), Predicates.isEqualTo("B"), Predicates.isEqualTo("C"))).done()),
         singletonList("A:B:C"),

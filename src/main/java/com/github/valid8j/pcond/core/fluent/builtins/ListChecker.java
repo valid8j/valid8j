@@ -19,35 +19,47 @@ public interface ListChecker<
     E
     > extends
     AbstractObjectChecker<
-                    ListChecker<T, E>,
-                    T,
-                    List<E>> {
+        ListChecker<T, E>,
+        T,
+        List<E>> {
   default ListChecker<T, E> empty() {
     return checkWithPredicate(Predicates.isEmpty());
   }
-
+  
   default ListChecker<T, E> notEmpty() {
     return checkWithPredicate(Predicates.not(Predicates.isEmpty()));
+  }
+  
+  default ListChecker<T, E> firstElementToBe(Predicate<E> predicate) {
+    return predicate(Printables.predicate("firstElementToBe[" + predicate + "]", l -> predicate.test(l.get(0))));
+  }
+  
+  default ListChecker<T, E> lastElementToBe(Predicate<E> predicate) {
+    return predicate(Printables.predicate("lastElementToBe[" + predicate + "]", l -> predicate.test(l.get(l.size() - 1))));
+  }
+  
+  default ListChecker<T, E> containingElementToBe(Predicate<E> predicate) {
+    return predicate(Printables.predicate("containingElementToBe[" + predicate + "]", l -> l.stream().anyMatch(predicate)));
   }
 
   default ListChecker<T, E> containing(E element) {
     return checkWithPredicate(Predicates.contains(element));
   }
-
+  
   @SuppressWarnings("unchecked")
   default ListChecker<T, E> containingElementsInOrder(List<Predicate<E>> predicates) {
     return checkWithPredicate(Cursors.findElements(predicates.toArray(new Predicate[0])));
   }
-
+  
   @SuppressWarnings("unchecked")
   default ListChecker<T, E> containingElementsInOrder(E... elements) {
     return this.containingElementsInOrder(
         Arrays.stream(elements)
-            .map(v -> Printables.predicate("[" + v + "]", e -> Objects.equals(v, e)))
-            .map(p -> (Predicate<E>) p)
-            .collect(Collectors.toList()));
+              .map(v -> Printables.predicate("[" + v + "]", e -> Objects.equals(v, e)))
+              .map(p -> (Predicate<E>) p)
+              .collect(Collectors.toList()));
   }
-
+  
   class Impl<
       T,
       E
@@ -59,7 +71,7 @@ public interface ListChecker<
     public Impl(Supplier<T> rootValue, Function<T, List<E>> transformFunction) {
       super(rootValue, transformFunction);
     }
-
+    
     @Override
     protected ListChecker<List<E>, E> rebase() {
       return new Impl<>(this::value, InternalUtils.trivialIdentityFunction());
